@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowRight, Atom, BookOpen, Check, ChevronLeft, ChevronRight, ExternalLink, Pause, Play, RotateCcw, Sigma } from 'lucide-react'
+import { ArrowDown, ArrowRight, Atom, BookOpen, CalendarClock, Check, ChevronLeft, ChevronRight, ExternalLink, Pause, Play, RotateCcw, Sigma } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import PeriodicTablePage from './PeriodicTable.jsx'
 import WorksheetsPage, { PrefixTable, VseprChart } from './Worksheets.jsx'
 import { CrissCross, IonChargeTable } from './Ionic.jsx'
+import { CHAPTERS, WORKSHEETS, chapterOf, dueInfo } from './chapters.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,7 +19,7 @@ const routeFromHash = () => {
 const khan = 'https://www.khanacademy.org/science/hs-chemistry/x2613d8165d88df5e:chemical-bonding/x2613d8165d88df5e:covalent-bonds/v/lewis-diagrams-for-molecules'
 const lessons = [
   {
-    title: 'What are valence electrons?', short: 'Valence electrons', tag: 'Start with the atom',
+    chapter: 4, title: 'What are valence electrons?', short: 'Valence electrons', tag: 'Start with the atom',
     intro: 'An atom has a tiny nucleus surrounded by electrons. Valence electrons are the electrons in its outermost occupied shell. They are the electrons we usually track when studying bonds between main-group elements.',
     points: [
       ['Think in layers', 'In a simple shell model, carbon has 2 electrons in its first shell and 4 in its second. Those 4 outer electrons are its valence electrons.'],
@@ -31,7 +32,7 @@ const lessons = [
     video: 'yADrWdNTWEc', videoTitle: 'Valence Electrons and the Periodic Table', creator: 'Tyler DeWitt', watch: 'Focus on the difference between total electrons and outer-shell electrons.',
   },
   {
-    title: 'Understanding the periodic table', short: 'The periodic table', tag: 'Find the pattern',
+    chapter: 4, title: 'Understanding the periodic table', short: 'The periodic table', tag: 'Find the pattern',
     intro: 'The periodic table arranges elements by atomic number: their number of protons. A vertical column is a group. A horizontal row is a period. Main-group elements in the same group have similar valence-electron patterns.',
     points: [
       ['Read down a group', 'For neutral main-group atoms: group 1 has 1 valence electron, group 2 has 2, and groups 13 through 18 have 3 through 8.'],
@@ -44,7 +45,7 @@ const lessons = [
     video: 'yADrWdNTWEc', videoTitle: 'Valence Electrons and the Periodic Table', creator: 'Tyler DeWitt', watch: 'This is the same foundation video as lesson 1. This time, watch for the group-number shortcut.',
   },
   {
-    title: 'How to draw Lewis dot structures', short: 'Lewis dot symbols', tag: 'Turn electrons into dots',
+    chapter: 4, title: 'How to draw Lewis dot structures', short: 'Lewis dot symbols', tag: 'Turn electrons into dots',
     intro: 'A Lewis symbol shows an element symbol surrounded by dots for its valence electrons. Start with one atom before drawing a whole molecule. Here, we will build the symbol for oxygen.',
     points: [
       ['Count first', 'Oxygen is in group 16, so a neutral oxygen atom has 6 valence electrons. Write O, then place exactly 6 dots.'],
@@ -57,7 +58,7 @@ const lessons = [
     video: null, khan: true, videoTitle: 'Lewis diagrams for molecules', creator: 'Khan Academy', watch: 'Notice how the electrons are counted first, then placed as bonds and lone pairs. Atom symbols come first; whole molecules are the next step.',
   },
   {
-    title: 'Understanding chemical bonds', short: 'Sharing electrons', tag: 'Two atoms, one shared pair',
+    chapter: 4, title: 'Understanding chemical bonds', short: 'Sharing electrons', tag: 'Two atoms, one shared pair',
     intro: 'A chemical bond holds atoms together. In a covalent bond, atoms share electron pairs. Start with the simplest example: two hydrogen atoms forming H₂.',
     points: [
       ['Begin with two atoms', 'Each hydrogen atom brings 1 electron. Its first shell can hold 2, so hydrogen follows a duet rule rather than an octet rule.'],
@@ -70,7 +71,7 @@ const lessons = [
     video: 'PKA4CZwbZWU', videoTitle: 'Ionic vs. Molecular', creator: 'Tyler DeWitt', watch: 'Focus on the molecular (covalent) side: nonmetals bonding by sharing electrons. Ionic compounds are the other kind, formed between a metal and a nonmetal.',
   },
   {
-    title: 'How to draw the CO₂ Lewis structure', short: 'Build CO₂', tag: 'Put it all together',
+    chapter: 4, title: 'How to draw the CO₂ Lewis structure', short: 'Build CO₂', tag: 'Put it all together',
     intro: 'Carbon dioxide has 1 carbon atom and 2 oxygen atoms. The goal is to account for every valence electron while giving each atom an octet. Follow the electron budget instead of guessing the bonds.',
     points: [
       ['Budget: 16 electrons', 'Carbon contributes 4 and each oxygen contributes 6: 4 + 2(6) = 16 valence electrons. CO₂ is neutral, so no charge adjustment is needed.'],
@@ -83,7 +84,7 @@ const lessons = [
     video: null, khan: true, videoTitle: 'Lewis diagrams for molecules', creator: 'Khan Academy', watch: 'Watch the general method for molecules, then apply it to CO₂ with our five-step animation.',
   },
   {
-    title: 'VSEPR shapes and polarity', short: 'VSEPR & polarity', tag: 'From flat drawing to 3D shape',
+    chapter: 4, title: 'VSEPR shapes and polarity', short: 'VSEPR & polarity', tag: 'From flat drawing to 3D shape',
     intro: 'VSEPR stands for Valence Shell Electron Pair Repulsion. Electron pairs around a central atom push each other as far apart as possible. That push decides the 3D shape of a molecule.',
     points: [
       ['Tally around the central atom', 'Draw the Lewis structure first. Then count only what is on the central atom: bonding pairs (one per attached atom) and lone pairs. A double or triple bond counts as ONE bonding pair for shape.'],
@@ -97,7 +98,7 @@ const lessons = [
     video: 'nxebQZUVvTg', videoTitle: 'VSEPR Theory: Introduction', creator: 'Tyler DeWitt', watch: 'Watch how he tallies bonding and lone pairs on the central atom, then matches them to a shape.',
   },
   {
-    title: 'Naming covalent compounds', short: 'Naming compounds', tag: 'Prefixes tell you how many',
+    chapter: 4, title: 'Naming covalent compounds', short: 'Naming compounds', tag: 'Prefixes tell you how many',
     intro: 'Covalent (molecular) compounds form between two nonmetals. Their names use prefixes to show how many atoms of each element are in one molecule.',
     points: [
       ['The pattern', '(prefix + first nonmetal) (prefix + root of second nonmetal + -ide). The less electronegative element usually comes first: the one further left or lower on the periodic table.'],
@@ -111,7 +112,7 @@ const lessons = [
     video: 'DejkvR4pvRw', videoTitle: 'Naming Covalent Molecular Compounds', creator: 'Tyler DeWitt', watch: 'Pause after each example and try naming it yourself before he does.',
   },
   {
-    title: 'Naming ionic compounds (Type I)', short: 'Ionic compounds', tag: 'Metal + nonmetal: criss-cross',
+    chapter: 4, title: 'Naming ionic compounds (Type I)', short: 'Ionic compounds', tag: 'Metal + nonmetal: criss-cross',
     intro: 'Ionic compounds form when a metal transfers electrons to a nonmetal. The metal becomes a positive ion (cation) and the nonmetal a negative ion (anion). Opposite charges attract and hold them together.',
     points: [
       ['Cations and anions', 'Metals lose electrons and become cations (+). Nonmetals gain electrons and become anions (−). Type I metals have only one possible charge: group 1 is +1, group 2 is +2, aluminum is +3, and zinc (+2), cadmium (+2), and silver (+1) never change. For nonmetals: group 15 is −3, group 16 is −2, group 17 is −1.'],
@@ -368,7 +369,14 @@ function App() {
   }, [route])
   function selectLesson(i) { setActive(i) }
   function openLesson(i) { setActive(i); window.location.hash = 'lessons' }
-  const count = lessons.length
+  const chapter = chapterOf(lesson.chapter)
+  const chapterLessons = lessons.flatMap((l, i) => l.chapter === chapter.n ? [i] : [])
+  const pos = chapterLessons.indexOf(active)
+  const count = chapterLessons.length
+  const passed = completed.filter(i => chapterLessons.includes(i)).length
+  const pad = n => String(n).padStart(2, '0')
+  const practice = WORKSHEETS.find(w => w.lesson === active)
+  const practiceDue = dueInfo(practice?.due)
   return <div ref={root}>
     <a className="skip-link" href="#lessons">Skip to lessons</a>
     <header className={`navbar ${scrolled || route !== 'home' ? 'scrolled' : ''}`}>
@@ -383,7 +391,7 @@ function App() {
           <h1 className="hero-reveal">Small atoms.<br /><em>Big understanding.</em></h1>
           <p className="hero-reveal">Electrons, bonds, and those little dots.<br />Finally, a place where it all starts to make sense.</p>
           <a className="hero-link hero-reveal" href="#lessons">Read your first lesson <ArrowDown size={18} /></a>
-          <div className="hero-meta hero-reveal">08 SHORT LESSONS <span> / </span> VIDEOS + ANIMATIONS <span> / </span> WORKSHEET HELP</div>
+          <div className="hero-meta hero-reveal">CHAPTER {chapter.n} · {chapter.title.toUpperCase()} <span> / </span> {pad(count)} SHORT LESSONS <span> / </span> VIDEOS + ANIMATIONS <span> / </span> WORKSHEET HELP</div>
         </div>
         <span className="hero-side">A LITTLE CURIOSITY GOES A LONG WAY.</span>
       </section>
@@ -394,27 +402,31 @@ function App() {
       </section>
 
       <section id="lessons" className="lesson-section">
-        <div className="lesson-header"><div><span className="eyebrow">YOUR LEARNING PATH</span>        <h2>From the atom to <em>compounds.</em></h2></div><div className="progress-summary"><span>{completed.length} / {count} checks passed</span><progress max={count} value={completed.length} aria-label="Lesson checks passed" /><small>Progress lasts for this visit.</small></div></div>
+        <div className="chapter-bar" role="group" aria-label="Chapters">
+          {CHAPTERS.map(c => <button key={c.n} className="chapter-chip" aria-pressed={c.n === chapter.n} onClick={() => selectLesson(lessons.findIndex(l => l.chapter === c.n))}><span className="eyebrow">CHAPTER {c.n}</span>{c.title}</button>)}
+          <span className="chapter-chip soon"><span className="eyebrow">MORE CHAPTERS</span>Coming soon</span>
+        </div>
+        <div className="lesson-header"><div><span className="eyebrow">CHAPTER {chapter.n} · YOUR LEARNING PATH</span>        <h2>{chapter.title.split(' ').slice(0, -1).join(' ')} <em>{chapter.title.split(' ').at(-1)}.</em></h2></div><div className="progress-summary"><span>{passed} / {count} checks passed</span><progress max={count} value={passed} aria-label="Lesson checks passed" /><small>Progress lasts for this visit.</small></div></div>
         <div className="lesson-layout">
-                  <aside className="lesson-nav"><span className="eyebrow">EIGHT STEPS</span>
-            <div role="tablist" aria-label="Chemistry lessons" aria-orientation="vertical">{lessons.map((item, i) => <button key={item.short} role="tab" id={`tab-${i}`} aria-controls="lesson-panel" aria-selected={active === i} tabIndex={active === i ? 0 : -1} className={`lesson-tab ${active === i ? 'active' : ''}`} onClick={() => selectLesson(i)} onKeyDown={e => {
-                      const keys = { ArrowDown: (i + 1) % count, ArrowUp: (i + count - 1) % count, Home: 0, End: count - 1 }
-              if (Object.hasOwn(keys, e.key)) { e.preventDefault(); selectLesson(keys[e.key]); document.getElementById(`tab-${keys[e.key]}`).focus() }
-            }}><span className="lesson-number">{completed.includes(i) ? <Check size={16} /> : `0${i + 1}`}</span><span>{item.short}</span><ChevronRight size={15} /></button>)}</div>
+                  <aside className="lesson-nav"><span className="eyebrow">CHAPTER {chapter.n} · {count} LESSONS</span>
+            <div role="tablist" aria-label={`Chapter ${chapter.n} lessons`} aria-orientation="vertical">{chapterLessons.map((i, k) => { const item = lessons[i]; return <button key={item.short} role="tab" id={`tab-${i}`} aria-controls="lesson-panel" aria-selected={active === i} tabIndex={active === i ? 0 : -1} className={`lesson-tab ${active === i ? 'active' : ''}`} onClick={() => selectLesson(i)} onKeyDown={e => {
+                      const keys = { ArrowDown: (k + 1) % count, ArrowUp: (k + count - 1) % count, Home: 0, End: count - 1 }
+              if (Object.hasOwn(keys, e.key)) { e.preventDefault(); const next = chapterLessons[keys[e.key]]; selectLesson(next); document.getElementById(`tab-${next}`).focus() }
+            }}><span className="lesson-number">{completed.includes(i) ? <Check size={16} /> : pad(k + 1)}</span><span>{item.short}</span><ChevronRight size={15} /></button> })}</div>
             <div className="sidebar-note"><BookOpen size={22} /><p>A good place to pause?<br />Any time you need to.<br /><strong>Understanding has no timer.</strong></p></div>
           </aside>
           <article id="lesson-panel" role="tabpanel" aria-labelledby={`tab-${active}`} tabIndex={0}>
-            <div className="lesson-title"><span className="eyebrow">LESSON 0{active + 1} <span className="separator">/</span> {lesson.tag}</span><h2>{lesson.title}</h2><p className="lesson-intro">{lesson.intro}</p></div>
+            <div className="lesson-title"><span className="eyebrow">CHAPTER {chapter.n} · LESSON {pad(pos + 1)} <span className="separator">/</span> {lesson.tag}</span><h2>{lesson.title}</h2><p className="lesson-intro">{lesson.intro}</p></div>
             <AnimationPlayer key={`animation-${active}`} lesson={active} />
             <div className="reading">{lesson.points.map(([title, text], i) => <section key={title}><span className="reading-number">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></section>)}</div>
             {active === 1 && <a className="table-callout" href="#/periodic-table"><div><span className="eyebrow">TRY IT ON THE REAL THING</span><h3>Explore the full periodic table</h3><p>Select any element to see its group, valence electrons, and Lewis symbol.</p></div><ArrowRight size={22} /></a>}
             {active === 5 && <VseprChart />}
             {active === 6 && <PrefixTable />}
             {active === 7 && <IonChargeTable />}
-            {(active === 5 || active === 6 || active === 7) && <a className="table-callout" href={`#/worksheets/${['vsepr', 'names', 'ionic'][active - 5]}`}><div><span className="eyebrow">PRACTICE</span><h3>{['VSEPR Worksheet help', 'Covalent Nomenclature WS help', 'Type I Ionic WS help'][active - 5]}</h3><p>Work through every worksheet problem with step-by-step answers you reveal when you are ready.</p></div><ArrowRight size={22} /></a>}
+            {practice && <a className="table-callout" href={`#/worksheets/${practice.id}`}><div><span className="eyebrow">PRACTICE</span><h3>{practice.label} help</h3>{practiceDue && <span className={`due-badge ${practiceDue.when}`}><CalendarClock size={14} /> {practiceDue.text}</span>}<p>Work through every worksheet problem with step-by-step answers you reveal when you are ready.</p></div><ArrowRight size={22} /></a>}
             <Video key={`video-${active}`} lesson={lesson} />
             <Quiz key={`quiz-${active}`} lesson={lesson} completed={completed.includes(active)} onComplete={() => setCompleted(previous => previous.includes(active) ? previous : [...previous, active])} />
-            <div className="lesson-bottom"><Button disabled={active === 0} onClick={() => selectLesson(active - 1)}><ChevronLeft size={17} /> Previous lesson</Button><Button className="primary" disabled={active === count - 1} onClick={() => selectLesson(active + 1)}>Next lesson <ChevronRight size={17} /></Button></div>
+            <div className="lesson-bottom"><Button disabled={pos === 0} onClick={() => selectLesson(chapterLessons[pos - 1])}><ChevronLeft size={17} /> Previous lesson</Button><Button className="primary" disabled={pos === count - 1} onClick={() => selectLesson(chapterLessons[pos + 1])}>Next lesson <ChevronRight size={17} /></Button></div>
           </article>
         </div>
       </section>
@@ -423,7 +435,7 @@ function App() {
       <section id="resources" className="resources reveal">
         <div><span className="eyebrow">KEEP A TEACHER CLOSE</span><h2>Your video <em>bookshelf.</em></h2>        <p>Start with your Khan Academy lesson, then the Tyler DeWitt videos used in the lessons. Videos are hosted by their original creators.</p></div>
                 <a className="resource featured-resource" href={khan} target="_blank" rel="noreferrer"><span className="eyebrow">YOUR KHAN ACADEMY RESOURCE</span><h3>Lewis diagrams for molecules</h3><p>Used in the Lewis dot and CO₂ lessons. Read our beginner explanations alongside it.</p><span className="text-link">Watch on Khan Academy <ExternalLink size={16} /></span></a>
-                <div className="resource-links">{[...new Map(lessons.filter(l => l.video).map(l => [l.video, l])).values()].map(item => <a key={item.video} href={`https://www.youtube.com/watch?v=${item.video}`} target="_blank" rel="noreferrer"><div><strong>{item.videoTitle}</strong><span>{item.creator}</span></div><ExternalLink size={18} /></a>)}</div>
+                <div className="resource-links">{[...new Map(lessons.filter(l => l.video).map(l => [l.video, l])).values()].map(item => <a key={item.video} href={`https://www.youtube.com/watch?v=${item.video}`} target="_blank" rel="noreferrer"><div><strong>{item.videoTitle}</strong><span>{item.creator} · Chapter {item.chapter}</span></div><ExternalLink size={18} /></a>)}</div>
       </section>
       <section className="get-started reveal"><Atom size={36} /><h2>A small step is <em>still a start.</em></h2><p>Go back to the basics whenever you need. They are where the good stuff begins.</p><a className="hero-link" href="#lessons" onClick={() => selectLesson(0)}>Back to lesson one <ArrowRight size={18} /></a></section>
           </main>}

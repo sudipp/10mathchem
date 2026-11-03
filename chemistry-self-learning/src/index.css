@@ -76,3 +76,23 @@ footer{background:#1d2b23;color:#e6eadf;border-radius:60px 60px 0 0;padding:60px
 .ionic-drawing{max-width:560px;margin:10px auto 0}
 .ionic-steps p{font-size:.84rem}
 @media(max-width:650px){.ion-label{min-width:100%}.ionic-detail{padding:18px 16px}}
+
+/* Chapters and due dates */
+.chapter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.chapter-chip{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border:1px solid #cbd1c4;background:#fffdf7;color:#2e4036;border-radius:24px;padding:12px 20px;font:600 .9rem 'Plus Jakarta Sans',sans-serif;text-align:left;cursor:pointer;transition:transform .3s cubic-bezier(.25,.46,.45,.94)}
+.chapter-chip:hover{transform:translateY(-1px)}
+.chapter-chip[aria-pressed=true]{background:#2e4036;color:#f2f0e9;border-color:#2e4036}
+.chapter-chip[aria-pressed=true] .eyebrow{color:#edb096}
+.chapter-chip .eyebrow{font-size:.58rem}
+.chapter-chip.soon{border-style:dashed;background:transparent;color:#7a857c;cursor:default;font-weight:500}
+.chapter-chip.soon:hover{transform:none}
+.ws-chapter{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.ws-tabs button{display:inline-flex;align-items:center;gap:8px}
+.tab-due{font:600 .6rem 'IBM Plex Mono',monospace;letter-spacing:.04em;border-radius:20px;padding:3px 8px;background:#e7e9e0;color:#536157}
+.tab-due.today{background:#cc5833;color:#fff}
+.ws-due-row{max-width:1260px;margin:0 auto;padding:0 40px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.due-badge{display:inline-flex;align-items:center;gap:6px;font:600 .72rem 'IBM Plex Mono',monospace;border-radius:30px;padding:7px 14px;background:#e7e9e0;color:#2e4036}
+.due-badge.today{background:#cc5833;color:#fff}
+.due-badge.past{background:#efe4dc;color:#8a4a32}
+.table-callout .due-badge{margin:2px 0 8px}
+@media(max-width:650px){.ws-due-row{padding:0 20px 20px}.chapter-chip{flex:1 1 100%}}

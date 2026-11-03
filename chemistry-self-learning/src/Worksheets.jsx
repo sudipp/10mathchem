@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Check, Eye, EyeOff, X } from 'lucide-react'
+import { ArrowRight, CalendarClock, Check, Eye, EyeOff, X } from 'lucide-react'
 import { IonChargeTable, IonicGrid } from './Ionic.jsx'
 import { NOTES_FORMULA_TO_NAME, NOTES_NAME_TO_FORMULA, charge, ionic, pretty } from './ionic.js'
+import { CHAPTERS, WORKSHEETS, dueInfo } from './chapters.js'
 
 const sub = text => String(text).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d])
 
@@ -228,8 +229,12 @@ function NamePart({ title, hint, items }) {
   </section>
 }
 
-const TABS = [['vsepr', 'VSEPR Worksheet'], ['names', 'Covalent Nomenclature WS'], ['ionic', 'Type I Ionic WS']]
-const tabFromHash = () => TABS.find(([id]) => window.location.hash === `#/worksheets/${id}`)?.[0] ?? 'vsepr'
+const tabFromHash = () => WORKSHEETS.find(w => window.location.hash === `#/worksheets/${w.id}`)?.id ?? WORKSHEETS[0].id
+
+function DueBadge({ due }) {
+  const info = dueInfo(due)
+  return info && <span className={`due-badge ${info.when}`}><CalendarClock size={14} /> {info.text}</span>
+}
 
 const IONIC_WRONG = 'Not yet. Check the charges, the criss-cross, reducing, and the -ide ending.'
 const ionicExplain = r => r.cancels
@@ -247,15 +252,20 @@ export default function WorksheetsPage({ openLesson }) {
     return () => window.removeEventListener('hashchange', sync)
   }, [])
   const setTab = id => window.location.assign(`#/worksheets/${id}`)
+  const sheet = WORKSHEETS.find(w => w.id === tab)
   return <main className="pt-page ws-page">
     <section className="pt-hero">
       <span className="eyebrow">WORKSHEET HELP</span>
       <h1>Worksheet <em>help.</em></h1>
       <p>Try each problem on paper first. Then reveal one step at a time, so you can see exactly where your thinking matched and where it went a different way.</p>
-      <div className="ws-tabs" role="group" aria-label="Choose a worksheet">
-        {TABS.map(([id, label]) => <button key={id} aria-pressed={tab === id} onClick={() => setTab(id)}>{label}</button>)}
-      </div>
+      {CHAPTERS.map(c => <div key={c.n} className="ws-chapter">
+        <span className="eyebrow">CHAPTER {c.n} · {c.title.toUpperCase()}</span>
+        <div className="ws-tabs" role="group" aria-label={`Chapter ${c.n} worksheets`}>
+          {WORKSHEETS.filter(w => w.chapter === c.n).map(w => { const info = dueInfo(w.due); return <button key={w.id} aria-pressed={tab === w.id} onClick={() => setTab(w.id)}>{w.label}{info && <small className={`tab-due ${info.when}`}>{info.when === 'today' ? 'Due today' : info.text}</small>}</button> })}
+        </div>
+      </div>)}
     </section>
+    <div className="ws-due-row"><span className="eyebrow">CHAPTER {sheet.chapter} · {sheet.label.toUpperCase()}</span><DueBadge due={sheet.due} /></div>
 
     {tab === 'ionic' ? <section className="ws-section">
       <div className="ws-intro">

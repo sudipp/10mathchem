@@ -30,6 +30,13 @@ TCP 8080 for other devices to connect.
 
 ## Lessons
 
+All current lessons belong to **Chapter 4: Lewis Structures & Nomenclature**.
+Chapters and worksheets (with optional `YYYY-MM-DD` due dates) are listed in
+`src/chapters.js`. To add a chapter, add it to `CHAPTERS`, tag its lessons in
+`App.jsx` with `chapter: <n>`, and list its worksheets in `WORKSHEETS`.
+The Type I Ionic WS is due Nov 3, 2026; due dates show as "Due today",
+"Due …", or "Was due …".
+
 1. Valence electrons: carbon, oxygen, and neon shell models.
 2. Periodic table: main-group patterns and helium/transition-metal caveats.
 3. Lewis symbols: place oxygen's six dots step by step.
