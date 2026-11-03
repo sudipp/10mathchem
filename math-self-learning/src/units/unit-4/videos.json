@@ -1,0 +1,29 @@
+{
+ "01-polynomial-basics": {
+  "seconds": 129
+ },
+ "02-zeros-factors": {
+  "seconds": 151
+ },
+ "03-long-division": {
+  "seconds": 179
+ },
+ "04-synthetic-division": {
+  "seconds": 157
+ },
+ "05-factoring": {
+  "seconds": 133
+ },
+ "06-solving": {
+  "seconds": 136
+ },
+ "07-function-operations": {
+  "seconds": 151
+ },
+ "08-solving-by-graphing": {
+  "seconds": 166
+ },
+ "09-end-behavior": {
+  "seconds": 176
+ }
+}

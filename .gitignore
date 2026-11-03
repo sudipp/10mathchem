@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+*.log
+.DS_Store
+
+# Video render caches and duplicates (published copies live in math-self-learning/public/videos)
+math-videos/build/
+math-videos/out/
+
+# Temporary verification output
+math-self-learning/scripts/checks.json

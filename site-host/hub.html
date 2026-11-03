@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2E4036" />
+  <title>Self Learning</title>
+  <link rel="icon" type="image/svg+xml" href="/math/math.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#2E4036;background:#F2F0E9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:#a33d20}
+    h1{font-size:clamp(2.6rem,7vw,4.4rem);letter-spacing:-.05em;margin:14px 0 10px;font-weight:600;text-align:center}h1 em{font-family:'Cormorant Garamond',serif;font-weight:500}
+    p.lead{color:#536157;margin:0 0 36px;text-align:center;line-height:1.7}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;width:min(760px,100%)}
+    a.card{display:block;text-decoration:none;color:inherit;background:#fffdf7;border:1px solid #e1e2d9;border-radius:32px;padding:30px;transition:transform .25s,box-shadow .25s}
+    a.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px #2e40361a}a.card:focus-visible{outline:3px solid #CC5833;outline-offset:4px}
+    .icon{width:58px;height:58px;border-radius:18px;background:#2E4036;color:#F2F0E9;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:22px}
+    h2{margin:6px 0 8px;font-size:1.5rem;letter-spacing:-.04em}.card p{margin:0;color:#536157;font-size:.9rem;line-height:1.7}
+    .go{display:inline-block;margin-top:18px;font-weight:600;font-size:.85rem;color:#a33d20}
+    footer{margin-top:40px;font-size:.75rem;color:#6b756d}
+  </style>
+</head>
+<body>
+  <span class="eyebrow">SELF LEARNING · NO ACCOUNT NEEDED</span>
+  <h1>Pick a subject. <em>Start small.</em></h1>
+  <p class="lead">Short lessons, step-by-step animations, videos,<br />and homework help you reveal one step at a time.</p>
+  <main class="cards">
+    <a class="card" href="/chemistry/#lessons">
+      <div class="icon" aria-hidden="true">⚛</div>
+      <span class="eyebrow">CHEMISTRY</span>
+      <h2>Electrons, bonds &amp; molecules</h2>
+      <p>Valence electrons, Lewis structures, VSEPR shapes, naming covalent and ionic (Type I) compounds, and a periodic table.</p>
+      <span class="go">Open chemistry →</span>
+    </a>
+    <a class="card" href="/math/">
+      <div class="icon" aria-hidden="true">∑</div>
+      <span class="eyebrow">MATH · BY UNIT</span>
+      <h2>Math, one unit at a time</h2>
+      <p>Now available: Unit 4, Polynomial Functions. Seven video lessons with homework help. More units are on the way.</p>
+      <span class="go">Open math →</span>
+    </a>
+  </main>
+  <footer>A little clearer, one step at a time.</footer>
+</body>
+</html>
