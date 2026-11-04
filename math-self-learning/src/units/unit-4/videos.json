@@ -24,6 +24,12 @@
   "seconds": 166
  },
  "09-end-behavior": {
-  "seconds": 176
+  "seconds": 174
+ },
+ "10-rational-roots": {
+  "seconds": 177
+ },
+ "11-conjugate-roots": {
+  "seconds": 217
  }
 }

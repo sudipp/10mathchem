@@ -9,7 +9,7 @@ notes and worksheets and served on the home network.
 | [math-self-learning](math-self-learning/) | Math site organized by unit (Unit 4: Polynomial Functions), lessons, narrated videos, homework help |
 | [math-videos](math-videos/) | Tooling that renders the narrated lesson videos |
 | [site-host](site-host/) | Node server that serves both sites on port 8080 |
-| [Chemistry](Chemistry/), [math](math/) | Source class notes and worksheets (PDF) |
+| [Chemistry](Chemistry/), [Math/chapter4](Math/chapter4/) | Source class notes and worksheets (PDF) |
 
 ## Run locally
 

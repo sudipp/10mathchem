@@ -1,5 +1,6 @@
 import { Graph, LongDivisionView, SyntheticView } from './Visuals.jsx'
 import { P, analyze, endBehavior, evaluate, fromFactors, fromZeros, isZeroPoly, longDivide, polyLatex, polyMul, q, qLatex, synthetic, tenth, testPoints } from './poly.js'
+import { buildFromRoots, candidatesLatex, conjugate, isPaired, rationalRoots, rootKind, rootLatex, zerosLatex } from './roots.js'
 
 const R = String.raw
 const factorLatex = ([a, b, m = 1], v = 'x') => {
@@ -124,7 +125,110 @@ export function solve(p) {
   }
   if (p.type === 'ends') return endsSolution(P(p.std), pre)
   if (p.type === 'analyze') return analyzeSolution(p, pre)
+  if (p.type === 'rrt') return rrtSolution(p, pre)
+  if (p.type === 'conj') return conjSolution(p, pre)
+  if (p.type === 'build') return buildSolution(p, pre)
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
+}
+
+const pmList = ns => ns.map(n => `\\pm ${n}`).join(',\\ ')
+const linFactor = x => polyLatex([q(x.d), q(-x.n)])
+const xPow = k => k === 1 ? 'x' : `x^{${k}}`
+
+function rrtSolution(p, pre) {
+  const r = rationalRoots(p.std, { given: p.given })
+  const fx = p.eq ? `${polyLatex(r.poly)} = 0` : `f(x) = ${polyLatex(r.poly)}`
+  const givenQ = p.given != null ? q(...(Array.isArray(p.given) ? p.given : [p.given, 1])) : null
+  const prompt = `${pre}${fx}${givenQ ? `;\\ \\text{one zero is } ${qLatex(givenQ)}` : ''}`
+  const possible = candidatesLatex(r.cand.list, r.k0 > 0)
+  const items = possible.split(',\\ ')
+  const rows = []
+  for (let i = 0; i < items.length; i += 8) rows.push(items.slice(i, i + 8).join(',\\ '))
+  const steps = [], visuals = {}
+  if (r.k0) steps.push(R`**GCF first:** every term has $${xPow(r.k0)}$, so $${p.eq ? '' : 'f(x) = '}${xPow(r.k0)}(${polyLatex(r.work)})$. That makes $0$ a zero. Use $${polyLatex(r.work)}$ for the theorem.`)
+  steps.push(R`**p** = factors of the constant $${qLatex(r.work[r.work.length - 1])}$: $${pmList(r.cand.ps)}$. **q** = factors of the leading coefficient $${qLatex(r.work[0])}$: $${pmList(r.cand.qs)}$.`)
+  steps.push(R`**Possible rational ${p.eq ? 'roots' : 'zeros'}** $\tfrac{p}{q}$ (each $p$ over each $q$, skipping repeats): ${items.map(s => `$${s}$`).join(', ')}.`)
+  if (!p.find) return { prompt, steps, answer: rows.length > 1 ? R`\begin{array}{l} ${rows.join(R`, \\ `)} \end{array}` : possible }
+  r.rounds.forEach((round, i) => {
+    const name = i === 0 && !r.k0 ? 'f' : 'g'
+    const g = R`$${name}(x) = ${polyLatex(round.poly)}$`
+    if (round.given) {
+      steps.push(R`**Use the given zero** $x = ${qLatex(round.found)}$: divide by $(${linFactor(round.found)})$ with **synthetic division**. The remainder is $0$ ✓ and the quotient is $${polyLatex(round.syn.quotient)}$.`)
+    } else {
+      const tests = round.tried.map(t => `$${name}(${qLatex(t.x)}) = ${qLatex(t.val)}$${t.val.n === 0 ? ' ✓' : ''}`).join(', ')
+      const prev = r.rounds[i - 1]?.found
+      const again = prev && round.tried.length && round.tried[0].x.n === prev.n && round.tried[0].x.d === prev.d ? R`Zeros can repeat, so try $${qLatex(prev)}$ again first. ` : ''
+      if (!round.found) {
+        steps.push(R`${again}**Test every candidate** in ${g}: ${tests}. None of them gives $0$, so there are **no ${r.zeros.length ? 'more ' : ''}rational ${p.eq ? 'roots' : 'zeros'}**.`)
+        return
+      }
+      steps.push(R`${again}**Test candidates** in ${g}: ${tests}. So $x = ${qLatex(round.found)}$ is a zero. Divide by $(${linFactor(round.found)})$ with **synthetic division**: the quotient is $${polyLatex(round.syn.quotient)}$.`)
+    }
+    visuals[steps.length] = <SyntheticView r={round.syn} shown={99} />
+  })
+  const Q = r.quad
+  if (Q) {
+    const simplify = polyLatex(Q.from) !== polyLatex(Q.poly) ? R`Divide out the common factor: $${polyLatex(Q.poly)} = 0$. ` : ''
+    if (Q.rational) {
+      const [r1, r2 = r1] = Q.roots
+      const fac = `(${linFactor(r1)})(${linFactor(r2)})`
+      steps.push(R`The quotient $${polyLatex(Q.from)}$ is **quadratic**. ${simplify}Factor it: $${polyLatex(Q.poly)} = ${fac}$, so $x = ${Q.roots.map(qLatex).join(',\\ ')}$${Q.double ? ' (twice)' : ''}.`)
+    } else {
+      const kind = Q.imag ? 'complex' : 'irrational'
+      steps.push(R`The quotient $${polyLatex(Q.from)}$ is **quadratic** and doesn’t factor. ${simplify}Use the **quadratic formula**: $${Q.formula}$. ${p.all ? `These are the two ${kind} roots (a conjugate pair).` : `These are ${kind}, so they are **not rational**.`}`)
+    }
+  } else if (r.linear) {
+    steps.push(R`What is left is linear: $${polyLatex(r.linear.from)} = 0 \Rightarrow x = ${qLatex(r.linear.x)}$.`)
+  }
+  const zs = r.zeros.length ? zerosLatex(r.zeros) : null
+  const extra = p.all && Q && !Q.rational ? Q.latex : null
+  if (p.all) {
+    const all = [zs, extra].filter(Boolean).join(',\\ ')
+    steps.push(R`**All roots:** $x = ${all}$.`)
+    return { prompt, steps, visual: n => visuals[n] ?? null, answer: `x = ${all}` }
+  }
+  steps.push(zs ? R`**Rational ${p.eq ? 'roots' : 'zeros'}:** $\left\{${zs}\right\}$.` : R`**Rational ${p.eq ? 'roots' : 'zeros'}:** none.`)
+  return {
+    prompt, steps, visual: n => visuals[n] ?? null,
+    answer: R`\begin{array}{l} \text{Possible: } ${rows.join(R`, \\ \qquad\quad `)} \\ \text{Rational ${p.eq ? 'roots' : 'zeros'}: } ${zs ? R`\left\{${zs}\right\}` : R`\text{none}`} \end{array}`,
+  }
+}
+
+const KIND_TEXT = {
+  complex: ['complex', R`a + bi`, 'Complex Root Theorem'],
+  irrational: ['irrational', R`a + \sqrt{b}`, 'Irrational Root Theorem'],
+}
+function partnerStep(r) {
+  const kind = rootKind(r)
+  if (kind === 'rational') return R`$${rootLatex(r)}$ is **rational**, so it has no partner.`
+  const [word, form, theorem] = KIND_TEXT[kind]
+  return R`$${rootLatex(r)}$ is **${word}** (form $${form}$). By the ${theorem}, its conjugate $${rootLatex(conjugate(r))}$ is also a root.`
+}
+
+function conjSolution(p, pre) {
+  const steps = [...p.roots.map(partnerStep), R`**Flip the sign** of only the $\sqrt{\ }$ or $i$ part. The real part $a$ stays the same.`]
+  return {
+    prompt: `${pre}\\text{Given roots: } ${p.roots.map(rootLatex).join(',\\ ')}`,
+    steps, answer: p.roots.filter(isPaired).map(r => rootLatex(conjugate(r))).join(',\\ '),
+  }
+}
+
+function buildSolution(p, pre) {
+  const { factors, poly } = buildFromRoots(p.roots)
+  const all = p.roots.flatMap(r => isPaired(r) ? [r, conjugate(r)] : [r])
+  const steps = [
+    R`**List every root.** ${p.roots.map(partnerStep).join(' ')} That makes ${all.length} roots: $${all.map(rootLatex).join(',\\ ')}$, so the degree is ${all.length}.`,
+    ...factors.map(f => f.pair
+      ? R`**Multiply the conjugate pair first** (the $\sqrt{\ }$ or $i$ disappears): $${f.latex}$.`
+      : R`$x = ${rootLatex(f.root)}$ gives the factor $(${f.latex})$${f.poly[0].n !== 1 ? ', so the coefficients stay integers' : ''}.`),
+  ]
+  const parts = factors.map(f => `(${polyLatex(f.poly)})`)
+  if (factors.length > 1) steps.push(R`**Multiply everything:** $${parts.join('')} = ${polyLatex(poly)}$.`)
+  steps.push(R`**Answer:** $${polyLatex(poly)} = 0$. Every coefficient is an integer ✓.`)
+  return {
+    prompt: `${pre}\\text{Roots: } ${p.roots.map(rootLatex).join(',\\ ')}${p.degree ? `\\ (\\text{degree } ${p.degree})` : ''}`,
+    steps, answer: `${polyLatex(poly)} = 0`,
+  }
 }
 
 const arrow = s => s > 0 ? R`+\infty` : R`-\infty`

@@ -596,7 +596,116 @@ export const HOMEWORK = [
     ],
   },
   {
-    id: 'notes', title: 'Class notes', name: 'Examples from Days 3, 4, 5, 7 & 9', due: '', lesson: 0,
+    id: 'hw10', title: 'HW #10', name: 'Rational Root Theorem', due: 'Nov 6', lesson: 9,
+    sections: [
+      {
+        title: 'State the possible rational zeros for each function.',
+        problems: [
+          { type: 'rrt', std: [4, 7, 2, -1], exp: { possible: [[1], [1, 2], [1, 4]] } },
+          { type: 'rrt', std: [2, -27, 11, 27, -13], exp: { possible: [[1], [13], [1, 2], [13, 2]] } },
+          { type: 'rrt', std: [4, -12, -47, -42, -11], exp: { possible: [[1], [11], [1, 2], [11, 2], [1, 4], [11, 4]] } },
+          { type: 'rrt', std: [2, 7, 4, -7, -6], exp: { possible: [[1], [2], [3], [6], [1, 2], [3, 2]] } },
+        ],
+      },
+      {
+        title: 'State the possible rational zeros for each function. Then find all rational zeros. One zero has been given.',
+        problems: [
+          { type: 'rrt', find: true, std: [2, -1, -11, -11, -3], given: 3, exp: { possible: [[1], [3], [1, 2], [3, 2]], zeros: [[-1, 1, 2], [-1, 2, 1], [3, 1, 1]] } },
+          { type: 'rrt', find: true, std: [15, 14, -12, -14, -3], given: [-3, 5], exp: { possible: [[1], [3], [1, 3], [1, 5], [3, 5], [1, 15]], zeros: [[-1, 3, 1], [1, 1, 1], [-1, 1, 1], [-3, 5, 1]] } },
+        ],
+      },
+      {
+        title: 'State the possible rational zeros for each function. Then find all rational zeros.',
+        problems: [
+          { type: 'rrt', find: true, std: [2, -3, -3, 9], exp: { possible: [[1], [3], [9], [1, 2], [3, 2], [9, 2]], zeros: [[-3, 2, 1]] } },
+          { type: 'rrt', find: true, std: [4, -4, -1, 1], exp: { possible: [[1], [1, 2], [1, 4]], zeros: [[1, 1, 1], [1, 2, 1], [-1, 2, 1]] } },
+          { type: 'rrt', find: true, std: [4, 9, 6, 1], exp: { possible: [[1], [1, 2], [1, 4]], zeros: [[-1, 1, 2], [-1, 4, 1]] } },
+          { type: 'rrt', find: true, std: [4, 16, -25, 8], exp: { possible: [[1], [2], [4], [8], [1, 2], [1, 4]], zeros: [[1, 2, 1]] } },
+          { type: 'rrt', find: true, std: [3, -4, -5, 2], exp: { possible: [[1], [2], [1, 3], [2, 3]], zeros: [[1, 3, 1], [2, 1, 1], [-1, 1, 1]] } },
+          { type: 'rrt', find: true, std: [5, 59, 43, -11], exp: { possible: [[1], [11], [1, 5], [11, 5]], zeros: [[1, 5, 1], [-11, 1, 1], [-1, 1, 1]] } },
+          { type: 'rrt', find: true, std: [5, -1, -5, 1, 0], exp: { zero: true, possible: [[1], [1, 5]], zeros: [[0, 1, 1], [1, 5, 1], [-1, 1, 1], [1, 1, 1]] } },
+          { type: 'rrt', find: true, std: [5, 19, -29, 5, 0], exp: { zero: true, possible: [[1], [5], [1, 5]], zeros: [[0, 1, 1], [1, 1, 1], [-5, 1, 1], [1, 5, 1]] } },
+        ],
+      },
+      {
+        title: 'Describe the end behavior of each function.',
+        problems: [
+          { type: 'ends', std: [-1, 2, 0, -1], exp: [1, -1] },
+          { type: 'ends', std: [-1, -1, 1, 0, 4], exp: [-1, -1] },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hw11', title: 'HW #11', name: 'Irrational & Complex Root Theorems', due: 'Nov 9', lesson: 10, assigned: 'odd',
+    sections: [
+      {
+        title: 'A polynomial equation with rational coefficients has the given roots. Find two additional roots.',
+        problems: [
+          { type: 'conj', roots: [[2, 3, -1], [0, 1, 7]], exp: [[2, -3, -1], [0, -1, 7]] },
+          { type: 'conj', roots: [[3, -1, 2], [1, 1, 3]], exp: [[3, 1, 2], [1, -1, 3]] },
+          { type: 'conj', roots: [[0, -4, -1], [6, -1, -1]], exp: [[0, 4, -1], [6, 1, -1]] },
+          { type: 'conj', roots: [[5, -1, 6], [-2, 1, 10]], exp: [[5, 1, 6], [-2, -1, 10]] },
+        ],
+      },
+      {
+        title: 'Find a fourth-degree polynomial equation with integer coefficients that has the given numbers as roots.',
+        problems: [
+          { type: 'build', roots: [[0, 2, -1], [4, -1, -1]], exp: [1, -8, 21, -32, 68] },
+          { type: 'build', roots: [[0, 1, 2], [2, -1, 3]], exp: [1, -4, -1, 8, -2] },
+          { type: 'build', roots: [[0, 3, -1], [0, 1, 6]], exp: [1, 0, 3, 0, -54] },
+          { type: 'build', roots: [[2, 1, -1], [1, -1, 5]], exp: [1, -6, 9, 6, -20] },
+        ],
+      },
+      {
+        title: 'Find the roots of each polynomial equation.',
+        problems: [
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -5, 2, 8], exp: { roots: ['4', '2', '-1'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 1, -17, 15], exp: { roots: ['3', '1', '-5'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [2, 13, 17, -12], exp: { roots: ['-4', '-3', '1/2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -1, -34, -56], exp: { roots: ['7', '-2', '-4'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 0, -18, 27], exp: { roots: ['3', '(-3+3*sqrt(5))/2', '(-3-3*sqrt(5))/2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 0, -5, 0, 4], exp: { roots: ['-2', '-1', '1', '2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -6, 13, -10], exp: { roots: ['2', '2+I', '2-I'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -5, 4, 10], exp: { roots: ['-1', '3+I', '3-I'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -5, 17, -13], exp: { roots: ['1', '2+3*I', '2-3*I'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 0, 1, 10], exp: { roots: ['-2', '1+2*I', '1-2*I'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -5, -1, 5], exp: { roots: ['1', '-1', '5'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 0, -12, 16], exp: { roots: ['-4', '2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -2, -5, 6], exp: { roots: ['-2', '1', '3'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, -8, 0, -200], exp: { roots: ['10', '-1+I*sqrt(19)', '-1-I*sqrt(19)'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 1, -5, 3], exp: { roots: ['1', '-3'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [4, -12, -1, 3], exp: { roots: ['3', '1/2', '-1/2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [1, 1, -7, 2], exp: { roots: ['2', '(-3+sqrt(13))/2', '(-3-sqrt(13))/2'] } },
+          { type: 'rrt', eq: true, find: true, all: true, std: [12, 31, -17, -6], exp: { roots: ['-3', '2/3', '-1/4'] } },
+        ],
+      },
+      {
+        title: 'Use the Rational Root Theorem to list all possible rational roots for each polynomial equation. Then find any actual rational roots.',
+        problems: [
+          { type: 'rrt', eq: true, find: true, std: [1, 5, -2, -15], exp: { possible: [[1], [3], [5], [15]], zeros: [] } },
+          { type: 'rrt', eq: true, find: true, std: [36, 144, -1, -4], exp: { possible: [[1], [2], [4], [1, 2], [1, 3], [2, 3], [4, 3], [1, 4], [1, 6], [1, 9], [2, 9], [4, 9], [1, 12], [1, 18], [1, 36]], zeros: [[-4, 1, 1], [-1, 6, 1], [1, 6, 1]] } },
+          { type: 'rrt', eq: true, find: true, std: [2, 5, 4, 1], exp: { possible: [[1], [1, 2]], zeros: [[-1, 1, 2], [-1, 2, 1]] } },
+          { type: 'rrt', eq: true, find: true, std: [12, 14, -5, -14, -4], exp: { possible: [[1], [2], [4], [1, 2], [1, 3], [2, 3], [4, 3], [1, 4], [1, 6], [1, 12]], zeros: [] } },
+          { type: 'rrt', eq: true, find: true, std: [5, -11, 7, -1], exp: { possible: [[1], [1, 5]], zeros: [[1, 5, 1], [1, 1, 2]] } },
+          { type: 'rrt', eq: true, find: true, std: [1, 81, -49, -49], exp: { possible: [[1], [7], [49]], zeros: [] } },
+        ],
+      },
+      {
+        title: 'Find a third-degree polynomial equation with rational coefficients that has the given numbers as roots.',
+        problems: [
+          { type: 'build', roots: [[3], [2, -1, -1]], exp: [1, -7, 17, -15] },
+          { type: 'build', roots: [[5], [0, 2, -1]], exp: [1, -5, 4, -20] },
+          { type: 'build', roots: [[-1], [3, 1, -1]], exp: [1, -5, 4, 10] },
+          { type: 'build', roots: [[-7], [0, 1, -1]], exp: [1, 7, 1, 7] },
+          { type: 'build', roots: [[-4], [0, 4, -1]], exp: [1, 4, 16, 64] },
+          { type: 'build', roots: [[6], [3, -2, -1]], exp: [1, -12, 49, -78] },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'notes', title: 'Class notes', name: 'Examples from Days 3, 4, 5, 7, 9, 10 & 11', due: '', lesson: 0,
     sections: [
       {
         title: 'Day 3 — Polynomials and linear factors',
@@ -739,6 +848,43 @@ export const HOMEWORK = [
             factorSteps: [R`It is **already in factored form**.`],
             exp: { ends: [1, 1], yInt: 9, zeros: [[-1, 1, 2], [3, 1, 1], [9, 2, 1]] },
           },
+        ],
+      },
+      {
+        title: 'Day 10 — Rational Root Theorem',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Rational Root Theorem}`,
+            steps: [
+              R`If $f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0$ has **integer coefficients**, then every rational zero has the form $\dfrac{p}{q}$.`,
+              R`$p$ = a factor of the **constant** $a_0$; $\;q$ = a factor of the **leading coefficient** $a_n$.`,
+            ],
+            answer: R`\dfrac{p}{q} = \dfrac{\text{factors of the constant } (a_0)}{\text{factors of the leading coefficient } (a_n)}`,
+          },
+          { type: 'rrt', label: R`\text{Ex 1}`, find: true, std: [1, -1, -9, 9], exp: { possible: [[1], [3], [9]], zeros: [[1, 1, 1], [3, 1, 1], [-3, 1, 1]] } },
+          { type: 'rrt', label: R`\text{Ex 2}`, find: true, std: [1, -4, -11, 30], exp: { possible: [[1], [2], [3], [5], [6], [10], [15], [30]], zeros: [[2, 1, 1], [5, 1, 1], [-3, 1, 1]] } },
+          { type: 'rrt', label: R`\text{Ex 3}`, std: [15, -68, -7, 24, -4], exp: { possible: [[1], [2], [4], [1, 3], [2, 3], [4, 3], [1, 5], [2, 5], [4, 5], [1, 15], [2, 15], [4, 15]] } },
+        ],
+      },
+      {
+        title: 'Day 11 — Irrational & complex root theorems',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Fill in the blanks}`,
+            steps: [
+              R`**Irrational Root Theorem:** if $a + \sqrt{b}$ is a root (zero) of a polynomial, then the conjugate **$a - \sqrt{b}$** is also a root.`,
+              R`**Complex/Imaginary Root Theorem:** if $a + bi$ is a root (zero) of a polynomial, then the conjugate **$a - bi$** is also a root.`,
+              R`(Both need a polynomial with rational, e.g. integer, coefficients.)`,
+            ],
+            answer: R`a - \sqrt{b};\quad a - bi`,
+          },
+          { type: 'conj', label: R`\text{Ex 1A}`, roots: [[1, 1, 3], [0, -1, 11]], exp: [[1, -1, 3], [0, 1, 11]] },
+          { type: 'conj', label: R`\text{Ex 1B}`, roots: [[2, -1, 7], [4, 5, -1]], exp: [[2, 1, 7], [4, -5, -1]] },
+          { type: 'conj', label: R`\text{Ex 1C}`, roots: [[3, -1, -1], [0, 4, -1]], exp: [[3, 1, -1], [0, -4, -1]] },
+          { type: 'build', label: R`\text{Ex 2}`, degree: 3, roots: [[8], [0, 3, -1]], exp: [1, -8, 9, -72] },
+          { type: 'build', label: R`\text{Ex 3}`, roots: [[5], [0, 1, 2]], exp: [1, -5, -2, 10] },
+          { type: 'build', label: R`\text{Ex 4}`, roots: [[-3], [1, 2, -1]], exp: [1, 1, -1, 15] },
+          { type: 'build', label: R`\text{Ex 5}`, roots: [[[3, 4]], [2, -1, 5]], exp: [4, -19, 8, 3] },
         ],
       },
     ],

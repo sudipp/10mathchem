@@ -3,6 +3,9 @@
 import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
 import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree } from '../src/poly.js'
+import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy } from '../src/roots.js'
+
+const sympyPoly = p => p.map((c, i) => `(${qSympy(c)})*x**${p.length - 1 - i}`).join(' + ')
 
 let pass = 0, fail = 0
 const checks = []
@@ -12,7 +15,27 @@ const report = (ok, label, detail = '') => { if (ok) pass++; else { fail++; cons
 for (const hw of HOMEWORK) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${hw.id} §${s + 1} #${i + 1} (${p.type})`
-    if (p.type === 'ends') {
+    if (p.type === 'rrt') {
+      const r = rationalRoots(p.std, { given: p.given })
+      const possible = r.cand.list.map(v => [v.n, v.d])
+      const exp = p.exp.possible?.map(([n, d = 1]) => [n, d])
+      let ok = (!exp || JSON.stringify(possible) === JSON.stringify(exp)) && (r.k0 > 0) === !!p.exp.zero
+      const zs = r.zeros.map(z => [z.x.n, z.x.d, z.m])
+      const key = a => JSON.stringify([...a].sort())
+      if (p.exp.zeros) ok = ok && key(zs) === key(p.exp.zeros.map(([n, d = 1, m = 1]) => [q(n, d).n, q(n, d).d, m]))
+      report(ok, label, JSON.stringify({ possible, zs }))
+      const roots = r.zeros.flatMap(z => Array(z.m).fill(qSympy(z.x)))
+      if (p.all) checks.push({ label, expr: sympyPoly(r.poly), allRoots: [...roots, ...(r.quad && !r.quad.rational ? r.quad.sympy : [])], keyRoots: p.exp.roots })
+      else if (p.find) checks.push({ label, expr: sympyPoly(r.poly), rationalRoots: [...new Set(roots)] })
+    } else if (p.type === 'conj') {
+      const got = p.roots.filter(isPaired).map(conjugate)
+      report(JSON.stringify(got) === JSON.stringify(p.exp), label, JSON.stringify(got))
+    } else if (p.type === 'build') {
+      const { poly } = buildFromRoots(p.roots)
+      report(same(poly, P(p.exp)) && (!p.degree || degree(poly) === p.degree), label, polyLatex(poly))
+      const all = p.roots.flatMap(r => isPaired(r) ? [r, conjugate(r)] : [r])
+      checks.push({ label, expr: sympyPoly(poly), buildRoots: all.map(rootSympy), lead: qSympy(poly[0]) })
+    } else if (p.type === 'ends') {
       const e = endBehavior(P(p.std))
       report(e[0] === p.exp[0] && e[1] === p.exp[1], label, JSON.stringify(e))
     } else if (p.type === 'analyze') {

@@ -9,6 +9,7 @@ const R = String.raw
 
 const LD = longDivide(P([2, 13, -7]), P([1, 6]))
 const SYN = synthetic([1, -3, -7, 6], 4)
+const RRT = synthetic([1, -4, -11, 30], 2)
 
 const LESSONS = [
   {
@@ -221,8 +222,62 @@ const LESSONS = [
     watch: 'Focus on the two clues that decide end behavior: the degree and the sign of the leading coefficient.',
     homework: 'hw9',
   },
+  {
+    title: 'The Rational Root Theorem', short: 'Rational Root Theorem', tag: 'A short list of zeros worth trying',
+    intro: R`When a polynomial won’t factor by grouping, where do you even start? The **Rational Root Theorem** turns endless guessing into a short list of candidates. Test them, divide out the ones that work, and finish with a quadratic.`,
+    points: [
+      ['The theorem', R`If $f(x)$ has **integer coefficients**, every rational zero is $\dfrac{p}{q}$, where $p$ is a factor of the **constant** $a_0$ and $q$ is a factor of the **leading coefficient** $a_n$. List $\pm$ each $p$ over each $q$ and skip repeats. These are only **possible** zeros.`],
+      ['Test, then divide', R`Plug candidates in (or use synthetic division) until $f(x) = 0$. That zero $k$ means $(x - k)$ is a factor: divide it out with **synthetic division**. Keep testing the quotient (zeros can repeat) until a quadratic is left, then factor it or use the quadratic formula.`],
+      ['Shortcuts', R`If the constant is $0$, factor out $x$ first: $0$ is a zero. If one zero is given, divide by it right away. A quick graph shows which candidates look like x-intercepts, so you test those first.`],
+    ],
+    steps: [
+      R`Find the rational zeros of $f(x) = x^3 - 4x^2 - 11x + 30$ (Day 10, Example 2). The constant is $30$ and the leading coefficient is $1$.`,
+      R`$p$ = factors of $30$: $\pm1, \pm2, \pm3, \pm5, \pm6, \pm10, \pm15, \pm30$. $q$ = factors of $1$: $\pm1$.`,
+      R`Test candidates: $f(1) = 16$ ✗, $f(-1) = 36$ ✗, $f(2) = 0$ ✓. So $x = 2$ is a zero.`,
+      R`Divide by $(x - 2)$ with synthetic division. The remainder is $0$ and the quotient is $x^2 - 2x - 15$.`,
+      R`Factor the quadratic: $x^2 - 2x - 15 = (x - 5)(x + 3)$.`,
+      R`The rational zeros are $2,\ 5,\ -3$. The graph crosses the x-axis at exactly those points ✓.`,
+    ],
+    visual: step => step < 3
+      ? <MathLines step={step} lines={[R`f(x) = x^3 - 4x^2 - 11x + 30`, R`\tfrac{p}{q}:\ \pm1,\ \pm2,\ \pm3,\ \pm5,\ \pm6,\ \pm10,\ \pm15,\ \pm30`, R`f(1) = 16\ \times \quad f(-1) = 36\ \times \quad f(2) = 0\ \checkmark`]} />
+      : step === 3 ? <SyntheticView r={RRT} shown={99} />
+        : step === 4 ? <MathLines step={1} lines={[R`x^2 - 2x - 15`, R`= (x - 5)(x + 3)`]} />
+          : <Graph poly={P([1, -4, -11, 30])} window={[-5, 7, -40, 60]} show={{ zeros: true, extrema: false }} label="Graph of f(x) = x³ − 4x² − 11x + 30" />,
+    question: R`Which number is **not** a possible rational zero of $f(x) = 2x^3 + x - 3$?`,
+    options: [R`$\tfrac{3}{2}$`, R`$3$`, R`$\tfrac{2}{3}$`], correct: 2,
+    explanation: R`$p$ comes from the constant $3$ ($\pm1, \pm3$) and $q$ from the leading coefficient $2$ ($\pm1, \pm2$). So the candidates are $\pm1, \pm3, \pm\tfrac12, \pm\tfrac32$. $\tfrac23$ has the numbers upside down.`,
+    video: 'Y9fwl_qocJc', videoTitle: 'Applying the rational root theorem',
+    more: [['x9lb_frpkH0', 'Finding zeros of polynomials (1 of 2)', 'Khan Academy'], ['Iaq7z7reznM', 'Finding all zeros using the rational zero theorem', 'The Organic Chemistry Tutor']],
+    watch: 'Pause after each candidate list and check that you would have written the same p and q.',
+    homework: 'hw10',
+  },
+  {
+    title: 'Irrational and complex roots', short: 'Conjugate roots', tag: 'Roots that come in pairs',
+    intro: R`In a polynomial with integer (rational) coefficients, irrational roots like $2 - \sqrt7$ and complex roots like $4 + 5i$ never show up alone. Their **conjugates** are always roots too. That lets you find missing roots and build a polynomial from its roots.`,
+    points: [
+      ['The two theorems', R`**Irrational Root Theorem:** if $a + \sqrt{b}$ is a root, so is $a - \sqrt{b}$. **Complex Root Theorem:** if $a + bi$ is a root, so is $a - bi$. Flip the sign of only the $\sqrt{\ }$ or $i$ part: the partner of $-4i$ is $4i$, and of $3 - \sqrt2$ is $3 + \sqrt2$.`],
+      ['Building a polynomial', R`List **every** root, adding partners. Multiply each conjugate pair first: $\big(x - (a + bi)\big)\big(x - (a - bi)\big) = (x - a)^2 - (bi)^2$. The $\sqrt{\ }$ or $i$ disappears. A fraction root $\tfrac{3}{4}$ gives the factor $(4x - 3)$. Then multiply everything.`],
+      ['Finding all roots', R`Use the Rational Root Theorem to find a rational root, divide it out, and use the **quadratic formula** on what is left. Irrational or complex answers come out as a conjugate pair. Complex roots never appear on the graph.`],
+    ],
+    steps: [
+      R`Find a polynomial with integer coefficients and roots $-3$ and $1 + 2i$ (Day 11, Example 4).`,
+      R`$1 + 2i$ is complex, so its conjugate $1 - 2i$ is also a root. All roots: $-3,\ 1 + 2i,\ 1 - 2i$ (degree 3).`,
+      R`Write a factor for each root: $(x + 3)\big(x - (1 + 2i)\big)\big(x - (1 - 2i)\big)$.`,
+      R`Multiply the conjugate pair first: $(x - 1)^2 - (2i)^2 = x^2 - 2x + 1 + 4 = x^2 - 2x + 5$.`,
+      R`Multiply the rest: $(x + 3)(x^2 - 2x + 5) = x^3 + x^2 - x + 15$.`,
+      R`Answer: $x^3 + x^2 - x + 15 = 0$. Every coefficient is an integer ✓.`,
+    ],
+    visual: step => <MathLines step={step} lines={[R`\text{roots: } -3,\ 1 + 2i`, R`\text{roots: } -3,\ 1 + 2i,\ {\color{#CC5833}1 - 2i}`, R`(x + 3)\big(x - (1 + 2i)\big)\big(x - (1 - 2i)\big)`, R`(x - 1)^2 - (2i)^2 = x^2 - 2x + 5`, R`(x + 3)(x^2 - 2x + 5) = x^3 + x^2 - x + 15`, R`x^3 + x^2 - x + 15 = 0`]} />,
+    question: R`A polynomial with integer coefficients has the root $4 - \sqrt{3}$. Which number must also be a root?`,
+    options: [R`$-4 + \sqrt{3}$`, R`$4 + \sqrt{3}$`, R`$4 - i\sqrt{3}$`], correct: 1,
+    explanation: R`Flip only the sign of the $\sqrt{\ }$ part: the conjugate of $4 - \sqrt3$ is $4 + \sqrt3$. The real part $4$ stays the same.`,
+    video: 'BZxZ_eEuJBM', videoTitle: 'Complex conjugates',
+    more: [['9NhTVXhfqzU', 'Factoring polynomials using complex numbers', 'Khan Academy'], ['d8-LO6FCna0', 'Fundamental theorem of algebra', 'Khan Academy'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
+    watch: 'Watch what happens to the i when you multiply a number by its conjugate.',
+    homework: 'hw11',
+  },
 ]
-const HW_FOR = { 0: 'hw6', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw6', 7: 'hw8', 8: 'hw9' }
+const HW_FOR = { 0: 'hw6', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw6', 7: 'hw8', 8: 'hw9', 9: 'hw10', 10: 'hw11' }
 
 // Bookshelf in learning order: lessons in class order, and within each
 // lesson the introduction first, then the main skill, then extensions.
@@ -236,6 +291,8 @@ const SHELF = [
   [['wUNWjd4bMmw', 'Introduction to function composition'], ['lxtlwnCV-HM', 'Evaluating composite functions']],
   [['hlFhHN67ICE', 'Solving equations by graphing: graphing calculator'], ['RxA8YMRF4M4', 'Find the zeros of a function using the TI-83/84 calculator', 'MySecretMathTutor'], ['bNQY0z76M5A', 'Solving quadratic equations by completing the square']],
   [['tZKzaF28sOk', 'Polynomial end behavior'], ['03Y76Q7tlSw', 'Polynomial end behavior example'], ['H-N4QpKJQoY', 'Solving polynomial functions using their graphs']],
+  [['Y9fwl_qocJc', 'Applying the rational root theorem'], ['x9lb_frpkH0', 'Finding zeros of polynomials (1 of 2)'], ['Iaq7z7reznM', 'Finding all zeros using the rational zero theorem', 'The Organic Chemistry Tutor']],
+  [['BZxZ_eEuJBM', 'Complex conjugates'], ['9NhTVXhfqzU', 'Factoring polynomials using complex numbers'], ['d8-LO6FCna0', 'Fundamental theorem of algebra'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
 ]
 
 const unit4 = {
@@ -244,14 +301,14 @@ const unit4 = {
   title: 'Polynomial Functions',
   short: 'Polynomials',
   course: 'Accelerated Math II/III',
-  summary: 'Standard form, zeros, long and synthetic division, factoring, solving equations, and function operations.',
+  summary: 'Standard form, zeros, long and synthetic division, factoring, solving equations, function operations, graphs, and rational, irrational & complex roots.',
   hero: { title: 'Big equations.', em: 'Small steps.', text: 'Factor it, divide it, solve it.', sub: 'Every polynomial is just a few simple moves, one after another.', side: 'EVERY BIG PROBLEM IS A FEW SMALL STEPS.' },
   path: { title: 'From terms to', em: 'roots.' },
   lessons: LESSONS,
   homework: HOMEWORK,
   hwFor: HW_FOR,
   shelf: SHELF,
-  videoIds: ['01-polynomial-basics', '02-zeros-factors', '03-long-division', '04-synthetic-division', '05-factoring', '06-solving', '07-function-operations', '08-solving-by-graphing', '09-end-behavior'],
+  videoIds: ['01-polynomial-basics', '02-zeros-factors', '03-long-division', '04-synthetic-division', '05-factoring', '06-solving', '07-function-operations', '08-solving-by-graphing', '09-end-behavior', '10-rational-roots', '11-conjugate-roots'],
   videos: VIDEOS,
   dayPlan: {
     title: 'Polynomials in a day',
@@ -260,6 +317,7 @@ const unit4 = {
       { name: 'Session 2', title: 'Dividing polynomials', lessons: [2, 3], hw: ['hw4', 'hw5'] },
       { name: 'Session 3', title: 'Factor, solve, combine', lessons: [4, 5, 6], hw: ['hw7', 'hw6'] },
       { name: 'Session 4', title: 'Graphs and end behavior', lessons: [7, 8], hw: ['hw8', 'hw9'] },
+      { name: 'Session 5', title: 'Finding every root', lessons: [9, 10], hw: ['hw10', 'hw11'] },
     ],
   },
 }

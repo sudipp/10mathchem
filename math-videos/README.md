@@ -53,3 +53,5 @@ script text is sent.
 | 07-function-operations | Operations, plugging in, composition | HW #6 |
 | 08-solving-by-graphing | Calculator zeros, completing the square | HW #8 |
 | 09-end-behavior | End behavior, turning points, sketching | Day 9, HW #9 |
+| 10-rational-roots | Rational Root Theorem: list, test, divide | Day 10 |
+| 11-conjugate-roots | Conjugate pairs, building polynomials, all roots | Day 11, HW #11 |
