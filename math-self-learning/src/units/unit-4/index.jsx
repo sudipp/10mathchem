@@ -19,6 +19,7 @@ const LESSONS = [
       ['Standard form', R`Write the terms from the **highest degree** (exponent) to the lowest. In standard form, the highest degree goes first: $x^3 + 2 - 3x - 2x^2$ becomes $x^3 - 2x^2 - 3x + 2$.`],
       ['Name by degree', R`Degree 0: constant · 1: linear · 2: quadratic · 3: cubic · 4: quartic · 5: quintic · 6 and up: “sixth degree”, “seventh degree”, and so on.`],
       ['Name by number of terms', R`1 term: monomial · 2 terms: binomial · 3 terms: trinomial · 4 or more: “polynomial with $n$ terms”. So $7r^6 - 4r$ is a **sixth degree binomial**.`],
+      ['Is it a polynomial?', R`Every exponent must be a **whole number** ($0, 1, 2, \dots$) and every coefficient a **real number**. $\pi x^2 + .45x^5 - \sqrt5\,x$ is a polynomial; $x^{-1} + x$ (negative exponent) and $12x + 5^x$ (variable in the exponent) are not. Combine like terms before naming: $4x - 6x + 5 = -2x + 5$ is a linear binomial.`],
     ],
     steps: [
       R`Here is $x^3 + 2 - 3x - 2x^2$ with its terms out of order. Under each term is its degree (its exponent).`,
@@ -145,11 +146,11 @@ const LESSONS = [
   },
   {
     title: 'Function operations and composition', short: 'Function operations', tag: 'Add, multiply, and plug in',
-    intro: R`You can add, subtract, multiply, and divide functions, and you can put one function inside another. These skills appear all through the HW #6 review.`,
+    intro: R`You can add, subtract, multiply, and divide functions, and you can put one function inside another. These skills appear in HW #1, HW #2, and the HW #6 review.`,
     points: [
-      ['Operations', R`$(f + g)(x) = f(x) + g(x)$ and $(f \cdot g)(x) = f(x) \cdot g(x)$. When subtracting, put the **whole** second function in parentheses: $h(n) - g(n) = (-2n + 2) - (n^2 + 1)$.`],
+      ['Operations', R`$(f + g)(x) = f(x) + g(x)$ and $(f \cdot g)(x) = f(x) \cdot g(x)$. When subtracting, put the **whole** second function in parentheses: $h(n) - g(n) = (-2n + 2) - (n^2 + 1)$. For $\left(\tfrac{f}{g}\right)(x) = \dfrac{f(x)}{g(x)}$, remember $g(x) \ne 0$.`],
       ['Plugging in expressions', R`To find $g(-4t)$, replace every $a$ in $g(a)$ with $(-4t)$, **in parentheses**: $(-4t)^3 = -64t^3$, not $-4t^3$.`],
-      ['Composition', R`$g(h(x))$, also written $(g \circ h)(x)$, means work **inside out**: find $h(x)$ first, then put that whole answer into $g$.`],
+      ['Composition', R`$g(h(x))$, also written $(g \circ h)(x)$, means work **inside out**: find $h(x)$ first, then put that whole answer into $g$. Order matters: $(f \circ g)(x) \ne (g \circ f)(x)$. When both are polynomials, the domain is all real numbers.`],
     ],
     steps: [
       R`$g(x) = 3x - 3$ and $h(x) = x^3 - 2$. To find $g(h(x))$, start with the input $x$.`,
@@ -164,7 +165,7 @@ const LESSONS = [
     explanation: R`Inside first: $f(1) = 0$. Then $f(0) = -1$.`,
     video: 'wUNWjd4bMmw', videoTitle: 'Introduction to function composition', more: [['lxtlwnCV-HM', 'Evaluating composite functions']],
     watch: 'Watch the order: the function written on the inside is always used first.',
-    homework: 'hw6',
+    homework: 'hw2',
   },
   {
     title: 'Solving by graphing', short: 'Solving by graphing', tag: 'Calculator zeros and completing the square',
@@ -277,7 +278,7 @@ const LESSONS = [
     homework: 'hw11',
   },
 ]
-const HW_FOR = { 0: 'hw6', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw6', 7: 'hw8', 8: 'hw9', 9: 'hw10', 10: 'hw11' }
+const HW_FOR = { 0: 'hw1', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw2', 7: 'hw8', 8: 'hw9', 9: 'hw10', 10: 'hw11' }
 
 // Bookshelf in learning order: lessons in class order, and within each
 // lesson the introduction first, then the main skill, then extensions.
@@ -313,9 +314,9 @@ const unit4 = {
   dayPlan: {
     title: 'Polynomials in a day',
     sessions: [
-      { name: 'Session 1', title: 'The basics', lessons: [0, 1], hw: ['hw3'] },
+      { name: 'Session 1', title: 'The basics', lessons: [0, 1], hw: ['hw1', 'hw3'] },
       { name: 'Session 2', title: 'Dividing polynomials', lessons: [2, 3], hw: ['hw4', 'hw5'] },
-      { name: 'Session 3', title: 'Factor, solve, combine', lessons: [4, 5, 6], hw: ['hw7', 'hw6'] },
+      { name: 'Session 3', title: 'Factor, solve, combine', lessons: [4, 5, 6], hw: ['hw7', 'hw2', 'hw6'] },
       { name: 'Session 4', title: 'Graphs and end behavior', lessons: [7, 8], hw: ['hw8', 'hw9'] },
       { name: 'Session 5', title: 'Finding every root', lessons: [9, 10], hw: ['hw10', 'hw11'] },
     ],

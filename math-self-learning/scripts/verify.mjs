@@ -4,6 +4,7 @@ import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
 import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree } from '../src/poly.js'
 import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy } from '../src/roots.js'
+import { classify, product, funcOp, polySympy, exprSympy, resultSympy } from '../src/funcs.js'
 
 const sympyPoly = p => p.map((c, i) => `(${qSympy(c)})*x**${p.length - 1 - i}`).join(' + ')
 
@@ -15,7 +16,18 @@ const report = (ok, label, detail = '') => { if (ok) pass++; else { fail++; cons
 for (const hw of HOMEWORK) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${hw.id} §${s + 1} #${i + 1} (${p.type})`
-    if (p.type === 'rrt') {
+    if (p.type === 'classify') {
+      const c = classify(p.terms)
+      report(same(c.poly, P(p.exp.poly)) && c.name === p.exp.name, label, `${polyLatex(c.poly)} ${c.name}`)
+    } else if (p.type === 'product') {
+      const r = product(p.factors)
+      report(same(r.poly, P(p.exp)), label, polyLatex(r.poly))
+      checks.push({ label, expr: p.factors.map(f => `(${sympyPoly(P(f))})`).join('*'), factored: sympyPoly(r.poly) })
+    } else if (p.type === 'funcop') {
+      const out = p.out ?? p.v
+      const { result } = funcOp(p)
+      checks.push({ label, funcs: Object.fromEntries(Object.entries(p.fns).map(([n, c]) => [n, polySympy(P(c), p.v)])), v: p.v, op: exprSympy(p.expr, out), engine: resultSympy(result, out), key: p.key })
+    } else if (p.type === 'rrt') {
       const r = rationalRoots(p.std, { given: p.given })
       const possible = r.cand.list.map(v => [v.n, v.d])
       const exp = p.exp.possible?.map(([n, d = 1]) => [n, d])

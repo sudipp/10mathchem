@@ -30,7 +30,109 @@ const ROOTS = {
   '8*x**2 - 16*x - 49': ['(4+sqrt(114))/4', '(4-sqrt(114))/4'],
 }
 
+// Function-operation helpers: fn('g', x) is g(x); px(coeffs) is an expression
+// in the output variable; op/k combine results; ID is the variable itself.
+const fn = (f, x) => ({ f, x })
+const px = (p, tex) => ({ p, tex })
+const op = (o, a, b) => ({ op: o, a, b })
+const k = (n, a) => ({ k: n, a })
+const ID = { p: [1, 0], id: true }
+const fop = (v, fns, find, expr, key, extra = {}) => ({ type: 'funcop', v, fns, find, expr, key, ...extra })
+const EX4 = { f: [2, -3, -18, -8], g: [1, -4] }
+const EX3 = { f: [2, 0, 0], g: [1, -1] }
+const DOMAIN = R`**Domain:** the result is a polynomial, and every input of $g$ and $f$ is allowed, so the domain is **all real numbers**, $(-\infty, \infty)$.`
+
 export const HOMEWORK = [
+  {
+    id: 'hw1', title: 'HW #1', name: 'Polynomial Operations & Classification', due: '', lesson: 0,
+    sections: [
+      {
+        title: 'Write the polynomial in standard form. Name each polynomial by degree and number of terms.',
+        problems: [
+          { type: 'classify', terms: [[-8, 4], [5, 3], [-6, 5], [-2, 2], [-1, 0]], exp: { poly: [-6, -8, 5, -2, 0, -1], name: 'quintic polynomial with five terms' } },
+          { type: 'classify', v: 'p', terms: [[2, 0], [-8, 2]], exp: { poly: [-8, 0, 2], name: 'quadratic binomial' } },
+          { type: 'classify', terms: [[-7, 0], [10, 4], [10, 1]], exp: { poly: [10, 0, 0, 10, -7], name: 'quartic trinomial' } },
+          { type: 'classify', terms: [[-9, 0]], exp: { poly: [-9], name: 'constant monomial' } },
+          { type: 'classify', v: 'n', terms: [[4, 0], [9, 1]], exp: { poly: [9, 4], name: 'linear binomial' } },
+          { type: 'classify', v: 'n', terms: [[2, 3], [-6, 0], [-2, 1]], exp: { poly: [2, 0, -2, -6], name: 'cubic trinomial' } },
+        ],
+      },
+      {
+        title: 'Find each product. Write your answer in standard form.',
+        problems: [
+          { type: 'product', factors: [[1, 3], [4, -1], [3, 7]], exp: [12, 61, 68, -21] },
+          // The answer key prints x^3 + 2x^2 - x - 1; the constant is (1)(-1)(2) = -2.
+          { type: 'product', factors: [[1, 1], [1, -1], [1, 2]], exp: [1, 2, -1, -2], keyNote: R`**Heads up:** the answer key prints $x^3 + 2x^2 - x - 1$, but the constant term is $(1)(-1)(2) = -2$. Check with $x = 1$: $(2)(0)(3) = 0$, and $1 + 2 - 1 - 2 = 0$ ✓, while $1 + 2 - 1 - 1 = 1$ ✗.` },
+          {
+            type: 'steps', prompt: R`(x + y)(x - y)(x + y)(x - y)`,
+            check: { expr: '(x+y)*(x-y)*(x+y)*(x-y)', factored: 'x**4 - 2*x**2*y**2 + y**4' },
+            steps: [
+              R`**Pair them up** (multiplication can go in any order): $\big[(x + y)(x - y)\big]\big[(x + y)(x - y)\big]$.`,
+              R`Each pair is a **difference of squares**: $(x + y)(x - y) = x^2 - y^2$.`,
+              R`So it is $(x^2 - y^2)^2 = (x^2 - y^2)(x^2 - y^2) = x^4 - x^2y^2 - x^2y^2 + y^4$.`,
+              R`Combine like terms: $x^4 - 2x^2y^2 + y^4$.`,
+            ],
+            answer: R`x^4 - 2x^2y^2 + y^4`,
+          },
+        ],
+      },
+      {
+        title: 'Perform the indicated operation.',
+        problems: [
+          fop('n', { h: [1, 5], g: [1, 0, 2, 0] }, R`(h + g)(n)`, op('+', fn('h', ID), fn('g', ID)), 'n**3 + 3*n + 5'),
+          fop('a', { f: [1, -5, 0], g: [3, -5] }, R`(f - g)(a)`, op('-', fn('f', ID), fn('g', ID)), 'a**2 - 8*a + 5'),
+          fop('x', { g: [4, 1], h: [1, -3, 0, 0] }, R`(g \cdot h)(x)`, op('*', fn('g', ID), fn('h', ID)), '4*x**4 - 11*x**3 - 3*x**2'),
+          fop('n', { g: [1, 0, -1], h: [-4, 2] }, R`g(n) \div h(n)`, op('/', fn('g', ID), fn('h', ID)), '(n**2 - 1)/(-4*n + 2)'),
+          fop('x', { g: [1, 0, -5], f: [1, 3] }, R`g(10) + f(10)`, op('+', fn('g', 10), fn('f', 10)), '108'),
+          fop('t', { g: [3, -4], f: [4, -5] }, R`g(-2) - f(-2)`, op('-', fn('g', -2), fn('f', -2)), '3'),
+          fop('x', { g: [1, 5, 0], h: [2, 0] }, R`g(-7) \cdot h(-7)`, op('*', fn('g', -7), fn('h', -7)), '-196'),
+          fop('t', { g: [-2, -6, 0], h: [3, 1] }, R`\left(\tfrac{g}{h}\right)(6)`, op('/', fn('g', 6), fn('h', 6)), '-108/19'),
+          fop('x', { h: [-2, -4], g: [1, 0, -1] }, R`(h + g)(x^2)`, op('+', fn('h', px([1, 0, 0])), fn('g', px([1, 0, 0]))), 'x**4 - 2*x**2 - 5'),
+          fop('t', { g: [1, -1, 0], h: [3, 0] }, R`g(2 - t) + h(2 - t)`, op('+', fn('g', px([-1, 2])), fn('h', px([-1, 2]))), 't**2 - 6*t + 8'),
+          fop('x', { g: [1, -3], h: [1, -1, 0] }, R`(g - h)(z - 1)`, op('-', fn('g', px([1, -1])), fn('h', px([1, -1]))), '-z**2 + 4*z - 6', { out: 'z' }),
+          fop('n', { f: [2, -4], g: [4, 0] }, R`f(-3n) - g(-3n)`, op('-', fn('f', px([-3, 0])), fn('g', px([-3, 0]))), '6*n - 4'),
+          fop('n', { h: [3, -1], g: [-2, -1, 0] }, R`(h \cdot g)(-3n)`, op('*', fn('h', px([-3, 0])), fn('g', px([-3, 0]))), '162*n**3 - 9*n**2 - 3*n'),
+          fop('t', { g: [1, -5], h: [4, 5] }, R`g(t^2) \cdot h(t^2)`, op('*', fn('g', px([1, 0, 0])), fn('h', px([1, 0, 0]))), '4*t**4 - 15*t**2 - 25'),
+          fop('a', { g: [1, -2, 0], f: [-4, 5] }, R`g(-3x) \div f(-3x)`, op('/', fn('g', px([-3, 0])), fn('f', px([-3, 0]))), '(9*x**2 + 6*x)/(12*x + 5)', { out: 'x' }),
+          fop('n', { h: [4, -1], g: [3, -4] }, R`h\left(\tfrac{n}{4}\right) \div g\left(\tfrac{n}{4}\right)`, op('/', fn('h', px([[1, 4], 0], R`\tfrac{n}{4}`)), fn('g', px([[1, 4], 0], R`\tfrac{n}{4}`))), '(4*n - 4)/(-16 + 3*n)'),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hw2', title: 'HW #2', name: 'Function Operations (Composition)', due: '', lesson: 6,
+    sections: [
+      {
+        title: 'Perform the indicated operation.',
+        problems: [
+          fop('a', { g: [2, 4], h: [1, -2, 0, 0] }, R`(g \circ h)(a)`, fn('g', fn('h', ID)), '2*a**3 - 4*a**2 + 4'),
+          fop('a', { g: [-3, -4, 0] }, R`g(g(a))`, fn('g', fn('g', ID)), '-27*a**4 - 72*a**3 - 36*a**2 + 16*a'),
+          fop('a', { g: [1, 5], f: [1, 5, 0] }, R`(g \circ f)(a)`, fn('g', fn('f', ID)), 'a**2 + 5*a + 5'),
+          fop('x', { g: [3, 0], h: [1, -4] }, R`(g \circ h)(x)`, fn('g', fn('h', ID)), '3*x - 12'),
+          fop('a', { g: [1, 1], h: [1, 1, 0] }, R`g(h(7))`, fn('g', fn('h', 7)), '57'),
+          fop('n', { g: [4, -2], f: [-1, 0, -2] }, R`(g \circ f)(6)`, fn('g', fn('f', 6)), '-154'),
+          fop('x', { g: [-4, -4] }, R`(g \circ g)(10)`, fn('g', fn('g', 10)), '172'),
+          fop('x', { f: [1, -1], g: [4, 5] }, R`f(g(8))`, fn('f', fn('g', 8)), '36'),
+          fop('n', { h: [4, -5] }, R`h(h(4n))`, fn('h', fn('h', px([4, 0]))), '64*n - 25'),
+          fop('t', { g: [3, 2], f: [1, 3, 0] }, R`(g \circ f)\left(\tfrac{b}{4}\right)`, fn('g', fn('f', px([[1, 4], 0], R`\tfrac{b}{4}`))), '(32 + 3*b**2 + 36*b)/16', { out: 'b' }),
+          fop('t', { g: [-1, 4], f: [1, 1, 0] }, R`g(f(t - 2))`, fn('g', fn('f', px([1, -2]))), '-t**2 + 3*t + 2'),
+          fop('x', { g: [1, -3], h: [-1, 0, -4, 0] }, R`(g \circ h)(x - 4)`, fn('g', fn('h', px([1, -4]))), '-x**3 + 12*x**2 - 52*x + 77'),
+          fop('t', { h: [1, -1], g: [-4, -2] }, R`2h(t) + 4g(t)`, op('+', k(2, fn('h', ID)), k(4, fn('g', ID))), '-14*t - 10'),
+          fop('n', { f: [2, 4], g: [1, 0, 3, 0] }, R`4f(n) + g(n)`, op('+', k(4, fn('f', ID)), fn('g', ID)), 'n**3 + 11*n + 16'),
+          fop('x', { f: [1, 0, 3, 0], g: [3, -2] }, R`4f(x) - 5g(x)`, op('-', k(4, fn('f', ID)), k(5, fn('g', ID))), '4*x**3 - 3*x + 10'),
+          fop('a', { h: [4, 1], g: [4, 4] }, R`(4h + g)(a)`, op('+', k(4, fn('h', ID)), fn('g', ID)), '20*a + 8'),
+          fop('x', { h: [1, 3, 0, 0], g: [3, -5] }, R`(2h - 2g)(-2)`, op('-', k(2, fn('h', -2)), k(2, fn('g', -2))), '30'),
+          fop('n', { h: [1, 0, 5], g: [4, -3] }, R`(5h - g)(3)`, op('-', k(5, fn('h', 3)), fn('g', 3)), '61'),
+          fop('n', { f: [-1, -1], g: [-2, 0, -1] }, R`4f(8) - g(8)`, op('-', k(4, fn('f', 8)), fn('g', 8)), '93'),
+          fop('x', { f: [2, -3], g: [1, -2, 0] }, R`3f(4) + g(4)`, op('+', k(3, fn('f', 4)), fn('g', 4)), '23'),
+          fop('a', { g: [2, 0, -3], h: [1, -1] }, R`{-g(-3a)} - 4h(-3a)`, op('-', k(-1, fn('g', px([-3, 0]))), k(4, fn('h', px([-3, 0])))), '-18*a**2 + 12*a + 7'),
+          fop('n', { h: [1, 0, -3], g: [3, 3] }, R`3h(4n) - 5g(4n)`, op('-', k(3, fn('h', px([4, 0]))), k(5, fn('g', px([4, 0])))), '48*n**2 - 60*n - 24'),
+          fop('n', { g: [2, 0, 0, -5], f: [4, 0] }, R`(g + 3f)(-2n)`, op('+', fn('g', px([-2, 0])), k(3, fn('f', px([-2, 0])))), '-16*n**3 - 24*n - 5'),
+          fop('a', { h: [4, -5], g: [1, 4, 0] }, R`(h - 2g)(2a)`, op('-', fn('h', px([2, 0])), k(2, fn('g', px([2, 0])))), '-8*a**2 - 8*a - 5'),
+        ],
+      },
+    ],
+  },
   {
     id: 'hw3', title: 'HW #3', name: 'Polynomials & Linear Factors', due: 'Oct 27', lesson: 1,
     sections: [
@@ -705,8 +807,84 @@ export const HOMEWORK = [
     ],
   },
   {
-    id: 'notes', title: 'Class notes', name: 'Examples from Days 3, 4, 5, 7, 9, 10 & 11', due: '', lesson: 0,
+    id: 'notes', title: 'Class notes', name: 'Examples from Days 1–11', due: '', lesson: 0,
     sections: [
+      {
+        title: 'Day 1 — Classifying polynomials & function operations',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Polynomial function: } f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0`,
+            steps: [
+              R`Exponents are all **whole** numbers ($0, 1, 2, \dots$) and coefficients are all **real** numbers.`,
+              R`**Standard form:** terms are written in descending order of **degree** (exponent) from left to right.`,
+            ],
+            answer: R`\text{whole};\ \text{real};\ \text{degree}`,
+          },
+          {
+            type: 'steps', prompt: R`\text{Ex 1: degree, leading coefficient, and constant}`,
+            steps: [
+              R`**A)** $f(x) = 4x + 2$: degree $1$, leading coefficient $4$, constant $2$.`,
+              R`**B)** $f(x) = 6x^4 + 2x^3 - 4x^2 + 5x - 10$: degree $4$, leading coefficient $6$, constant $-10$.`,
+              R`The **leading coefficient** is the number in front of the highest power, once it is in standard form. The **constant** is the term with no $x$.`,
+            ],
+            answer: R`\text{A: } 1,\ 4,\ 2;\quad \text{B: } 4,\ 6,\ -10`,
+          },
+          {
+            type: 'steps', prompt: R`\text{Fill in the table: degree, type, number of terms, name}`,
+            steps: [
+              R`Degree $0$: **constant**, $f(x) = 5$, 1 term: **monomial**.`,
+              R`Degree $1$: **linear**, $f(x) = -2x$, 1 term: **monomial**.`,
+              R`Degree **2**: **quadratic**, $f(x) = \tfrac14x^2 + 3x + 1$, 3 terms: trinomial.`,
+              R`Degree $3$: **cubic**, $f(x) = -2x^3 + 2x - 9$, 3 terms: **trinomial**.`,
+              R`Degree **4**: **quartic**, $f(x) = 4x^4 - 6x^2$, 2 terms: binomial.`,
+              R`Degree $5$: **quintic**, $f(x) = 5x^5 - 4x^4 + 3x^3 - 2x^2 + 1$, 5 terms: polynomial of 5 terms.`,
+            ],
+            answer: R`\text{constant, linear, quadratic, cubic, quartic, quintic}`,
+          },
+          {
+            type: 'steps', prompt: R`\text{Ex 2: is it a polynomial function?}`,
+            steps: [
+              R`**A)** $f(x) = x^2 + 3x^4 + 1$: **yes**. Every exponent is a whole number (it just isn’t in standard form).`,
+              R`**B)** $f(x) = \pi x^2 + .45x^5 - \sqrt5\,x$: **yes**. $\pi$, $.45$, and $\sqrt5$ are real-number coefficients, and the exponents are whole numbers.`,
+              R`**C)** $f(x) = x^{-1} + x + 10$: **no**. The exponent $-1$ is not a whole number.`,
+              R`**D)** $f(x) = 12x + x^4 + 5^x$: **no**. In $5^x$ the variable is in the exponent.`,
+            ],
+            answer: R`\text{A yes, B yes, C no, D no}`,
+          },
+          { type: 'classify', label: R`\text{Ex 3A}`, terms: [[9, 0], [1, 3]], exp: { poly: [1, 0, 0, 9], name: 'cubic binomial' } },
+          { type: 'classify', label: R`\text{Ex 3B}`, terms: [[1, 3], [-2, 2], [-3, 4]], exp: { poly: [-3, 1, -2, 0, 0], name: 'quartic trinomial' } },
+          { type: 'classify', label: R`\text{Ex 3C}`, terms: [[4, 1], [-6, 1], [5, 0]], exp: { poly: [-2, 5], name: 'linear binomial' } },
+          { type: 'classify', label: R`\text{Ex 3D}`, terms: [[3, 3], [1, 2], [-4, 1], [2, 3]], exp: { poly: [5, 1, -4, 0], name: 'cubic trinomial' } },
+          fop('x', EX4, R`(f + g)(x)`, op('+', fn('f', ID), fn('g', ID)), '2*x**3 - 3*x**2 - 17*x - 12', { label: R`\text{Ex 4A}` }),
+          fop('x', EX4, R`(f - g)(x)`, op('-', fn('f', ID), fn('g', ID)), '2*x**3 - 3*x**2 - 19*x - 4', { label: R`\text{Ex 4B}` }),
+          fop('x', EX4, R`(f \cdot g)(x)`, op('*', fn('f', ID), fn('g', ID)), '2*x**4 - 11*x**3 - 6*x**2 + 64*x + 32', { label: R`\text{Ex 4C}` }),
+          fop('x', EX4, R`\left(\tfrac{f}{g}\right)(x)`, op('/', fn('f', ID), fn('g', ID)), '(2*x**3 - 3*x**2 - 18*x - 8)/(x - 4)', {
+            label: R`\text{Ex 4D}`,
+            notes: [R`$g(x) \ne 0$, so $x \ne 4$. (Later, on Day 4, you can divide: $f(x) \div (x - 4) = 2x^2 + 5x + 2$ with remainder $0$.)`],
+          }),
+          fop('x', { f: [3, -18, 24, 0] }, R`f\left(\tfrac{x}{2}\right)`, fn('f', px([[1, 2], 0], R`\tfrac{x}{2}`)), '3*x**3/8 - 9*x**2/2 + 12*x', { label: R`\text{Ex 5A}` }),
+          fop('x', { f: [-2, 8, -8] }, R`f(a - 3)`, fn('f', px([1, -3])), '-2*a**2 + 20*a - 50', { label: R`\text{Ex 5B}`, out: 'a' }),
+        ],
+      },
+      {
+        title: 'Day 2 — Composition',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Composition: } (f \circ g)(x) = f(g(x))`,
+            steps: [
+              R`$g(x)$ becomes the **input** (domain) of $f(x)$: work from the **inside out**.`,
+              R`Order matters: $(f \circ g)(x) \ne (g \circ f)(x)$ in general.`,
+            ],
+            answer: R`(f \circ g)(x) = f(g(x)) \ne (g \circ f)(x)`,
+          },
+          fop('x', EX3, R`(f \circ g)(x)`, fn('f', fn('g', ID)), '2*x**2 - 4*x + 2', { label: R`\text{Ex 3A}`, domain: true, notes: [DOMAIN] }),
+          fop('x', EX3, R`(f \circ g)(2)`, fn('f', fn('g', 2)), '2', { label: R`\text{Ex 3a}` }),
+          fop('x', EX3, R`(g \circ f)(x)`, fn('g', fn('f', ID)), '2*x**2 - 1', { label: R`\text{Ex 3B}`, domain: true, notes: [DOMAIN] }),
+          fop('x', EX3, R`(g \circ f)(0)`, fn('g', fn('f', 0)), '-1', { label: R`\text{Ex 3b}` }),
+          fop('x', EX3, R`(f \circ f)(x)`, fn('f', fn('f', ID)), '8*x**4', { label: R`\text{Ex 3C}`, domain: true, notes: [DOMAIN] }),
+          fop('x', EX3, R`(f \circ f)(-1)`, fn('f', fn('f', -1)), '8', { label: R`\text{Ex 3c}` }),
+        ],
+      },
       {
         title: 'Day 3 — Polynomials and linear factors',
         problems: [

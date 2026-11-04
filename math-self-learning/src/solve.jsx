@@ -1,6 +1,7 @@
 import { Graph, LongDivisionView, SyntheticView } from './Visuals.jsx'
 import { P, analyze, endBehavior, evaluate, fromFactors, fromZeros, isZeroPoly, longDivide, polyLatex, polyMul, q, qLatex, synthetic, tenth, testPoints } from './poly.js'
 import { buildFromRoots, candidatesLatex, conjugate, isPaired, rationalRoots, rootKind, rootLatex, zerosLatex } from './roots.js'
+import { classify, degreeName, funcOp, product, resultLatex, termsName, writtenLatex } from './funcs.js'
 
 const R = String.raw
 const factorLatex = ([a, b, m = 1], v = 'x') => {
@@ -128,7 +129,46 @@ export function solve(p) {
   if (p.type === 'rrt') return rrtSolution(p, pre)
   if (p.type === 'conj') return conjSolution(p, pre)
   if (p.type === 'build') return buildSolution(p, pre)
+  if (p.type === 'classify') return classifySolution(p, pre)
+  if (p.type === 'product') return productSolution(p, pre)
+  if (p.type === 'funcop') return funcOpSolution(p, pre)
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
+}
+
+function classifySolution(p, pre) {
+  const v = p.v ?? 'x'
+  const c = classify(p.terms)
+  const std = polyLatex(c.poly, v)
+  const steps = [
+    ...(c.combined ? [R`**Combine like terms** first (terms with the same exponent).`] : []),
+    R`**Standard form:** order the terms from the highest exponent to the lowest: $${std}$.`,
+    R`**By degree:** the highest exponent is $${c.degree}$, so it is **${degreeName(c.degree)}**.`,
+    R`**By number of terms:** it has ${c.count} term${c.count > 1 ? 's' : ''}, so it is a **${termsName(c.count)}**.`,
+  ]
+  return { prompt: `${pre}${writtenLatex(p.terms, v)}`, steps, answer: R`${std};\ \text{${c.name}}` }
+}
+
+function productSolution(p, pre) {
+  const v = p.v ?? 'x'
+  const { poly, stages } = product(p.factors)
+  const f = arr => `(${polyLatex(P(arr), v)})`
+  const steps = stages.map((s, i) => i === 0
+    ? R`**Multiply the first two** (every term by every term, then combine like terms): $${f(p.factors[0])}${f(p.factors[1])} = ${polyLatex(s.result, v)}$.`
+    : R`**Multiply by the next factor:** $(${polyLatex(s.left, v)})${f(p.factors[i + 1])} = ${polyLatex(s.result, v)}$.`)
+  steps.push(R`**Standard form:** $${polyLatex(poly, v)}$.`)
+  if (p.keyNote) steps.push(p.keyNote)
+  return { prompt: `${pre}${p.factors.map(f).join('')}`, steps, answer: polyLatex(poly, v) }
+}
+
+function funcOpSolution(p, pre) {
+  const out = p.out ?? p.v
+  const { result, steps } = funcOp(p)
+  const defs = Object.entries(p.fns).map(([k, c]) => `${k}(${p.v}) = ${polyLatex(P(c), p.v)}`).join(',\\ ')
+  const answer = resultLatex(result, out) + (p.domain ? R`;\ \text{domain: all real numbers}` : '')
+  return {
+    prompt: `${pre}${defs};\\ \\text{find } ${p.find}`,
+    steps: [...steps, ...(p.notes ?? [])], answer,
+  }
 }
 
 const pmList = ns => ns.map(n => `\\pm ${n}`).join(',\\ ')

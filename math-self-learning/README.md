@@ -53,7 +53,7 @@ help (`Homework.jsx`, `solve.jsx`), math rendering (`TeX.jsx`), drawings
 
 ## Unit 4: Polynomial Functions
 
-Built from the class notes (Days 3, 4, 5, 7, 9, 10, 11) and HW #3 to HW #11.
+Built from the class notes (Days 1, 2, 3, 4, 5, 7, 9, 10, 11) and HW #1 to HW #11.
 
 1. Polynomial basics: standard form, degree, and names.
 2. Zeros and linear factors: multiplicity and writing polynomials from zeros.
@@ -72,7 +72,7 @@ short reading, a quick check, and a Khan Academy video as another
 explanation. The unit page has a "Polynomials in a day" plan: five short
 sessions of videos and homework, with breaks between.
 
-Homework help covers HW #3 to HW #11 plus the class-note examples, revealed
+Homework help covers HW #1 to HW #11 plus the class-note examples, revealed
 one step at a time. Division layouts, synthetic division tables, graphs,
 polynomials built from zeros, and the HW #9 graph analyses (end behavior,
 intercepts, multiplicity, test points) are **computed** by `src/poly.js` with
@@ -80,7 +80,9 @@ exact fractions rather than typed by hand. HW #9 has no answer key, so its
 answers are also confirmed independently with sympy. HW #10 and #11 (possible
 rational zeros, testing and dividing, the final quadratic with exact surds,
 conjugate partners, and polynomials built from roots) come from
-`src/roots.js`; their roots are also cross-checked with sympy. HW #11 assigns
+`src/roots.js`; their roots are also cross-checked with sympy. HW #1 and #2 (naming
+polynomials, products, and function operations and composition) come from
+`src/funcs.js`, and each result is re-computed independently with sympy. HW #11 assigns
 the odd problems, so the page shows those first and hides the evens until
 asked.
 
