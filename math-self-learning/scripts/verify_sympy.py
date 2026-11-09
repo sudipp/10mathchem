@@ -1,6 +1,6 @@
 """Checks every hand-solved homework step-answer with sympy."""
 import json, pathlib
-from sympy import I, Lambda, Poly, expand, simplify, sympify, solve, symbols, nsimplify
+from sympy import I, FiniteSet, Interval, Lambda, Poly, S, Union, oo, real_root, solveset, sqrt, expand, simplify, sympify, solve, symbols, nsimplify
 
 checks = json.loads((pathlib.Path(__file__).parent / "checks.json").read_text())
 names = {s: symbols(s) for s in "a b g m n p r s t u x y z".split()}
@@ -33,6 +33,33 @@ for c in checks:
             good = simplify(val - key) == 0 and simplify(sympify(c["engine"], ns) - key) == 0
             if not good:
                 print("   sympy:", simplify(val), " engine:", c["engine"])
+        elif "engineSet" in c:
+            x = names["x"]
+            expr = sympify(c["expr"], ns)
+            rel = {"<": expr < 0, "<=": expr <= 0, ">": expr > 0, ">=": expr >= 0}[c["rel"]]
+            exact = solveset(rel, x, S.Reals)
+            sets = {"Union": Union, "Interval": Interval, "FiniteSet": FiniteSet, "EmptySet": S.EmptySet, "Reals": S.Reals, "oo": oo, "sqrt": sqrt, "True": True, "False": False}
+            engine = sympify(c["engineSet"], locals=sets)
+            key = sympify(c["keySet"], locals=sets)
+            good = engine == exact and key == exact
+            if not good:
+                print("   sympy:", exact, " engine:", engine, " key:", key)
+        elif "inverse" in c:
+            spec = c["inverse"]
+            v = symbols(spec.get("v", "x"))
+            loc = {**ns, "x": v, "cbrt": lambda e: real_root(e, 3), "root5": lambda e: real_root(e, 5)}
+            F = sympify(spec["f"], locals=loc)
+            G = sympify(spec["g"], locals=loc)
+            both = True
+            for t in [-3.7, -1.3, 0.6, 2.2, 5.1]:
+                try:
+                    a = complex(F.subs(v, G.subs(v, t)).evalf())
+                    b = complex(G.subs(v, F.subs(v, t)).evalf())
+                except (TypeError, ZeroDivisionError):
+                    continue
+                if abs(a - t) > 1e-8 or abs(b - t) > 1e-8:
+                    both = False
+            good = both == spec["expect"]
         elif "allRoots" in c or "rationalRoots" in c:
             x = names["x"]
             expr = sympify(c["expr"], ns)

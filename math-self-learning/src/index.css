@@ -130,3 +130,28 @@ button.hero-link,button.nav-cta{border:0;font:inherit;cursor:pointer}button.hero
 .day-sessions.n5 .day-break{position:static;transform:none;display:inline-block;margin-top:14px;background:#e9ecdf;border-radius:12px;padding:4px 12px;font-size:.6rem}
 @media(max-width:1000px){.day-sessions.n5{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.day-sessions.n5{grid-template-columns:1fr}}
+
+/* Inverse graphs, sign charts, six-session day plan */
+.g-curve-alt{stroke:#cc5833}
+.g-diag{stroke:#8a948c;stroke-width:1.4;stroke-dasharray:5 5}
+.g-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-top:8px;font:500 .72rem 'IBM Plex Mono',monospace;color:#2e4036}
+.g-legend span::before{content:'';display:inline-block;width:16px;height:3px;border-radius:2px;background:#2e4036;margin-right:6px;vertical-align:middle}
+.g-legend span.alt::before{background:#cc5833}
+.g-legend span.diag::before{background:repeating-linear-gradient(90deg,#8a948c 0 4px,transparent 4px 7px)}
+.sign-chart{margin:0 auto;max-width:560px;width:100%}
+.sign-chart svg{width:100%;height:auto;display:block;background:#fffdf7;border-radius:18px}
+.sc-axis{stroke:#2e4036;stroke-width:1.6}
+.sc-arrow{fill:#2e4036}
+.sc-shade{stroke:#cc5833;stroke-width:9;stroke-linecap:round;opacity:.45}
+.sc-pt{stroke:#2e4036;stroke-width:2;fill:#fffdf7}
+.sc-pt.closed{fill:#2e4036}
+.sc-label{font:500 13px 'IBM Plex Mono',monospace;fill:#2e4036;text-anchor:middle}
+.sc-sign{font:700 18px 'Plus Jakarta Sans',sans-serif;text-anchor:middle;fill:#8a948c}
+.sc-sign.pos{fill:#2e7d4f}
+.sc-sign.neg{fill:#cc5833}
+.day-sessions.n6{grid-template-columns:repeat(3,1fr);gap:22px}
+.day-sessions.n6 .day-break{position:static;transform:none;display:inline-block;margin-top:14px;background:#e9ecdf;border-radius:12px;padding:4px 12px;font-size:.6rem}
+@media(max-width:1000px){.day-sessions.n6{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.day-sessions.n6{grid-template-columns:1fr}}
+
+.hw-steps li,.hw-answer{overflow-x:auto;overflow-y:hidden}

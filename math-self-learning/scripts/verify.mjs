@@ -2,8 +2,9 @@
 // hand-solved checks to JSON for scripts/verify_sympy.py.
 import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
-import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree } from '../src/poly.js'
-import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy } from '../src/roots.js'
+import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree, num } from '../src/poly.js'
+import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy, candidates } from '../src/roots.js'
+import { inequality, parabola } from '../src/extra.js'
 import { classify, product, funcOp, polySympy, exprSympy, resultSympy } from '../src/funcs.js'
 
 const sympyPoly = p => p.map((c, i) => `(${qSympy(c)})*x**${p.length - 1 - i}`).join(' + ')
@@ -16,7 +17,28 @@ const report = (ok, label, detail = '') => { if (ok) pass++; else { fail++; cons
 for (const hw of HOMEWORK) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${hw.id} §${s + 1} #${i + 1} (${p.type})`
-    if (p.type === 'classify') {
+    if (p.type === 'fta') {
+      const poly = P(p.std), n = degree(poly)
+      const { list } = candidates(poly)
+      report(JSON.stringify(list.map(v => [v.n, v.d])) === JSON.stringify(p.exp.possible.map(([a, b = 1]) => [a, b])), label, JSON.stringify({ n, list: list.map(v => `${v.n}/${v.d}`) }))
+    } else if (p.type === 'parabola') {
+      const r = parabola(p)
+      const e = p.exp
+      const ok = eqQ(r.a, q(...e.a)) && eqQ(r.V[0], q(r.vertical ? e.h : e.h)) && eqQ(r.V[1], q(e.k)) && r.vertical === e.vertical
+      // Every point on the parabola is as far from the focus as from the directrix.
+      let geo = true
+      for (const t of [-3, -1, 0.5, 2, 4]) {
+        const [h, k, a] = [num(r.V[0]), num(r.V[1]), num(r.a)], pp = num(r.p)
+        const [x, y] = r.vertical ? [h + t, a * t * t + k] : [a * t * t + h, k + t]
+        const df = Math.hypot(x - num(r.F[0]), y - num(r.F[1]))
+        const dd = r.vertical ? Math.abs(y - (k - pp)) : Math.abs(x - (h - pp))
+        if (Math.abs(df - dd) > 1e-9) geo = false
+      }
+      report(ok && geo, label, r.eq)
+    } else if (p.type === 'ineq') {
+      const s = inequality(p)
+      checks.push({ label, expr: sympyPoly(s.poly), rel: p.rel, engineSet: s.sympySet, keySet: p.key })
+    } else if (p.type === 'classify') {
       const c = classify(p.terms)
       report(same(c.poly, P(p.exp.poly)) && c.name === p.exp.name, label, `${polyLatex(c.poly)} ${c.name}`)
     } else if (p.type === 'product') {
@@ -31,13 +53,13 @@ for (const hw of HOMEWORK) {
       const r = rationalRoots(p.std, { given: p.given })
       const possible = r.cand.list.map(v => [v.n, v.d])
       const exp = p.exp.possible?.map(([n, d = 1]) => [n, d])
-      let ok = (!exp || JSON.stringify(possible) === JSON.stringify(exp)) && (r.k0 > 0) === !!p.exp.zero
+      let ok = !exp || (JSON.stringify(possible) === JSON.stringify(exp) && (r.k0 > 0) === !!p.exp.zero)
       const zs = r.zeros.map(z => [z.x.n, z.x.d, z.m])
       const key = a => JSON.stringify([...a].sort())
       if (p.exp.zeros) ok = ok && key(zs) === key(p.exp.zeros.map(([n, d = 1, m = 1]) => [q(n, d).n, q(n, d).d, m]))
       report(ok, label, JSON.stringify({ possible, zs }))
       const roots = r.zeros.flatMap(z => Array(z.m).fill(qSympy(z.x)))
-      if (p.all) checks.push({ label, expr: sympyPoly(r.poly), allRoots: [...roots, ...(r.quad && !r.quad.rational ? r.quad.sympy : [])], keyRoots: p.exp.roots })
+      if (p.all) checks.push({ label, expr: sympyPoly(r.poly), allRoots: [...roots, ...r.others.flatMap(o => o.sympy)], keyRoots: p.exp.roots })
       else if (p.find) checks.push({ label, expr: sympyPoly(r.poly), rationalRoots: [...new Set(roots)] })
     } else if (p.type === 'conj') {
       const got = p.roots.filter(isPaired).map(conjugate)

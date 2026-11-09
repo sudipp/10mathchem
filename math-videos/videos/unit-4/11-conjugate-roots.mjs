@@ -94,8 +94,8 @@ export default {
       ] },
     },
     {
-      ch: 5, say: 'That’s all of Unit 4: polynomials in a day! Now try the homework help, one step at a time. You’ve got this!',
-      view: { kind: 'title', kicker: 'YOU DID IT · UNIT 4', title: 'Polynomials,', em: 'done.', sub: 'Next: homework help, one step at a time' },
+      ch: 5, say: 'Next up: the Fundamental Theorem of Algebra, which tells you exactly how many roots to look for. See you there!',
+      view: { kind: 'title', kicker: 'UP NEXT · LESSON 12', title: 'Fundamental Theorem', em: 'of Algebra', sub: 'Degree n means exactly n zeros' },
     },
   ],
 }

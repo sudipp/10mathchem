@@ -53,7 +53,7 @@ help (`Homework.jsx`, `solve.jsx`), math rendering (`TeX.jsx`), drawings
 
 ## Unit 4: Polynomial Functions
 
-Built from the class notes (Days 1, 2, 3, 4, 5, 7, 9, 10, 11) and HW #1 to HW #11.
+Built from the class notes (Days 1–5, 7, 9–12, 14, 15) and HW #1 to HW #15.
 
 1. Polynomial basics: standard form, degree, and names.
 2. Zeros and linear factors: multiplicity and writing polynomials from zeros.
@@ -66,13 +66,16 @@ Built from the class notes (Days 1, 2, 3, 4, 5, 7, 9, 10, 11) and HW #1 to HW #1
 9. End behavior and graphing from intercepts and multiplicity.
 10. The Rational Root Theorem: candidates p/q, testing, and dividing them out.
 11. Irrational and complex roots: conjugate pairs and building polynomials.
+12. The Fundamental Theorem of Algebra: counting zeros and finding them all.
+13. Polynomial inequalities: critical points, sign charts, interval notation.
+14. Inverse functions: switch and solve, composition checks, reflections.
 
 Each lesson has a narrated video (2–3 minutes), a step-by-step animation, a
 short reading, a quick check, and a Khan Academy video as another
-explanation. The unit page has a "Polynomials in a day" plan: five short
+explanation. The unit page has a "Polynomials in a day" plan: six short
 sessions of videos and homework, with breaks between.
 
-Homework help covers HW #1 to HW #11 plus the class-note examples, revealed
+Homework help covers HW #1 to HW #15 plus the class-note examples, revealed
 one step at a time. Division layouts, synthetic division tables, graphs,
 polynomials built from zeros, and the HW #9 graph analyses (end behavior,
 intercepts, multiplicity, test points) are **computed** by `src/poly.js` with
@@ -82,7 +85,12 @@ rational zeros, testing and dividing, the final quadratic with exact surds,
 conjugate partners, and polynomials built from roots) come from
 `src/roots.js`; their roots are also cross-checked with sympy. HW #1 and #2 (naming
 polynomials, products, and function operations and composition) come from
-`src/funcs.js`, and each result is re-computed independently with sympy. HW #11 assigns
+`src/funcs.js`, and each result is re-computed independently with sympy.
+HW #12–#14 (zero counts, all zeros including given complex zeros and
+`w = x^2` substitution, parabolas from focus and directrix, and inequality
+sign charts) come from `src/roots.js` and `src/extra.js`; sympy re-solves every
+zero set and every inequality. HW #15 inverses are checked numerically both
+ways (`f(g(x)) = g(f(x)) = x`). HW #11 assigns
 the odd problems, so the page shows those first and hides the evens until
 asked.
 

@@ -42,6 +42,15 @@ const EX4 = { f: [2, -3, -18, -8], g: [1, -4] }
 const EX3 = { f: [2, 0, 0], g: [1, -1] }
 const DOMAIN = R`**Domain:** the result is a polynomial, and every input of $g$ and $f$ is allowed, so the domain is **all real numbers**, $(-\infty, \infty)$.`
 
+// Zeros: rrt shorthand. Inequalities: factored ([a, b, m] = (ax + b)^m) or standard form.
+const zeros = (std, roots, extra = {}) => ({ type: 'rrt', find: true, all: true, std, exp: { roots, ...(extra.possible ? { possible: extra.possible } : {}) }, ...extra })
+const ineqF = (factors, rel, key, extra = {}) => ({ type: 'ineq', factors, rel, key, ...extra })
+const ineqS = (lhs, rel, key, extra = {}) => ({ type: 'ineq', lhs, rel, key, ...extra })
+// Inverse functions: f and g are sympy strings (cbrt/root5 = real roots) checked numerically.
+const inv = (prompt, steps, answer, f, g, expect = true, extra = {}) => ({ type: 'steps', prompt, steps, answer, check: { inverse: { f, g, expect, v: extra.v ?? 'x' } }, ...extra })
+const cbrt = Math.cbrt
+const pairGraph = (f, fl, g, gl) => ({ curves: [{ f, label: fl }, { f: g, label: gl }], window: [-6, 6, -6, 6] })
+
 export const HOMEWORK = [
   {
     id: 'hw1', title: 'HW #1', name: 'Polynomial Operations & Classification', due: '', lesson: 0,
@@ -807,7 +816,183 @@ export const HOMEWORK = [
     ],
   },
   {
-    id: 'notes', title: 'Class notes', name: 'Examples from Days 1–11', due: '', lesson: 0,
+    id: 'hw12', title: 'HW #12', name: 'Fundamental Theorem of Algebra', due: 'Nov 5', lesson: 11,
+    sections: [
+      {
+        title: 'State the number of complex zeros, the possible number of real and imaginary zeros, and the possible rational zeros for each function.',
+        problems: [
+          { type: 'fta', std: [1, -3, 8, -24, 15, -45], exp: { possible: [[1], [3], [5], [9], [15], [45]] } },
+          { type: 'fta', std: [1, 0, -4, 0, -4, 0, 16], exp: { possible: [[1], [2], [4], [8], [16]] } },
+          { type: 'fta', std: [1, -8, 16], exp: { possible: [[1], [2], [4], [8], [16]] } },
+          { type: 'fta', std: [1, -1, -5, -3], exp: { possible: [[1], [3]] } },
+        ],
+      },
+      {
+        title: 'Find all zeros. One zero has been given.',
+        problems: [
+          zeros([2, -5, -4, 3, 0], ['0', '1/2', '-1', '3'], { given: 3 }),
+          zeros([3, -14, 27, -36, 0], ['0', '(5+I*sqrt(119))/6', '(5-I*sqrt(119))/6', '3'], { given: 3 }),
+          zeros([10, 45, 41, -18, -18], ['-3', 'sqrt(10)/5', '-sqrt(10)/5', '-3/2'], { given: [-3, 2] }),
+          zeros([10, 48, 45, -11, 0], ['0', '(-5+sqrt(3))/2', '(-5-sqrt(3))/2', '1/5'], { given: [1, 5] }),
+        ],
+      },
+      {
+        title: 'State the possible rational zeros for each function. Then find all zeros.',
+        problems: [
+          zeros([1, 0, -4, 0, -1, 0, 4], ['2', '-2', '1', '-1', 'I', '-I'], { list: true, possible: [[1], [2], [4]] }),
+          zeros([1, -3, 4, -12, 3, -9], ['3', 'I', '-I', 'I*sqrt(3)', '-I*sqrt(3)'], { list: true, possible: [[1], [3], [9]] }),
+          zeros([1, -14, 13], ['1', '13'], { list: true, possible: [[1], [13]] }),
+          {
+            type: 'steps', prompt: R`f(x) = x^6 - 126x^3 + 125`,
+            check: { expr: 'x**6 - 126*x**3 + 125', roots: ['5', '(-5+5*I*sqrt(3))/2', '(-5-5*I*sqrt(3))/2', '1', '(-1+I*sqrt(3))/2', '(-1-I*sqrt(3))/2'], variable: 'x' },
+            steps: [
+              R`**Possible rational zeros:** $p$ divides $125$, $q$ divides $1$: $\pm1,\ \pm5,\ \pm25,\ \pm125$.`,
+              R`Degree $6$, so there are $6$ zeros. Notice it is in **quadratic form** with $w = x^3$: $w^2 - 126w + 125 = (w - 1)(w - 125)$.`,
+              R`So $(x^3 - 1)(x^3 - 125) = 0$: a **difference of cubes** twice. $x^3 - 1 = (x - 1)(x^2 + x + 1)$ and $x^3 - 125 = (x - 5)(x^2 + 5x + 25)$.`,
+              R`Rational zeros: $x = 1$ and $x = 5$ (both on the candidate list ✓).`,
+              R`**Quadratic formula** on $x^2 + x + 1 = 0$: $x = \dfrac{-1 \pm \sqrt{1 - 4}}{2} = \dfrac{-1 \pm i\sqrt3}{2}$.`,
+              R`**Quadratic formula** on $x^2 + 5x + 25 = 0$: $x = \dfrac{-5 \pm \sqrt{25 - 100}}{2} = \dfrac{-5 \pm 5i\sqrt3}{2}$ (since $\sqrt{-75} = 5i\sqrt3$).`,
+            ],
+            answer: R`\begin{array}{l} \text{Possible: } \pm1,\ \pm5,\ \pm25,\ \pm125 \\ \text{Zeros: } 5,\ \dfrac{-5 \pm 5i\sqrt3}{2},\ 1,\ \dfrac{-1 \pm i\sqrt3}{2} \end{array}`,
+          },
+        ],
+      },
+      {
+        title: 'Use the information provided to write the vertex form equation of each parabola.',
+        problems: [
+          { type: 'parabola', vertex: [8, 1], focus: [8, [7, 8]], exp: { a: [-2, 1], h: 8, k: 1, vertical: true } },
+          { type: 'parabola', vertex: [0, 4], focus: [[-1, 8], 4], exp: { a: [-2, 1], h: 0, k: 4, vertical: false } },
+          { type: 'parabola', focus: [8, 2], directrix: { y: -8 }, exp: { a: [1, 20], h: 8, k: -3, vertical: true } },
+          { type: 'parabola', focus: [5, [7, 8]], directrix: { y: [9, 8] }, exp: { a: [-2, 1], h: 5, k: 1, vertical: true } },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hw13', title: 'HW #13', name: 'Fundamental Theorem of Algebra', due: 'Nov 6', lesson: 11,
+    sections: [
+      {
+        title: 'State the number of complex zeros, the possible number of real and imaginary zeros, and the possible rational zeros for each function.',
+        problems: [
+          { type: 'fta', std: [3, 0, 2, 0, -8], exp: { possible: [[1], [2], [4], [8], [1, 3], [2, 3], [4, 3], [8, 3]] } },
+          { type: 'fta', std: [5, -5, -1, 1], exp: { possible: [[1], [1, 5]] } },
+          { type: 'fta', std: [1, 0, 0, -27], exp: { possible: [[1], [3], [9], [27]] } },
+          { type: 'fta', std: [2, 4, -11, -22, -6, -12], exp: { possible: [[1], [2], [3], [4], [6], [12], [1, 2], [3, 2]] } },
+        ],
+      },
+      {
+        title: 'Find all zeros. One zero has been given.',
+        problems: [
+          zeros([3, -11, 20, 8, 0], ['0', '2+2*I', '2-2*I', '-1/3'], { given: [-1, 3] }),
+          zeros([10, -11, -7, 11, -3], ['1/2', '1', '-1', '3/5'], { given: [3, 5] }),
+          zeros([15, 13, -23, -5, 0], ['0', '1', '-1/5', '-5/3'], { given: [-5, 3] }),
+          zeros([10, 33, 0, -66, -40], ['-4/5', 'sqrt(2)', '-sqrt(2)', '-5/2'], { given: [-5, 2] }),
+          zeros([3, 2, -8, -5], ['(1+sqrt(5))/2', '(1-sqrt(5))/2', '-5/3'], { given: [-5, 3] }),
+          zeros([4, -4, -15, 18], ['3/2', '-2'], { given: [3, 2] }),
+          zeros([1, -2, 8, -16, 7, -14], ['I', '-I', 'I*sqrt(7)', '-I*sqrt(7)', '2'], { given: 2 }),
+          zeros([1, -14, 68, -146, 91], ['7', '1', '3+2*I', '3-2*I'], { given: [3, 2, -1] }),
+        ],
+      },
+      {
+        title: 'Find all zeros.',
+        problems: [
+          zeros([3, 1, -3, -1], ['-1/3', '1', '-1']),
+          zeros([2, 5, 4, 1], ['-1', '-1/2']),
+          zeros([5, 0, 8, 0, -4], ['I*sqrt(2)', '-I*sqrt(2)', 'sqrt(10)/5', '-sqrt(10)/5']),
+          zeros([4, -8, 5, -1], ['1/2', '1']),
+          zeros([1, -12, 11, 0], ['0', '11', '1']),
+          zeros([1, 3, -47, -185], ['-5', '1+sqrt(38)', '1-sqrt(38)']),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hw14', title: 'HW #14', name: 'Polynomial Inequalities', due: 'Nov 10', lesson: 12,
+    sections: [
+      {
+        title: 'Solve each inequality. Show the testing of values between and beyond the zeros and the sign graph. Write your solution in interval notation.',
+        problems: [
+          ineqF([[-1, 2], [2, -3]], '<=', 'Union(Interval(-oo, 3/2), Interval(2, oo))'),
+          ineqF([[1, -8], [1, 6]], '>=', 'Union(Interval(-oo, -6), Interval(8, oo))'),
+          ineqS([-3, 17, -10], '>=', 'Interval(2/3, 5)'),
+          ineqS([1, 11, 24], '>=', 'Union(Interval(-oo, -8), Interval(-3, oo))'),
+          ineqS([15, -4, -12], '>', 'Union(Interval.open(-oo, -2), Interval.open(6, oo))', { rhs: [14, 0, 0] }),
+          ineqS([1, 11, 13], '<', 'EmptySet', { rhs: [13, 12] }),
+          ineqF([[-1, -4], [1, -2], [1, -1]], '>', 'Union(Interval.open(-oo, -4), Interval.open(1, 2))'),
+          ineqF([[1, -1, 2], [-2, 1]], '>', 'Interval.open(-oo, 1/2)'),
+          ineqS([-1, 16, -80, 128], '>=', 'Interval(-oo, 8)'),
+          ineqS([1, -12, 29, 42], '>', 'Union(Interval.open(-1, 6), Interval.open(7, oo))'),
+          ineqF([[3, -5], [1, 2], [-1, -1], [1, 6]], '>', 'Union(Interval.open(-6, -2), Interval.open(-1, 5/3))'),
+          ineqF([[1, -2], [1, -8, 2], [1, 3]], '<=', 'Union(Interval(-3, 2), FiniteSet(8))'),
+          ineqS([-6, 25, 37, -64, 20], '>', 'Union(Interval.open(-2, 1/2), Interval.open(2/3, 5))'),
+          ineqS([-3, 32, -59, -46, 48], '<', 'Union(Interval.open(-oo, -1), Interval.open(2/3, 3), Interval.open(8, oo))'),
+          ineqF([[1, 7], [2, -1, 4]], '<=', 'Union(Interval(-oo, -7), FiniteSet(1/2))'),
+          ineqF([[1, 3], [-1, 3], [1, 7], [1, -8], [1, -4]], '<', 'Union(Interval.open(-7, -3), Interval.open(3, 4), Interval.open(8, oo))'),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hw15', title: 'HW #15', name: 'Inverse Relations & Functions', due: 'Nov 11', lesson: 13,
+    sections: [
+      {
+        title: 'State if the given functions are inverses. (Use composition of functions.)',
+        problems: [
+          inv(R`g(x) = \tfrac34x + \tfrac{15}{4},\ \ f(x) = x + 4`, [
+            R`Inverses must undo each other **both ways**: $f(g(x)) = x$ **and** $g(f(x)) = x$.`,
+            R`$f(g(x)) = \left(\tfrac34x + \tfrac{15}{4}\right) + 4 = \tfrac34x + \tfrac{31}{4}$.`,
+            R`That is not $x$, so they are **not** inverses.`,
+          ], R`\text{No}`, '3*x/4 + 15/4', 'x + 4', false),
+          inv(R`f(x) = -4 + \tfrac94x,\ \ g(x) = \tfrac49x + \tfrac{16}{9}`, [
+            R`$f(g(x)) = -4 + \tfrac94\left(\tfrac49x + \tfrac{16}{9}\right) = -4 + x + 4 = x$ ✓.`,
+            R`$g(f(x)) = \tfrac49\left(-4 + \tfrac94x\right) + \tfrac{16}{9} = -\tfrac{16}{9} + x + \tfrac{16}{9} = x$ ✓.`,
+            R`Both give $x$, so they **are** inverses.`,
+          ], R`\text{Yes}`, '-4 + 9*x/4', '4*x/9 + 16/9', true),
+          inv(R`h(n) = -2n^3 - 1,\ \ f(n) = \sqrt[3]{\dfrac{-n - 1}{2}}`, [
+            R`$h(f(n)) = -2\left(\sqrt[3]{\tfrac{-n - 1}{2}}\right)^3 - 1 = -2\cdot\tfrac{-n - 1}{2} - 1 = n + 1 - 1 = n$ ✓.`,
+            R`$f(h(n)) = \sqrt[3]{\dfrac{-(-2n^3 - 1) - 1}{2}} = \sqrt[3]{\dfrac{2n^3}{2}} = \sqrt[3]{n^3} = n$ ✓.`,
+            R`Both give $n$, so they **are** inverses.`,
+          ], R`\text{Yes}`, '-2*x**3 - 1', 'cbrt((-x - 1)/2)', true),
+          inv(R`h(x) = \sqrt[3]{\dfrac{x + 1}{2}},\ \ f(x) = 2 + 2x^3`, [
+            R`$f(h(x)) = 2 + 2\left(\sqrt[3]{\tfrac{x + 1}{2}}\right)^3 = 2 + (x + 1) = x + 3$.`,
+            R`That is not $x$, so they are **not** inverses. (The inverse of $f$ would be $\sqrt[3]{\tfrac{x - 2}{2}}$.)`,
+          ], R`\text{No}`, 'cbrt((x + 1)/2)', '2 + 2*x**3', false),
+          inv(R`g(x) = \dfrac{1}{x + 2} - 1,\ \ f(x) = \dfrac{1}{x - 2} + 2`, [
+            R`One counterexample is enough to say **no**. Try $x = 0$: $f(0) = \tfrac{1}{-2} + 2 = \tfrac32$.`,
+            R`$g\left(\tfrac32\right) = \dfrac{1}{\tfrac32 + 2} - 1 = \tfrac27 - 1 = -\tfrac57$, not $0$.`,
+            R`$g(f(0)) \ne 0$, so they are **not** inverses.`,
+          ], R`\text{No}`, '1/(x + 2) - 1', '1/(x - 2) + 2', false),
+          inv(R`g(x) = -\dfrac{3}{-x + 3},\ \ f(x) = \dfrac{3}{x} + 3`, [
+            R`$g(f(x)) = -\dfrac{3}{-\left(\tfrac3x + 3\right) + 3} = -\dfrac{3}{-\tfrac3x} = x$ ✓.`,
+            R`$f(g(x)) = \dfrac{3}{-\tfrac{3}{-x + 3}} + 3 = -(-x + 3) + 3 = x$ ✓.`,
+            R`Both give $x$, so they **are** inverses.`,
+          ], R`\text{Yes}`, '-3/(-x + 3)', '3/x + 3', true),
+        ],
+      },
+      {
+        title: 'Find the inverse of each function.',
+        problems: [
+          inv(R`f(x) = \dfrac{-2 + 3x}{2}`, [R`**Switch** $x$ and $y$: $x = \dfrac{-2 + 3y}{2}$.`, R`Multiply by $2$: $2x = -2 + 3y$. Add $2$: $2x + 2 = 3y$.`, R`Divide by $3$: $y = \dfrac{2x + 2}{3}$.`], R`f^{-1}(x) = \dfrac{2x + 2}{3}`, '(-2 + 3*x)/2', '(2*x + 2)/3'),
+          inv(R`f(x) = 5 + \tfrac95x`, [R`**Switch:** $x = 5 + \tfrac95y$.`, R`Subtract $5$: $x - 5 = \tfrac95y$. Multiply by $\tfrac59$: $y = \tfrac59(x - 5)$.`, R`Distribute: $y = \tfrac59x - \tfrac{25}{9}$.`], R`f^{-1}(x) = \tfrac59x - \tfrac{25}{9}`, '5 + 9*x/5', '5*x/9 - 25/9'),
+          inv(R`f(x) = -(x - 1)^3`, [R`**Switch:** $x = -(y - 1)^3$.`, R`Multiply by $-1$: $-x = (y - 1)^3$. Take the cube root: $\sqrt[3]{-x} = y - 1$.`, R`$\sqrt[3]{-x} = -\sqrt[3]{x}$, so $y = -\sqrt[3]{x} + 1$.`], R`f^{-1}(x) = -\sqrt[3]{x} + 1`, '-(x - 1)**3', '-cbrt(x) + 1'),
+          inv(R`f(x) = \sqrt[5]{x - 3} - 2`, [R`**Switch:** $x = \sqrt[5]{y - 3} - 2$.`, R`Add $2$: $x + 2 = \sqrt[5]{y - 3}$. Raise both sides to the 5th power: $(x + 2)^5 = y - 3$.`, R`Add $3$: $y = 3 + (x + 2)^5$.`], R`f^{-1}(x) = 3 + (x + 2)^5`, 'root5(x - 3) - 2', '3 + (x + 2)**5'),
+          inv(R`g(n) = \dfrac{2}{n} - 3`, [R`**Switch:** $n = \dfrac{2}{y} - 3$.`, R`Add $3$: $n + 3 = \dfrac{2}{y}$.`, R`Flip both sides (or multiply by $y$ and divide by $n + 3$): $y = \dfrac{2}{n + 3}$.`], R`g^{-1}(n) = \dfrac{2}{n + 3}`, '2/x - 3', '2/(x + 3)'),
+          inv(R`f(x) = -\dfrac{3}{x - 1}`, [R`**Switch:** $x = -\dfrac{3}{y - 1}$.`, R`Multiply by $(y - 1)$ and divide by $x$: $y - 1 = -\dfrac{3}{x}$.`, R`Add $1$: $y = -\dfrac{3}{x} + 1$.`], R`f^{-1}(x) = -\dfrac{3}{x} + 1`, '-3/(x - 1)', '-3/x + 1'),
+        ],
+      },
+      {
+        title: 'Find the inverse of each function. Then graph the function and its inverse.',
+        problems: [
+          inv(R`h(x) = 4 + \tfrac74x`, [R`**Switch:** $x = 4 + \tfrac74y$.`, R`Subtract $4$: $x - 4 = \tfrac74y$. Multiply by $\tfrac47$: $y = \tfrac47x - \tfrac{16}{7}$.`, R`**Graph:** the two lines are mirror images over $y = x$.`], R`h^{-1}(x) = \tfrac47x - \tfrac{16}{7}`, '4 + 7*x/4', '4*x/7 - 16/7', true, { graph: pairGraph(x => 4 + 7 / 4 * x, 'h(x)', x => 4 / 7 * x - 16 / 7, 'h⁻¹(x)') }),
+          inv(R`f(x) = \tfrac23x + \tfrac43`, [R`**Switch:** $x = \tfrac23y + \tfrac43$.`, R`Multiply by $3$: $3x = 2y + 4$. So $2y = 3x - 4$ and $y = \tfrac32x - 2$.`, R`**Graph:** mirror images over $y = x$. (They cross on that line at $(4, 4)$.)`], R`f^{-1}(x) = -2 + \tfrac32x`, '2*x/3 + 4/3', '3*x/2 - 2', true, { graph: pairGraph(x => 2 / 3 * x + 4 / 3, 'f(x)', x => 1.5 * x - 2, 'f⁻¹(x)') }),
+          inv(R`h(x) = \sqrt[3]{x} - 1`, [R`**Switch:** $x = \sqrt[3]{y} - 1$.`, R`Add $1$: $x + 1 = \sqrt[3]{y}$. Cube both sides: $y = (x + 1)^3$.`, R`**Graph:** the cube-root curve and the cubic are mirror images over $y = x$.`], R`h^{-1}(x) = (x + 1)^3`, 'cbrt(x) - 1', '(x + 1)**3', true, { graph: pairGraph(x => cbrt(x) - 1, 'h(x)', x => (x + 1) ** 3, 'h⁻¹(x)') }),
+          inv(R`g(x) = -3 - 2x^3`, [R`**Switch:** $x = -3 - 2y^3$.`, R`Add $3$: $x + 3 = -2y^3$. Divide by $-2$: $y^3 = \dfrac{-x - 3}{2}$.`, R`Take the cube root: $y = \sqrt[3]{\dfrac{-x - 3}{2}}$. **Graph:** mirror images over $y = x$.`], R`g^{-1}(x) = \sqrt[3]{\dfrac{-x - 3}{2}}`, '-3 - 2*x**3', 'cbrt((-x - 3)/2)', true, { graph: pairGraph(x => -3 - 2 * x ** 3, 'g(x)', x => cbrt((-x - 3) / 2), 'g⁻¹(x)') }),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'notes', title: 'Class notes', name: 'Examples from Days 1–15', due: '', lesson: 0,
     sections: [
       {
         title: 'Day 1 — Classifying polynomials & function operations',
@@ -1063,6 +1248,102 @@ export const HOMEWORK = [
           { type: 'build', label: R`\text{Ex 3}`, roots: [[5], [0, 1, 2]], exp: [1, -5, -2, 10] },
           { type: 'build', label: R`\text{Ex 4}`, roots: [[-3], [1, 2, -1]], exp: [1, 1, -1, 15] },
           { type: 'build', label: R`\text{Ex 5}`, roots: [[[3, 4]], [2, -1, 5]], exp: [4, -19, 8, 3] },
+        ],
+      },
+      {
+        title: 'Day 12 — The Fundamental Theorem of Algebra',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Fundamental Theorem of Algebra: what it means}`,
+            steps: [
+              R`If $f(x)$ has degree $n > 0$, then $f(x) = 0$ has **at least one** root in the complex numbers.`,
+              R`Divide that root out and repeat: a polynomial of degree $n$ has **exactly $n$ complex roots**, counting multiplicity.`,
+              R`Imaginary roots come in conjugate pairs, so the number of **real** roots is $n,\ n - 2,\ n - 4, \dots$`,
+            ],
+            answer: R`\text{degree } n \Rightarrow \text{exactly } n \text{ complex roots}`,
+          },
+          zeros([1, 3, -8, -22, -24], ['3', '-4', '-1+I', '-1-I'], { label: R`\text{Ex 1}` }),
+          { type: 'fta', label: R`\text{Ex 2}`, std: [1, -3, 0, 4, 1], exp: { possible: [[1]] } },
+          { type: 'fta', label: R`\text{Ex 3}`, std: [2, 10, 0, -2, -1, 3], exp: { possible: [[1], [3], [1, 2], [3, 2]] } },
+        ],
+      },
+      {
+        title: 'Day 14 — Polynomial inequalities',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{How to solve a polynomial inequality}`,
+            steps: [
+              R`1. Find all the **real** zeros of the polynomial (not imaginary). The zeros are the **critical points**.`,
+              R`2. Plot the zeros on a number line: **open** circles for $<$ and $>$, **closed** circles for $\le$ and $\ge$.`,
+              R`3. Pick one $x$-value in each test interval and find the **sign** there.`,
+              R`4. Write the answer in interval notation: $(\ )$ for open circles and $\pm\infty$, $[\ ]$ for closed circles.`,
+            ],
+            answer: R`\text{zeros} \to \text{number line} \to \text{test} \to \text{interval notation}`,
+          },
+          ineqS([1, -5, -6], '<', 'Interval.open(-1, 6)', { label: R`\text{Ex 1A}` }),
+          ineqS([2, -1, -32, 0], '>=', 'Union(Interval(-4, 1/2), Interval(4, oo))', { label: R`\text{Ex 1B}`, rhs: [-16] }),
+          ineqF([[1, -2, 2], [1, 3]], '>', 'Union(Interval.open(-3, 2), Interval.open(2, oo))', { label: R`\text{Ex 1C}` }),
+          ineqS([1, 0, -4, 0, 3], '>', 'Union(Interval.open(-oo, -sqrt(3)), Interval.open(-1, 1), Interval.open(sqrt(3), oo))', { label: R`\text{Ex 1D}` }),
+          ineqS([1, 6, 9], '>', 'Union(Interval.open(-oo, -3), Interval.open(-3, oo))', { label: R`\text{Ex 1E}` }),
+          ineqS([1, 4, 4], '<=', 'FiniteSet(-2)', { label: R`\text{Ex 1F}` }),
+          ineqS([1, 5, 7], '<', 'EmptySet', { label: R`\text{Ex 1G}` }),
+          ineqS([1, -6, 9], '>=', 'Reals', { label: R`\text{Ex 1H}` }),
+        ],
+      },
+      {
+        title: 'Day 15 — Inverse functions',
+        problems: [
+          {
+            type: 'steps', prompt: R`\text{Ex 1: } f(x) \text{ is } (-2, 3),\ (-1, 2),\ (0, 1),\ (1, -2),\ (2, -3).\ \text{ Find } f^{-1}(x).`,
+            steps: [
+              R`An inverse **switches $x$ and $y$** in every point.`,
+              R`$f^{-1}$: $(3, -2),\ (2, -1),\ (1, 0),\ (-2, 1),\ (-3, 2)$.`,
+              R`The **domain** of $f$ becomes the **range** of $f^{-1}$ (and the range becomes the domain).`,
+            ],
+            answer: R`x:\ 3,\ 2,\ 1,\ -2,\ -3;\quad y:\ -2,\ -1,\ 0,\ 1,\ 2`,
+          },
+          inv(R`\text{Ex 2A: } f(x) = x + 4`, [R`**Switch:** $x = y + 4$.`, R`**Solve for $y$:** $y = x - 4$.`], R`f^{-1}(x) = x - 4`, 'x + 4', 'x - 4'),
+          inv(R`\text{Ex 2B: } f(x) = \tfrac13x`, [R`**Switch:** $x = \tfrac13y$.`, R`Multiply by $3$: $y = 3x$.`], R`f^{-1}(x) = 3x`, 'x/3', '3*x'),
+          inv(R`\text{Ex 2C: } f(x) = \dfrac{5 - 3x}{2}`, [R`**Switch:** $x = \dfrac{5 - 3y}{2}$.`, R`Multiply by $2$: $2x = 5 - 3y$, so $3y = 5 - 2x$.`, R`Divide by $3$: $y = \dfrac{5 - 2x}{3}$.`], R`f^{-1}(x) = \dfrac{5 - 2x}{3}`, '(5 - 3*x)/2', '(5 - 2*x)/3'),
+          inv(R`\text{Ex 2D: } f(x) = \sqrt[3]{x + 1}`, [R`**Switch:** $x = \sqrt[3]{y + 1}$.`, R`Cube both sides: $x^3 = y + 1$.`, R`Subtract $1$: $y = x^3 - 1$.`], R`f^{-1}(x) = x^3 - 1`, 'cbrt(x + 1)', 'x**3 - 1', true, { graph: pairGraph(x => cbrt(x + 1), 'f(x)', x => x ** 3 - 1, 'f⁻¹(x)') }),
+          {
+            type: 'steps', prompt: R`\text{Ex 2E: } f(x) = x^2 + 1`,
+            steps: [
+              R`**Switch:** $x = y^2 + 1$. Subtract $1$: $y^2 = x - 1$.`,
+              R`Square root (both signs!): $y = \pm\sqrt{x - 1}$.`,
+              R`Each input gives **two** outputs, so this inverse is a relation, **not a function** (unless we limit the domain to $x \ge 0$).`,
+            ],
+            answer: R`y = \pm\sqrt{x - 1}\ \ (\text{not a function})`,
+          },
+          {
+            type: 'steps', prompt: R`\text{Ex 3: } f(x) = \tfrac12x + 5.\ \text{Find (a) } (f \circ f^{-1})(652),\ \text{(b) } (f^{-1} \circ f)(-\sqrt{27}),\ \text{(c) } (f^{-1} \circ f)(-3.8\pi)`,
+            steps: [
+              R`**Definition:** $f$ and $f^{-1}$ undo each other: $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$.`,
+              R`So the composition hands back whatever went in, with no arithmetic needed: (a) $652$, (b) $-\sqrt{27}$, (c) $-3.8\pi$.`,
+              R`Check (a) the long way: $f^{-1}(x) = 2x - 10$, so $f^{-1}(652) = 1294$ and $f(1294) = 647 + 5 = 652$ ✓.`,
+            ],
+            answer: R`\text{(a) } 652\quad \text{(b) } -\sqrt{27}\quad \text{(c) } -3.8\pi`,
+          },
+          {
+            type: 'steps', prompt: R`\text{Ex 4: graph } f(x) = x^2 \text{ and its inverse}`,
+            steps: [
+              R`Swapping $x$ and $y$ **reflects** the graph over the line $y = x$.`,
+              R`$(1, 1),\ (2, 4),\ (-2, 4)$ on $y = x^2$ become $(1, 1),\ (4, 2),\ (4, -2)$ on the inverse $x = y^2$, i.e. $y = \pm\sqrt{x}$.`,
+              R`The inverse opens to the **right**. It fails the vertical line test, so it is not a function.`,
+            ],
+            answer: R`y = \pm\sqrt{x}\ \text{(reflection over } y = x\text{)}`,
+            graph: { curves: [{ f: x => x * x, label: 'f(x) = x²' }, { f: x => Math.sqrt(x), label: 'inverse: y = ±√x' }, { f: x => -Math.sqrt(x), label: '' }], window: [-5, 5, -5, 5] },
+          },
+          {
+            type: 'steps', prompt: R`\text{Ex 5: horizontal line test. Is the inverse a function?}`,
+            steps: [
+              R`**Horizontal line test:** if any horizontal line hits the graph of $f$ more than once, the inverse is **not** a function.`,
+              R`**A)** The curve always rises, so every horizontal line hits it at most once: **yes**.`,
+              R`**B)** It goes up, down, and up again, so some horizontal lines hit it three times: **no**.`,
+              R`**C)** A slanted line is hit exactly once by every horizontal line: **yes**.`,
+            ],
+            answer: R`\text{A yes, B no, C yes}`,
+          },
         ],
       },
     ],

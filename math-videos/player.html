@@ -99,7 +99,7 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .graph svg{display:block;background:#fffdf7;border-radius:24px;border:1px solid #e1e2d9}
 .gg{stroke:#e6e8df;stroke-width:1}.ga{stroke:#2E4036;stroke-width:2}
 .gt{font:500 13px 'IBM Plex Mono',monospace;fill:#7b867d;text-anchor:middle}.gty{text-anchor:end}
-.gcurve{fill:none;stroke:#2E4036;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.gcurve{fill:none;stroke:#2E4036;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}.gcurve2{stroke:#CC5833}.gdiag{stroke:#8a948c;stroke-width:2.5;stroke-dasharray:8 7}
 .gz{fill:#CC5833}.gd{fill:#fffdf7;stroke:#2E4036;stroke-width:3.5}.gh{fill:#CC583330;stroke:#CC5833;stroke-width:3.5}
 .gl{font:700 17px 'Plus Jakarta Sans',sans-serif;fill:#a33d20;text-anchor:middle;paint-order:stroke;stroke:#fffdf7;stroke-width:5px}
 .graph-side{display:flex;flex-direction:column;gap:14px;max-width:440px;font-size:30px}
@@ -269,6 +269,8 @@ function build(s) {
     else draws.push({ el: svgEl.querySelector('.gcurve'), at: curveAt })
     for (const z of L.zeros) { const at = when(`zero${z}`) ?? when('zeros'); if (at != null) reveal(add('circle', { cx: sx(z), cy: sy(0), r: 7, class: 'gz' }), at) }
     for (const [x, m] of v.hl ?? []) reveal(add('circle', { cx: sx(x), cy: sy(0), r: 17, class: 'gh' }), mark(s, m))
+    if (L.diag) { const at = when('diag'); const e = add('line', { x1: sx(Math.max(x0, y0)), y1: sy(Math.max(x0, y0)), x2: sx(Math.min(x1, y1)), y2: sy(Math.min(x1, y1)), class: 'gdiag', 'clip-path': 'url(#gc)' }); if (at == null) e.style.display = 'none'; else reveal(e, at) }
+    for (const c of L.curves ?? []) { const at = when(c.key); const e = add('path', { d: c.segs.map(sg => 'M' + sg.map(([x, y]) => `${sx(x).toFixed(1)},${sy(y).toFixed(1)}`).join('L')).join(''), class: 'gcurve gcurve2', 'clip-path': 'url(#gc)', pathLength: 1000 }); if (at == null) e.style.display = 'none'; else draws.push({ el: e, at }) }
     for (const d of v.dots ?? []) reveal(add('circle', { cx: sx(d.x), cy: sy(d.y), r: 7, class: 'gd' }), mark(s, d.at))
     for (const lb of v.labels ?? []) { const e = add('text', { x: sx(lb.x), y: sy(lb.y), class: 'gl' }); e.textContent = lb.text; reveal(e, mark(s, lb.at)) }
     const side = $('div', 'graph-side')

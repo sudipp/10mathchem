@@ -55,3 +55,6 @@ script text is sent.
 | 09-end-behavior | End behavior, turning points, sketching | Day 9, HW #9 |
 | 10-rational-roots | Rational Root Theorem: list, test, divide | Day 10 |
 | 11-conjugate-roots | Conjugate pairs, building polynomials, all roots | Day 11, HW #11 |
+| 12-fundamental-theorem | Counting zeros, finding all zeros | Day 12 |
+| 13-polynomial-inequalities | Critical points, sign charts, special cases | Day 14, HW #14 |
+| 14-inverse-functions | Switch and solve, composition, reflection | Day 15, HW #15 |

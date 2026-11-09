@@ -62,9 +62,9 @@ export function LessonVideo({ unit, index, title }) {
 export function Video({ lesson }) {
   const [loaded, setLoaded] = useState(false)
   return <section className="video-card">
-    <div className="section-label"><Play size={16} /><span className="eyebrow">ANOTHER EXPLANATION · KHAN ACADEMY</span></div>
+    <div className="section-label"><Play size={16} /><span className="eyebrow">ANOTHER EXPLANATION · {(lesson.creator ?? 'Khan Academy').toUpperCase()}</span></div>
     <h3>{lesson.videoTitle}</h3>
-    <p className="muted">Khan Academy · YouTube</p>
+    <p className="muted">{lesson.creator ?? 'Khan Academy'} · YouTube</p>
     <div className="video-frame">
       {loaded ? <iframe title={lesson.videoTitle} src={`https://www.youtube-nocookie.com/embed/${lesson.video}?rel=0`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" /> :
         <Button className="accent" onClick={() => setLoaded(true)}><Play size={18} /> Load video</Button>}

@@ -1,6 +1,6 @@
 // Rational Root Theorem, quadratic formula with exact surds, and conjugate
 // root pairs. Polynomials are fraction arrays in descending order (see poly.js).
-import { P, div, eqQ, evaluate, mul, polyLatex, polyMul, q, qLatex, sub, synthetic, trim } from './poly.js'
+import { P, analyze, div, eqQ, evaluate, longDivide, mul, num, polyLatex, polyMul, q, qLatex, sub, synthetic, trim } from './poly.js'
 
 const igcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a }
 const ilcm = (a, b) => a / igcd(a, b) * b
@@ -50,59 +50,110 @@ export function quadratic(a, b, c) {
   const top = B === 0 ? `\\pm ${rad}` : `${B} \\pm ${rad}`
   const latex = Dn === 1 ? top : B === 0 ? `\\pm\\dfrac{${rad}}{${Dn}}` : `\\dfrac{${top}}{${Dn}}`
   const sym = sign => `(${B} ${sign} ${K}*sqrt(${m})${imag ? '*I' : ''})/${Dn}`
-  return { D, rational: false, imag, latex, sympy: [sym('+'), sym('-')], formula: formula(latex) }
+  const values = imag ? null : [(B + K * Math.sqrt(m)) / Dn, (B - K * Math.sqrt(m)) / Dn]
+  const one = sg => { const t = B === 0 ? `${sg === '-' ? '-' : ''}${rad}` : `${B} ${sg} ${rad}`; return Dn === 1 ? t : B === 0 ? `${sg === '-' ? '-' : ''}\\dfrac{${rad}}{${Dn}}` : `\\dfrac{${t}}{${Dn}}` }
+  const each = imag ? null : [{ latex: one('+'), sympy: sym('+'), value: values[0] }, { latex: one('-'), sympy: sym('-'), value: values[1] }]
+  return { D, rational: false, imag, latex, sympy: [sym('+'), sym('-')], values, each, formula: formula(latex) }
 }
 
+// Square roots of a rational w: ±√w as exact LaTeX/sympy strings and numbers.
+export function sqrtPair(w) {
+  if (w.n === 0) return { rational: q(0) }
+  const neg = w.n < 0, n = Math.abs(w.n), d = w.d
+  const { k, m } = squarefree(n * d)
+  const c = q(k, d)
+  if (m === 1 && !neg) return { rational: c }
+  const coef = c.d === 1 ? (c.n === 1 ? '' : String(c.n)) : null
+  const unit = neg ? (m === 1 ? 'i' : `i\\sqrt{${m}}`) : `\\sqrt{${m}}`
+  const body = coef != null ? `${coef}${unit}` : `\\dfrac{${c.n === 1 ? '' : c.n}${unit}}{${c.d}}`
+  const sym = `(${c.n}/${c.d})*${m === 1 ? '1' : `sqrt(${m})`}${neg ? '*I' : ''}`
+  const v = c.n / c.d * Math.sqrt(m)
+  const each = neg ? null : [{ latex: body, sympy: sym, value: v }, { latex: `-${body}`, sympy: `-${sym}`, value: -v }]
+  return { latex: `\\pm ${body}`, sympy: [sym, `-${sym}`], values: neg ? null : [v, -v], each, imag: neg }
+}
+
+const isBiquadratic = p => p.length === 5 && p[1].n === 0 && p[3].n === 0
+
 // Find rational zeros by testing candidates and dividing them out with synthetic
-// division. With { all: true }, the last quadratic is solved exactly too.
+// division, then finish with the quadratic formula (or w = x^2 for x^4 + bx^2 + c).
+// `given` is a zero to divide out first: k, [n, d], or a conjugate-pair root [a, b, m].
 export function rationalRoots(std, { given = null } = {}) {
   const poly = P(std)
   let k0 = 0
   while (poly.length - k0 > 1 && poly[poly.length - 1 - k0].n === 0) k0++
   const work = poly.slice(0, poly.length - k0)
   const cand = candidates(work)
-  const zeros = []
+  const zeros = [], others = []
   const addZero = x => { const z = zeros.find(w => eqQ(w.x, x)); if (z) z.m++; else zeros.push({ x, m: 1 }) }
   if (k0) zeros.push({ x: q(0), m: k0 })
   const rounds = []
-  let cur = work
-  if (given != null) {
+  let cur = work, last = null
+  if (given != null && Array.isArray(given) && given.length === 3) {
+    const { poly: pq } = pairQuadratic(given)
+    const ld = longDivide(cur, pq)
+    rounds.push({ poly: cur, given: true, pair: given, pq, ld, tried: [] })
+    others.push({ latex: [rootLatex(given), rootLatex(conjugate(given))].join(',\\ '), sympy: [rootSympy(given), rootSympy(conjugate(given))], values: given[2] === -1 ? null : [given[0] + given[1] * Math.sqrt(given[2]), given[0] - given[1] * Math.sqrt(given[2])] })
+    cur = ld.quotient
+  } else if (given != null) {
     const x = q(...(Array.isArray(given) ? given : [given, 1]))
     const syn = synthetic(cur, x)
     rounds.push({ poly: cur, given: true, tried: [], found: x, syn })
     addZero(x)
     cur = syn.quotient
+    last = x
   }
-  let last = given != null ? q(...(Array.isArray(given) ? given : [given, 1])) : null
-  while (cur.length - 1 > 2) {
+  while (cur.length - 1 > 2 && !isBiquadratic(cur)) {
     const order = [...(last ? [last] : []), ...cand.list.flatMap(v => [v, mul(v, q(-1))])].filter((v, i, arr) => arr.findIndex(w => eqQ(w, v)) === i)
-    const tried = []
+    let tried = []
     let found = null
     for (const x of order) {
       const val = evaluate(cur, x)
       tried.push({ x, val })
       if (val.n === 0) { found = x; break }
     }
-    if (!found) { rounds.push({ poly: cur, tried, found: null }); return { poly, k0, work, cand, rounds, zeros, rest: cur } }
+    let graph = null
+    if (found && tried.length > 6) {
+      const approx = analyze(cur).zeros
+      const best = order.filter(x => evaluate(cur, x).n === 0).map(x => ({ x, dist: Math.min(...approx.map(z => Math.abs(z - num(x)))) })).sort((u, v) => u.dist - v.dist)[0]
+      if (best && Number.isFinite(best.dist)) {
+        found = best.x
+        graph = approx.reduce((a, z) => Math.abs(z - num(found)) < Math.abs(a - num(found)) ? z : a)
+        tried = [{ x: found, val: q(0) }]
+      }
+    }
+    if (!found) { rounds.push({ poly: cur, tried, found: null }); return { poly, k0, work, cand, rounds, zeros, others, rest: cur } }
     const syn = synthetic(cur, found)
-    rounds.push({ poly: cur, tried, found, syn })
+    rounds.push({ poly: cur, tried, found, syn, graph })
     addZero(found)
     last = found
     cur = syn.quotient
   }
-  let quad = null, linear = null
-  if (cur.length - 1 === 2) {
+  let quad = null, linear = null, biquad = null
+  if (isBiquadratic(cur)) {
+    const { poly: ip } = integerize(cur)
+    const [a, , b, , c] = ip.map(x => x.n)
+    const w = quadratic(a, b, c)
+    biquad = { from: cur, poly: ip, a, b, c, w, pairs: [] }
+    if (w.rational) {
+      const ws = w.double ? [w.roots[0], w.roots[0]] : w.roots
+      ws.forEach(wv => {
+        const s = sqrtPair(wv)
+        biquad.pairs.push({ w: wv, ...s })
+        if (s.rational) { addZero(s.rational); if (s.rational.n !== 0) addZero(mul(s.rational, q(-1))) } else others.push(s)
+      })
+    } else return { poly, k0, work, cand, rounds, zeros, others, biquad, rest: cur }
+  } else if (cur.length - 1 === 2) {
     const { poly: ip, factor } = integerize(cur)
     const [a, b, c] = ip.map(x => x.n)
     quad = { from: cur, poly: ip, factor, a, b, c, ...quadratic(a, b, c) }
     if (quad.rational) quad.roots.forEach(x => { addZero(x); if (quad.double) addZero(x) })
+    else others.push({ latex: quad.latex, sympy: quad.sympy, values: quad.values, each: quad.each })
   } else if (cur.length - 1 === 1) {
     linear = { from: cur, x: div(mul(cur[1], q(-1)), cur[0]) }
     addZero(linear.x)
   }
-  return { poly, k0, work, cand, rounds, zeros, quad, linear, rest: null }
+  return { poly, k0, work, cand, rounds, zeros, others, quad, linear, biquad, rest: null }
 }
-
 export const zerosLatex = zeros => zeros.map(z => `${qLatex(z.x)}${z.m > 1 ? `\\text{ mult. }${z.m}` : ''}`).join(',\\ ')
 export const qSympy = x => x.d === 1 ? String(x.n) : `${x.n}/${x.d}`
 

@@ -49,7 +49,7 @@ function syntheticCells(num, k, v = 'x') {
 }
 
 // Curve samples in data coordinates, plus numerically found zeros and extrema.
-function graphData(num, win = [-8, 8, -8, 8]) {
+function graphData(num, win = [-8, 8, -8, 8], extra = [], diag = false) {
   const p = P(num), [x0, x1, y0, y1] = win, pad = (y1 - y0) * 0.6
   const pts = []
   for (let i = 0; i <= 700; i++) {
@@ -57,14 +57,23 @@ function graphData(num, win = [-8, 8, -8, 8]) {
     pts.push([+x.toFixed(4), +Math.max(y0 - pad, Math.min(y1 + pad, evalNum(p, x))).toFixed(4)])
   }
   const { zeros, extrema } = analyze(p)
-  return { type: 'graph', win, pts, zeros: zeros.map(z => +z.toFixed(4)), extrema: extrema.map(e => ({ ...e, x: +e.x.toFixed(4), y: +e.y.toFixed(4) })), tex: polyLatex(p) }
+  const curves = extra.map(({ fn, key }) => {
+    const segs = [[]]
+    for (let i = 0; i <= 700; i++) {
+      const x = x0 + (x1 - x0) * i / 700, y = fn(x)
+      if (!Number.isFinite(y) || y < y0 - pad || y > y1 + pad) { if (segs.at(-1).length) segs.push([]); continue }
+      segs.at(-1).push([+x.toFixed(4), +y.toFixed(4)])
+    }
+    return { key, segs: segs.filter(s => s.length > 1) }
+  })
+  return { type: 'graph', win, pts, curves, diag, zeros: zeros.map(z => +z.toFixed(4)), extrema: extrema.map(e => ({ ...e, x: +e.x.toFixed(4), y: +e.y.toFixed(4) })), tex: polyLatex(p) }
 }
 
 const layouts = {}
 for (const [name, l] of Object.entries(spec.layouts ?? {})) {
   if (l.type === 'longdiv') layouts[name] = { type: 'longdiv', ...longDivCells(l.num, l.den) }
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }
-  if (l.type === 'graph') layouts[name] = graphData(l.num, l.window)
+  if (l.type === 'graph') layouts[name] = graphData(l.num, l.window, l.extra, l.diag)
 }
 const out = new URL(`./build/${id}/`, import.meta.url)
 mkdirSync(out, { recursive: true })

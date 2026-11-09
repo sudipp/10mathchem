@@ -1,7 +1,8 @@
 // Unit 4: Polynomial Functions. Lessons, homework, videos, and the day plan.
 import { StandardForm } from './visuals.jsx'
-import { FunctionMachine, Graph, LongDivisionView, MathLines, SyntheticView } from '../../Visuals.jsx'
-import { P, longDivide, synthetic } from '../../poly.js'
+import { FnGraph, FunctionMachine, Graph, LongDivisionView, MathLines, SignChart, SyntheticView } from '../../Visuals.jsx'
+import { P, longDivide, qLatex, synthetic } from '../../poly.js'
+import { inequality } from '../../extra.js'
 import { HOMEWORK } from './homework.js'
 import VIDEOS from './videos.json'
 
@@ -10,6 +11,9 @@ const R = String.raw
 const LD = longDivide(P([2, 13, -7]), P([1, 6]))
 const SYN = synthetic([1, -3, -7, 6], 4)
 const RRT = synthetic([1, -4, -11, 30], 2)
+const FTA1 = synthetic([1, 3, -8, -22, -24], 3)
+const FTA2 = synthetic([1, 6, 10, 8], -4)
+const IQ = inequality({ lhs: [2, -1, -32, 0], rhs: [-16], rel: '>=' })
 
 const LESSONS = [
   {
@@ -273,12 +277,95 @@ const LESSONS = [
     options: [R`$-4 + \sqrt{3}$`, R`$4 + \sqrt{3}$`, R`$4 - i\sqrt{3}$`], correct: 1,
     explanation: R`Flip only the sign of the $\sqrt{\ }$ part: the conjugate of $4 - \sqrt3$ is $4 + \sqrt3$. The real part $4$ stays the same.`,
     video: 'BZxZ_eEuJBM', videoTitle: 'Complex conjugates',
-    more: [['9NhTVXhfqzU', 'Factoring polynomials using complex numbers', 'Khan Academy'], ['d8-LO6FCna0', 'Fundamental theorem of algebra', 'Khan Academy'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
+    more: [['9NhTVXhfqzU', 'Factoring polynomials using complex numbers', 'Khan Academy'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
     watch: 'Watch what happens to the i when you multiply a number by its conjugate.',
     homework: 'hw11',
   },
+  {
+    title: 'The Fundamental Theorem of Algebra', short: 'Fundamental Theorem', tag: 'Degree n means exactly n zeros',
+    intro: R`How many zeros should you be looking for? The **Fundamental Theorem of Algebra** answers that: a polynomial of degree $n$ has exactly $n$ complex zeros. Then you find them with everything you already know.`,
+    points: [
+      ['The theorem', R`If $f(x)$ has degree $n > 0$, then $f(x) = 0$ has at least one complex root. Divide it out and repeat: degree $n$ means **exactly $n$ complex zeros**, counting multiplicity. (Real numbers count as complex numbers too.)`],
+      ['Counting real and imaginary zeros', R`Imaginary zeros come in conjugate pairs, so the number of **real** zeros is $n,\ n - 2,\ n - 4, \dots$ For degree 5: 5, 3, or 1 real zeros, and 0, 2, or 4 imaginary ones.`],
+      ['Finding all of them', R`List the possible rational zeros $\tfrac{p}{q}$, test and divide (or divide by a **given** zero first: a complex given zero brings its conjugate, so divide by their quadratic). Finish with factoring, the quadratic formula, or $w = x^2$ for $ax^4 + bx^2 + c$.`],
+    ],
+    steps: [
+      R`Find all zeros of $f(x) = x^4 + 3x^3 - 8x^2 - 22x - 24$ (Day 12, Example 1). Degree $4$, so there are exactly $4$ zeros.`,
+      R`Possible rational zeros: $\pm1, \pm2, \pm3, \pm4, \pm6, \pm8, \pm12, \pm24$.`,
+      R`$f(3) = 0$ ✓. Synthetic division by $(x - 3)$ leaves $x^3 + 6x^2 + 10x + 8$.`,
+      R`Test the cubic: $x = -4$ works. Divide again: $x^2 + 2x + 2$.`,
+      R`Quadratic formula: $x = \dfrac{-2 \pm \sqrt{4 - 8}}{2} = -1 \pm i$.`,
+      R`All four zeros: $3,\ -4,\ -1 + i,\ -1 - i$. The graph shows only the 2 real ones ✓.`,
+    ],
+    visual: step => step < 2
+      ? <MathLines step={step} lines={[R`\text{degree } 4 \Rightarrow 4 \text{ zeros}`, R`\pm1,\ \pm2,\ \pm3,\ \pm4,\ \pm6,\ \pm8,\ \pm12,\ \pm24`]} />
+      : step === 2 ? <SyntheticView r={FTA1} shown={99} />
+        : step === 3 ? <SyntheticView r={FTA2} shown={99} />
+          : step === 4 ? <MathLines step={1} lines={[R`x^2 + 2x + 2 = 0`, R`x = -1 \pm i`]} />
+            : <Graph poly={P([1, 3, -8, -22, -24])} window={[-5.5, 4.5, -70, 50]} show={{ zeros: true, extrema: false }} label="Graph of f(x) = x⁴ + 3x³ − 8x² − 22x − 24" />,
+    question: R`How many complex zeros does $f(x) = x^5 - 2x + 7$ have?`,
+    options: ['1', '3', '5'], correct: 2,
+    explanation: R`The degree is $5$, so there are exactly $5$ complex zeros (counting multiplicity). Some may be real; the imaginary ones come in pairs.`,
+    video: 'd8-LO6FCna0', videoTitle: 'Fundamental theorem of algebra',
+    more: [['zNxEVaRbdus', 'Fundamental theorem of algebra for quadratic', 'Khan Academy'], ['Iaq7z7reznM', 'Finding all zeros using the rational zero theorem', 'The Organic Chemistry Tutor']],
+    watch: 'Listen for why imaginary zeros always come in pairs.',
+    homework: 'hw12',
+  },
+  {
+    title: 'Polynomial inequalities', short: 'Inequalities', tag: 'Zeros split the number line',
+    intro: R`To solve an inequality like $2x^3 - x^2 - 32x \ge -16$, find where the polynomial is zero. Those **critical points** split the number line into intervals, and the sign stays the same inside each one.`,
+    points: [
+      ['The four steps', R`1) Get $0$ on one side and find the **real** zeros (critical points). 2) Plot them on a number line: **open** circles for $<, >$, **closed** for $\le, \ge$. 3) Test one $x$-value in each interval to get its sign. 4) Write the answer in **interval notation**: $(\ )$ for open circles and $\pm\infty$, $[\ ]$ for closed.`],
+      ['Even multiplicity', R`At a zero with even multiplicity, like $(x - 2)^2$, the graph **bounces**: the sign is the same on both sides. That can leave a single point, like $\{8\}$, as part of the answer for $\le$ or $\ge$.`],
+      ['Special cases', R`$(x + 3)^2 > 0$ is true everywhere except $-3$: $(-\infty, -3) \cup (-3, \infty)$. $(x + 2)^2 \le 0$ only at $x = -2$: $\{-2\}$. $x^2 + 5x + 7 < 0$ has no real zeros and is always positive: no solution, $\varnothing$.`],
+    ],
+    steps: [
+      R`Solve $2x^3 - x^2 - 32x \ge -16$ (Day 14, Example 1B). First get $0$ on one side: $2x^3 - x^2 - 32x + 16 \ge 0$.`,
+      R`Factor by **grouping**: $x^2(2x - 1) - 16(2x - 1) = (x^2 - 16)(2x - 1) = (x - 4)(x + 4)(2x - 1)$.`,
+      R`Critical points: $-4,\ \tfrac12,\ 4$. The inequality is $\ge$, so use **closed** circles.`,
+      R`Test each interval: ${IQ.tests.map((t, i) => `$f(${qLatex(t)}) = ${qLatex(IQ.vals[i])}$`).join(', ')}. Signs: ${IQ.signs.map(s => s > 0 ? '+' : '−').join(', ')}.`,
+      R`We want $\ge 0$: the positive intervals plus the zeros. **Answer:** $${IQ.answer}$.`,
+    ],
+    visual: step => step < 2
+      ? <MathLines step={step} lines={[R`2x^3 - x^2 - 32x + 16 \ge 0`, R`(x - 4)(x + 4)(2x - 1) \ge 0`]} />
+      : <SignChart pts={IQ.pts} signs={step >= 3 ? IQ.signs : IQ.signs.map(() => 0)} atoms={IQ.atoms} showSolution={step >= 4} />,
+    question: R`Solve $(x - 1)(x + 2) < 0$.`,
+    options: [R`$(-2,\ 1)$`, R`$(-\infty, -2) \cup (1, \infty)$`, R`$[-2,\ 1]$`], correct: 0,
+    explanation: R`The critical points are $-2$ and $1$ (open circles, since it is $<$). Testing $x = 0$ gives $(-1)(2) = -2 < 0$, so the middle interval works: $(-2, 1)$.`,
+    video: 'Fd5ys4PQ-aM', videoTitle: 'Solving polynomial inequalities', creator: 'The Organic Chemistry Tutor',
+    more: [['idBbsanc8BQ', 'Solve a polynomial inequality using a table', 'MySecretMathTutor']],
+    watch: 'Notice how he tests one number in each interval before writing the answer.',
+    homework: 'hw14',
+  },
+  {
+    title: 'Inverse functions', short: 'Inverse functions', tag: 'Undo what a function does',
+    intro: R`An **inverse function** $f^{-1}$ undoes $f$: if $f$ sends $2$ to $5$, then $f^{-1}$ sends $5$ back to $2$. Every point $(x, y)$ becomes $(y, x)$, so the graph reflects over the line $y = x$.`,
+    points: [
+      ['Finding the inverse', R`**Switch $x$ and $y$, then solve for $y$.** For $f(x) = \dfrac{5 - 3x}{2}$: $x = \dfrac{5 - 3y}{2} \Rightarrow 2x = 5 - 3y \Rightarrow f^{-1}(x) = \dfrac{5 - 2x}{3}$. Undo roots with powers: $x = \sqrt[3]{y + 1} \Rightarrow x^3 = y + 1$.`],
+      ['Checking with composition', R`$f$ and $g$ are inverses **only if** $f(g(x)) = x$ **and** $g(f(x)) = x$. So $(f \circ f^{-1})(652) = 652$ with no arithmetic. One counterexample (like $g(f(0)) \ne 0$) proves they are **not** inverses.`],
+      ['Graphs and the horizontal line test', R`The graph of $f^{-1}$ is the reflection of $f$ over $y = x$. The domain of $f$ becomes the range of $f^{-1}$. If a **horizontal line** hits $f$ twice (like $y = x^2$), the inverse is not a function.`],
+    ],
+    steps: [
+      R`Find the inverse of $f(x) = \dfrac{5 - 3x}{2}$ (Day 15, Example 2C). Write it as $y = \dfrac{5 - 3x}{2}$.`,
+      R`**Switch** $x$ and $y$: $x = \dfrac{5 - 3y}{2}$.`,
+      R`**Solve for $y$:** multiply by $2$: $2x = 5 - 3y$, so $3y = 5 - 2x$.`,
+      R`$f^{-1}(x) = \dfrac{5 - 2x}{3}$.`,
+      R`**Check:** $f(f^{-1}(x)) = \dfrac{5 - 3\cdot\frac{5 - 2x}{3}}{2} = \dfrac{5 - 5 + 2x}{2} = x$ ✓.`,
+      R`**Graph:** $f$ and $f^{-1}$ are mirror images over the line $y = x$.`,
+    ],
+    visual: step => step < 5
+      ? <MathLines step={step} lines={[R`y = \dfrac{5 - 3x}{2}`, R`x = \dfrac{5 - 3y}{2}`, R`2x = 5 - 3y \;\Rightarrow\; 3y = 5 - 2x`, R`f^{-1}(x) = \dfrac{5 - 2x}{3}`, R`f\big(f^{-1}(x)\big) = x\ \checkmark`]} />
+      : <FnGraph curves={[{ f: x => (5 - 3 * x) / 2, label: 'f(x)' }, { f: x => (5 - 2 * x) / 3, label: 'f⁻¹(x)' }]} window={[-5, 5, -5, 5]} />,
+    question: R`What is the inverse of $f(x) = 2x + 6$?`,
+    options: [R`$f^{-1}(x) = \tfrac{x}{2} - 3$`, R`$f^{-1}(x) = 2x - 6$`, R`$f^{-1}(x) = \dfrac{1}{2x + 6}$`], correct: 0,
+    explanation: R`Switch: $x = 2y + 6$. Solve: $2y = x - 6$, so $y = \tfrac{x}{2} - 3$. (Note: $f^{-1}$ is not the same as $\tfrac{1}{f}$.)`,
+    video: 'W84lObmOp8M', videoTitle: 'Introduction to function inverses',
+    more: [['8GEGnSEJA2s', 'Verifying inverse functions by composition', 'Khan Academy'], ['JBqYTuA_WgE', 'Finding inverse functions: radical', 'Khan Academy'], ['mPQCHmOxGlY', 'Function invertibility', 'Khan Academy']],
+    watch: 'Watch how every input and output trade places.',
+    homework: 'hw15',
+  },
 ]
-const HW_FOR = { 0: 'hw1', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw2', 7: 'hw8', 8: 'hw9', 9: 'hw10', 10: 'hw11' }
+const HW_FOR = { 0: 'hw1', 1: 'hw3', 2: 'hw4', 3: 'hw5', 4: 'hw7', 5: 'hw7', 6: 'hw2', 7: 'hw8', 8: 'hw9', 9: 'hw10', 10: 'hw11', 11: 'hw12', 12: 'hw14', 13: 'hw15' }
 
 // Bookshelf in learning order: lessons in class order, and within each
 // lesson the introduction first, then the main skill, then extensions.
@@ -293,7 +380,10 @@ const SHELF = [
   [['hlFhHN67ICE', 'Solving equations by graphing: graphing calculator'], ['RxA8YMRF4M4', 'Find the zeros of a function using the TI-83/84 calculator', 'MySecretMathTutor'], ['bNQY0z76M5A', 'Solving quadratic equations by completing the square']],
   [['tZKzaF28sOk', 'Polynomial end behavior'], ['03Y76Q7tlSw', 'Polynomial end behavior example'], ['H-N4QpKJQoY', 'Solving polynomial functions using their graphs']],
   [['Y9fwl_qocJc', 'Applying the rational root theorem'], ['x9lb_frpkH0', 'Finding zeros of polynomials (1 of 2)'], ['Iaq7z7reznM', 'Finding all zeros using the rational zero theorem', 'The Organic Chemistry Tutor']],
-  [['BZxZ_eEuJBM', 'Complex conjugates'], ['9NhTVXhfqzU', 'Factoring polynomials using complex numbers'], ['d8-LO6FCna0', 'Fundamental theorem of algebra'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
+  [['BZxZ_eEuJBM', 'Complex conjugates'], ['9NhTVXhfqzU', 'Factoring polynomials using complex numbers'], ['B9jXJ7uYYCM', 'Complex Conjugate Theorem: find all zeros', 'Math Tutorials']],
+  [['d8-LO6FCna0', 'Fundamental theorem of algebra'], ['zNxEVaRbdus', 'Fundamental theorem of algebra for quadratic']],
+  [['Fd5ys4PQ-aM', 'Solving polynomial inequalities', 'The Organic Chemistry Tutor'], ['idBbsanc8BQ', 'Solve a polynomial inequality using a table', 'MySecretMathTutor']],
+  [['W84lObmOp8M', 'Introduction to function inverses'], ['8GEGnSEJA2s', 'Verifying inverse functions by composition'], ['JBqYTuA_WgE', 'Finding inverse functions: radical'], ['mPQCHmOxGlY', 'Function invertibility']],
 ]
 
 const unit4 = {
@@ -302,14 +392,14 @@ const unit4 = {
   title: 'Polynomial Functions',
   short: 'Polynomials',
   course: 'Accelerated Math II/III',
-  summary: 'Standard form, zeros, long and synthetic division, factoring, solving equations, function operations, graphs, and rational, irrational & complex roots.',
+  summary: 'Standard form, zeros, long and synthetic division, factoring, solving equations, function operations, graphs, rational, irrational & complex roots, the Fundamental Theorem of Algebra, inequalities, and inverse functions.',
   hero: { title: 'Big equations.', em: 'Small steps.', text: 'Factor it, divide it, solve it.', sub: 'Every polynomial is just a few simple moves, one after another.', side: 'EVERY BIG PROBLEM IS A FEW SMALL STEPS.' },
   path: { title: 'From terms to', em: 'roots.' },
   lessons: LESSONS,
   homework: HOMEWORK,
   hwFor: HW_FOR,
   shelf: SHELF,
-  videoIds: ['01-polynomial-basics', '02-zeros-factors', '03-long-division', '04-synthetic-division', '05-factoring', '06-solving', '07-function-operations', '08-solving-by-graphing', '09-end-behavior', '10-rational-roots', '11-conjugate-roots'],
+  videoIds: ['01-polynomial-basics', '02-zeros-factors', '03-long-division', '04-synthetic-division', '05-factoring', '06-solving', '07-function-operations', '08-solving-by-graphing', '09-end-behavior', '10-rational-roots', '11-conjugate-roots', '12-fundamental-theorem', '13-polynomial-inequalities', '14-inverse-functions'],
   videos: VIDEOS,
   dayPlan: {
     title: 'Polynomials in a day',
@@ -319,6 +409,7 @@ const unit4 = {
       { name: 'Session 3', title: 'Factor, solve, combine', lessons: [4, 5, 6], hw: ['hw7', 'hw2', 'hw6'] },
       { name: 'Session 4', title: 'Graphs and end behavior', lessons: [7, 8], hw: ['hw8', 'hw9'] },
       { name: 'Session 5', title: 'Finding every root', lessons: [9, 10], hw: ['hw10', 'hw11'] },
+      { name: 'Session 6', title: 'Counting zeros, inequalities, inverses', lessons: [11, 12, 13], hw: ['hw12', 'hw13', 'hw14', 'hw15'] },
     ],
   },
 }

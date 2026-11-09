@@ -1,6 +1,7 @@
-import { Graph, LongDivisionView, SyntheticView } from './Visuals.jsx'
+import { FnGraph, Graph, LongDivisionView, SignChart, SyntheticView } from './Visuals.jsx'
 import { P, analyze, endBehavior, evaluate, fromFactors, fromZeros, isZeroPoly, longDivide, polyLatex, polyMul, q, qLatex, synthetic, tenth, testPoints } from './poly.js'
-import { buildFromRoots, candidatesLatex, conjugate, isPaired, rationalRoots, rootKind, rootLatex, zerosLatex } from './roots.js'
+import { buildFromRoots, candidates, candidatesLatex, conjugate, isPaired, pairQuadratic, rationalRoots, rootKind, rootLatex, zerosLatex } from './roots.js'
+import { REL, factoredForm, inequality, parabola } from './extra.js'
 import { classify, degreeName, funcOp, product, resultLatex, termsName, writtenLatex } from './funcs.js'
 
 const R = String.raw
@@ -132,7 +133,79 @@ export function solve(p) {
   if (p.type === 'classify') return classifySolution(p, pre)
   if (p.type === 'product') return productSolution(p, pre)
   if (p.type === 'funcop') return funcOpSolution(p, pre)
+  if (p.type === 'fta') return ftaSolution(p, pre)
+  if (p.type === 'ineq') return ineqSolution(p, pre)
+  if (p.type === 'parabola') return parabolaSolution(p, pre)
+  if (p.graph) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <FnGraph {...p.graph} /> : null }
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
+}
+
+const orList = ns => ns.length === 1 ? `${ns[0]}` : `${ns.slice(0, -1).join(', ')}${ns.length > 2 ? ',' : ''} or ${ns.at(-1)}`
+function ftaCounts(n) {
+  const real = []
+  for (let k = n; k >= 0; k -= 2) real.push(k)
+  return { real, imag: real.map(k => n - k) }
+}
+
+function ftaSolution(p, pre) {
+  const poly = P(p.std), n = poly.length - 1
+  const { real, imag } = ftaCounts(n)
+  const { ps, qs, list } = candidates(poly)
+  const possible = candidatesLatex(list)
+  const steps = [
+    R`**Number of complex zeros:** the degree is $${n}$, so by the **Fundamental Theorem of Algebra** there are exactly $${n}$ complex zeros (counting multiplicity).`,
+    R`**Possible real zeros:** imaginary zeros come in conjugate pairs, so take away $2$ at a time: ${orList(real)}.`,
+    R`**Possible imaginary zeros:** whatever is left of the $${n}$: ${orList([...imag].reverse())}.`,
+    R`**Possible rational zeros** $\tfrac{p}{q}$: $p$ divides $${qLatex(poly[n])}$ ($${pmList(ps)}$), $q$ divides $${qLatex(poly[0])}$ ($${pmList(qs)}$): ${possible.split(',\\ ').map(s => `$${s}$`).join(', ')}.`,
+  ]
+  const items = possible.split(',\\ ')
+  const rows = []
+  for (let i = 0; i < items.length; i += 6) rows.push(items.slice(i, i + 6).join(',\\ '))
+  return {
+    prompt: `${pre}f(x) = ${polyLatex(poly)}`, steps,
+    answer: R`\begin{array}{l} \#\text{ complex zeros: } ${n} \\ \#\text{ real zeros: } \text{${orList(real)}} \\ \#\text{ imaginary zeros: } \text{${orList([...imag].reverse())}} \\ \text{Possible rational: } ${rows.join(R`, \\ \qquad `)} \end{array}`,
+  }
+}
+
+function ineqSolution(p, pre) {
+  const s = inequality(p)
+  const rel = REL[p.rel]
+  const steps = []
+  if (s.moved) steps.push(R`**Get $0$ on one side:** $${polyLatex(s.poly)} ${rel} 0$.`)
+  const zl = s.pts.map(z => `$${z.latex}$${z.m > 1 ? ` (multiplicity ${z.m})` : ''}`).join(', ')
+  if (s.factored) steps.push(R`**Critical points:** set each factor equal to $0$: ${zl}.`)
+  else if (!s.pts.length) steps.push(R`**Critical points:** $${polyLatex(s.poly)} = 0$ has **no real zeros**${s.rr?.quad ? ` (the discriminant is $${s.rr.quad.D} < 0$)` : ''}, so the graph never crosses the x-axis.`)
+  else if (s.allRational) {
+    const zs = s.rr.zeros.map(z => ({ q: z.x, m: z.m }))
+    steps.push(R`**Critical points:** factor ${s.poly.length > 3 ? '(Rational Root Theorem + synthetic division)' : ''}: $${polyLatex(s.poly)} = ${factoredForm(s.poly, zs)}$, so the real zeros are ${zl}.`)
+  } else steps.push(R`**Critical points:** solve $${polyLatex(s.poly)} = 0$${s.rr?.biquad ? ' (quadratic form: let $w = x^2$)' : ''}. The real zeros are ${zl}.`)
+  const chartStep = steps.length + 1
+  steps.push(s.pts.length
+    ? R`**Number line:** plot the critical points with ${s.strict ? '**open** circles (the inequality is strict, so the zeros are not included)' : '**closed** circles (or-equal-to, so the zeros are included)'}.`
+    : R`**Number line:** there are no critical points, so the whole line is one interval.`)
+  const table = R`\begin{array}{c|${'c'.repeat(s.tests.length)}} x & ${s.tests.map(t => qLatex(t)).join(' & ')} \\ \hline f(x) & ${s.vals.map(v => qLatex(v)).join(' & ')} \\ \text{sign} & ${s.signs.map(g => g > 0 ? '+' : '-').join(' & ')} \end{array}`
+  steps.push(R`**Test a value in each interval:** $${table}$`)
+  const even = s.pts.filter(z => z.m % 2 === 0)
+  if (even.length) steps.push(R`At ${even.map(z => `$${z.latex}$`).join(', ')} the multiplicity is even, so the graph **bounces** and the sign does **not** change there.`)
+  steps.push(R`We want $f(x) ${rel} 0$: the **${s.want > 0 ? 'positive' : 'negative'}** intervals${s.strict ? '' : ', plus the zeros themselves'}. **Answer:** $${s.answer}$.`)
+  return {
+    prompt: `${pre}${s.promptLhs} ${rel} ${s.promptRhs}`, steps,
+    visual: n => n >= chartStep ? <SignChart pts={s.pts} signs={n > chartStep ? s.signs : s.signs.map(() => 0)} atoms={s.atoms} showSolution={n >= steps.length} /> : null,
+    answer: s.answer,
+  }
+}
+
+function parabolaSolution(p, pre) {
+  const r = parabola(p)
+  const pt = ([x, y]) => `(${qLatex(x)},\\ ${qLatex(y)})`
+  const steps = []
+  if (r.dir) steps.push(R`**Vertex:** halfway between the focus and the directrix. Focus $${pt(r.F)}$, directrix $${r.dir.y != null ? 'y' : 'x'} = ${qLatex(q(...(Array.isArray(r.dir.y ?? r.dir.x) ? (r.dir.y ?? r.dir.x) : [r.dir.y ?? r.dir.x, 1])))}$, so the vertex is $${pt(r.V)}$.`)
+  steps.push(R`The vertex $${pt(r.V)}$ and focus $${pt(r.F)}$ share the same **${r.vertical ? 'x' : 'y'}**-value, so the parabola opens **${r.opens}** (${r.vertical ? 'a vertical' : 'a horizontal'} parabola: $${r.vertical ? 'y = a(x - h)^2 + k' : 'x = a(y - k)^2 + h'}$).`)
+  steps.push(R`$p$ = the directed distance from the vertex to the focus: $p = ${qLatex(r.p)}$.`)
+  steps.push(R`$a = \dfrac{1}{4p} = \dfrac{1}{4(${qLatex(r.p)})} = ${qLatex(r.a)}$.`)
+  steps.push(R`Plug in $h$, $k$, and $a$: $${r.eq}$.`)
+  const prompt = p.vertex ? R`\text{Vertex: } ${pt(p.vertex.map(v => q(...(Array.isArray(v) ? v : [v, 1]))))},\ \text{Focus: } ${pt(r.F)}` : R`\text{Focus: } ${pt(r.F)},\ \text{Directrix: } ${r.dir.y != null ? 'y' : 'x'} = ${qLatex(q(...(Array.isArray(r.dir.y ?? r.dir.x) ? (r.dir.y ?? r.dir.x) : [r.dir.y ?? r.dir.x, 1])))}`
+  return { prompt: `${pre}${prompt}`, steps, answer: r.eq }
 }
 
 function classifySolution(p, pre) {
@@ -178,8 +251,9 @@ const xPow = k => k === 1 ? 'x' : `x^{${k}}`
 function rrtSolution(p, pre) {
   const r = rationalRoots(p.std, { given: p.given })
   const fx = p.eq ? `${polyLatex(r.poly)} = 0` : `f(x) = ${polyLatex(r.poly)}`
-  const givenQ = p.given != null ? q(...(Array.isArray(p.given) ? p.given : [p.given, 1])) : null
-  const prompt = `${pre}${fx}${givenQ ? `;\\ \\text{one zero is } ${qLatex(givenQ)}` : ''}`
+  const givenPair = Array.isArray(p.given) && p.given.length === 3
+  const givenQ = p.given != null && !givenPair ? q(...(Array.isArray(p.given) ? p.given : [p.given, 1])) : null
+  const prompt = `${pre}${fx}${givenQ ? `;\\ \\text{one zero is } ${qLatex(givenQ)}` : givenPair ? `;\\ \\text{one zero is } ${rootLatex(p.given)}` : ''}`
   const possible = candidatesLatex(r.cand.list, r.k0 > 0)
   const items = possible.split(',\\ ')
   const rows = []
@@ -192,6 +266,11 @@ function rrtSolution(p, pre) {
   r.rounds.forEach((round, i) => {
     const name = i === 0 && !r.k0 ? 'f' : 'g'
     const g = R`$${name}(x) = ${polyLatex(round.poly)}$`
+    if (round.pair) {
+      steps.push(R`**Use the given zero** $${rootLatex(round.pair)}$. It is ${rootKind(round.pair)}, so its conjugate $${rootLatex(conjugate(round.pair))}$ is a zero too. Together they give the factor $${pairQuadratic(round.pair).latex}$. Divide by it with **long division**: the remainder is $0$ ✓ and the quotient is $${polyLatex(round.ld.quotient)}$.`)
+      visuals[steps.length] = <LongDivisionView r={round.ld} shown={99} />
+      return
+    }
     if (round.given) {
       steps.push(R`**Use the given zero** $x = ${qLatex(round.found)}$: divide by $(${linFactor(round.found)})$ with **synthetic division**. The remainder is $0$ ✓ and the quotient is $${polyLatex(round.syn.quotient)}$.`)
     } else {
@@ -202,7 +281,10 @@ function rrtSolution(p, pre) {
         steps.push(R`${again}**Test every candidate** in ${g}: ${tests}. None of them gives $0$, so there are **no ${r.zeros.length ? 'more ' : ''}rational ${p.eq ? 'roots' : 'zeros'}**.`)
         return
       }
-      steps.push(R`${again}**Test candidates** in ${g}: ${tests}. So $x = ${qLatex(round.found)}$ is a zero. Divide by $(${linFactor(round.found)})$ with **synthetic division**: the quotient is $${polyLatex(round.syn.quotient)}$.`)
+      const guide = round.graph != null ? R`There are many candidates, so **use a graph** to choose: $${name}(x)$ crosses the x-axis near $x \approx ${tenth(round.graph)}$, so try $${qLatex(round.found)}$: ` : ''
+      steps.push(guide
+        ? R`${guide}$${name}(${qLatex(round.found)}) = 0$ ✓. Divide by $(${linFactor(round.found)})$ with **synthetic division**: the quotient is $${polyLatex(round.syn.quotient)}$.`
+        : R`${again}**Test candidates** in ${g}: ${tests}. So $x = ${qLatex(round.found)}$ is a zero. Divide by $(${linFactor(round.found)})$ with **synthetic division**: the quotient is $${polyLatex(round.syn.quotient)}$.`)
     }
     visuals[steps.length] = <SyntheticView r={round.syn} shown={99} />
   })
@@ -219,13 +301,20 @@ function rrtSolution(p, pre) {
     }
   } else if (r.linear) {
     steps.push(R`What is left is linear: $${polyLatex(r.linear.from)} = 0 \Rightarrow x = ${qLatex(r.linear.x)}$.`)
+  } else if (r.biquad) {
+    const B = r.biquad
+    const wPoly = [q(B.a), q(B.b), q(B.c)]
+    const wRoots = B.w.rational ? (B.w.double ? [B.w.roots[0]] : B.w.roots) : []
+    steps.push(R`${r.rounds.length ? R`The quotient $${polyLatex(B.from)}$` : R`$${polyLatex(B.from)}$`} has only $x^4$, $x^2$, and constant terms: **quadratic form**. Let $w = x^2$: $${polyLatex(wPoly, 'w')} = 0$, so $w = ${wRoots.map(qLatex).join(R`\text{ or }`)}$.`)
+    steps.push(R`Undo $w = x^2$ with square roots (a negative $w$ gives imaginary roots): ${B.pairs.map(pr => `$x^2 = ${qLatex(pr.w)} \\Rightarrow x = ${pr.rational ? (pr.rational.n === 0 ? '0' : `\\pm ${qLatex(pr.rational)}`) : pr.latex}$`).join('; ')}.`)
   }
   const zs = r.zeros.length ? zerosLatex(r.zeros) : null
-  const extra = p.all && Q && !Q.rational ? Q.latex : null
+  const extra = p.all && r.others.length ? r.others.map(o => o.latex).join(',\\ ') : null
   if (p.all) {
     const all = [zs, extra].filter(Boolean).join(',\\ ')
     steps.push(R`**All roots:** $x = ${all}$.`)
-    return { prompt, steps, visual: n => visuals[n] ?? null, answer: `x = ${all}` }
+    const ans = p.list ? R`\begin{array}{l} \text{Possible: } ${rows.join(R`, \\ \qquad\quad `)} \\ \text{Zeros: } \left\{${all}\right\} \end{array}` : `x = ${all}`
+    return { prompt, steps, visual: n => visuals[n] ?? null, answer: ans }
   }
   steps.push(zs ? R`**Rational ${p.eq ? 'roots' : 'zeros'}:** $\left\{${zs}\right\}$.` : R`**Rational ${p.eq ? 'roots' : 'zeros'}:** none.`)
   return {
