@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, CalendarClock, Check, Eye, EyeOff, X } from 'lucide-react'
-import { IonChargeTable, IonicGrid } from './Ionic.jsx'
-import { NOTES_FORMULA_TO_NAME, NOTES_NAME_TO_FORMULA, charge, ionic, pretty } from './ionic.js'
+import { BackSteps, IonChargeTable, IonicGrid, PolyatomicTable, Type2Table } from './Ionic.jsx'
+import { NOTES2_FORMULA_TO_NAME, NOTES2_NAME_TO_FORMULA, NOTES_FORMULA_TO_NAME, NOTES_NAME_TO_FORMULA, WORKSHEET2, WORKSHEET3, WS2_REVIEW, charge, ionic, pretty } from './ionic.js'
 import { CHAPTERS, WORKSHEETS, dueInfo } from './chapters.js'
 
 const sub = text => String(text).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d])
@@ -209,9 +209,9 @@ function NameItem({ item, index, revealAll }) {
   const showing = open || revealAll
   return <li className="ws-item">
     <div className="ws-item-row">
-      <span className="ws-num">{index + 1}.</span>
+      <span className="ws-num">{item.num ?? index + 1}.</span>
       <span className="ws-prompt">{item.prompt}</span>
-      <input aria-label={`Answer for ${index + 1}: ${item.prompt}`} value={value} placeholder={item.formula ? 'Formula, e.g. N2O4' : 'Name'}
+      <input aria-label={`Answer for ${index + 1}: ${item.prompt}`} value={value} placeholder={item.placeholder ?? (item.formula ? 'Formula, e.g. N2O4' : 'Name')}
         onChange={e => { setValue(e.target.value); setResult(null) }} onKeyDown={e => e.key === 'Enter' && check()} />
       <button className="ws-btn" onClick={check} disabled={!value.trim()}>Check</button>
       <button className="ws-btn ghost" aria-expanded={showing} onClick={() => setOpen(!open)}>{showing ? 'Hide' : 'Answer'}</button>
@@ -243,6 +243,44 @@ const ionicExplain = r => r.cancels
 const IONIC_NAME_TO_FORMULA = NOTES_NAME_TO_FORMULA.map(([c, a]) => { const r = ionic(c, a); return { prompt: r.name, answer: pretty(r.formula), accept: [r.formula], explain: ionicExplain(r), formula: true, wrongHint: IONIC_WRONG } })
 const IONIC_FORMULA_TO_NAME = NOTES_FORMULA_TO_NAME.map(([c, a]) => { const r = ionic(c, a); return { prompt: pretty(r.formula), answer: r.name, accept: [r.name], explain: ionicExplain(r), wrongHint: IONIC_WRONG } })
 
+// Type II and III items: formula ↔ name with a worked explanation.
+const ionsText = r => <>Cation <strong>{pretty(r.c.sym)}{charge(r.c.charge)}</strong>, anion <strong>{r.a.poly ? `(${pretty(r.a.sym)})` : pretty(r.a.sym)}{charge(r.a.charge)}</strong>. </>
+const buildText = r => r.cancels ? <>The charges cancel, so the formula is just <strong>{pretty(r.formula)}</strong>. </> : <>Criss-cross: {pretty(r.crossed)}{r.g > 1 ? <>, reduce by {r.g}</> : ''} → <strong>{pretty(r.formula)}</strong>. </>
+const toFormula = (r, extra = {}) => ({ placeholder: r.poly ? 'Formula, e.g. Al(OH)3' : 'Formula, e.g. Fe2S3', prompt: r.name, answer: pretty(r.formula), accept: [r.formula], formula: true, wrongHint: 'Not yet. Check the charges (the Roman numeral is the metal’s charge), the criss-cross, parentheses, and reducing.', explain: <>{ionsText(r)}{buildText(r)}</>, ...extra })
+const toName = (r, extra = {}) => ({
+  prompt: pretty(r.formula), answer: r.name, accept: [r.name, r.name.replace('(', ' (')],
+  wrongHint: r.c.type2 ? 'Not yet. Work out the metal’s charge from the anion, then write it as a Roman numeral.' : 'Not yet. Type I metals need no Roman numeral; polyatomic ions keep their own names.',
+  explain: <>{r.c.type2 ? <><BackSteps r={r} /> </> : ionsText(r)}Name: <strong>{r.name}</strong>{r.c.type2 ? ' (the Roman numeral shows the charge).' : r.c.poly || r.a.poly ? ' (polyatomic ions keep their names).' : ' (Type I: no Roman numeral).'}</>,
+  ...extra,
+})
+const WS2_REVIEW_ITEMS = WS2_REVIEW.map(x => typeof x[0] === 'string'
+  ? toName(ionic(...x), { note: 'Type I review: no Roman numeral.' })
+  : { prompt: sub(formulaOf(x)), answer: nameOf(x), accept: [nameOf(x), nameOf(x, false)], explain: explainName(x), note: 'Covalent review: two nonmetals, so use prefixes.' })
+const TYPE2_NAME_TO_FORMULA = NOTES2_NAME_TO_FORMULA.map(p => toFormula(ionic(...p)))
+const TYPE2_FORMULA_TO_NAME = NOTES2_FORMULA_TO_NAME.map(p => toName(ionic(...p), p[0] === 'Zn' ? { note: 'Careful: zinc is Type I (always +2), so no Roman numeral.' } : {}))
+const TYPE3_ITEMS = WORKSHEET3.flatMap((row, i) => {
+  if (!row) return []
+  const [c, a, given, example] = row
+  const r = ionic(c, a)
+  const extra = { num: i + 1, note: example ? 'This row is filled in on your worksheet as the example.' : undefined }
+  return [given === 'name' ? toFormula(r, extra) : toName(r, extra)]
+})
+
+function Type3Chart() {
+  const [open, setOpen] = useState(false)
+  return <div className="ws-summary">
+    <button className="ws-btn" onClick={() => setOpen(!open)}>{open ? <><EyeOff size={14} /> Hide answer chart</> : <><Eye size={14} /> Show the full answer chart</>}</button>
+    {open && <div className="ws-table-wrap"><table>
+      <thead><tr><th>#</th><th>Name of compound</th><th>Cation (+ ion)</th><th>Anion (− ion)</th><th>Formula</th></tr></thead>
+      <tbody>{WORKSHEET3.map((row, i) => {
+        if (!row) return <tr key={i}><td>{i + 1}</td><td colSpan="4" className="muted">(blank row on the worksheet)</td></tr>
+        const r = ionic(row[0], row[1])
+        return <tr key={i}><td>{i + 1}</td><td>{r.name}</td><td>{pretty(r.c.sym)}{charge(r.c.charge)}</td><td>{r.a.poly ? `(${pretty(r.a.sym)})` : pretty(r.a.sym)}{charge(r.a.charge)}</td><td>{pretty(r.formula)}</td></tr>
+      })}</tbody>
+    </table></div>}
+  </div>
+}
+
 export default function WorksheetsPage({ openLesson }) {
   const [tab, setTabState] = useState(tabFromHash)
   const [table, setTable] = useState(false)
@@ -267,7 +305,26 @@ export default function WorksheetsPage({ openLesson }) {
     </section>
     <div className="ws-due-row"><span className="eyebrow">CHAPTER {sheet.chapter} · {sheet.label.toUpperCase()}</span><DueBadge due={sheet.due} /></div>
 
-    {tab === 'ionic' ? <section className="ws-section">
+    {tab === 'type2' ? <section className="ws-section">
+      <div className="ws-intro">
+        <p>Type II ionic compounds: a metal that can have <strong>more than one charge</strong> plus a nonmetal. The Roman numeral in the name <em>is</em> the metal’s charge. Criss-cross and reduce just like Type I; going from a formula to a name, work the charge out backwards from the anion.</p>
+        <button className="text-link" onClick={() => openLesson(8)}>Review the Type II lesson first <ArrowRight size={14} /></button>
+        <Type2Table />
+      </div>
+      <IonicGrid ws={WORKSHEET2} start={['Fe+2', 'Cl']} />
+      <p className="ws-note ws-key-note">Heads up: your answer key has three typos. Cu⁺¹ + S⁻² is <strong>Cu₂S</strong> (the key prints Cu₂P), Fe₃P₂ is <strong>iron(II) phosphide</strong> (the key says chloride), and Pb⁺⁴ + Br⁻¹ is <strong>PbBr₄</strong> (the key prints PBr₄).</p>
+      <NamePart title="(Covalent & Type I review) Name each compound" hint="Formula → name. Decide first: ionic (metal + nonmetal) or covalent (two nonmetals)?" items={WS2_REVIEW_ITEMS} />
+      <NamePart title="Class notes: write the formula" hint="Name → formula. Type numbers normally: Fe2S3." items={TYPE2_NAME_TO_FORMULA} />
+      <NamePart title="Class notes: name the compound" hint="Formula → name. Find the metal’s charge from the anion." items={TYPE2_FORMULA_TO_NAME} />
+    </section> : tab === 'type3' ? <section className="ws-section">
+      <div className="ws-intro">
+        <p>Type III ionic compounds contain a <strong>polyatomic ion</strong>: a group of atoms with one overall charge. Treat it like a single ion, keep its name, and put it in parentheses when you need more than one. If the metal is Type II, you still need the Roman numeral.</p>
+        <button className="text-link" onClick={() => openLesson(9)}>Review the polyatomic ions lesson first <ArrowRight size={14} /></button>
+        <PolyatomicTable />
+      </div>
+      <NamePart title="Type III WS: complete the chart" hint="Each row gives a name or a formula. Find the cation, the anion, and the missing name or formula. (Row 5 is blank on the worksheet.) Type formulas normally: Al(OH)3." items={TYPE3_ITEMS} />
+      <Type3Chart />
+    </section> : tab === 'ionic' ? <section className="ws-section">
       <div className="ws-intro">
         <p>Type I ionic compounds: a metal with one possible charge plus a nonmetal. Write the cation first, criss-cross the charges, reduce if you can, then name it: cation name + anion ending in <em>-ide</em>.</p>
         <button className="text-link" onClick={() => openLesson(7)}>Review the ionic compounds lesson first <ArrowRight size={14} /></button>

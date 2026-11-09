@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import PeriodicTablePage from './PeriodicTable.jsx'
 import WorksheetsPage, { PrefixTable, VseprChart } from './Worksheets.jsx'
-import { CrissCross, IonChargeTable } from './Ionic.jsx'
+import { CrissCross, IonChargeTable, PolyatomicTable, Type2Table } from './Ionic.jsx'
 import { CHAPTERS, WORKSHEETS, chapterOf, dueInfo } from './chapters.js'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -124,6 +124,34 @@ const lessons = [
     options: ['Ca₂O₂', 'CaO', 'CaO₂'], correct: 1, explanation: 'Criss-crossing gives Ca₂O₂, but you must reduce: divide both subscripts by 2 to get CaO. (The +2 and −2 already cancel.)',
     video: 'URc75hoKGLY', videoTitle: 'Writing Ionic Formulas: Introduction', creator: 'Tyler DeWitt', watch: 'Watch how he makes the total charge zero before writing the final formula.',
   },
+  {
+    chapter: 4, title: 'Naming ionic compounds (Type II)', short: 'Type II: Roman numerals', tag: 'Metals with more than one charge',
+    intro: 'Most transition metals (and tin and lead) can form more than one charge: iron can be Fe⁺² or Fe⁺³. A Roman numeral in the name tells you which one, so iron(III) sulfide and iron(II) sulfide are different compounds.',
+    points: [
+      ['Which metals are Type II?', 'Every metal except groups 1, 2, aluminum (3A), and silver, zinc, and cadmium. Those Type I metals have only one charge and never get a Roman numeral. Everything else, like Cu, Fe, Pb, Sn, Mn, Cr, Au, and Pt, needs one.'],
+      ['Name → formula', 'The Roman numeral is the charge: lead(II) is Pb⁺², manganese(IV) is Mn⁺⁴. Then criss-cross and reduce exactly like Type I: manganese(IV) nitride → Mn⁺⁴ N⁻³ → Mn₃N₄. Copper(II) oxide → Cu⁺² O⁻² → the charges cancel → CuO.'],
+      ['Formula → name (work backwards)', 'Find the metal’s charge from the anion, because the total must be zero. PbO₂: two O⁻² make −4, so the one Pb must be +4 → lead(IV) oxide. Algebra works too: x + 2(−2) = 0, so x = +4. Old names: ferrous/ferric (Fe⁺²/Fe⁺³), cuprous/cupric (Cu⁺¹/Cu⁺²), stannous/stannic (Sn⁺²/Sn⁺⁴): -ous is the lower charge, -ic the higher.'],
+    ],
+    steps: ['Iron(III) sulfide: the (III) means iron is Fe⁺³. Sulfur is in group 16, so it is S⁻².', 'Criss-cross: the 2 from sulfur becomes iron’s subscript, and the 3 from iron becomes sulfur’s subscript.', 'That gives Fe₂S₃. The subscripts 2 and 3 share no factor, so there is nothing to reduce.', 'Check: 2 × (+3) = +6 and 3 × (−2) = −6. Total charge 0 ✓', 'Name it: iron + (III) + sulf + ide = iron(III) sulfide.'],
+    question: 'What is the name of CuO?',
+    options: ['Copper oxide', 'Copper(I) oxide', 'Copper(II) oxide'], correct: 2, explanation: 'O is −2 and there is one Cu, so Cu must be +2 to make the total zero. Copper is Type II, so the name needs the Roman numeral: copper(II) oxide.',
+    video: 'Rq0A-AHdB74', videoTitle: 'Naming Ionic Compounds with Transition Metals Introduction', creator: 'Tyler DeWitt', watch: 'Pause each time he works out the metal’s charge and try it yourself first.',
+    more: [['H4nfE8gRX7Q', 'Writing Ionic Formulas with Transition Metals'], ['8KSWRy2MMyM', 'Naming Ionic Compounds with Transition Metals Practice Problems']],
+  },
+  {
+    chapter: 4, title: 'Polyatomic ions (Type III)', short: 'Type III: polyatomic ions', tag: 'Groups of atoms with one charge',
+    intro: 'Some ions are made of several atoms bonded together that carry one overall charge, like nitrate, NO₃⁻¹, or ammonium, NH₄⁺¹. In a compound, treat the whole group as one ion: keep it together, and keep its name.',
+    points: [
+      ['What is a polyatomic ion?', 'A small group of atoms that stays together and has one overall charge. Most are negative: hydroxide OH⁻¹, nitrate NO₃⁻¹, carbonate CO₃⁻², sulfate SO₄⁻², phosphate PO₄⁻³. Ammonium NH₄⁺¹ is the common positive one. Learn them from the table below.'],
+      ['Writing the formula', 'Criss-cross the charges as usual. If you need more than one of a polyatomic ion, put it in parentheses: Ca⁺² and NO₃⁻¹ make Ca(NO₃)₂, two nitrates. Never change the little numbers inside the ion: NO₃ is always NO₃. If you need only one, skip the parentheses: NaC₂H₃O₂.'],
+      ['Naming', 'Name the cation, then the anion. A polyatomic ion keeps its own name: no -ide ending (K₂CO₃ is potassium carbonate). A Type II metal still needs its Roman numeral: Sn₃(PO₄)₂ is tin(II) phosphate, because two PO₄⁻³ make −6, so each of the 3 tin ions is +2.'],
+    ],
+    steps: ['Calcium nitrate: calcium is in group 2, so it is Ca⁺². Nitrate is a polyatomic ion, NO₃⁻¹: one N and three O sharing one −1 charge.', 'Criss-cross: the 1 from nitrate goes to calcium, and the 2 from calcium goes to nitrate.', 'You need two nitrates, so put NO₃ in parentheses: Ca(NO₃)₂. Never change the 3 inside the ion.', 'Check: 1 × (+2) + 2 × (−1) = 0 ✓', 'Name it: calcium + nitrate. Polyatomic ions keep their names, so it is calcium nitrate.'],
+    question: 'What is the formula for aluminum sulfate (Al⁺³ and SO₄⁻²)?',
+    options: ['AlSO₄', 'Al₂(SO₄)₃', 'Al₂SO₄₃'], correct: 1, explanation: 'Criss-cross: 2 Al and 3 sulfates. More than one sulfate means parentheses: Al₂(SO₄)₃. Check: 2(+3) + 3(−2) = 0.',
+    video: 'MJZeZvDxcx8', videoTitle: 'What’s a polyatomic ion?', creator: 'Tyler DeWitt', watch: 'Notice how the atoms in a polyatomic ion always travel together.',
+    more: [['p9iQ5Qn42DM', 'Writing Formulas with Polyatomic Ions'], ['X_LVANMpJ0c', 'Writing Ionic Formulas: Practice Problems']],
+  },
 ]
 
 function Button({ children, className = '', ...props }) {
@@ -180,6 +208,8 @@ function Diagram({ lesson, step }) {
   if (lesson === 5) return <ShapeDiagram step={step} />
   if (lesson === 6) return <NamingDiagram step={step} />
   if (lesson === 7) return <CrissCross cat="Na" an="S" step={step} label={lessons[7].steps[step]} />
+  if (lesson === 8) return <CrissCross cat="Fe+3" an="S" step={step} label={lessons[8].steps[step]} />
+  if (lesson === 9) return <CrissCross cat="Ca" an="NO3" step={step} label={lessons[9].steps[step]} />
   const leftDouble = step >= 3, rightDouble = step >= 4
   const pair = (x, y, vertical = false) => <g><circle cx={x} cy={y} r="5" fill="#CC5833" /><circle cx={x + (vertical ? 0 : 13)} cy={y + (vertical ? 13 : 0)} r="5" fill="#CC5833" /></g>
   return <svg viewBox="0 0 600 320" role="img" aria-label={lessons[4].steps[step]}>
@@ -319,6 +349,7 @@ function Video({ lesson }) {
     </div>
     <p><strong>While watching:</strong> {lesson.watch}</p>
     <a className="text-link" href={`https://www.youtube.com/watch?v=${lesson.video}`} target="_blank" rel="noreferrer">Watch on YouTube <ExternalLink size={14} /></a>
+    {lesson.more?.length > 0 && <div className="more-videos"><span className="eyebrow">MORE FROM {lesson.creator.toUpperCase()}</span>{lesson.more.map(([id, title]) => <a key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noreferrer">{title} <ExternalLink size={13} /></a>)}</div>}
     <small>Videos need an internet connection and may be restricted by your school or the video owner. If the player does not load, use the direct link. External players may use cookies.</small>
   </section>
 }
@@ -423,6 +454,8 @@ function App() {
             {active === 5 && <VseprChart />}
             {active === 6 && <PrefixTable />}
             {active === 7 && <IonChargeTable />}
+            {active === 8 && <Type2Table />}
+            {active === 9 && <PolyatomicTable />}
             {practice && <a className="table-callout" href={`#/worksheets/${practice.id}`}><div><span className="eyebrow">PRACTICE</span><h3>{practice.label} help</h3>{practiceDue && <span className={`due-badge ${practiceDue.when}`}><CalendarClock size={14} /> {practiceDue.text}</span>}<p>Work through every worksheet problem with step-by-step answers you reveal when you are ready.</p></div><ArrowRight size={22} /></a>}
             <Video key={`video-${active}`} lesson={lesson} />
             <Quiz key={`quiz-${active}`} lesson={lesson} completed={completed.includes(active)} onComplete={() => setCompleted(previous => previous.includes(active) ? previous : [...previous, active])} />

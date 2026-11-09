@@ -1,6 +1,6 @@
 # Self Learning: beginner chemistry
 
-A React 19 learning site with five original written lessons, interactive SVG
+A React 19 learning site with ten original written lessons, interactive SVG
 animations, curated video players, and feedback-based practice questions.
 
 ## Run locally
@@ -34,7 +34,8 @@ All current lessons belong to **Chapter 4: Lewis Structures & Nomenclature**.
 Chapters and worksheets (with optional `YYYY-MM-DD` due dates) are listed in
 `src/chapters.js`. To add a chapter, add it to `CHAPTERS`, tag its lessons in
 `App.jsx` with `chapter: <n>`, and list its worksheets in `WORKSHEETS`.
-The Type I Ionic WS is due Nov 3, 2026; due dates show as "Due today",
+The Type I Ionic WS is due Nov 3, 2026, Type II Nov 10, and Type III
+Nov 11; due dates show as "Due today",
 "Due …", or "Was due …".
 
 1. Valence electrons: carbon, oxygen, and neon shell models.
@@ -47,6 +48,11 @@ The Type I Ionic WS is due Nov 3, 2026; due dates show as "Due today",
 7. Naming covalent compounds: prefixes, -ide roots, and vowel dropping.
 8. Naming ionic compounds (Type I): ion charges, criss-cross, reduce,
    and metal name + nonmetal root + -ide. Includes an ion-charge table.
+9. Naming ionic compounds (Type II): transition metals with more than one
+   charge, Roman numerals, and working the charge back from a formula.
+   Includes a Type II charge table with the old -ous/-ic names.
+10. Polyatomic ions (Type III): keep the ion together, use parentheses
+    when more than one is needed. Includes the class polyatomic ion table.
 
 ## Extra pages
 
@@ -57,9 +63,15 @@ The Type I Ionic WS is due Nov 3, 2026; due dates show as "Due today",
   are revealed one at a time; naming answers can be typed and checked.
   Pair counts follow the class notes: pairs on the central atom only.
   The Type I Ionic WS tab (`#/worksheets/ionic`) has the 30-cell
-  cation × anion grid plus the class-notes practice lists. Answers are
-  computed in `src/ionic.js`; run `node scripts/verify_ionic.mjs` to check
-  them against independently written expected answers.
+  cation × anion grid plus the class-notes practice lists. The Type II tab
+  (`#/worksheets/type2`) has the 18-cell grid, the review section, and the
+  notes practice; the Type III tab (`#/worksheets/type3`) has the
+  polyatomic name/formula chart (the sheet has no key, and row 5 is blank).
+  Answers are computed in `src/ionic.js`; run
+  `node scripts/verify_ionic.mjs` to check all Type I–III answers (90)
+  against independently written expected answers. The printed Type II key
+  has three typos (Cu₂S shown as Cu₂P, Fe₃P₂ named "iron(II) chloride",
+  PbBr₄ shown as PBr₄); the site shows the correct answers and a note.
 
 Animations have previous, next, play, pause, and restart controls. Electron
 motion can be disabled and defaults off for reduced-motion preferences.

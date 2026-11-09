@@ -7,6 +7,8 @@ export const WORKSHEETS = [
   { id: 'vsepr', label: 'VSEPR Worksheet', chapter: 4, lesson: 5 },
   { id: 'names', label: 'Covalent Nomenclature WS', chapter: 4, lesson: 6 },
   { id: 'ionic', label: 'Type I Ionic WS', chapter: 4, lesson: 7, due: '2026-11-03' },
+  { id: 'type2', label: 'Type II Ionic WS', chapter: 4, lesson: 8, due: '2026-11-10' },
+  { id: 'type3', label: 'Type III WS', chapter: 4, lesson: 9, due: '2026-11-11' },
 ]
 
 export const chapterOf = n => CHAPTERS.find(c => c.n === n)
