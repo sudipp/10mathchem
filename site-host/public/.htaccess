@@ -2,7 +2,8 @@
 # site-host/server.mjs applies the same rules when the site is served locally.
 
 AddType "text/markdown; charset=utf-8" .md
-AddType "text/plain; charset=utf-8" .txt
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .txt .md .xml
 
 # Agents that send "Accept: text/markdown" get the Markdown version of a page, where one exists.
 <IfModule mod_rewrite.c>
@@ -14,8 +15,9 @@ AddType "text/plain; charset=utf-8" .txt
 </IfModule>
 
 # RFC 8288 Link header pointing agents at the site summary.
+# Kept free of quotes: Hostinger's server sends escaped quotes literally.
 <IfModule mod_headers.c>
-  Header always set Link "</llms.txt>; rel=\"describedby\"; type=\"text/plain\""
+  Header always set Link "</llms.txt>; rel=describedby"
   <FilesMatch "\.(html|md)$">
     Header merge Vary Accept
   </FilesMatch>
