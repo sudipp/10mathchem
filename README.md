@@ -22,3 +22,24 @@ node site-host/server.mjs
 Then open `http://localhost:8080/` (or `http://<computer-name>.local:8080/`
 from another device on the same Wi-Fi). On Windows you can also run
 `site-host/Start Self Learning Sites.bat`.
+
+## Host on the web (Hostinger)
+
+`npm run build` in the repository root builds both sites and combines them into
+one static folder, `dist/` (`index.html` is the hub, plus `chemistry/` and
+`math/`). Any static host can serve that folder.
+
+Hostinger Node.js Web App settings:
+
+| Setting | Value |
+|---------|-------|
+| Framework preset | Vite (or Other) |
+| Branch | `main` |
+| Node version | 22.x or 24.x |
+| Root directory | `./` (repository root) |
+| Package manager | npm |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Entry file | leave empty |
+
+Every push to `main` redeploys the site.

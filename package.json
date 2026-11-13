@@ -1,0 +1,15 @@
+{
+  "name": "10mathchem",
+  "private": true,
+  "type": "module",
+  "description": "Builds both Self Learning sites into one static folder (dist/) for hosting.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "npm run build:chemistry && npm run build:math && node site-host/assemble.mjs",
+    "build:chemistry": "npm ci --prefix chemistry-self-learning && npm run build --prefix chemistry-self-learning",
+    "build:math": "npm ci --prefix math-self-learning && npm run build --prefix math-self-learning",
+    "start": "node site-host/server.mjs"
+  }
+}
