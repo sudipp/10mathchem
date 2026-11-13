@@ -1,4 +1,5 @@
 // Combines the two built sites into one static folder for web hosts (e.g. Hostinger):
+//   dist/            <- site-host/public (robots.txt, sitemap.xml, llms.txt, about/contact/terms, .htaccess)
 //   dist/index.html  <- site-host/hub.html
 //   dist/chemistry/  <- chemistry-self-learning/dist
 //   dist/math/       <- math-self-learning/dist
@@ -21,6 +22,7 @@ for (const [name, dir] of Object.entries(sites)) {
 
 await rm(out, { recursive: true, force: true })
 await mkdir(out, { recursive: true })
+await cp(path.join(here, 'public'), out, { recursive: true })
 await cp(path.join(here, 'hub.html'), path.join(out, 'index.html'))
 for (const [name, dir] of Object.entries(sites)) await cp(dir, path.join(out, name), { recursive: true })
 console.log(`Static site ready in ${out}`)

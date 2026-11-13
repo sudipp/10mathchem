@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#2E4036" />
-  <title>Self Learning</title>
+  <title>Self Learning · Free chemistry and math lessons by Perspire AI</title>
+  <meta name="description" content="Free, self-paced 10th-grade chemistry and math: short lessons, step-by-step animations, videos, and homework help you reveal one step at a time. No account needed." />
+  <link rel="canonical" href="https://perspireai.com/" />
+  <link rel="alternate" type="text/markdown" href="/index.md" />
+  <link rel="describedby" type="text/plain" href="/llms.txt" />
   <link rel="icon" type="image/svg+xml" href="/math/math.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -19,8 +23,81 @@
     .icon{width:58px;height:58px;border-radius:18px;background:#2E4036;color:#F2F0E9;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:22px}
     h2{margin:6px 0 8px;font-size:1.5rem;letter-spacing:-.04em}.card p{margin:0;color:#536157;font-size:.9rem;line-height:1.7}
     .go{display:inline-block;margin-top:18px;font-weight:600;font-size:.85rem;color:#a33d20}
-    footer{margin-top:40px;font-size:.75rem;color:#6b756d}
+    footer{margin-top:40px;font-size:.75rem;color:#6b756d;text-align:center}
+    footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:10px}footer a{color:#536157}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://perspireai.com/#organization",
+        "name": "Perspire AI",
+        "url": "https://perspireai.com/",
+        "logo": "https://perspireai.com/math/math.svg",
+        "description": "Perspire AI makes Self Learning, free self-paced chemistry and math lessons for 10th-grade students.",
+        "email": "sudipp@gmail.com",
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "sudipp@gmail.com", "url": "https://perspireai.com/contact/", "availableLanguage": "en" },
+        "sameAs": ["https://github.com/sudipp/10mathchem"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://perspireai.com/#website",
+        "url": "https://perspireai.com/",
+        "name": "Self Learning",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://perspireai.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://perspireai.com/#webpage",
+        "url": "https://perspireai.com/",
+        "name": "Self Learning · Free chemistry and math lessons",
+        "isPartOf": { "@id": "https://perspireai.com/#website" },
+        "about": { "@id": "https://perspireai.com/#organization" },
+        "mainEntity": { "@id": "https://perspireai.com/#courses" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://perspireai.com/#courses",
+        "name": "Subjects",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Course",
+              "@id": "https://perspireai.com/chemistry/#course",
+              "name": "Chemistry, Chapter 4: Lewis Structures & Nomenclature",
+              "description": "Valence electrons, Lewis structures, VSEPR shapes, naming covalent and ionic (Types I–III) compounds, and an interactive periodic table.",
+              "url": "https://perspireai.com/chemistry/",
+              "provider": { "@id": "https://perspireai.com/#organization" },
+              "educationalLevel": "Grade 10",
+              "inLanguage": "en",
+              "isAccessibleForFree": true
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Course",
+              "@id": "https://perspireai.com/math/#course",
+              "name": "Math, Unit 4: Polynomial Functions",
+              "description": "Fourteen narrated video lessons on polynomial functions with step-by-step homework help for HW #1–#15.",
+              "url": "https://perspireai.com/math/#/unit-4",
+              "provider": { "@id": "https://perspireai.com/#organization" },
+              "educationalLevel": "Grade 10",
+              "inLanguage": "en",
+              "isAccessibleForFree": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <span class="eyebrow">SELF LEARNING · NO ACCOUNT NEEDED</span>
@@ -42,6 +119,59 @@
       <span class="go">Open math →</span>
     </a>
   </main>
-  <footer>A little clearer, one step at a time.</footer>
+  <footer>
+    A little clearer, one step at a time.
+    <nav aria-label="Site information"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/terms/">Terms of use</a><a href="mailto:sudipp@gmail.com">sudipp@gmail.com</a></nav>
+  </footer>
+  <script>
+    // WebMCP: lets in-browser AI agents discover the lessons and open a page.
+    (() => {
+      const mc = navigator.modelContext
+      if (!mc) return
+      const pages = {
+        'chemistry': '/chemistry/#lessons',
+        'chemistry-periodic-table': '/chemistry/#/periodic-table',
+        'chemistry-worksheets': '/chemistry/#/worksheets',
+        'math': '/math/',
+        'math-unit-4': '/math/#/unit-4',
+        'about': '/about/',
+        'contact': '/contact/',
+        'terms': '/terms/',
+      }
+      const text = value => ({ content: [{ type: 'text', text: typeof value === 'string' ? value : JSON.stringify(value, null, 2) }] })
+      const tools = [
+        {
+          name: 'list_lessons',
+          description: 'List the subjects, units and lessons available on Self Learning, with links. Returns the site summary (llms.txt) as Markdown.',
+          inputSchema: { type: 'object', properties: {} },
+          annotations: { readOnlyHint: true },
+          async execute() {
+            const res = await fetch('/llms.txt')
+            return text(res.ok ? await res.text() : `Could not load the lesson list (HTTP ${res.status}).`)
+          },
+        },
+        {
+          name: 'open_page',
+          description: 'Open a Self Learning page in this tab: a subject, the chemistry periodic table or worksheet help, math Unit 4, or the about, contact or terms page.',
+          inputSchema: {
+            type: 'object',
+            properties: { page: { type: 'string', enum: Object.keys(pages), description: 'Which page to open.' } },
+            required: ['page'],
+          },
+          async execute({ page }) {
+            if (!pages[page]) return text(`Unknown page "${page}". Choose one of: ${Object.keys(pages).join(', ')}.`)
+            setTimeout(() => window.location.assign(pages[page]), 0)
+            return text(`Opening ${new URL(pages[page], window.location.href).href}`)
+          },
+        },
+      ]
+      try {
+        if (typeof mc.registerTool === 'function') tools.forEach(tool => mc.registerTool(tool))
+        else if (typeof mc.provideContext === 'function') mc.provideContext({ tools })
+      } catch (error) {
+        console.warn('WebMCP tool registration failed', error)
+      }
+    })()
+  </script>
 </body>
 </html>

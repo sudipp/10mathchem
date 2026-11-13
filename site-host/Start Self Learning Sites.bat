@@ -9,6 +9,8 @@ echo Building the math site...
 pushd ..\math-self-learning
 call npm run build >nul || (echo Math build failed. & popd & pause & exit /b 1)
 popd
+echo Combining the sites...
+node assemble.mjs >nul || (echo Combining the sites failed. & pause & exit /b 1)
 echo.
 node server.mjs
 pause

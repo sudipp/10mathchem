@@ -1,0 +1,25 @@
+# Self Learning by Perspire AI
+
+> Free, self-paced lessons for 10th-grade chemistry and math. Each lesson has a short reading, step-by-step animations, a video, and homework help whose answers are revealed one step at a time. No account is needed.
+
+The two subject sites are single-page apps: lesson and homework views are reached through `#` links on the subject pages. Lesson videos from Khan Academy and Tyler DeWitt are embedded from YouTube and remain with their creators.
+
+## Subjects
+
+- [Chemistry](https://perspireai.com/chemistry/): Chapter 4, Lewis Structures & Nomenclature. Lessons: valence electrons; the periodic table; Lewis dot structures; chemical bonds; the CO₂ Lewis structure; VSEPR shapes and polarity; naming covalent compounds; naming ionic compounds (Type I); naming ionic compounds with Roman numerals (Type II); polyatomic ions (Type III).
+- [Chemistry: periodic table](https://perspireai.com/chemistry/#/periodic-table): interactive table showing each element's group, valence electrons and Lewis symbol.
+- [Chemistry: worksheet help](https://perspireai.com/chemistry/#/worksheets): step-by-step answers for the VSEPR, covalent naming and ionic naming (Types I–III) worksheets.
+- [Math](https://perspireai.com/math/): organized by unit. Now available: Unit 4, Polynomial Functions.
+- [Math Unit 4: Polynomial Functions](https://perspireai.com/math/#/unit-4): fourteen narrated video lessons (polynomial basics, zeros and linear factors, long division, synthetic division, factoring, solving polynomial equations, function operations and composition, solving by graphing, end behavior, the Rational Root Theorem, irrational and complex roots, the Fundamental Theorem of Algebra, polynomial inequalities, inverse functions) with homework help for HW #1–#15.
+
+## About
+
+- [About](https://perspireai.com/about/): who makes the site and why.
+- [Contact](https://perspireai.com/contact/): email sudipp@gmail.com.
+- [Terms of use](https://perspireai.com/terms/): how the content may be used, including the AI content policy.
+
+## Optional
+
+- [Homepage as Markdown](https://perspireai.com/index.md)
+- [Sitemap](https://perspireai.com/sitemap.xml)
+- [Source code](https://github.com/sudipp/10mathchem)

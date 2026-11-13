@@ -8,14 +8,13 @@ notes and worksheets and served on the home network.
 | [chemistry-self-learning](chemistry-self-learning/) | Chemistry site: lessons, periodic table, worksheet help (VSEPR, covalent and Type I ionic naming) |
 | [math-self-learning](math-self-learning/) | Math site organized by unit (Unit 4: Polynomial Functions), lessons, narrated videos, homework help |
 | [math-videos](math-videos/) | Tooling that renders the narrated lesson videos |
-| [site-host](site-host/) | Node server that serves both sites on port 8080 |
+| [site-host](site-host/) | Hub page, root files (`public/`: robots.txt, sitemap.xml, llms.txt, about/contact/terms, .htaccess) and the local Node server on port 8080 |
 | [Chemistry](Chemistry/), [Math/chapter4](Math/chapter4/) | Source class notes and worksheets (PDF) |
 
 ## Run locally
 
 ```powershell
-cd chemistry-self-learning; npm install; npm run build; cd ..
-cd math-self-learning; npm install; npm run build; cd ..
+npm run build
 node site-host/server.mjs
 ```
 
@@ -26,8 +25,8 @@ from another device on the same Wi-Fi). On Windows you can also run
 ## Host on the web (Hostinger)
 
 `npm run build` in the repository root builds both sites and combines them into
-one static folder, `dist/` (`index.html` is the hub, plus `chemistry/` and
-`math/`). Any static host can serve that folder.
+one static folder, `dist/`: `index.html` is the hub, plus `chemistry/`, `math/`
+and everything in `site-host/public/`. Any static host can serve that folder.
 
 Hostinger Node.js Web App settings:
 
@@ -43,3 +42,15 @@ Hostinger Node.js Web App settings:
 | Entry file | leave empty |
 
 Every push to `main` redeploys the site.
+
+## Agent-readiness
+
+- `robots.txt` declares the crawl policy, a `Content-Signal` (search=yes,
+  ai-input=yes, ai-train=no) and the sitemap.
+- `sitemap.xml` lists every page; update it when adding a page.
+- `llms.txt` summarises the site for AI agents; update it when lessons change.
+- Each root page has an `index.md`, served when an agent sends
+  `Accept: text/markdown` (rules in `.htaccess`, mirrored by `server.mjs`).
+- Every response has a `Link` header pointing at `/llms.txt`.
+- The hub has JSON-LD (Organization, WebSite, WebPage, Course) and registers
+  WebMCP tools (`list_lessons`, `open_page`) when the browser supports them.
