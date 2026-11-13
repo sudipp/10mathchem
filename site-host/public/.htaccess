@@ -1,7 +1,7 @@
 # Apache / LiteSpeed rules for the static site (Hostinger copies this into public_html).
 # site-host/server.mjs applies the same rules when the site is served locally.
 
-AddType "text/markdown; charset=utf-8" .md
+AddType text/markdown .md
 AddDefaultCharset UTF-8
 AddCharset UTF-8 .txt .md .xml
 
