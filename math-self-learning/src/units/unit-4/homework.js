@@ -992,6 +992,243 @@ export const HOMEWORK = [
     ],
   },
   {
+    id: 'hw16', title: 'HW #16 & 17', name: 'Polynomial Unit Review', due: 'Nov 17', lesson: 0,
+    intro: 'Final review for the Unit 4 test. Each section links to the lesson video that teaches it, so rewatch any you need before you start.',
+    sections: [
+      {
+        title: 'Write the polynomial in standard form, if necessary. Name each polynomial by degree and number of terms.', lesson: 0,
+        problems: [
+          { type: 'classify', terms: [[8, 1], [-10, 0]], exp: { poly: [8, -10], name: 'linear binomial' } },
+          { type: 'classify', terms: [[-1, 2], [9, 1], [-3, 3], [9, 4]], exp: { poly: [9, -3, -1, 9, 0], name: 'quartic polynomial with four terms' } },
+          { type: 'classify', v: 'n', terms: [[-6, 3], [9, 2], [-2, 0]], exp: { poly: [-6, 9, 0, -2], name: 'cubic trinomial' } },
+          { type: 'classify', terms: [[7, 6]], exp: { poly: [7, 0, 0, 0, 0, 0, 0], name: 'sixth degree monomial' } },
+        ],
+      },
+      {
+        title: 'Simplify each expression.', lesson: 0,
+        problems: [
+          {
+            type: 'steps', prompt: R`(-5n - 5n^3 - 7n^4) + (3n^4 + 5n^3 - 8n)`, check: { expr: '(-5*n - 5*n**3 - 7*n**4) + (3*n**4 + 5*n**3 - 8*n)', result: '-4*n**4 - 13*n' },
+            steps: [
+              R`It is **addition**, so drop the parentheses without changing any signs.`,
+              R`**Combine like terms** (same exponent): $n^4$: $-7n^4 + 3n^4 = -4n^4$. $\;n^3$: $-5n^3 + 5n^3 = 0$. $\;n$: $-5n - 8n = -13n$.`,
+              R`Write it in **standard form** (highest exponent first). The $n^3$ terms cancelled.`,
+            ],
+            answer: R`-4n^4 - 13n`,
+          },
+          {
+            type: 'steps', prompt: R`(6v^3 + 5v^2 - 4) + (5v^3 + 6v - 8v^2)`, check: { expr: '(6*v**3 + 5*v**2 - 4) + (5*v**3 + 6*v - 8*v**2)', result: '11*v**3 - 3*v**2 + 6*v - 4' },
+            steps: [
+              R`It is **addition**, so drop the parentheses without changing any signs.`,
+              R`**Combine like terms:** $v^3$: $6v^3 + 5v^3 = 11v^3$. $\;v^2$: $5v^2 - 8v^2 = -3v^2$. $\;v$: $6v$. Constant: $-4$.`,
+              R`Write it in **standard form** (highest exponent first).`,
+            ],
+            answer: R`11v^3 - 3v^2 + 6v - 4`,
+          },
+        ],
+      },
+      {
+        title: 'Describe the end behavior of each function.', lesson: 8,
+        problems: [
+          { type: 'ends', std: [-2, 16, -29], exp: [-1, -1] },
+          { type: 'ends', std: [1, -6, 9, -7], exp: [-1, 1] },
+        ],
+      },
+      {
+        title: 'Factor each completely.', lesson: 4,
+        problems: [
+          factorProblem(R`x^5 + x^2`, 'x**5 + x**2', 'x**2*(x+1)*(x**2-x+1)', [
+            R`**GCF first:** both terms share $x^2$: $\;x^2(x^3 + 1)$.`,
+            R`$x^3 + 1$ is a **sum of cubes** ($a = x$, $b = 1$): $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$.`,
+            R`So $x^3 + 1 = (x + 1)(x^2 - x + 1)$.`,
+          ], R`x^2(x + 1)(x^2 - x + 1)`),
+          factorProblem(R`27x^3 - 1`, '27*x**3 - 1', '(3*x-1)*(9*x**2+3*x+1)', [
+            R`**Difference of cubes:** $27x^3 = (3x)^3$ and $1 = 1^3$, so $a = 3x$ and $b = 1$.`,
+            R`$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$.`,
+            R`Substitute: $(3x - 1)\big((3x)^2 + (3x)(1) + 1^2\big) = (3x - 1)(9x^2 + 3x + 1)$.`,
+          ], R`(3x - 1)(9x^2 + 3x + 1)`),
+          factorProblem(R`500x^6 + 256`, '500*x**6 + 256', '4*(5*x**2+4)*(25*x**4-20*x**2+16)', [
+            R`**GCF first:** $500$ and $256$ share $4$: $\;4(125x^6 + 64)$.`,
+            R`**Sum of cubes:** $125x^6 = (5x^2)^3$ and $64 = 4^3$, so $a = 5x^2$ and $b = 4$.`,
+            R`$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$: $\;(5x^2 + 4)\big(25x^4 - 20x^2 + 16\big)$.`,
+          ], R`4(5x^2 + 4)(25x^4 - 20x^2 + 16)`),
+          factorProblem(R`32x^6 - 4`, '32*x**6 - 4', '4*(2*x**2-1)*(4*x**4+2*x**2+1)', [
+            R`**GCF first:** $4(8x^6 - 1)$.`,
+            R`**Difference of cubes:** $8x^6 = (2x^2)^3$ and $1 = 1^3$, so $a = 2x^2$ and $b = 1$.`,
+            R`$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$: $\;(2x^2 - 1)(4x^4 + 2x^2 + 1)$.`,
+          ], R`4(2x^2 - 1)(4x^4 + 2x^2 + 1)`),
+        ],
+      },
+      {
+        title: 'Evaluate each function at the given value.', lesson: 3,
+        problems: [
+          { type: 'eval', num: [4, 17, -18, -6], k: -5, exp: 9 },
+          { type: 'eval', num: [1, -5, -1, 18, 5], k: 4, exp: -3 },
+        ],
+      },
+      {
+        title: 'Divide.', lesson: [3, 2],
+        problems: [
+          { type: 'synth', num: [1, -18, 72, 68, -29], k: 8, note: R`The divisor $b - 8$ is linear with leading coefficient 1, so **synthetic division** is fastest (written here with $x$ for $b$).`, exp: { q: [1, -10, -8, 4], r: 3 } },
+          { type: 'synth', num: [1, -7, 15, -19, -32], k: 5, note: R`The divisor $k - 5$ is linear with leading coefficient 1, so use **synthetic division** (written here with $x$ for $k$).`, exp: { q: [1, -2, 5, 6], r: -2 } },
+          { type: 'long', num: [4, -10, -18, 34], den: [4, -6], note: R`The divisor $4x - 6$ has leading coefficient 4, so use **long division**.`, after: R`The key simplifies the fraction: $\dfrac{-2}{4x - 6} = -\dfrac{1}{2x - 3}$ (divide the top and bottom by $2$), giving $x^2 - x - 6 - \dfrac{1}{2x - 3}$.`, answer: R`x^2 - x - 6 - \dfrac{1}{2x - 3}`, exp: { q: [1, -1, -6], r: [-2] } },
+          { type: 'long', num: [15, -8, -39, -57], den: [3, -7], note: R`The divisor $3n - 7$ has leading coefficient 3, so use **long division** (written here with $x$ for $n$).`, exp: { q: [5, 9, 8], r: [-1] } },
+        ],
+      },
+      {
+        title: 'State if the given binomial is a factor of the given polynomial.', lesson: 3,
+        problems: [
+          { type: 'factor', num: [1, 0, -64, -6], den: [1, -8], exp: false },
+          { type: 'factor', num: [1, 2, -70, 49, 0], den: [1, -7], exp: true },
+        ],
+      },
+      {
+        title: 'Factor each over real numbers.', lesson: 4,
+        problems: [
+          factorProblem(R`f(x) = x^3 + 8x^2 + 15x`, 'x**3 + 8*x**2 + 15*x', 'x*(x+5)*(x+3)', [
+            R`**GCF first:** $x(x^2 + 8x + 15)$.`,
+            R`Two numbers that multiply to $15$ and add to $8$: $5$ and $3$.`,
+          ], R`f(x) = x(x + 5)(x + 3)`),
+          factorProblem(R`f(x) = 9x^3 - 6x^2 + x`, '9*x**3 - 6*x**2 + x', 'x*(3*x-1)**2', [
+            R`**GCF first:** $x(9x^2 - 6x + 1)$.`,
+            R`$9x^2 - 6x + 1$ is a **perfect square trinomial**: $(3x)^2 - 2(3x)(1) + 1^2 = (3x - 1)^2$.`,
+          ], R`f(x) = x(3x - 1)^2`),
+          factorProblem(R`f(x) = x^3 - x^2 - 2x + 2`, 'x**3 - x**2 - 2*x + 2', '(x-1)*(x**2-2)', [
+            R`**Group** the first two and last two terms: $(x^3 - x^2) + (-2x + 2)$.`,
+            R`Factor each group: $x^2(x - 1) - 2(x - 1)$, then factor out $(x - 1)$.`,
+            R`Like the answer key, stop at $x^2 - 2$. (Splitting it further over the reals gives $(x - \sqrt2)(x + \sqrt2)$.)`,
+          ], R`f(x) = (x - 1)(x^2 - 2)`),
+          factorProblem(R`f(x) = 2x^3 - 5x^2 - 2x + 5`, '2*x**3 - 5*x**2 - 2*x + 5', '(2*x-5)*(x-1)*(x+1)', [
+            R`**Group:** $(2x^3 - 5x^2) + (-2x + 5)$.`,
+            R`Factor each group: $x^2(2x - 5) - 1(2x - 5) = (2x - 5)(x^2 - 1)$.`,
+            R`$x^2 - 1$ is a **difference of squares**: $(x - 1)(x + 1)$.`,
+          ], R`f(x) = (2x - 5)(x - 1)(x + 1)`),
+          factorProblem(R`f(x) = x^4 - 5x^2 + 6`, 'x**4 - 5*x**2 + 6', '(x**2-3)*(x**2-2)', [
+            R`**Quadratic form:** let $w = x^2$. Then it is $w^2 - 5w + 6$.`,
+            R`Two numbers that multiply to $6$ and add to $-5$: $-3$ and $-2$, so $(w - 3)(w - 2)$. Put $x^2$ back in for $w$.`,
+            R`Like the answer key, stop here. (Over the reals each piece splits again: $(x - \sqrt3)(x + \sqrt3)(x - \sqrt2)(x + \sqrt2)$.)`,
+          ], R`f(x) = (x^2 - 3)(x^2 - 2)`),
+          factorProblem(R`f(x) = x^4 - 36`, 'x**4 - 36', '(x**2+6)*(x**2-6)', [
+            R`**Difference of squares:** $x^4 = (x^2)^2$ and $36 = 6^2$, so $(x^2 + 6)(x^2 - 6)$.`,
+            R`$x^2 + 6$ is never $0$ for a real $x$, so it does not factor over the reals. Like the key, leave $x^2 - 6$ as is (it could split into $(x - \sqrt6)(x + \sqrt6)$).`,
+          ], R`f(x) = (x^2 + 6)(x^2 - 6)`),
+        ],
+      },
+      {
+        title: 'State the number of complex zeros, the possible number of real and imaginary zeros, and the possible rational zeros for each function.', lesson: 11,
+        problems: [
+          { type: 'fta', std: [9, 0, -9, 0, -1, 0, 1], exp: { possible: [[1], [1, 3], [1, 9]] } },
+          { type: 'fta', std: [5, 0, 1, 0, -20, 0, -4], exp: { possible: [[1], [2], [4], [1, 5], [2, 5], [4, 5]] } },
+          { type: 'fta', std: [5, 0, -3, 0, -5, 0, 3], exp: { possible: [[1], [3], [1, 5], [3, 5]] } },
+          { type: 'fta', std: [3, -1, 12, -4], exp: { possible: [[1], [2], [4], [1, 3], [2, 3], [4, 3]] } },
+        ],
+      },
+      {
+        title: 'Factor each. One zero has been given.', lesson: [11, 10],
+        problems: [
+          zeros([1, 12, 47, 60], ['-5', '-3', '-4'], { given: -5, factored: R`(x + 3)(x + 4)(x + 5)`, factoredExpr: '(x+3)*(x+4)*(x+5)' }),
+          zeros([1, -4, -9, 36], ['-3', '3', '4'], { given: -3, factored: R`(x - 4)(x - 3)(x + 3)`, factoredExpr: '(x-4)*(x-3)*(x+3)' }),
+          zeros([1, -1, -20, 42, -40], ['1+I', '1-I', '4', '-5'], { given: [1, 1, -1], factored: R`(x - 4)(x + 5)(x^2 - 2x + 2)`, factoredExpr: '(x-4)*(x+5)*(x**2-2*x+2)' }),
+          zeros([1, -4, -4, -44, 195], ['-2+3*I', '-2-3*I', '5', '3'], { given: [-2, 3, -1], factored: R`(x - 5)(x - 3)(x^2 + 4x + 13)`, factoredExpr: '(x-5)*(x-3)*(x**2+4*x+13)' }),
+        ],
+      },
+      {
+        title: 'Find all rational roots.', lesson: 5,
+        problems: [
+          {
+            type: 'steps', prompt: R`x(x + 5)(x^2 - 5x + 25) = 0`, check: { expr: 'x*(x+5)*(x**2-5*x+25)', rationalRoots: ['0', '-5'] },
+            steps: [
+              R`It is already factored. Use the **Zero Product Property**: $x = 0$ and $x + 5 = 0 \Rightarrow x = -5$.`,
+              R`$x^2 - 5x + 25 = 0$: the discriminant is $(-5)^2 - 4(1)(25) = -75 < 0$, so its two roots are **imaginary**, not rational.`,
+            ],
+            answer: R`\{0,\ -5\}`,
+          },
+          {
+            type: 'steps', prompt: R`(x - 2)(x^2 + 2x + 4)(x + 2)(x^2 - 2x + 4) = 0`, check: { expr: '(x-2)*(x**2+2*x+4)*(x+2)*(x**2-2*x+4)', rationalRoots: ['2', '-2'] },
+            steps: [
+              R`Use the **Zero Product Property** on the linear factors: $x - 2 = 0 \Rightarrow x = 2$ and $x + 2 = 0 \Rightarrow x = -2$.`,
+              R`Both quadratics have discriminant $2^2 - 4(1)(4) = -12 < 0$, so their roots are **imaginary**, not rational.`,
+            ],
+            answer: R`\{2,\ -2\}`,
+          },
+        ],
+      },
+      {
+        title: 'State the possible rational zeros for each function. Then find all rational zeros.', lesson: 9,
+        problems: [
+          { type: 'rrt', find: true, std: [4, 7, 2, -1], exp: { possible: [[1], [1, 2], [1, 4]], zeros: [[1, 4, 1], [-1, 1, 2]] } },
+          { type: 'rrt', find: true, std: [3, -5, 1, 1], exp: { possible: [[1], [1, 3]], zeros: [[1, 1, 2], [-1, 3, 1]] } },
+        ],
+      },
+      {
+        title: 'Find all rational roots.', lesson: [4, 9],
+        problems: [
+          {
+            type: 'steps', prompt: R`3x^4 - 19x^2 - 14 = 0`, check: { expr: '3*x**4 - 19*x**2 - 14', rationalRoots: [] },
+            steps: [
+              R`**Possible rational roots** $\tfrac{p}{q}$: $p$ divides $14$ ($\pm1, \pm2, \pm7, \pm14$), $q$ divides $3$ ($\pm1, \pm3$): $\pm1,\ \pm2,\ \pm7,\ \pm14,\ \pm\tfrac13,\ \pm\tfrac23,\ \pm\tfrac73,\ \pm\tfrac{14}{3}$.`,
+              R`It only has $x^4$, $x^2$, and a constant: **quadratic form**. Let $w = x^2$: $3w^2 - 19w - 14 = 0$.`,
+              R`$a \cdot c = -42$; numbers $-21$ and $2$: $3w^2 - 21w + 2w - 14 = 3w(w - 7) + 2(w - 7) = (3w + 2)(w - 7)$.`,
+              R`$x^2 = 7 \Rightarrow x = \pm\sqrt7$ (irrational). $\;x^2 = -\tfrac23 \Rightarrow x = \pm\tfrac{i\sqrt6}{3}$ (imaginary).`,
+              R`None of the roots is on the candidate list, so there are **no rational roots**.`,
+            ],
+            answer: R`\text{None}`,
+          },
+          {
+            type: 'steps', prompt: R`9x^8 - 160x^4 + 256 = 0`, check: { expr: '9*x**8 - 160*x**4 + 256', rationalRoots: ['2', '-2'] },
+            steps: [
+              R`Only $x^8$, $x^4$, and a constant: **quadratic form**. Let $w = x^4$: $9w^2 - 160w + 256 = 0$.`,
+              R`$a \cdot c = 2304$; numbers $-144$ and $-16$: $9w^2 - 144w - 16w + 256 = 9w(w - 16) - 16(w - 16) = (9w - 16)(w - 16)$.`,
+              R`$w = 16$: $x^4 = 16 \Rightarrow (x^2 - 4)(x^2 + 4) = 0 \Rightarrow x = \pm2$ (rational) or $x = \pm2i$.`,
+              R`$w = \tfrac{16}{9}$: $x^4 = \tfrac{16}{9} \Rightarrow x^2 = \pm\tfrac43 \Rightarrow x = \pm\tfrac{2\sqrt3}{3}$ (irrational) or $\pm\tfrac{2i\sqrt3}{3}$.`,
+              R`Only $2$ and $-2$ are **rational**.`,
+            ],
+            answer: R`\{2,\ -2\}`,
+          },
+        ],
+      },
+      {
+        title: 'Factor each and find all roots.', lesson: [4, 5],
+        problems: [
+          factorRoots(R`x^5 + 5x^4 + 10x^3 + 50x^2 + 9x + 45 = 0`, 'x**5 + 5*x**4 + 10*x**3 + 50*x**2 + 9*x + 45', '(x+5)*(x**2+1)*(x**2+9)', ['-5', 'I', '-I', '3*I', '-3*I'], [
+            R`**Group in pairs:** $x^4(x + 5) + 10x^2(x + 5) + 9(x + 5)$, then factor out $(x + 5)$: $(x + 5)(x^4 + 10x^2 + 9)$.`,
+            R`**Quadratic form** ($w = x^2$): $w^2 + 10w + 9 = (w + 1)(w + 9)$, so $(x + 5)(x^2 + 1)(x^2 + 9) = 0$.`,
+            R`$x = -5$; $\;x^2 = -1 \Rightarrow x = \pm i$; $\;x^2 = -9 \Rightarrow x = \pm3i$.`,
+          ], R`\begin{array}{l} (x + 5)(x^2 + 1)(x^2 + 9) = 0 \\ \text{Roots: } \{-5,\ i,\ -i,\ 3i,\ -3i\} \end{array}`),
+          factorRoots(R`x^5 + 2x^4 - 14x^3 - 28x^2 + 49x + 98 = 0`, 'x**5 + 2*x**4 - 14*x**3 - 28*x**2 + 49*x + 98', '(x+2)*(x**2-7)**2', ['-2', 'sqrt(7)', '-sqrt(7)'], [
+            R`**Group in pairs:** $x^4(x + 2) - 14x^2(x + 2) + 49(x + 2) = (x + 2)(x^4 - 14x^2 + 49)$.`,
+            R`$x^4 - 14x^2 + 49$ is a **perfect square**: $(x^2 - 7)^2$. So $(x + 2)(x^2 - 7)^2 = 0$.`,
+            R`$x = -2$; $\;x^2 = 7 \Rightarrow x = \pm\sqrt7$, each **multiplicity 2** (the factor is squared).`,
+          ], R`\begin{array}{l} (x + 2)(x^2 - 7)^2 = 0 \\ \text{Roots: } \{-2,\ \sqrt7 \text{ mult. } 2,\ -\sqrt7 \text{ mult. } 2\} \end{array}`),
+          factorRoots(R`5x^4 - 46x^2 + 48 = 0`, '5*x**4 - 46*x**2 + 48', '(x**2-8)*(5*x**2-6)', ['2*sqrt(2)', '-2*sqrt(2)', 'sqrt(30)/5', '-sqrt(30)/5'], [
+            R`**Quadratic form** ($w = x^2$): $5w^2 - 46w + 48$. $a \cdot c = 240$; numbers $-40$ and $-6$.`,
+            R`$5w^2 - 40w - 6w + 48 = 5w(w - 8) - 6(w - 8) = (5w - 6)(w - 8)$, so $(x^2 - 8)(5x^2 - 6) = 0$.`,
+            R`$x^2 = 8 \Rightarrow x = \pm2\sqrt2$. $\;x^2 = \tfrac65 \Rightarrow x = \pm\sqrt{\tfrac65} = \pm\tfrac{\sqrt{30}}{5}$ (multiply top and bottom by $\sqrt5$).`,
+          ], R`\begin{array}{l} (x^2 - 8)(5x^2 - 6) = 0 \\ \text{Roots: } \left\{2\sqrt2,\ -2\sqrt2,\ \tfrac{\sqrt{30}}{5},\ -\tfrac{\sqrt{30}}{5}\right\} \end{array}`),
+          factorRoots(R`3x^3 - 4x^2 - 15x = 0`, '3*x**3 - 4*x**2 - 15*x', 'x*(3*x+5)*(x-3)', ['0', '-5/3', '3'], [
+            R`**GCF first:** $x(3x^2 - 4x - 15) = 0$.`,
+            R`$a \cdot c = -45$; numbers $-9$ and $5$: $3x^2 - 9x + 5x - 15 = 3x(x - 3) + 5(x - 3) = (3x + 5)(x - 3)$.`,
+            R`$x = 0$, $\;3x + 5 = 0 \Rightarrow x = -\tfrac53$, $\;x = 3$.`,
+          ], R`\begin{array}{l} x(3x + 5)(x - 3) = 0 \\ \text{Roots: } \left\{0,\ -\tfrac53,\ 3\right\} \end{array}`),
+          factorRoots(R`5x^3 - 20x^2 - 4x + 16 = 0`, '5*x**3 - 20*x**2 - 4*x + 16', '(x-4)*(5*x**2-4)', ['4', '2*sqrt(5)/5', '-2*sqrt(5)/5'], [
+            R`**Group:** $5x^2(x - 4) - 4(x - 4) = (x - 4)(5x^2 - 4) = 0$.`,
+            R`$x = 4$. $\;5x^2 = 4 \Rightarrow x^2 = \tfrac45 \Rightarrow x = \pm\tfrac{2}{\sqrt5} = \pm\tfrac{2\sqrt5}{5}$.`,
+          ], R`\begin{array}{l} (x - 4)(5x^2 - 4) = 0 \\ \text{Roots: } \left\{4,\ \tfrac{2\sqrt5}{5},\ -\tfrac{2\sqrt5}{5}\right\} \end{array}`),
+          zeros([3, 7, 5, 1], ['-1', '-1/3'], { eq: true, factored: R`(x + 1)^2(3x + 1)`, factoredExpr: '(x+1)**2*(3*x+1)' }),
+          zeros([3, -10, 4, 10, -7], ['7/3', '-1', '1'], { eq: true, factored: R`(3x - 7)(x + 1)(x - 1)^2`, factoredExpr: '(3*x-7)*(x+1)*(x-1)**2' }),
+          zeros([7, 9, -5, -9, -2], ['-2/7', '-1', '1'], { eq: true, factored: R`(7x + 2)(x + 1)^2(x - 1)`, factoredExpr: '(7*x+2)*(x+1)**2*(x-1)' }),
+        ],
+      },
+      {
+        title: 'Find all zeros.', lesson: [9, 11],
+        problems: [
+          zeros([1, -13, 29, 3, 0], ['0', '3', '5+sqrt(26)', '5-sqrt(26)']),
+          zeros([5, -11, 7, -1], ['1/5', '1']),
+        ],
+      },
+    ],
+  },
+  {
     id: 'notes', title: 'Class notes', name: 'Examples from Days 1–15', due: '', lesson: 0,
     sections: [
       {
@@ -1355,4 +1592,7 @@ function factorProblem(prompt, expr, factored, steps, answer) {
 }
 function rootsProblem(prompt, expr, steps, answer, variable = 'x') {
   return { type: 'steps', prompt, steps, answer, check: { expr, roots: ROOTS[expr], variable } }
+}
+function factorRoots(prompt, expr, factored, roots, steps, answer) {
+  return { type: 'steps', prompt, steps, answer, check: { expr, factored, roots, variable: 'x' } }
 }

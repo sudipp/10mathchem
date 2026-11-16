@@ -10,7 +10,7 @@ Chapter 4, Lewis Structures & Nomenclature: valence electrons, Lewis structures,
 
 ## Math, one unit at a time
 
-Now available: Unit 4, Polynomial Functions. Fourteen video lessons with homework help (HW #1–#15). More units are on the way.
+Now available: Unit 4, Polynomial Functions. Fourteen video lessons with homework help (HW #1–#17). More units are on the way.
 
 [Open math](https://perspireai.com/math/)
 

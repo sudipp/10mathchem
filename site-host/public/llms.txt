@@ -10,7 +10,7 @@ The two subject sites are single-page apps: lesson and homework views are reache
 - [Chemistry: periodic table](https://perspireai.com/chemistry/#/periodic-table): interactive table showing each element's group, valence electrons and Lewis symbol.
 - [Chemistry: worksheet help](https://perspireai.com/chemistry/#/worksheets): step-by-step answers for the VSEPR, covalent naming and ionic naming (Types I–III) worksheets.
 - [Math](https://perspireai.com/math/): organized by unit. Now available: Unit 4, Polynomial Functions.
-- [Math Unit 4: Polynomial Functions](https://perspireai.com/math/#/unit-4): fourteen narrated video lessons (polynomial basics, zeros and linear factors, long division, synthetic division, factoring, solving polynomial equations, function operations and composition, solving by graphing, end behavior, the Rational Root Theorem, irrational and complex roots, the Fundamental Theorem of Algebra, polynomial inequalities, inverse functions) with homework help for HW #1–#15.
+- [Math Unit 4: Polynomial Functions](https://perspireai.com/math/#/unit-4): fourteen narrated video lessons (polynomial basics, zeros and linear factors, long division, synthetic division, factoring, solving polynomial equations, function operations and composition, solving by graphing, end behavior, the Rational Root Theorem, irrational and complex roots, the Fundamental Theorem of Algebra, polynomial inequalities, inverse functions) with homework help for HW #1–#17.
 
 ## About
 

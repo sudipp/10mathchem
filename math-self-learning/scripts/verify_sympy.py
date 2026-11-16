@@ -6,23 +6,32 @@ checks = json.loads((pathlib.Path(__file__).parent / "checks.json").read_text())
 names = {s: symbols(s) for s in "a b g m n p r s t u x y z".split()}
 ns = {**names, "I": I}
 ok = bad = 0
+
+
+def roots_match(c):
+    v = names[c.get("variable", "x")]
+    expr = sympify(c["expr"], ns)
+    exact = {simplify(r) for r in solve(expr, v)}
+    claimed = {simplify(sympify(r, ns)) for r in c["roots"]}
+    good = len(exact) == len(claimed) and all(any(simplify(a - b) == 0 for b in exact) for a in claimed)
+    if not good:
+        print("   sympy roots:", exact)
+    return good
+
+
 for c in checks:
     label = c["label"]
     try:
         if "factored" in c:
             good = expand(sympify(c["expr"], ns) - sympify(c["factored"], ns)) == 0
+            if good and c.get("roots") is not None:
+                good = roots_match(c)
         elif "result" in c and "expr" in c:
             good = simplify(sympify(c["expr"], ns) - sympify(c["result"], ns)) == 0
         elif "value" in c:
             good = simplify(sympify(c["value"], ns) - sympify(c["result"], ns)) == 0
         elif "roots" in c and c["roots"] is not None:
-            v = names[c.get("variable", "x")]
-            expr = sympify(c["expr"], ns)
-            exact = {simplify(r) for r in solve(expr, v)}
-            claimed = {simplify(sympify(r, ns)) for r in c["roots"]}
-            good = len(exact) == len(claimed) and all(any(simplify(a - b) == 0 for b in exact) for a in claimed)
-            if not good:
-                print("   sympy roots:", exact)
+            good = roots_match(c)
         elif "funcs" in c:
             v = names[c["v"]]
             loc = dict(ns)

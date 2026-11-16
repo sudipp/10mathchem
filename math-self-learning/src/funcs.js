@@ -4,7 +4,8 @@ import { P, div, polyAdd, polyLatex, polyMul, polyScale, polySub, q, qLatex, ter
 
 const NUM = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
 const DEGREE = ['constant', 'linear', 'quadratic', 'cubic', 'quartic', 'quintic']
-const ordinal = n => `${n}${n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th'}`
+const ORDINAL = { 6: 'sixth', 7: 'seventh', 8: 'eighth', 9: 'ninth', 10: 'tenth' }
+const ordinal = n => ORDINAL[n] ?? `${n}${n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th'}`
 export const degreeName = n => DEGREE[n] ?? `${ordinal(n)} degree`
 export const termsName = k => ['', 'monomial', 'binomial', 'trinomial'][k] ?? `polynomial with ${NUM[k] ?? k} terms`
 

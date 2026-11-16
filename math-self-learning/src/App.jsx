@@ -75,6 +75,7 @@ function UnitPage({ unit, active, setActive, completed, markDone, openLesson }) 
   const lessons = unit.lessons, lesson = lessons[active], count = lessons.length
   const L = section => `#/${unit.slug}/${section}`
   const H = id => `#/${unit.slug}/homework/${id}`
+  const hwTitle = id => unit.homework.find(h => h.id === id)?.title ?? id.replace('hw', 'HW #')
   const hwFor = unit.hwFor[active]
   const total = videoSeconds(unit)
   return <main>
@@ -102,7 +103,7 @@ function UnitPage({ unit, active, setActive, completed, markDone, openLesson }) 
           <span className="eyebrow">{s.name.toUpperCase()}{secs > 0 && ` · ${Math.round(secs / 60)} MIN OF VIDEO`}</span>
           <h3>{s.title}</h3>
           <ol>{s.lessons.map(i => { const v = unit.videos[unit.videoIds[i]]; return <li key={i}><button className="as-button day-lesson" onClick={() => openLesson(i)}><span>{String(i + 1).padStart(2, '0')}</span>{lessons[i].title}{v && <small>{minutes(v.seconds)}</small>}</button></li> })}</ol>
-          <div className="day-practice">Then practise: {s.hw.map(h => <a key={h} href={H(h)}>{h.replace('hw', 'HW #')}</a>)}</div>
+          <div className="day-practice">Then practise: {s.hw.map(h => <a key={h} href={H(h)}>{hwTitle(h)}</a>)}</div>
           {k < unit.dayPlan.sessions.length - 1 && <span className="day-break">Take a 10-minute break</span>}
         </div>
       })}</div>

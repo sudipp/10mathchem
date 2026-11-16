@@ -48,12 +48,15 @@ export default function HomeworkPage({ unit, tab, openLesson }) {
           <h2>{hw.title}: <em>{hw.name}.</em></h2>
           {hw.due && <p className="muted">Due {hw.due}</p>}
           {hw.assigned && <p className="hw-assigned">Assigned: #1–{lastOdd} odd. <button className="text-link as-button" onClick={() => setOnlyAssigned(!onlyAssigned)}>{onlyAssigned ? 'Show the even problems too (extra practice)' : 'Show assigned problems only'}</button></p>}
-          <button className="text-link as-button" onClick={() => openLesson(hw.lesson)}>Review the lesson first: {lessonNames[hw.lesson]} <ArrowRight size={14} /></button>
+          {hw.intro
+            ? <p className="hw-intro">{hw.intro}</p>
+            : <button className="text-link as-button" onClick={() => openLesson(hw.lesson)}>Review the lesson first: {lessonNames[hw.lesson]} <ArrowRight size={14} /></button>}
         </div>
         <button className="ws-btn" onClick={() => setRevealAll(!revealAll)}>{revealAll ? <><EyeOff size={14} /> Hide all answers</> : <><Check size={14} /> Show every step & answer</>}</button>
       </div>
-      {hw.sections.map(section => <div key={section.title} className="hw-section">
+      {hw.sections.map((section, si) => <div key={`${hw.id}-${si}`} className="hw-section">
         <h3><Rich text={section.title} /></h3>
+        {section.lesson != null && <p className="hw-lessons"><span className="eyebrow">WATCH</span>{[].concat(section.lesson).map(i => <button key={i} className="text-link as-button" onClick={() => openLesson(i)}>Lesson {i + 1}: {lessonNames[i]} <ArrowRight size={14} /></button>)}</p>}
         <div className="hw-grid">{section.problems.map(p => { count++; const tag = hw.assigned ? (count % 2 === 1 ? 'assigned' : 'extra') : null; return tag === 'extra' && onlyAssigned ? null : <ProblemCard key={`${hw.id}-${count}-${revealAll}`} problem={p} number={count} revealAll={revealAll} tag={tag} /> })}</div>
       </div>)}
     </section>

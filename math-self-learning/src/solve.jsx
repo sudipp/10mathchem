@@ -38,8 +38,9 @@ export function solve(p) {
   if (p.type === 'long') {
     const s = longSolution(p.num, p.den)
     if (p.note) s.steps.unshift(p.note)
+    if (p.after) s.steps.push(p.after)
     const offset = p.note ? 1 : 0
-    return { prompt: `${pre}(${polyLatex(P(p.num))}) \\div (${polyLatex(P(p.den))})`, steps: s.steps, visual: n => s.visual(n - offset), answer: s.r.answer }
+    return { prompt: `${pre}(${polyLatex(P(p.num))}) \\div (${polyLatex(P(p.den))})`, steps: s.steps, visual: n => s.visual(n - offset), answer: p.answer ?? s.r.answer }
   }
   if (p.type === 'synth') {
     const s = synthSolution(p.num, p.k, [r => R`**Read the answer.** The bottom row gives the quotient (one degree lower) and the remainder: $${r.answer}$.`])
@@ -313,6 +314,11 @@ function rrtSolution(p, pre) {
   if (p.all) {
     const all = [zs, extra].filter(Boolean).join(',\\ ')
     steps.push(R`**All roots:** $x = ${all}$.`)
+    if (p.factored) {
+      steps.push(R`**Write it as factors:** each real zero $r$ gives a factor $(x - r)$ (a fraction zero $\tfrac{p}{q}$ gives $(qx - p)$), repeated for its multiplicity${r.others.some(o => [].concat(o.sympy).some(s => s.includes('I'))) ? ', and a conjugate pair stays together as the quadratic it came from' : ''}: $${p.factored}${p.eq ? ' = 0' : ''}$.`)
+      const factoredAns = p.eq ? R`\begin{array}{l} ${p.factored} = 0 \\ \text{Roots: } \left\{${all}\right\} \end{array}` : `f(x) = ${p.factored}`
+      return { prompt, steps, visual: n => visuals[n] ?? null, answer: factoredAns }
+    }
     const ans = p.list ? R`\begin{array}{l} \text{Possible: } ${rows.join(R`, \\ \qquad\quad `)} \\ \text{Zeros: } \left\{${all}\right\} \end{array}` : `x = ${all}`
     return { prompt, steps, visual: n => visuals[n] ?? null, answer: ans }
   }

@@ -61,6 +61,7 @@ for (const hw of HOMEWORK) {
       const roots = r.zeros.flatMap(z => Array(z.m).fill(qSympy(z.x)))
       if (p.all) checks.push({ label, expr: sympyPoly(r.poly), allRoots: [...roots, ...r.others.flatMap(o => o.sympy)], keyRoots: p.exp.roots })
       else if (p.find) checks.push({ label, expr: sympyPoly(r.poly), rationalRoots: [...new Set(roots)] })
+      if (p.factoredExpr) checks.push({ label: `${label} factored`, expr: sympyPoly(r.poly), factored: p.factoredExpr })
     } else if (p.type === 'conj') {
       const got = p.roots.filter(isPaired).map(conjugate)
       report(JSON.stringify(got) === JSON.stringify(p.exp), label, JSON.stringify(got))

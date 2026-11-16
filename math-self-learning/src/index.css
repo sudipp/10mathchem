@@ -72,6 +72,8 @@ footer{background:#1d2b23;color:#e6eadf;border-radius:60px 60px 0 0;padding:60px
 .ws-tabs a{display:inline-flex;flex-direction:column;border:1px solid #cbd1c4;border-radius:22px;padding:10px 18px;font-size:.82rem;font-weight:650;min-height:46px;justify-content:center}.ws-tabs a>span{font-size:.62rem;font-weight:500;color:#6b756d}.ws-tabs a[aria-current=page]{background:#2e4036;color:#f2f0e9;border-color:#2e4036}.ws-tabs a[aria-current=page]>span{color:#c9d4c3}
 .hw-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:10px}.hw-head h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:6px}.hw-head .muted{font-size:.78rem;margin-bottom:8px}.hw-head .text-link{color:#a33d20}
 .hw-section{margin-top:40px}.hw-section>h3{font-size:1.05rem;margin-bottom:16px;max-width:820px;line-height:1.6}
+.hw-intro{font-size:.88rem;color:#2e4036;font-weight:600;max-width:640px;line-height:1.7}
+.hw-lessons{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:-8px 0 16px}.hw-lessons .eyebrow{color:#667368}
 .hw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px;align-items:start}
 .hw-card{background:#fffdf7;border:1px solid #e1e2d9;border-radius:26px;padding:20px 22px;min-width:0}.hw-card header{display:flex;gap:10px;align-items:baseline}.hw-prompt{font-size:1.02rem;min-width:0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
 .hw-visual{margin:14px 0 4px;background:#f2f0e9;border-radius:18px;padding:12px}

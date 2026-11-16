@@ -53,7 +53,7 @@ help (`Homework.jsx`, `solve.jsx`), math rendering (`TeX.jsx`), drawings
 
 ## Unit 4: Polynomial Functions
 
-Built from the class notes (Days 1–5, 7, 9–12, 14, 15) and HW #1 to HW #15.
+Built from the class notes (Days 1–5, 7, 9–12, 14, 15) and HW #1 to HW #17.
 
 1. Polynomial basics: standard form, degree, and names.
 2. Zeros and linear factors: multiplicity and writing polynomials from zeros.
@@ -75,7 +75,7 @@ short reading, a quick check, and a Khan Academy video as another
 explanation. The unit page has a "Polynomials in a day" plan: six short
 sessions of videos and homework, with breaks between.
 
-Homework help covers HW #1 to HW #15 plus the class-note examples, revealed
+Homework help covers HW #1 to HW #17 plus the class-note examples, revealed
 one step at a time. Division layouts, synthetic division tables, graphs,
 polynomials built from zeros, and the HW #9 graph analyses (end behavior,
 intercepts, multiplicity, test points) are **computed** by `src/poly.js` with
@@ -93,6 +93,14 @@ zero set and every inequality. HW #15 inverses are checked numerically both
 ways (`f(g(x)) = g(f(x)) = x`). HW #11 assigns
 the odd problems, so the page shows those first and hides the evens until
 asked.
+
+HW #16 & 17 is the unit test review (50 problems, due Nov 17). Each section
+links to the lesson video that teaches it. Engine types cover classifying,
+end behavior, evaluation, division, factor tests, zero counts, and rational
+roots; "factor, one zero given" and RRT factoring problems also show the
+factored form the key asks for, and sympy confirms both the factored form
+and every root. The hand-written factoring and quadratic-form problems are
+checked the same way.
 
 ## Checking the answers
 
