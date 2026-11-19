@@ -409,7 +409,7 @@ const unit4 = {
       { name: 'Session 3', title: 'Factor, solve, combine', lessons: [4, 5, 6], hw: ['hw7', 'hw2', 'hw6'] },
       { name: 'Session 4', title: 'Graphs and end behavior', lessons: [7, 8], hw: ['hw8', 'hw9'] },
       { name: 'Session 5', title: 'Finding every root', lessons: [9, 10], hw: ['hw10', 'hw11'] },
-      { name: 'Session 6', title: 'Counting zeros, inequalities, inverses', lessons: [11, 12, 13], hw: ['hw12', 'hw13', 'hw14', 'hw15', 'hw16'] },
+      { name: 'Session 6', title: 'Counting zeros, inequalities, inverses', lessons: [11, 12, 13], hw: ['hw12', 'hw13', 'hw14', 'hw15', 'hw16', 'circuit', 'pixel'] },
     ],
   },
 }

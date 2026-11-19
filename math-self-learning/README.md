@@ -102,6 +102,17 @@ factored form the key asks for, and sympy confirms both the factored form
 and every root. The hand-written factoring and quadratic-form problems are
 checked the same way.
 
+Two more test-review activities follow it. **Circuit Training: Factoring
+Completely** has the 16 circuit cards in circuit order, starting with the first
+card on the sheet: each card is factored, and its last step names the next card
+(the one whose printed answer is one of your factors). Sympy confirms every
+factorization and that each "next" answer really is a factor. **Pixel Review**
+is the 24-question multiple-choice review (it has no answer key): each question
+shows the choices, works the problem, and highlights the correct letter.
+`verify.mjs` checks that every marked letter matches the worked answer; the two
+graph-sketch questions describe the pictured choices in words and draw the
+actual graph.
+
 ## Checking the answers
 
 ```powershell

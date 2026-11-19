@@ -12,6 +12,7 @@ function ProblemCard({ problem, number, revealAll, tag }) {
   const visual = n > 0 && s.visual ? s.visual(n) : null
   return <article className="hw-card">
     <header><span className="ws-num">{number}.</span><div className="hw-prompt"><TeX math={s.prompt} /></div>{tag && <span className={`hw-tag ${tag}`}>{tag === 'assigned' ? 'Assigned' : 'Extra practice'}</span>}</header>
+    {s.choices && <ul className="hw-choices" aria-label="Answer choices">{s.choices.map(([k, t]) => <li key={k} className={(done || answerOnly) && k === problem.choice ? 'right' : ''}><span>{k})</span><TeX math={t} /></li>)}</ul>}
     {visual && <div className="hw-visual">{visual}</div>}
     {n > 0 && <ol className="hw-steps">{s.steps.slice(0, n).map((t, i) => <li key={i} className={i === n - 1 && !done ? 'current' : ''}><Rich text={t} /></li>)}</ol>}
     {(done || answerOnly) && <div className="hw-answer"><span className="eyebrow">ANSWER</span><TeX math={s.answer} /></div>}

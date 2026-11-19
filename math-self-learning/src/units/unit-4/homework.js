@@ -50,6 +50,13 @@ const ineqS = (lhs, rel, key, extra = {}) => ({ type: 'ineq', lhs, rel, key, ...
 const inv = (prompt, steps, answer, f, g, expect = true, extra = {}) => ({ type: 'steps', prompt, steps, answer, check: { inverse: { f, g, expect, v: extra.v ?? 'x' } }, ...extra })
 const cbrt = Math.cbrt
 const pairGraph = (f, fl, g, gl) => ({ curves: [{ f, label: fl }, { f: g, label: gl }], window: [-6, 6, -6, 6] })
+// Multiple-choice end behavior options (Pixel Review #13–14), as printed on the worksheet.
+const ENDS = [
+  R`x \to -\infty,\ y \to \infty;\ \ x \to \infty,\ y \to \infty`,
+  R`x \to -\infty,\ y \to -\infty;\ \ x \to \infty,\ y \to \infty`,
+  R`x \to -\infty,\ y \to \infty;\ \ x \to \infty,\ y \to -\infty`,
+  R`x \to -\infty,\ y \to -\infty;\ \ x \to \infty,\ y \to -\infty`,
+]
 
 export const HOMEWORK = [
   {
@@ -1229,6 +1236,216 @@ export const HOMEWORK = [
     ],
   },
   {
+    id: 'circuit', title: 'Circuit Training', name: 'Factoring Completely', due: '', lesson: 4,
+    intro: 'Factor each card completely, then find the card whose “Answer:” matches ONE of your factors. That card is next. Your blank circuit sheet has cells #1–#16: here the circuit starts with the first card on the sheet, 9x² − 25.',
+    sections: [
+      {
+        title: 'Factor completely. Then find the card whose answer is one of your factors.', lesson: [4, 5],
+        problems: [
+          circuit(R`9x^2 - 25`, '9*x**2 - 25', '(3*x-5)*(3*x+5)', [
+            R`**Difference of squares:** $9x^2 = (3x)^2$ and $25 = 5^2$, so $a^2 - b^2 = (a - b)(a + b)$.`,
+          ], R`(3x - 5)(3x + 5)`, '3*x+5', R`3x + 5`, R`6x^3 + 14x^2 - 40x`),
+          circuit(R`6x^3 + 14x^2 - 40x`, '6*x**3 + 14*x**2 - 40*x', '2*x*(3*x-5)*(x+4)', [
+            R`**GCF first:** $2x(3x^2 + 7x - 20)$.`,
+            R`$a \cdot c = -60$; numbers $12$ and $-5$: $3x^2 + 12x - 5x - 20 = 3x(x + 4) - 5(x + 4) = (3x - 5)(x + 4)$.`,
+          ], R`2x(3x - 5)(x + 4)`, 'x+4', R`x + 4`, R`3x^3 + 6x^2 + 21x`),
+          circuit(R`3x^3 + 6x^2 + 21x`, '3*x**3 + 6*x**2 + 21*x', '3*x*(x**2+2*x+7)', [
+            R`**GCF first:** $3x(x^2 + 2x + 7)$.`,
+            R`$x^2 + 2x + 7$ does not factor: no two numbers multiply to $7$ and add to $2$ (its discriminant is $4 - 28 < 0$).`,
+          ], R`3x(x^2 + 2x + 7)`, 'x**2+2*x+7', R`x^2 + 2x + 7`, R`3x^3 - 21x^2 + 4xy - 28y`),
+          circuit(R`3x^3 - 21x^2 + 4xy - 28y`, '3*x**3 - 21*x**2 + 4*x*y - 28*y', '(x-7)*(3*x**2+4*y)', [
+            R`**Group** the first two and last two terms: $3x^2(x - 7) + 4y(x - 7)$.`,
+            R`Factor out $(x - 7)$.`,
+          ], R`(x - 7)(3x^2 + 4y)`, 'x-7', R`x - 7`, R`5x^4 - 5x^3 + 15x^2 - 15x`),
+          circuit(R`5x^4 - 5x^3 + 15x^2 - 15x`, '5*x**4 - 5*x**3 + 15*x**2 - 15*x', '5*x*(x-1)*(x**2+3)', [
+            R`**GCF first:** $5x(x^3 - x^2 + 3x - 3)$.`,
+            R`**Group** inside: $x^2(x - 1) + 3(x - 1) = (x - 1)(x^2 + 3)$.`,
+          ], R`5x(x - 1)(x^2 + 3)`, 'x**2+3', R`x^2 + 3`, R`2x^3y - 16y`),
+          circuit(R`2x^3y - 16y`, '2*x**3*y - 16*y', '2*y*(x-2)*(x**2+2*x+4)', [
+            R`**GCF first:** $2y(x^3 - 8)$.`,
+            R`**Difference of cubes** ($a = x$, $b = 2$): $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$.`,
+          ], R`2y(x - 2)(x^2 + 2x + 4)`, 'x**2+2*x+4', R`x^2 + 2x + 4`, R`x^4 - 23x^2 + 60`),
+          circuit(R`x^4 - 23x^2 + 60`, 'x**4 - 23*x**2 + 60', '(x**2-20)*(x**2-3)', [
+            R`**Quadratic form:** let $w = x^2$: $w^2 - 23w + 60$.`,
+            R`Two numbers that multiply to $60$ and add to $-23$: $-20$ and $-3$, so $(w - 20)(w - 3)$. Put $x^2$ back in.`,
+          ], R`(x^2 - 20)(x^2 - 3)`, 'x**2-20', R`x^2 - 20`, R`6x^2 + 13x + 5`),
+          circuit(R`6x^2 + 13x + 5`, '6*x**2 + 13*x + 5', '(2*x+1)*(3*x+5)', [
+            R`$a \cdot c = 30$; numbers $10$ and $3$: $6x^2 + 10x + 3x + 5 = 2x(3x + 5) + 1(3x + 5)$.`,
+            R`So $(2x + 1)(3x + 5)$. **Both** factors appear as card answers, but $3x + 5$ leads back to card #2, which you already did. Follow $2x + 1$.`,
+          ], R`(2x + 1)(3x + 5)`, '2*x+1', R`2x + 1`, R`10 + 3x - x^2`),
+          circuit(R`10 + 3x - x^2`, '10 + 3*x - x**2', '-(x-5)*(x+2)', [
+            R`**Standard form first:** $-x^2 + 3x + 10$. Factor out $-1$: $-(x^2 - 3x - 10)$.`,
+            R`Two numbers that multiply to $-10$ and add to $-3$: $-5$ and $2$, so $-(x - 5)(x + 2)$. (Same as $(5 - x)(x + 2)$.)`,
+          ], R`-(x - 5)(x + 2)`, 'x-5', R`x - 5`, R`4x^3 + 16x^2 - 48x`),
+          circuit(R`4x^3 + 16x^2 - 48x`, '4*x**3 + 16*x**2 - 48*x', '4*x*(x+6)*(x-2)', [
+            R`**GCF first:** $4x(x^2 + 4x - 12)$.`,
+            R`Two numbers that multiply to $-12$ and add to $4$: $6$ and $-2$.`,
+          ], R`4x(x + 6)(x - 2)`, 'x+6', R`x + 6`, R`x^3 + 2x^2 - 25xy^2 - 50y^2`),
+          circuit(R`x^3 + 2x^2 - 25xy^2 - 50y^2`, 'x**3 + 2*x**2 - 25*x*y**2 - 50*y**2', '(x+2)*(x-5*y)*(x+5*y)', [
+            R`**Group:** $x^2(x + 2) - 25y^2(x + 2) = (x + 2)(x^2 - 25y^2)$.`,
+            R`$x^2 - 25y^2$ is a **difference of squares**: $(x - 5y)(x + 5y)$.`,
+          ], R`(x + 2)(x - 5y)(x + 5y)`, 'x+5*y', R`x + 5y`, R`x^4 - 3x^2 + 2`),
+          circuit(R`x^4 - 3x^2 + 2`, 'x**4 - 3*x**2 + 2', '(x-1)*(x+1)*(x**2-2)', [
+            R`**Quadratic form** ($w = x^2$): $w^2 - 3w + 2 = (w - 1)(w - 2)$, so $(x^2 - 1)(x^2 - 2)$.`,
+            R`$x^2 - 1$ is a **difference of squares**: $(x - 1)(x + 1)$.`,
+          ], R`(x - 1)(x + 1)(x^2 - 2)`, 'x+1', R`x + 1`, R`3x^3 - 18x + 30 - 5x^2`),
+          circuit(R`3x^3 - 18x + 30 - 5x^2`, '3*x**3 - 18*x + 30 - 5*x**2', '(3*x-5)*(x**2-6)', [
+            R`**Standard form first:** $3x^3 - 5x^2 - 18x + 30$.`,
+            R`**Group:** $x^2(3x - 5) - 6(3x - 5) = (3x - 5)(x^2 - 6)$.`,
+          ], R`(3x - 5)(x^2 - 6)`, 'x**2-6', R`x^2 - 6`, R`128x^4 - 2x`),
+          circuit(R`128x^4 - 2x`, '128*x**4 - 2*x', '2*x*(4*x-1)*(16*x**2+4*x+1)', [
+            R`**GCF first:** $2x(64x^3 - 1)$.`,
+            R`**Difference of cubes** ($a = 4x$, $b = 1$): $(4x - 1)(16x^2 + 4x + 1)$.`,
+          ], R`2x(4x - 1)(16x^2 + 4x + 1)`, '4*x-1', R`4x - 1`, R`9x^4 - 40x^2 + 16`),
+          circuit(R`9x^4 - 40x^2 + 16`, '9*x**4 - 40*x**2 + 16', '(3*x-2)*(3*x+2)*(x-2)*(x+2)', [
+            R`**Quadratic form** ($w = x^2$): $9w^2 - 40w + 16$. $a \cdot c = 144$; numbers $-36$ and $-4$: $9w(w - 4) - 4(w - 4) = (9w - 4)(w - 4)$.`,
+            R`So $(9x^2 - 4)(x^2 - 4)$, and both are **differences of squares**.`,
+          ], R`(3x - 2)(3x + 2)(x - 2)(x + 2)`, '3*x-2', R`3x - 2`, R`6x^2 - 11x - 30`),
+          circuit(R`6x^2 - 11x - 30`, '6*x**2 - 11*x - 30', '(3*x-10)*(2*x+3)', [
+            R`$a \cdot c = -180$; numbers $-20$ and $9$: $6x^2 - 20x + 9x - 30 = 2x(3x - 10) + 3(3x - 10)$.`,
+            R`So $(3x - 10)(2x + 3)$.`,
+          ], R`(3x - 10)(2x + 3)`, '2*x+3', R`2x + 3`, null),
+        ],
+      },
+    ],
+  },
+  {
+    id: 'pixel', title: 'Pixel Review', name: 'Unit 4 Polynomial Review', due: '', lesson: 0,
+    intro: 'Multiple-choice review for the Unit 4 test. Pick your answer on paper (and show your work), then check it here. Each section links to the lesson video that teaches it.',
+    sections: [
+      {
+        title: 'Factor completely.', lesson: 4,
+        problems: [
+          mc(factorProblem(R`k^2 - 2k - 24`, 'k**2 - 2*k - 24', '(k+4)*(k-6)', [R`Two numbers that multiply to $-24$ and add to $-2$: $-6$ and $4$.`], R`(k + 4)(k - 6)`), 'A', [R`(k + 4)(k - 6)`, R`(k + 4)(k + 6)`, R`(k + 6)(k - 1)`, R`(k - 4)(k + 6)`]),
+          mc(factorProblem(R`3x^2 + 5x - 12`, '3*x**2 + 5*x - 12', '(3*x-4)*(x+3)', [R`$a \cdot c = -36$; numbers $9$ and $-4$: $3x^2 + 9x - 4x - 12 = 3x(x + 3) - 4(x + 3)$.`, R`So $(3x - 4)(x + 3)$. Check the middle term: $9x - 4x = 5x$ ✓`], R`(3x - 4)(x + 3)`), 'B', [R`(3x + 4)(x - 3)`, R`(3x - 4)(x + 3)`, R`(3x + 3)(x - 4)`, R`(3x - 3)(x + 4)`]),
+          mc(factorProblem(R`x^2 - 16`, 'x**2 - 16', '(x-4)*(x+4)', [R`**Difference of squares:** $x^2 - 4^2 = (x - 4)(x + 4)$.`], R`(x - 4)(x + 4)`), 'B', [R`\text{Prime (not factorable)}`, R`(x - 4)(x + 4)`, R`(x - 8)(x + 8)`, R`(x - 4)(x - 4)`]),
+        ],
+      },
+      {
+        title: 'Division and the Remainder Theorem.', lesson: [3, 2],
+        problems: [
+          mc({ type: 'eval', num: [1, 12, 20, -90], k: 2, label: R`\text{Remainder of } \div (x - 2)`, exp: 6 }, 'C', ['0', '1', '6', '-6']),
+          mc({
+            type: 'steps', prompt: R`\text{Set up correctly? } (2x^4 - 9x^3 - 21x^2 + 48) \div (x - 4) \text{ with } k = -4 \text{ and } 2,\ -9,\ -21,\ 48`,
+            check: { value: '2*4**4 - 9*4**3 - 21*4**2 + 48', result: '-352' },
+            steps: [
+              R`For the divisor $x - 4$, $k = +4$ (the opposite of the number in the divisor), **not** $-4$.`,
+              R`The dividend has **no $x$ term**, so it needs a $0$ placeholder: $2,\ -9,\ -21,\ 0,\ 48$.`,
+              R`Two mistakes, so it was **not** set up correctly. (Done right, $k = 4$ gives $2,\ -1,\ -25,\ -100$ with remainder $-352$.)`,
+            ],
+            answer: R`\text{No}`,
+          }, 'C', [R`\text{Yes}`, R`\text{Cannot be determined}`, R`\text{No}`]),
+          mc({ type: 'synth', num: [2, 7, -6, -8], k: -4, exp: { q: [2, -1, -2], r: 0 } }, 'A', [R`2x^2 - x - 2`, R`2x^3 - x^2 - 2x`, R`2x^2 + 15x + 54 + \tfrac{208}{x + 4}`, R`2x^3 + 15x^2 + 54x + 208`]),
+          mc({ type: 'eval', num: [4, -3, -4, 2], k: 3, label: R`\text{Remainder of } \div (x - 3)`, exp: 71 }, 'B', ['-71', '71', '145']),
+          mc({ type: 'synth', num: [2, 5, 0, 9], k: -3, exp: { q: [2, -1, 3], r: 0 } }, 'A', [R`2x^2 - x + 3`, R`2x^3 - x^2 + 3x`, R`2x^2 + 11x + 33 + \tfrac{108}{x + 3}`, R`2x^2 - 5x + 12`]),
+        ],
+      },
+      {
+        title: 'Counting zeros.', lesson: [11, 7],
+        problems: [
+          mc({
+            type: 'steps', prompt: R`f(x) = 5x^4 + 2x^3 + 2x - 7\text{: at most how many solutions?}`,
+            steps: [R`The degree is $4$.`, R`By the **Fundamental Theorem of Algebra** there are exactly $4$ complex solutions, so **at most 4** real ones.`],
+            answer: '4',
+          }, 'B', ['5', '4', '3', '2']),
+          mc({
+            type: 'steps', prompt: R`f(x) = -x^4 - x^3 + 3x^2 - 3\text{: how many real zeros?}`, poly: [-1, -1, 3, 0, -3], window: [-4, 3, -8, 4],
+            check: { expr: '-x**4 - x**3 + 3*x**2 - 3', factored: '-(x+1)*(x**3-3*x+3)' },
+            steps: [
+              R`**Test candidates** $\pm1, \pm3$: $f(-1) = -1 + 1 + 3 - 3 = 0$ ✓, so $x = -1$ is a zero.`,
+              R`Divide by $(x + 1)$ (synthetic division with $-1$ on $1,\ 1,\ -3,\ 0,\ 3$ after factoring out $-1$): $f(x) = -(x + 1)(x^3 - 3x + 3)$.`,
+              R`$x^3 - 3x + 3$ has no rational zeros ($\pm1, \pm3$ give $1,\ 5,\ 21,\ -15$). Its turning points at $x = \pm1$ are both **above** the axis, so it crosses only once, near $x \approx -2.1$.`,
+              R`**Graph:** the curve meets the x-axis at $x = -1$ and $x \approx -2.1$: **2 real zeros**.`,
+            ],
+            answer: '2',
+          }, 'A', ['2', '1', '4', R`\text{None}`]),
+        ],
+      },
+      {
+        title: 'Multiply and simplify.', lesson: 0,
+        problems: [
+          mc({
+            type: 'steps', prompt: R`(5x + 2)(x^2 - 3x + 6)`, check: { expr: '(5*x+2)*(x**2-3*x+6)', result: '5*x**3 - 13*x**2 + 24*x + 12' },
+            steps: [R`Multiply every term by every term: $5x(x^2 - 3x + 6) = 5x^3 - 15x^2 + 30x$ and $2(x^2 - 3x + 6) = 2x^2 - 6x + 12$.`, R`**Combine like terms:** $5x^3 + (-15 + 2)x^2 + (30 - 6)x + 12$.`],
+            answer: R`5x^3 - 13x^2 + 24x + 12`,
+          }, 'C', [R`5x^3 - 17x^2 + 24x + 12`, R`5x^3 + 17x^2 - 24x + 12`, R`5x^3 - 13x^2 + 24x + 12`, R`5x^3 + 13x^2 - 24x - 12`]),
+          mc({
+            type: 'steps', prompt: R`(6b^3 + 6 - b^4) - (8b^3 - 6b^4 + 2)`, check: { expr: '(6*b**3 + 6 - b**4) - (8*b**3 - 6*b**4 + 2)', result: '5*b**4 - 2*b**3 + 4' },
+            steps: [R`Subtract the **whole** second group: distribute the minus sign: $6b^3 + 6 - b^4 - 8b^3 + 6b^4 - 2$.`, R`**Combine like terms:** $b^4$: $-1 + 6 = 5$. $\;b^3$: $6 - 8 = -2$. Constants: $6 - 2 = 4$.`],
+            answer: R`5b^4 - 2b^3 + 4`,
+          }, 'B', [R`4b^4 - 2b^3 + 7`, R`5b^4 - 2b^3 + 4`, R`b^4 - 2b^3 + 7`, R`5b^4 - 2b^3 + 7`]),
+        ],
+      },
+      {
+        title: 'Which of these describes the end behavior?', lesson: 8,
+        problems: [
+          mc({ type: 'ends', std: [3, 2, 0, 0, -7], exp: [1, 1] }, 'A', ENDS),
+          mc({ type: 'ends', std: [3, 0, 2, 0, 0, -7], exp: [-1, 1] }, 'B', ENDS),
+        ],
+      },
+      {
+        title: 'Factor.', lesson: 4,
+        problems: [
+          mc(factorProblem(R`x^3 - 4x^2 - 4x + 16`, 'x**3 - 4*x**2 - 4*x + 16', '(x-4)*(x**2-4)', [R`**Group:** $x^2(x - 4) - 4(x - 4) = (x - 4)(x^2 - 4)$.`, R`That matches a choice. (Factored completely it is $(x - 4)(x - 2)(x + 2)$.)`], R`(x - 4)(x^2 - 4)`), 'B', [R`(x + 4)(x + 2)`, R`(x - 4)(x^2 - 4)`, R`(x + 4)(x^2 - 4)`, R`(x - 4)(x - 2)`]),
+          mc(factorProblem(R`2n^4 + 7n^3 - 4n - 14`, '2*n**4 + 7*n**3 - 4*n - 14', '(n**3-2)*(2*n+7)', [R`**Group:** $n^3(2n + 7) - 2(2n + 7)$.`, R`Factor out $(2n + 7)$: $(n^3 - 2)(2n + 7)$. ($n^3 - 2$ is not a difference of cubes with whole numbers, since $2$ is not a perfect cube.)`], R`(n^3 - 2)(2n + 7)`), 'C', [R`(n - 2)(n - 2)(n - 2)(2n + 7)`, R`(n - 2)^3(2n + 7)`, R`(n^3 - 2)(2n + 7)`, R`(n + 1)(n - 1)(2n + 7)`]),
+          mc(factorProblem(R`8n^3 + 2n^2`, '8*n**3 + 2*n**2', '2*n**2*(4*n+1)', [R`**GCF:** both terms share $2n^2$: $8n^3 = 2n^2 \cdot 4n$ and $2n^2 = 2n^2 \cdot 1$.`], R`2n^2(4n + 1)`), 'B', [R`2n^2(4n - 1)`, R`2n^2(4n + 1)`, R`n^2(8n + 2)`, R`3n(4n + 1)`]),
+        ],
+      },
+      {
+        title: 'Which answer below is a zero of the function?', lesson: 5,
+        problems: [
+          mc({
+            type: 'steps', prompt: R`g(x) = 3x^3 - 15x^2 - 72x`, check: { expr: '3*x**3 - 15*x**2 - 72*x', roots: ['0', '8', '-3'], variable: 'x' },
+            steps: [R`**GCF:** $3x(x^2 - 5x - 24)$.`, R`Two numbers that multiply to $-24$ and add to $-5$: $-8$ and $3$, so $3x(x - 8)(x + 3)$.`, R`The zeros are $0,\ 8,\ -3$. Only $8$ is a choice.`],
+            answer: 'x = 8',
+          }, 'B', [R`x = -\tfrac13`, 'x = 8', 'x = -7', 'x = 1', 'x = 3']),
+        ],
+      },
+      {
+        title: 'Sketch the graph of each function. (The worksheet shows the choices as pictures; they are described here.)', lesson: 8,
+        problems: [
+          mc({
+            type: 'steps', prompt: R`f(x) = x^4 - x^2 - x + 2`, poly: [1, 0, -1, -1, 2], window: [-8, 8, -8, 8],
+            steps: [
+              R`**End behavior:** degree $4$ (even), leading coefficient positive → **up on both ends**. That rules out C.`,
+              R`**y-intercept:** $f(0) = 2$. A few points: $f(-1) = 3$, $f(1) = 1$, $f(2) = 12$.`,
+              R`The lowest point is about $(0.9,\ 0.9)$, so the graph **never reaches the x-axis** (no real zeros). A and B dip far below the axis; D stays above it.`,
+            ],
+            answer: R`\text{Graph D}`,
+          }, 'D', [R`\text{Up both ends; dips to about } -6`, R`\text{Up both ends; dips to about } -5`, R`\text{Down on both ends}`, R`\text{Up both ends; stays above the x-axis, lowest near } (1,\ 1)`]),
+          mc({
+            type: 'steps', prompt: R`f(x) = -x^3 - 10x^2 - 32x - 32`, poly: [-1, -10, -32, -32], window: [-8, 8, -8, 8],
+            check: { expr: '-x**3 - 10*x**2 - 32*x - 32', factored: '-(x+2)*(x+4)**2' },
+            steps: [
+              R`**End behavior:** degree $3$ (odd), leading coefficient negative → **up on the left, down on the right**. That rules out B and C.`,
+              R`**Zeros:** $f(-2) = 8 - 40 + 64 - 32 = 0$ ✓. Synthetic division by $-2$ leaves $-x^2 - 8x - 16$, so $f(x) = -(x + 2)(x + 4)^2$.`,
+              R`$x = -2$ (multiplicity 1): the graph **crosses**. $x = -4$ (multiplicity 2): it **touches** and turns back. That is graph D.`,
+            ],
+            answer: R`\text{Graph D}`,
+          }, 'D', [R`\text{Up left, down right; crosses once near } x = -1.5`, R`\text{Down left, up right; hill near } (-4,\ 2)`, R`\text{Down left, up right; crosses near } x = -1`, R`\text{Up left, down right; touches at } -4 \text{, crosses at } -2`]),
+        ],
+      },
+      {
+        title: 'Solve each inequality.', lesson: 12,
+        problems: [
+          mc(ineqS([1, -8, 16], '<', 'EmptySet'), 'B', [R`\{4\}`, R`\varnothing`, R`(-\infty, 4) \cup (4, \infty)`, R`\{-4\}`]),
+          mc(ineqS([-2, 19, -42], '<=', 'Union(Interval(-oo, 7/2), Interval(6, oo))'), 'B', [R`\left[\tfrac72,\ 6\right]`, R`\left(-\infty,\ \tfrac72\right] \cup [6,\ \infty)`, R`\left(\tfrac72,\ 6\right)`, R`\left(-\infty,\ \tfrac72\right) \cup (6,\ \infty)`]),
+        ],
+      },
+      {
+        title: 'Inverse functions.', lesson: 13,
+        problems: [
+          mc(inv(R`\text{Find the inverse: } g(n) = \dfrac{4}{n} + 1`, [R`**Switch:** $n = \dfrac{4}{y} + 1$.`, R`Subtract $1$: $n - 1 = \dfrac{4}{y}$. Flip both sides: $y = \dfrac{4}{n - 1}$.`], R`g^{-1}(n) = \dfrac{4}{n - 1}`, '4/x + 1', '4/(x - 1)'), 'A', [R`g^{-1}(n) = \dfrac{4}{n - 1}`, R`g^{-1}(n) = -\dfrac{2}{n - 2} + 2`, R`g^{-1}(n) = \dfrac{3}{-n + 1} + 1`, R`g^{-1}(n) = -\dfrac{3}{n - 1}`]),
+          mc(inv(R`\text{Inverses? } f(n) = -\dfrac{4}{n + 1} - 3,\ \ h(n) = -\dfrac{4}{n + 3} - 1`, [
+            R`$f(h(n))$: $h(n) + 1 = -\dfrac{4}{n + 3}$, so $f(h(n)) = -\dfrac{4}{-\frac{4}{n + 3}} - 3 = (n + 3) - 3 = n$ ✓.`,
+            R`$h(f(n))$: $f(n) + 3 = -\dfrac{4}{n + 1}$, so $h(f(n)) = -\dfrac{4}{-\frac{4}{n + 1}} - 1 = (n + 1) - 1 = n$ ✓.`,
+            R`Both give $n$, so they **are** inverses.`,
+          ], R`\text{Yes}`, '-4/(x + 1) - 3', '-4/(x + 3) - 1'), 'A', [R`\text{Yes}`, R`\text{No}`]),
+        ],
+      },
+    ],
+  },
+  {
     id: 'notes', title: 'Class notes', name: 'Examples from Days 1–15', due: '', lesson: 0,
     sections: [
       {
@@ -1595,4 +1812,15 @@ function rootsProblem(prompt, expr, steps, answer, variable = 'x') {
 }
 function factorRoots(prompt, expr, factored, roots, steps, answer) {
   return { type: 'steps', prompt, steps, answer, check: { expr, factored, roots, variable: 'x' } }
+}
+// Multiple choice: `choice` is the correct letter; choices are LaTeX in worksheet order.
+function mc(problem, choice, choices) {
+  return { ...problem, choice, choices: choices.map((t, i) => ['ABCDE'[i], t]) }
+}
+// Circuit card: factor it, then the next card is the one whose printed answer is `next` (one of the factors).
+function circuit(prompt, expr, factored, steps, answer, next, nextTex, nextCard) {
+  const link = nextCard
+    ? R`**Next card:** one of your factors is $${nextTex}$. The card whose answer is $${nextTex}$ has the question $${nextCard}$.`
+    : R`**Circuit complete:** your factor $${nextTex}$ is the answer printed on the first card, $9x^2 - 25$. You are back where you started ✓`
+  return { type: 'steps', prompt, steps: [...steps, link], answer, check: { expr, factored, divisor: next } }
 }

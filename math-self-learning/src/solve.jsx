@@ -34,6 +34,13 @@ function synthSolution(num, k, extra = []) {
 }
 
 export function solve(p) {
+  const s = solveCore(p)
+  if (!p.choice) return s
+  const pick = p.choices.find(c => c[0] === p.choice)
+  return { ...s, choices: p.choices, steps: [...s.steps, R`**Answer choice ${p.choice}:** $${pick[1]}$`], answer: R`\text{${p.choice})}\ \ ${pick[1]}` }
+}
+
+function solveCore(p) {
   const pre = p.label ? `${p.label}:\\ ` : ''
   if (p.type === 'long') {
     const s = longSolution(p.num, p.den)
@@ -138,6 +145,7 @@ export function solve(p) {
   if (p.type === 'ineq') return ineqSolution(p, pre)
   if (p.type === 'parabola') return parabolaSolution(p, pre)
   if (p.graph) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <FnGraph {...p.graph} /> : null }
+  if (p.poly) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <Graph poly={P(p.poly)} window={p.window} /> : null }
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
 }
 

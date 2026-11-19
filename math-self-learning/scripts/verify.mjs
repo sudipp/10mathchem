@@ -17,6 +17,18 @@ const report = (ok, label, detail = '') => { if (ok) pass++; else { fail++; cons
 for (const hw of HOMEWORK) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${hw.id} §${s + 1} #${i + 1} (${p.type})`
+    if (p.choice) {
+      // The marked letter must match the worked answer (graph pictures and inequalities are checked by hand / by the engine).
+      const pick = p.choices.find(c => c[0] === p.choice)?.[1]
+      const norm = x => String(x).replace(/[\s{}]/g, '').replace(/\\[dt]frac/g, '\\frac')
+      const ENDS = { '1,1': 'A', '-1,1': 'B', '1,-1': 'C', '-1,-1': 'D' }
+      let ok = pick != null
+      if (p.type === 'steps' && !/Graph/.test(p.answer)) ok = ok && norm(p.answer) === norm(pick)
+      if (p.type === 'eval') ok = ok && norm(pick) === String(p.exp)
+      if (p.type === 'synth') ok = ok && p.exp.r === 0 && norm(pick) === norm(polyLatex(P(p.exp.q)))
+      if (p.type === 'ends') ok = ok && ENDS[p.exp.join(',')] === p.choice
+      report(ok, `${label} choice ${p.choice}`, pick)
+    }
     if (p.type === 'fta') {
       const poly = P(p.std), n = degree(poly)
       const { list } = candidates(poly)

@@ -1,6 +1,6 @@
 """Checks every hand-solved homework step-answer with sympy."""
 import json, pathlib
-from sympy import I, FiniteSet, Interval, Lambda, Poly, S, Union, oo, real_root, solveset, sqrt, expand, simplify, sympify, solve, symbols, nsimplify
+from sympy import I, FiniteSet, Interval, Lambda, Poly, S, Union, cancel, fraction, oo, real_root, solveset, sqrt, expand, simplify, sympify, solve, symbols, nsimplify
 
 checks = json.loads((pathlib.Path(__file__).parent / "checks.json").read_text())
 names = {s: symbols(s) for s in "a b g m n p r s t u x y z".split()}
@@ -26,6 +26,8 @@ for c in checks:
             good = expand(sympify(c["expr"], ns) - sympify(c["factored"], ns)) == 0
             if good and c.get("roots") is not None:
                 good = roots_match(c)
+            if good and "divisor" in c:
+                good = fraction(cancel(sympify(c["expr"], ns) / sympify(c["divisor"], ns)))[1].is_number
         elif "result" in c and "expr" in c:
             good = simplify(sympify(c["expr"], ns) - sympify(c["result"], ns)) == 0
         elif "value" in c:
