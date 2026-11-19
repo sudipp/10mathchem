@@ -1,6 +1,6 @@
 # Self Learning: beginner chemistry
 
-A React 19 learning site with ten original written lessons, interactive SVG
+A React 19 learning site with eleven original written lessons, interactive SVG
 animations, curated video players, and feedback-based practice questions.
 
 ## Run locally
@@ -53,6 +53,11 @@ Nov 11; due dates show as "Due today",
    Includes a Type II charge table with the old -ous/-ic names.
 10. Polyatomic ions (Type III): keep the ion together, use parentheses
     when more than one is needed. Includes the class polyatomic ion table.
+11. Naming any compound: the class nomenclature flowchart (1st element H?
+    3 or more elements? metal? transition metal?), acids (hydro-…-ic,
+    -ate → -ic, -ite → -ous), bases (hydroxides), the diatomic "Lucky 7",
+    hydrocarbons (alkanes), and the Ag/Cd/Zn and Pb/Sn exceptions. The
+    animation walks seven compounds through the flowchart.
 
 ## Extra pages
 
@@ -72,6 +77,12 @@ Nov 11; due dates show as "Due today",
   against independently written expected answers. The printed Type II key
   has three typos (Cu₂S shown as Cu₂P, Fe₃P₂ named "iron(II) chloride",
   PbBr₄ shown as PBr₄); the site shows the correct answers and a note.
+  The Nomenclature Flowchart tab (`#/worksheets/flowchart`) walks any
+  formula through the flowchart one question at a time, then has the
+  class-notes examples and 21 mixed practice compounds. Names come from
+  `src/nomenclature.js` (which reuses the ion tables in `src/ionic.js`);
+  run `node scripts/verify_nomenclature.mjs` to check every name, every
+  flowchart path, and formulas that must be rejected.
 
 Animations have previous, next, play, pause, and restart controls. Electron
 motion can be disabled and defaults off for reduced-motion preferences.

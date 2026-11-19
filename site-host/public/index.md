@@ -4,7 +4,7 @@ Free, self-paced lessons for 10th-grade chemistry and math by Perspire AI. Short
 
 ## Chemistry: electrons, bonds & molecules
 
-Chapter 4, Lewis Structures & Nomenclature: valence electrons, Lewis structures, VSEPR shapes, naming covalent and ionic (Types I–III) compounds, and an interactive periodic table.
+Chapter 4, Lewis Structures & Nomenclature: valence electrons, Lewis structures, VSEPR shapes, naming covalent and ionic (Types I–III) compounds, acids and bases with the naming flowchart, and an interactive periodic table.
 
 [Open chemistry](https://perspireai.com/chemistry/)
 

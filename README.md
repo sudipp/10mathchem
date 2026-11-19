@@ -5,7 +5,7 @@ notes and worksheets and served on the home network.
 
 | Folder | What it is |
 |--------|------------|
-| [chemistry-self-learning](chemistry-self-learning/) | Chemistry site: lessons, periodic table, worksheet help (VSEPR, covalent and Type I ionic naming) |
+| [chemistry-self-learning](chemistry-self-learning/) | Chemistry site: lessons, periodic table, worksheet help (VSEPR, covalent, Type I–III ionic naming, and the nomenclature flowchart) |
 | [math-self-learning](math-self-learning/) | Math site organized by unit (Unit 4: Polynomial Functions), lessons, narrated videos, homework help |
 | [math-videos](math-videos/) | Tooling that renders the narrated lesson videos |
 | [site-host](site-host/) | Hub page, root files (`public/`: robots.txt, sitemap.xml, llms.txt, about/contact/terms, .htaccess) and the local Node server on port 8080 |

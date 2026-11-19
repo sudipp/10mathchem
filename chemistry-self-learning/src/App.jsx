@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import PeriodicTablePage from './PeriodicTable.jsx'
 import WorksheetsPage, { PrefixTable, VseprChart } from './Worksheets.jsx'
 import { CrissCross, IonChargeTable, PolyatomicTable, Type2Table } from './Ionic.jsx'
+import { FlowchartDiagram, FlowchartReference } from './Flowchart.jsx'
+import { LESSON_WALK, nameFormula, walkCaption } from './nomenclature.js'
 import { CHAPTERS, WORKSHEETS, chapterOf, dueInfo } from './chapters.js'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -152,6 +154,20 @@ const lessons = [
     video: 'MJZeZvDxcx8', videoTitle: 'What’s a polyatomic ion?', creator: 'Tyler DeWitt', watch: 'Notice how the atoms in a polyatomic ion always travel together.',
     more: [['p9iQ5Qn42DM', 'Writing Formulas with Polyatomic Ions'], ['X_LVANMpJ0c', 'Writing Ionic Formulas: Practice Problems']],
   },
+  {
+    chapter: 4, title: 'Naming any compound: the flowchart', short: 'Naming flowchart', tag: 'Which naming rule do I use?',
+    intro: 'The hardest part of naming is choosing the right rule. The class flowchart turns that choice into a few yes/no questions about the formula: start with H? three or more elements? a metal first? a transition metal? Each path ends at one naming rule.',
+    points: [
+      ['Ask the questions in order', '1st element H → it is an acid. Otherwise, 3 or more elements → there is a polyatomic ion. Then ask: is the 1st element a metal? If not, both are nonmetals → binary molecular (prefixes). If it is, does it need a Roman numeral? Check two special cases first: one element written as a pair is a diatomic molecule, and a formula with only C and H is a hydrocarbon.'],
+      ['Acids and bases', 'Binary acids (H + one element): hydro- + stem + -ic + acid, so H₂S is hydrosulfuric acid. Ternary acids (H + polyatomic ion): never use hydro-; -ate becomes -ic and -ite becomes -ous, so H₂SO₄ is sulfuric acid and H₂SO₃ is sulfurous acid. Bases are hydroxides, a metal + OH⁻¹: NaOH is sodium hydroxide.'],
+      ['Special cases', 'Diatomic “Lucky 7”: N₂, O₂, F₂, Cl₂, Br₂, I₂, and H₂ travel in pairs; the name is just the element. Ag, Cd, and Zn are transition metals with one charge, so no Roman numeral; Pb and Sn are not transition metals but need one. Hydrocarbons use meth-, eth-, prop-, but-, pent-… for the carbons and end in -ane: C₃H₈ is propane.'],
+    ],
+    steps: LESSON_WALK.map(f => walkCaption(nameFormula(f))),
+    question: 'What is the name of HNO₃?',
+    options: ['Hydronitric acid', 'Nitric acid', 'Nitrous acid'], correct: 1, explanation: 'It starts with H, so it is an acid. NO₃ is nitrate, a polyatomic ion, so do not use hydro-. The ending -ate becomes -ic: nitric acid.',
+    video: '5Jb2u9ihfm4', videoTitle: 'Naming Acids Introduction', creator: 'Tyler DeWitt', watch: 'Before he names each acid, decide yourself: is it H + one element (hydro-…-ic) or H + a polyatomic ion (-ate → -ic, -ite → -ous)?',
+    more: [['VyjnMk-Ta10', 'Naming Acids Practice Problems'], ['PKA4CZwbZWU', 'Ionic vs. Molecular'], ['MV3uXga-u-s', 'What are the Diatomic Elements?']],
+  },
 ]
 
 function Button({ children, className = '', ...props }) {
@@ -210,6 +226,7 @@ function Diagram({ lesson, step }) {
   if (lesson === 7) return <CrissCross cat="Na" an="S" step={step} label={lessons[7].steps[step]} />
   if (lesson === 8) return <CrissCross cat="Fe+3" an="S" step={step} label={lessons[8].steps[step]} />
   if (lesson === 9) return <CrissCross cat="Ca" an="NO3" step={step} label={lessons[9].steps[step]} />
+  if (lesson === 10) { const r = nameFormula(LESSON_WALK[step]); return <FlowchartDiagram result={r} title={`${r.pretty} → ${r.name}`} /> }
   const leftDouble = step >= 3, rightDouble = step >= 4
   const pair = (x, y, vertical = false) => <g><circle cx={x} cy={y} r="5" fill="#CC5833" /><circle cx={x + (vertical ? 0 : 13)} cy={y + (vertical ? 13 : 0)} r="5" fill="#CC5833" /></g>
   return <svg viewBox="0 0 600 320" role="img" aria-label={lessons[4].steps[step]}>
@@ -456,6 +473,7 @@ function App() {
             {active === 7 && <IonChargeTable />}
             {active === 8 && <Type2Table />}
             {active === 9 && <PolyatomicTable />}
+            {active === 10 && <FlowchartReference />}
             {practice && <a className="table-callout" href={`#/worksheets/${practice.id}`}><div><span className="eyebrow">PRACTICE</span><h3>{practice.label} help</h3>{practiceDue && <span className={`due-badge ${practiceDue.when}`}><CalendarClock size={14} /> {practiceDue.text}</span>}<p>Work through every worksheet problem with step-by-step answers you reveal when you are ready.</p></div><ArrowRight size={22} /></a>}
             <Video key={`video-${active}`} lesson={lesson} />
             <Quiz key={`quiz-${active}`} lesson={lesson} completed={completed.includes(active)} onComplete={() => setCompleted(previous => previous.includes(active) ? previous : [...previous, active])} />

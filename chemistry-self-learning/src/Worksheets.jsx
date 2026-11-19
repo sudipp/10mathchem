@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, CalendarClock, Check, Eye, EyeOff, X } from 'lucide-react'
 import { BackSteps, IonChargeTable, IonicGrid, PolyatomicTable, Type2Table } from './Ionic.jsx'
+import { Explain, FlowchartReference, FlowchartWalker } from './Flowchart.jsx'
+import { FLOWCHART_EXAMPLES, FLOWCHART_PRACTICE, nameFormula } from './nomenclature.js'
 import { NOTES2_FORMULA_TO_NAME, NOTES2_NAME_TO_FORMULA, NOTES_FORMULA_TO_NAME, NOTES_NAME_TO_FORMULA, WORKSHEET2, WORKSHEET3, WS2_REVIEW, charge, ionic, pretty } from './ionic.js'
 import { CHAPTERS, WORKSHEETS, dueInfo } from './chapters.js'
 
@@ -266,6 +268,13 @@ const TYPE3_ITEMS = WORKSHEET3.flatMap((row, i) => {
   return [given === 'name' ? toFormula(r, extra) : toName(r, extra)]
 })
 
+const flowItem = f => {
+  const r = nameFormula(f)
+  return { prompt: r.pretty, answer: r.name, accept: r.accept, explain: <Explain r={r} />, wrongHint: 'Not yet. Walk the flowchart: H first? 3 or more elements? a metal? a transition metal? Then use that rule.' }
+}
+const FLOW_NOTES = FLOWCHART_EXAMPLES.map(flowItem)
+const FLOW_PRACTICE = FLOWCHART_PRACTICE.map(flowItem)
+
 function Type3Chart() {
   const [open, setOpen] = useState(false)
   return <div className="ws-summary">
@@ -305,7 +314,16 @@ export default function WorksheetsPage({ openLesson }) {
     </section>
     <div className="ws-due-row"><span className="eyebrow">CHAPTER {sheet.chapter} · {sheet.label.toUpperCase()}</span><DueBadge due={sheet.due} /></div>
 
-    {tab === 'type2' ? <section className="ws-section">
+    {tab === 'flowchart' ? <section className="ws-section">
+      <div className="ws-intro">
+        <p>Use the class <strong>nomenclature flowchart</strong> to choose the naming rule. Ask the questions in order: does it start with H (an acid)? Does it have 3 or more elements (a polyatomic ion)? Is the 1st element a metal? Is it a transition metal that needs a Roman numeral? Check two special cases first: diatomic elements and hydrocarbons.</p>
+        <button className="text-link" onClick={() => openLesson(10)}>Review the flowchart lesson first <ArrowRight size={14} /></button>
+        <FlowchartReference />
+      </div>
+      <FlowchartWalker />
+      <NamePart title="Class notes: name each example" hint="Formula → name. The examples from your flowchart notes." items={FLOW_NOTES} />
+      <NamePart title="Mixed practice: formula → name" hint="Acids, bases, hydrocarbons, molecular, and ionic compounds mixed together. Decide which branch first." items={FLOW_PRACTICE} />
+    </section> : tab === 'type2' ? <section className="ws-section">
       <div className="ws-intro">
         <p>Type II ionic compounds: a metal that can have <strong>more than one charge</strong> plus a nonmetal. The Roman numeral in the name <em>is</em> the metal’s charge. Criss-cross and reduce just like Type I; going from a formula to a name, work the charge out backwards from the anion.</p>
         <button className="text-link" onClick={() => openLesson(8)}>Review the Type II lesson first <ArrowRight size={14} /></button>

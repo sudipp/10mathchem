@@ -6,9 +6,9 @@ The two subject sites are single-page apps: lesson and homework views are reache
 
 ## Subjects
 
-- [Chemistry](https://perspireai.com/chemistry/): Chapter 4, Lewis Structures & Nomenclature. Lessons: valence electrons; the periodic table; Lewis dot structures; chemical bonds; the CO₂ Lewis structure; VSEPR shapes and polarity; naming covalent compounds; naming ionic compounds (Type I); naming ionic compounds with Roman numerals (Type II); polyatomic ions (Type III).
+- [Chemistry](https://perspireai.com/chemistry/): Chapter 4, Lewis Structures & Nomenclature. Lessons: valence electrons; the periodic table; Lewis dot structures; chemical bonds; the CO₂ Lewis structure; VSEPR shapes and polarity; naming covalent compounds; naming ionic compounds (Type I); naming ionic compounds with Roman numerals (Type II); polyatomic ions (Type III); naming any compound with the nomenclature flowchart (acids, bases, diatomic elements, alkanes).
 - [Chemistry: periodic table](https://perspireai.com/chemistry/#/periodic-table): interactive table showing each element's group, valence electrons and Lewis symbol.
-- [Chemistry: worksheet help](https://perspireai.com/chemistry/#/worksheets): step-by-step answers for the VSEPR, covalent naming and ionic naming (Types I–III) worksheets.
+- [Chemistry: worksheet help](https://perspireai.com/chemistry/#/worksheets): step-by-step answers for the VSEPR, covalent naming and ionic naming (Types I–III) worksheets, plus a nomenclature flowchart tool that walks any formula to its name.
 - [Math](https://perspireai.com/math/): organized by unit. Now available: Unit 4, Polynomial Functions.
 - [Math Unit 4: Polynomial Functions](https://perspireai.com/math/#/unit-4): fourteen narrated video lessons (polynomial basics, zeros and linear factors, long division, synthetic division, factoring, solving polynomial equations, function operations and composition, solving by graphing, end behavior, the Rational Root Theorem, irrational and complex roots, the Fundamental Theorem of Algebra, polynomial inequalities, inverse functions) with homework help for HW #1–#17.
 

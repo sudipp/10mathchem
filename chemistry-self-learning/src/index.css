@@ -102,3 +102,34 @@ footer{background:#1d2b23;color:#e6eadf;border-radius:60px 60px 0 0;padding:60px
 .more-videos a{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;color:#2e4036;font-weight:600}
 .more-videos a:hover{color:#cc5833;transform:translateY(-1px)}
 .ws-key-note{background:#fbeee6;border:1px solid #efc9b5;border-radius:18px;padding:12px 16px;font-size:.85rem;color:#7a3b22;margin:6px 0 22px}
+
+/* Nomenclature flowchart */
+.flowchart-svg{width:100%;height:auto;display:block}
+.fc-title{font:600 17px 'Plus Jakarta Sans',system-ui,sans-serif;fill:#2e4036;text-anchor:middle}
+.fc-node rect{fill:#fffdf7;stroke:#c9cdbf;stroke-width:1.2}
+.fc-node text{font:600 11px 'Plus Jakarta Sans',system-ui,sans-serif;fill:#536157;text-anchor:middle}
+.fc-node.leaf rect{fill:#eef0e8}
+.fc-node.pre rect{fill:#f7f6f0;stroke-dasharray:4 3}
+.fc-node.on rect{fill:#2e4036;stroke:#2e4036}.fc-node.on text{fill:#fff}
+.fc-node.end rect{fill:#cc5833;stroke:#cc5833}.fc-node.end text{fill:#fff}
+.fc-edge line{stroke:#c9cdbf;stroke-width:1.4}
+.fc-edge.on line{stroke:#cc5833;stroke-width:3}
+.fc-yes{font:500 9px 'IBM Plex Mono',monospace;fill:#879783;text-anchor:middle}
+.fc-edge.on .fc-yes{fill:#a33d20;font-weight:700}
+.fc-note{font:500 9px 'IBM Plex Mono',monospace;fill:#879783;text-anchor:middle;letter-spacing:.08em}
+.fc-ref h4{font-size:.9rem;margin:12px 0 4px}
+.fc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:6px}
+.fc-cards p{font-size:.8rem;line-height:1.7;color:#3e4f44;margin:0 0 6px}
+.fc-cards table{margin-top:6px}
+.fc-ref .ws-table-wrap{margin-top:16px}
+.fc-ref small{display:block;margin-top:8px;color:#6b756d;line-height:1.7}
+.fc-input{display:flex;gap:10px;flex-wrap:wrap}
+.fc-input input{flex:1 1 220px;border:1px solid #d5dacd;background:#f7f6f0;border-radius:20px;padding:10px 14px;font:inherit;font-size:.85rem;color:#2e4036;min-height:42px}
+.fc-input input:focus{outline:3px solid #cc5833;outline-offset:2px}
+.fc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.fc-chips .ws-btn[aria-pressed=true]{background:#2e4036;color:#fff;border-color:#2e4036}
+.fc-work{background:#fffdf7;border:1px solid #e1e2d9;border-radius:28px;padding:18px 22px}
+.fc-steps{margin:12px 0 0;padding-left:20px;font-size:.85rem;line-height:1.75;color:#3e4f44}
+.fc-steps li{margin-bottom:4px}
+.fc-outcome{list-style:none;margin-left:-20px;color:#a33d20}
+.fc-answer{margin-top:10px;font-size:1rem}
