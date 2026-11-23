@@ -1,1 +1,20 @@
-{}
+{
+ "01-quadratic-formula": {
+  "seconds": 142
+ },
+ "02-discriminant": {
+  "seconds": 139
+ },
+ "03-completing-the-square": {
+  "seconds": 143
+ },
+ "04-linear-quadratic-systems": {
+  "seconds": 140
+ },
+ "05-quadratic-systems": {
+  "seconds": 146
+ },
+ "06-quadratic-inequalities": {
+  "seconds": 120
+ }
+}
