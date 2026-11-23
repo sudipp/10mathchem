@@ -3,6 +3,7 @@
 import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
 import { HOMEWORK as HOMEWORK3 } from '../src/units/unit-3/homework.js'
+import { HOMEWORK as HOMEWORK5 } from '../src/units/unit-5/homework.js'
 import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree, num } from '../src/poly.js'
 import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy, candidates } from '../src/roots.js'
 import { inequality, parabola } from '../src/extra.js'
@@ -71,7 +72,7 @@ function checkConic(c, e = {}) {
 }
 const generalSympy = g => ['A', 'C', 'D', 'E', 'F'].map((key, i) => `(${qSympy(toQ(g[key] ?? 0))})*${['x**2', 'y**2', 'x', 'y', '1'][i]}`).join(' + ')
 
-for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3]]) for (const hw of list) {
+for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3], ['u5 ', HOMEWORK5]]) for (const hw of list) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${unitTag}${hw.id} §${s + 1} #${i + 1} (${p.type})`
     if (p.choice) {

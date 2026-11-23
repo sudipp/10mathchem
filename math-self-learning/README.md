@@ -2,8 +2,9 @@
 
 A React 19 learning site for Accelerated Math II/III, organized by unit.
 Each unit has step-by-step animations, quick checks, videos, and homework
-help. Available now: **Unit 3, Conic Sections** and **Unit 4, Polynomial
-Functions** (Unit 4 also has narrated video lessons).
+help. Available now: **Unit 3, Conic Sections**, **Unit 4, Polynomial
+Functions** (with narrated video lessons), and **Unit 5, Radical
+Expressions** (with the Fall Final Exam Review).
 
 ## Run locally
 
@@ -25,6 +26,7 @@ use `..\site-host\Start Self Learning Sites.bat`.
 | `/math/#/unit-3/homework/hw1` | Unit 3 homework help |
 | `/math/#/unit-4` | Unit 4 home |
 | `/math/#/unit-4/homework/hw3` | Unit 4 homework help |
+| `/math/#/unit-5/homework/rev1` | Unit 5 Fall Final Exam Review #1 |
 
 Links from before units existed (`#lessons`, `#/homework/hw3`) redirect to
 Unit 4.
@@ -145,10 +147,31 @@ shows the choices, works the problem, and highlights the correct letter.
 graph-sketch questions describe the pictured choices in words and draw the
 actual graph.
 
+## Unit 5: Radical Expressions
+
+The class packet has HW #1 (with its answer key) and the Fall Final Exam
+Review, but no class notes, so the three lessons are built from HW #1:
+
+1. Simplifying radicals: pull out perfect squares and even powers.
+2. Multiplying radicals: outside × outside, inside × inside, distribute.
+3. Dividing radicals and rationalizing the denominator.
+
+Each lesson has a step-by-step animation, a short reading, a quick check, and
+a Khan Academy video. Homework help covers HW #1 (radicals, plus parabola
+features and zeros as spiral review) and both Fall Final Exam Review packets.
+**Review #1** (Sections 1–4: linear equations and functions, distance and
+midpoint, every conic, polynomials, factoring, quadratics, complex numbers)
+and **Review #2** (projectile, quadratics, complex numbers, factoring,
+polynomial zeros, and multiple choice #32–34) keep the worksheet numbering
+(1a, 1b, …). The review has no answer key: conic, division, zero, and
+conjugate problems are computed by the Unit 3 and Unit 4 engines, and every
+hand-written answer is confirmed with sympy. Radical checks assume positive
+variables, as the worksheet does.
+
 ## Checking the answers
 
 ```powershell
-node scripts/verify.mjs          # engine output vs. the Unit 3 and Unit 4 answer keys
+node scripts/verify.mjs          # engine output vs. the Unit 3, 4, and 5 answer keys
 python scripts/verify_sympy.py   # hand-written solutions vs. sympy
 ```
 

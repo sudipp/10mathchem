@@ -5,6 +5,8 @@ from sympy import I, FiniteSet, Interval, Lambda, Poly, S, Union, cancel, fracti
 checks = json.loads((pathlib.Path(__file__).parent / "checks.json").read_text())
 names = {s: symbols(s) for s in "a b g m n p r s t u x y z".split()}
 ns = {**names, "I": I}
+# Radical problems assume every variable is positive (so sqrt(x**2) == x).
+pos_ns = {**{s: symbols(s, positive=True) for s in names}, "I": I}
 ok = bad = 0
 
 
@@ -35,7 +37,8 @@ for c in checks:
             if good and "divisor" in c:
                 good = fraction(cancel(sympify(c["expr"], ns) / sympify(c["divisor"], ns)))[1].is_number
         elif "result" in c and "expr" in c:
-            good = simplify(sympify(c["expr"], ns) - sympify(c["result"], ns)) == 0
+            cns = pos_ns if c.get("positive") else ns
+            good = simplify(sympify(c["expr"], cns) - sympify(c["result"], cns)) == 0
         elif "value" in c:
             good = simplify(sympify(c["value"], ns) - sympify(c["result"], ns)) == 0
         elif "roots" in c and c["roots"] is not None:

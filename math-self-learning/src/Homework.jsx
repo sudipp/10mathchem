@@ -58,7 +58,7 @@ export default function HomeworkPage({ unit, tab, openLesson }) {
       {hw.sections.map((section, si) => <div key={`${hw.id}-${si}`} className="hw-section">
         <h3><Rich text={section.title} /></h3>
         {section.lesson != null && <p className="hw-lessons"><span className="eyebrow">WATCH</span>{[].concat(section.lesson).map(i => <button key={i} className="text-link as-button" onClick={() => openLesson(i)}>Lesson {i + 1}: {lessonNames[i]} <ArrowRight size={14} /></button>)}</p>}
-        <div className="hw-grid">{section.problems.map(p => { count++; const tag = hw.assigned ? (count % 2 === 1 ? 'assigned' : 'extra') : null; return tag === 'extra' && onlyAssigned ? null : <ProblemCard key={`${hw.id}-${count}-${revealAll}`} problem={p} number={p.num ?? count} revealAll={revealAll} tag={tag} /> })}</div>
+        <div className="hw-grid">{section.problems.map(p => { count++; const tag = hw.assigned ? (count % 2 === 1 ? 'assigned' : 'extra') : null; return tag === 'extra' && onlyAssigned ? null : <ProblemCard key={`${hw.id}-${count}-${revealAll}`} problem={p} number={p.no ?? count} revealAll={revealAll} tag={tag} /> })}</div>
       </div>)}
     </section>
   </main>
