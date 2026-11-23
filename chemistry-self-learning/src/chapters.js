@@ -1,9 +1,21 @@
 export const CHAPTERS = [
+  { n: 1, title: 'Measurement & Reference Sheets' },
+  { n: 2, title: 'Atomic Theory & Nuclear Chemistry' },
+  { n: 3, title: 'Electron Configuration & Periodic Trends' },
   { n: 4, title: 'Lewis Structures & Nomenclature' },
 ]
 
-// `lesson` is the index in the lessons array (App.jsx). `due` is YYYY-MM-DD.
+// `lesson` is the index in the lessons array (App.jsx); Chapter 1-3 sheets name their lesson by id instead. `due` is YYYY-MM-DD.
 export const WORKSHEETS = [
+  { id: 'conversions', label: 'Conversion Practice', chapter: 1, lessonId: 'c1-factor' },
+  { id: 'waves', label: 'Wave Calculations WS', chapter: 2, lessonId: 'c2-photon' },
+  { id: 'nuclear', label: 'Nuclear Equations WS', chapter: 2, lessonId: 'c2-nuclear' },
+  { id: 'halflife', label: 'Half-Life WS', chapter: 2, lessonId: 'c2-halflife' },
+  { id: 'unit2', label: 'Unit 2 Exam Review', chapter: 2, lessonId: 'c2-structure' },
+  { id: 'orbitals', label: 'Orbital Diagram WS', chapter: 3, lessonId: 'c3-rules' },
+  { id: 'econfig', label: 'Orbital & Electron Configuration WS', chapter: 3, lessonId: 'c3-shorthand' },
+  { id: 'trends', label: 'Periodic Trends WS', chapter: 3, lessonId: 'c3-radius' },
+  { id: 'unit3', label: 'Unit 3 Exam Review', chapter: 3, lessonId: 'c3-longhand' },
   { id: 'vsepr', label: 'VSEPR Worksheet', chapter: 4, lesson: 5 },
   { id: 'names', label: 'Covalent Nomenclature WS', chapter: 4, lesson: 6 },
   { id: 'ionic', label: 'Type I Ionic WS', chapter: 4, lesson: 7, due: '2026-11-03' },

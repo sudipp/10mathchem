@@ -8,6 +8,7 @@ import { CrissCross, IonChargeTable, PolyatomicTable, Type2Table } from './Ionic
 import { FlowchartDiagram, FlowchartReference } from './Flowchart.jsx'
 import { LESSON_WALK, nameFormula, walkCaption } from './nomenclature.js'
 import { CHAPTERS, WORKSHEETS, chapterOf, dueInfo } from './chapters.js'
+import { EARLY_LESSONS } from './lessons123.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -169,6 +170,7 @@ const lessons = [
     more: [['VyjnMk-Ta10', 'Naming Acids Practice Problems'], ['PKA4CZwbZWU', 'Ionic vs. Molecular'], ['MV3uXga-u-s', 'What are the Diatomic Elements?']],
   },
 ]
+lessons.push(...EARLY_LESSONS)
 
 function Button({ children, className = '', ...props }) {
   return <button className={`button ${className}`} {...props}><span className="button-wash" aria-hidden="true" /><span className="button-label">{children}</span></button>
@@ -180,6 +182,8 @@ function Dots({ x, y, count, color = '#CC5833' }) {
 }
 
 function Diagram({ lesson, step }) {
+  const Figure = lessons[lesson].Figure
+  if (Figure) return <Figure step={step} />
   if (lesson === 0) {
     const data = [{ symbol: 'C', outer: 4, name: 'Carbon' }, { symbol: 'O', outer: 6, name: 'Oxygen' }, { symbol: 'Ne', outer: 8, name: 'Neon' }][step]
     return <svg viewBox="0 0 600 320" role="img" aria-label={`${data.name}: 2 inner electrons, ${data.outer} valence electrons. Simplified shell model.`}>
@@ -366,7 +370,7 @@ function Video({ lesson }) {
     </div>
     <p><strong>While watching:</strong> {lesson.watch}</p>
     <a className="text-link" href={`https://www.youtube.com/watch?v=${lesson.video}`} target="_blank" rel="noreferrer">Watch on YouTube <ExternalLink size={14} /></a>
-    {lesson.more?.length > 0 && <div className="more-videos"><span className="eyebrow">MORE FROM {lesson.creator.toUpperCase()}</span>{lesson.more.map(([id, title]) => <a key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noreferrer">{title} <ExternalLink size={13} /></a>)}</div>}
+    {lesson.more?.length > 0 && <div className="more-videos"><span className="eyebrow">MORE TO WATCH</span>{lesson.more.map(([id, title]) => <a key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noreferrer">{title} <ExternalLink size={13} /></a>)}</div>}
     <small>Videos need an internet connection and may be restricted by your school or the video owner. If the player does not load, use the direct link. External players may use cookies.</small>
   </section>
 }
@@ -417,13 +421,14 @@ function App() {
   }, [route])
   function selectLesson(i) { setActive(i) }
   function openLesson(i) { setActive(i); window.location.hash = 'lessons' }
+  const openLessonId = id => openLesson(lessons.findIndex(l => l.id === id))
   const chapter = chapterOf(lesson.chapter)
   const chapterLessons = lessons.flatMap((l, i) => l.chapter === chapter.n ? [i] : [])
   const pos = chapterLessons.indexOf(active)
   const count = chapterLessons.length
   const passed = completed.filter(i => chapterLessons.includes(i)).length
   const pad = n => String(n).padStart(2, '0')
-  const practice = WORKSHEETS.find(w => w.lesson === active)
+  const practice = WORKSHEETS.find(w => w.lesson === active || (w.lessonId && w.lessonId === lesson.id))
   const practiceDue = dueInfo(practice?.due)
   return <div ref={root}>
     <a className="skip-link" href="#lessons">Skip to lessons</a>
@@ -432,7 +437,7 @@ function App() {
       <nav aria-label="Main navigation"><a href="#lessons">Lessons</a><a href="#/periodic-table" aria-current={route === 'table' ? 'page' : undefined}><span className="nav-long">Periodic table</span><span className="nav-short">Table</span></a><a href="#/worksheets" aria-current={route === 'worksheets' ? 'page' : undefined}><span className="nav-long">Worksheet help</span><span className="nav-short">Worksheets</span></a><a href="#resources">Videos</a><a href="/math/" className="nav-switch"><Sigma size={15} /> Math</a></nav>
       <a className="nav-cta" href="#lessons">Start reading <ArrowRight size={15} /></a>
     </header>
-    {route === 'table' ? <PeriodicTablePage /> : route === 'worksheets' ? <WorksheetsPage openLesson={openLesson} /> : <main>
+    {route === 'table' ? <PeriodicTablePage /> : route === 'worksheets' ? <WorksheetsPage openLesson={openLesson} openLessonId={openLessonId} /> : <main>
       <section id="home" className="hero">
         <div className="hero-content">
           <div className="eyebrow hero-reveal"><span className="status-dot" /> CHEMISTRY, FROM THE BEGINNING</div>
@@ -467,7 +472,8 @@ function App() {
             <div className="lesson-title"><span className="eyebrow">CHAPTER {chapter.n} · LESSON {pad(pos + 1)} <span className="separator">/</span> {lesson.tag}</span><h2>{lesson.title}</h2><p className="lesson-intro">{lesson.intro}</p></div>
             <AnimationPlayer key={`animation-${active}`} lesson={active} />
             <div className="reading">{lesson.points.map(([title, text], i) => <section key={title}><span className="reading-number">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></section>)}</div>
-            {active === 1 && <a className="table-callout" href="#/periodic-table"><div><span className="eyebrow">TRY IT ON THE REAL THING</span><h3>Explore the full periodic table</h3><p>Select any element to see its group, valence electrons, and Lewis symbol.</p></div><ArrowRight size={22} /></a>}
+            {lesson.Extra && <lesson.Extra />}
+            {(active === 1 || lesson.tableLink) && <a className="table-callout" href="#/periodic-table"><div><span className="eyebrow">TRY IT ON THE REAL THING</span><h3>Explore the full periodic table</h3><p>Select any element to see its group, valence electrons, and Lewis symbol.</p></div><ArrowRight size={22} /></a>}
             {active === 5 && <VseprChart />}
             {active === 6 && <PrefixTable />}
             {active === 7 && <IonChargeTable />}

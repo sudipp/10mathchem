@@ -133,3 +133,39 @@ footer{background:#1d2b23;color:#e6eadf;border-radius:60px 60px 0 0;padding:60px
 .fc-steps li{margin-bottom:4px}
 .fc-outcome{list-style:none;margin-left:-20px;color:#a33d20}
 .fc-answer{margin-top:10px;font-size:1rem}
+
+/* Chapter 1-3: step-by-step worksheet items, nuclear notation, orbital diagrams */
+.step-grid{grid-template-columns:repeat(auto-fill,minmax(520px,1fr))}
+.step-item{display:flex;flex-direction:column;gap:8px}
+.step-head{display:flex;gap:10px;align-items:baseline}
+.step-head .ws-num{width:auto;min-width:22px;flex-shrink:0}
+.step-prompt{font-weight:600;font-size:.9rem;line-height:1.6;color:#2e4036;flex:1;min-width:0}
+.step-choices{display:flex;flex-wrap:wrap;gap:8px;margin-left:32px}
+.step-choices .ws-btn[aria-pressed=true]{background:#2e4036;color:#fff;border-color:#2e4036}
+.step-input{margin-left:32px}
+.step-actions{margin:0 0 0 32px}
+.step-item .ws-result{margin-top:0}
+.step-list{margin:0;padding-left:20px;font-size:.8rem;line-height:1.75;color:#3e4f44}
+.step-list li{margin-bottom:4px}
+.step-final{margin-top:8px;display:flex;flex-direction:column;gap:4px;font-size:.92rem;font-weight:650;color:#2e4036}
+.step-final .eyebrow{font-size:.55rem;color:#a33d20}
+.ws-intro code{font-family:'IBM Plex Mono',monospace;font-size:.78rem;background:#e7e9e0;border-radius:6px;padding:1px 6px}
+.nuc{display:inline-flex;align-items:center;gap:1px;vertical-align:middle;margin:0 2px}
+.nuc-az{display:inline-flex;flex-direction:column;align-items:flex-end;font-size:.62em;line-height:1.05;font-weight:600}
+.nuc-sym{font-size:1.15em;font-weight:700}
+.nuc-eq{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px}
+.eq-op{margin:0 6px;color:#879783;font-weight:500}
+.nuc-prompt{font-size:1.1rem}
+.orb{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:10px}
+.orb-sub{display:flex;flex-direction:column;align-items:center;gap:3px}
+.orb-boxes{display:flex}
+.orb-box{width:28px;height:30px;border:1.5px solid #2e4036;margin-left:-1.5px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;letter-spacing:-2px;background:#fffdf7;color:#2e4036}
+.orb-box:first-child{margin-left:0}
+.orb-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:#6b756d}
+.orb-sub.mark .orb-box{border-color:#cc5833;background:#fbeee6}
+.orb.compact .orb-box{width:24px;height:26px;font-size:.8rem}
+.family-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:.75rem;color:#3e4f44}
+.family-legend span{display:inline-flex;align-items:center;gap:6px}
+.family-legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.ref-table small{display:block;margin-top:10px;font-size:.72rem;color:#6b756d;line-height:1.6}
+@media(max-width:650px){.step-grid{grid-template-columns:1fr}.step-choices,.step-input,.step-actions{margin-left:0}.orb-box{width:24px;height:26px}}

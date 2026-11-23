@@ -2,9 +2,9 @@
 
 Free, self-paced lessons for 10th-grade chemistry and math by Perspire AI. Short lessons, step-by-step animations, videos, and homework help you reveal one step at a time. No account needed.
 
-## Chemistry: electrons, bonds & molecules
+## Chemistry: atoms, electrons & bonds
 
-Chapter 4, Lewis Structures & Nomenclature: valence electrons, Lewis structures, VSEPR shapes, naming covalent and ionic (Types I–III) compounds, acids and bases with the naming flowchart, and an interactive periodic table.
+Now available: Chapter 1, Measurement & Reference Sheets; Chapter 2, Atomic Theory & Nuclear Chemistry; Chapter 3, Electron Configuration & Periodic Trends; and Chapter 4, Lewis Structures & Nomenclature. Animated lessons, videos, a periodic table, and step-by-step help for every worksheet and unit review.
 
 [Open chemistry](https://perspireai.com/chemistry/)
 

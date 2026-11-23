@@ -1,7 +1,8 @@
 # Self Learning: beginner chemistry
 
-A React 19 learning site with eleven original written lessons, interactive SVG
-animations, curated video players, and feedback-based practice questions.
+A React 19 learning site with thirty original written lessons across four
+chapters, interactive SVG animations, curated video players, and
+feedback-based practice questions.
 
 ## Run locally
 
@@ -30,14 +31,47 @@ TCP 8080 for other devices to connect.
 
 ## Lessons
 
-All current lessons belong to **Chapter 4: Lewis Structures & Nomenclature**.
 Chapters and worksheets (with optional `YYYY-MM-DD` due dates) are listed in
-`src/chapters.js`. To add a chapter, add it to `CHAPTERS`, tag its lessons in
-`App.jsx` with `chapter: <n>`, and list its worksheets in `WORKSHEETS`.
+`src/chapters.js`. Chapter 4 lessons live in `App.jsx`; Chapters 1–3 live in
+`src/lessons123.js` (appended after Chapter 4, so worksheets link to them by
+`lessonId`). To add a chapter, add it to `CHAPTERS`, tag its lessons with
+`chapter: <n>`, and list its worksheets in `WORKSHEETS`.
 The Type I Ionic WS is due Nov 3, 2026, Type II Nov 10, and Type III
 Nov 11; due dates show as "Due today",
 "Due …", or "Was due …".
 
+### Chapter 1: Measurement & Reference Sheets
+
+Built from the class reference sheets (there is no Chapter 1 worksheet, so
+the Conversion Practice set is self-made and labeled as practice).
+
+1. Metric prefixes: the prefix ladder and moving the decimal.
+2. Conversion factors: chaining factors so units cancel.
+3. Temperature: °C ↔ K (K = °C + 273).
+4. Reading the class periodic table: symbols, atomic number, ion charges.
+
+### Chapter 2: Atomic Theory & Nuclear Chemistry
+
+1. Models of the atom: Dalton to Chadwick timeline.
+2. Atomic structure: protons, neutrons, electrons, isotopes, ions.
+3. Average atomic mass (with the "beanium" lab).
+4. Waves and light: c = λν, the electromagnetic spectrum.
+5. Photons: E = hν (class value h = 6.6262 × 10⁻³⁴ J·s).
+6. Bohr model: energy levels and hydrogen's bright-line spectrum.
+7. Nuclear equations: alpha, beta, positron, gamma, electron capture.
+8. Half-life: the class log formulas for m_f, m_i, t½ and time.
+
+### Chapter 3: Electron Configuration & Periodic Trends
+
+1. Blocks and families on the periodic table.
+2. Aufbau, Pauli, and Hund (orbital diagrams).
+3. Longhand electron configurations (4s written before 3d).
+4. Shorthand configurations and the d⁴/d⁹ exceptions (Cr, Cu, Mo, Ag, Au).
+5. Ion configurations (cations lose from the highest n first).
+6. Atomic and ionic radius.
+7. Ionization energy, electronegativity, and electron affinity.
+
+### Chapter 4: Lewis Structures & Nomenclature
 1. Valence electrons: carbon, oxygen, and neon shell models.
 2. Periodic table: main-group patterns and helium/transition-metal caveats.
 3. Lewis symbols: place oxygen's six dots step by step.
@@ -83,6 +117,17 @@ Nov 11; due dates show as "Due today",
   `src/nomenclature.js` (which reuses the ion tables in `src/ionic.js`);
   run `node scripts/verify_nomenclature.mjs` to check every name, every
   flowchart path, and formulas that must be rejected.
+- Chapter 1–3 worksheet tabs: Conversion Practice; Wave Calculations,
+  Nuclear Equations, Half-Life, and the Unit 2 Exam Review; Orbital
+  Diagram, Orbital & Electron Configuration, Periodic Trends, and the
+  Unit 3 Exam Review. Each problem has a typed or multiple-choice check,
+  steps revealed one at a time, and the final answer (with nuclear
+  equations and orbital diagrams drawn in). Answers are computed by the
+  engines in `src/measure.js`, `src/atomic.js`, and `src/electrons.js`;
+  run `node scripts/verify_ch123.mjs` to check them against the class
+  answer keys (310 checks). Where a printed key has a mistake (for
+  example, Rn-219 positron decay gives At-219, not Fr-219), the site shows
+  the correct answer with a note.
 
 Animations have previous, next, play, pause, and restart controls. Electron
 motion can be disabled and defaults off for reduced-motion preferences.
@@ -93,8 +138,9 @@ The lesson selector supports arrow keys, Home, and End.
 
 Videos come only from Khan Academy and Tyler DeWitt. The Lewis dot and CO2
 lessons link to the [Khan Academy lesson](https://www.khanacademy.org/science/hs-chemistry/x2613d8165d88df5e:chemical-bonding/x2613d8165d88df5e:covalent-bonds/v/lewis-diagrams-for-molecules),
-which opens on khanacademy.org. The other lessons embed Tyler DeWitt videos
-from YouTube. This project does not download or reproduce their videos.
+which opens on khanacademy.org. The other lessons embed Tyler DeWitt or Khan
+Academy videos from YouTube. This project does not download or reproduce
+their videos.
 
 Players load only after a click. Network access and permission from the video
 host are required; school restrictions or embed policies may block playback.

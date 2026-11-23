@@ -5,6 +5,11 @@ import { Explain, FlowchartReference, FlowchartWalker } from './Flowchart.jsx'
 import { FLOWCHART_EXAMPLES, FLOWCHART_PRACTICE, nameFormula } from './nomenclature.js'
 import { NOTES2_FORMULA_TO_NAME, NOTES2_NAME_TO_FORMULA, NOTES_FORMULA_TO_NAME, NOTES_NAME_TO_FORMULA, WORKSHEET2, WORKSHEET3, WS2_REVIEW, charge, ionic, pretty } from './ionic.js'
 import { CHAPTERS, WORKSHEETS, dueInfo } from './chapters.js'
+import { ConversionSheet } from './ch1.jsx'
+import { HalfLifeSheet, NuclearSheet, Unit2Sheet, WaveSheet } from './ch2.jsx'
+import { EconfigSheet, OrbitalSheet, TrendsSheet, Unit3Sheet } from './ch3.jsx'
+
+const EARLY_SHEETS = { conversions: ConversionSheet, waves: WaveSheet, nuclear: NuclearSheet, halflife: HalfLifeSheet, unit2: Unit2Sheet, orbitals: OrbitalSheet, econfig: EconfigSheet, trends: TrendsSheet, unit3: Unit3Sheet }
 
 const sub = text => String(text).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d])
 
@@ -231,7 +236,8 @@ function NamePart({ title, hint, items }) {
   </section>
 }
 
-const tabFromHash = () => WORKSHEETS.find(w => window.location.hash === `#/worksheets/${w.id}`)?.id ?? WORKSHEETS[0].id
+const latest = Math.max(...CHAPTERS.map(c => c.n))
+const tabFromHash = () => WORKSHEETS.find(w => window.location.hash === `#/worksheets/${w.id}`)?.id ?? WORKSHEETS.find(w => w.chapter === latest).id
 
 function DueBadge({ due }) {
   const info = dueInfo(due)
@@ -290,7 +296,7 @@ function Type3Chart() {
   </div>
 }
 
-export default function WorksheetsPage({ openLesson }) {
+export default function WorksheetsPage({ openLesson, openLessonId }) {
   const [tab, setTabState] = useState(tabFromHash)
   const [table, setTable] = useState(false)
   useEffect(() => {
@@ -300,6 +306,7 @@ export default function WorksheetsPage({ openLesson }) {
   }, [])
   const setTab = id => window.location.assign(`#/worksheets/${id}`)
   const sheet = WORKSHEETS.find(w => w.id === tab)
+  const Sheet = EARLY_SHEETS[tab]
   return <main className="pt-page ws-page">
     <section className="pt-hero">
       <span className="eyebrow">WORKSHEET HELP</span>
@@ -314,7 +321,7 @@ export default function WorksheetsPage({ openLesson }) {
     </section>
     <div className="ws-due-row"><span className="eyebrow">CHAPTER {sheet.chapter} · {sheet.label.toUpperCase()}</span><DueBadge due={sheet.due} /></div>
 
-    {tab === 'flowchart' ? <section className="ws-section">
+    {Sheet ? <Sheet openLessonId={openLessonId} /> : tab === 'flowchart' ? <section className="ws-section">
       <div className="ws-intro">
         <p>Use the class <strong>nomenclature flowchart</strong> to choose the naming rule. Ask the questions in order: does it start with H (an acid)? Does it have 3 or more elements (a polyatomic ion)? Is the 1st element a metal? Is it a transition metal that needs a Roman numeral? Check two special cases first: diatomic elements and hydrocarbons.</p>
         <button className="text-link" onClick={() => openLesson(10)}>Review the flowchart lesson first <ArrowRight size={14} /></button>
