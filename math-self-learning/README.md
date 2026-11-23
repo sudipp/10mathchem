@@ -1,10 +1,10 @@
 # Self Learning: math
 
 A React 19 learning site for Accelerated Math II/III, organized by unit.
-Each unit has step-by-step animations, quick checks, videos, and homework
-help. Available now: **Unit 3, Conic Sections**, **Unit 4, Polynomial
-Functions** (with narrated video lessons), and **Unit 5, Radical
-Expressions** (with the Fall Final Exam Review).
+Each unit has narrated video lessons, step-by-step animations, quick checks,
+and homework help. Available now: **Unit 3, Conic Sections**, **Unit 4,
+Polynomial Functions**, and **Unit 5, Radical Expressions** (with the Fall
+Final Exam Review).
 
 ## Run locally
 
@@ -51,8 +51,8 @@ conics engine (`conics.js`).
 
 1. Copy `src/units/unit-4/` to `src/units/unit-<n>/` and replace its lessons,
    homework, day plan, and bookshelf. Set `number`, `slug: 'unit-<n>'`, and
-   `title`. Start `videos.json` as `{}` and `videoIds` as `[]` until videos
-   exist (Unit 3 does this: each lesson shows its Khan Academy video instead).
+   `title`. Start `videos.json` as `{}` until videos exist; lessons without a
+   narrated video show only their Khan Academy video.
 2. Import it in `src/units/index.js` and add it to `UNITS`.
 3. Optional videos: write scripts in `../math-videos/videos/unit-<n>/`, render
    them, then `node ../math-videos/publish.mjs unit-<n>`.
@@ -61,8 +61,9 @@ conics engine (`conics.js`).
 ## Unit 3: Conic Sections
 
 Built from the class notes (Days 1–7) and HW #1 to HW #8 (HW #8 is the unit
-review). Eight lessons, each with a step-by-step animation drawn by
-`ConicGraph.jsx`, a short reading, a quick check, and a Khan Academy video:
+review). Eight lessons, each with a narrated video (2–3 minutes, rendered by
+`../math-videos`), a step-by-step animation drawn by `ConicGraph.jsx`, a short
+reading, a quick check, and a Khan Academy video:
 
 1. Circles: standard form, center and radius, completing the square.
 2. Parabolas: vertex form, $p = \tfrac{1}{4a}$, focus, directrix, axis.
@@ -156,8 +157,9 @@ Review, but no class notes, so the three lessons are built from HW #1:
 2. Multiplying radicals: outside × outside, inside × inside, distribute.
 3. Dividing radicals and rationalizing the denominator.
 
-Each lesson has a step-by-step animation, a short reading, a quick check, and
-a Khan Academy video. Homework help covers HW #1 (radicals, plus parabola
+Each lesson has a narrated video (2–3 minutes, rendered by `../math-videos`),
+a step-by-step animation, a short reading, a quick check, and a Khan Academy
+video. Homework help covers HW #1 (radicals, plus parabola
 features and zeros as spiral review) and both Fall Final Exam Review packets.
 **Review #1** (Sections 1–4: linear equations and functions, distance and
 midpoint, every conic, polynomials, factoring, quadratics, complex numbers)

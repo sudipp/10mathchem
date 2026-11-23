@@ -1,7 +1,8 @@
 // Turns a video script into build/<id>/spec.json for make_video.py.
 // Long-division layouts are computed with the math site's polynomial engine.
 import { mkdirSync, writeFileSync } from 'node:fs'
-import { P, analyze, coefAt, evalNum, isZero, longDivide, polyLatex, termLatex, mul, q, qLatex, synthetic } from '../math-self-learning/src/poly.js'
+import { P, analyze, coefAt, evalNum, isZero, longDivide, polyLatex, termLatex, mul, num, q, qLatex, synthetic } from '../math-self-learning/src/poly.js'
+import { features, makeConic, stdLatex, surdNum } from '../math-self-learning/src/conics.js'
 
 const id = process.argv[2]
 if (!id) { console.error('usage: node build.mjs <unit>/<video-id>, e.g. unit-4/03-long-division'); process.exit(1) }
@@ -69,14 +70,65 @@ function graphData(num, win = [-8, 8, -8, 8], extra = [], diag = false) {
   return { type: 'graph', win, pts, curves, diag, zeros: zeros.map(z => +z.toFixed(4)), extrema: extrema.map(e => ({ ...e, x: +e.x.toFixed(4), y: +e.y.toFixed(4) })), tex: polyLatex(p) }
 }
 
+// A conic in standard form: curve segments plus every key feature, in data coordinates.
+function conicData(spec, win) {
+  const c = makeConic(spec), f = features(c)
+  const [h, k] = [num(c.h), num(c.k)]
+  const r4 = v => +v.toFixed(4)
+  const pt = p => p.map(r4)
+  const pts = { center: pt(f.center?.pt ?? f.vertex.pt) }
+  if (f.vertices) pts.vertices = f.vertices.pts.map(pt)
+  if (f.coVertices) pts.coVertices = f.coVertices.pts.map(pt)
+  if (f.foci) pts.foci = f.foci.pts.map(pt)
+  if (f.focus) pts.focus = [pt(f.focus.pt)]
+  if (c.kind === 'circle') pts.points = [...f.points[0].pts, ...f.points[1].pts].map(pt)
+  if (!win) {
+    const all = [[0, 0], pts.center, ...['vertices', 'coVertices', 'foci', 'focus', 'points'].flatMap(key => pts[key] ?? [])]
+    if (c.kind === 'parabola') { const p = num(f.p), reach = Math.max(4, Math.abs(p) * 5); all.push(c.vertical ? [h + reach, k + num(c.a) * reach * reach] : [h + num(c.a) * reach * reach, k + reach]) }
+    const xs = all.map(p => p[0]), ys = all.map(p => p[1])
+    const half = Math.max(5, Math.ceil(Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys)) / 2 + 2))
+    const cx = Math.round((Math.min(...xs) + Math.max(...xs)) / 2), cy = Math.round((Math.min(...ys) + Math.max(...ys)) / 2)
+    win = [cx - half, cx + half, cy - half, cy + half]
+  }
+  const [x0, x1, y0, y1] = win, pad = (x1 - x0) * 0.3
+  const inside = ([x, y]) => x > x0 - pad && x < x1 + pad && y > y0 - pad && y < y1 + pad
+  const segs = []
+  const trace = gen => { let seg = []; for (const p of gen) { if (inside(p)) seg.push(pt(p)); else if (seg.length) { segs.push(seg); seg = [] } } if (seg.length > 1) segs.push(seg) }
+  const N = 720
+  if (c.kind === 'circle' || c.kind === 'ellipse') {
+    const rx = c.kind === 'circle' ? surdNum(f.r) : Math.sqrt(num(c.X2)), ry = c.kind === 'circle' ? rx : Math.sqrt(num(c.Y2))
+    trace(Array.from({ length: N + 1 }, (_, i) => { const t = Math.PI / 2 + 2 * Math.PI * i / N; return [h + rx * Math.cos(t), k + ry * Math.sin(t)] }))
+  } else if (c.kind === 'parabola') {
+    const a = num(c.a), span = c.vertical ? [x0 - pad, x1 + pad] : [y0 - pad, y1 + pad]
+    trace(Array.from({ length: N + 1 }, (_, i) => { const t = span[0] + (span[1] - span[0]) * i / N; return c.vertical ? [t, a * (t - h) ** 2 + k] : [a * (t - k) ** 2 + h, t] }))
+  } else {
+    const a = surdNum(f.a), b = surdNum(f.b), T = Math.acosh(Math.max(2, 3 * (x1 - x0) / Math.min(a, b)))
+    for (const s of [1, -1]) trace(Array.from({ length: N + 1 }, (_, i) => { const t = -T + 2 * T * i / N; return c.vertical ? [h + b * Math.sinh(t), k + s * a * Math.cosh(t)] : [h + s * a * Math.cosh(t), k + b * Math.sinh(t)] }))
+  }
+  const lines = {}, L = 3 * (x1 - x0)
+  if (c.kind === 'parabola') {
+    lines.directrix = [f.directrix.y ? [[x0 - pad, num(f.directrix.y)], [x1 + pad, num(f.directrix.y)]] : [[num(f.directrix.x), y0 - pad], [num(f.directrix.x), y1 + pad]]]
+    lines.axis = [c.vertical ? [[h, y0 - pad], [h, y1 + pad]] : [[x0 - pad, k], [x1 + pad, k]]]
+  }
+  let box = null
+  if (c.kind === 'hyperbola') {
+    const m = surdNum(f.m)
+    lines.asymptotes = [[[h - L, k - m * L], [h + L, k + m * L]], [[h - L, k + m * L], [h + L, k - m * L]]]
+    const [dx, dy] = c.vertical ? [surdNum(f.b), surdNum(f.a)] : [surdNum(f.a), surdNum(f.b)]
+    box = [h - dx, k - dy, h + dx, k + dy].map(r4)
+  }
+  return { type: 'conic', kind: c.kind, win, segs, pts, lines, box, tex: stdLatex(c) }
+}
+
 const layouts = {}
 for (const [name, l] of Object.entries(spec.layouts ?? {})) {
   if (l.type === 'longdiv') layouts[name] = { type: 'longdiv', ...longDivCells(l.num, l.den) }
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }
   if (l.type === 'graph') layouts[name] = graphData(l.num, l.window, l.extra, l.diag)
+  if (l.type === 'conic') layouts[name] = conicData(l.conic, l.window)
 }
 const out = new URL(`./build/${id}/`, import.meta.url)
 mkdirSync(out, { recursive: true })
 writeFileSync(new URL('spec.json', out), JSON.stringify({ ...spec, layouts }, null, 1))
 console.log(`Wrote build/${id}/spec.json: ${spec.scenes.length} scenes`)
-for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)
+for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)

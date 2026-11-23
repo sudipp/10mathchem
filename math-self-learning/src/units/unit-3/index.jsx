@@ -1,5 +1,5 @@
 // Unit 3: Conic Sections. Lessons, homework, videos, and the day plan.
-// No narrated videos yet (videos.json is empty), so each lesson uses a Khan Academy video.
+// Each lesson has a narrated video (math-videos/videos/unit-3) plus a Khan Academy video.
 import { MathLines } from '../../Visuals.jsx'
 import { ConicGraph } from '../../ConicGraph.jsx'
 import { HOMEWORK } from './homework.js'
@@ -239,7 +239,7 @@ const unit3 = {
   homework: HOMEWORK,
   hwFor: HW_FOR,
   shelf: SHELF,
-  videoIds: [],
+  videoIds: ['01-circles', '02-parabolas', '03-writing-circles-parabolas', '04-ellipses', '05-writing-ellipses', '06-hyperbolas', '07-writing-hyperbolas', '08-classifying-conics'],
   videos: VIDEOS,
   dayPlan: {
     title: 'Conics in a day',

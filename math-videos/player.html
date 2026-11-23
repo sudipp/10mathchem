@@ -105,6 +105,10 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .graph-side{display:flex;flex-direction:column;gap:14px;max-width:440px;font-size:30px}
 .gs{font-size:28px;background:#fffdf7;border:1px solid #e1e2d9;border-radius:18px;padding:10px 20px;font-weight:600}
 .gs.strong{background:#2E4036;color:#F2F0E9;border-color:#2E4036}
+/* conic */
+.cdash{stroke:#8a948c;stroke-width:2.5;stroke-dasharray:9 7}.caxis{stroke:#CC5833;stroke-width:2;stroke-dasharray:3 7}
+.cbox{fill:none;stroke:#aab3a6;stroke-width:2;stroke-dasharray:5 6}
+.ccenter{fill:#2E4036}.cvert{fill:#CC5833}.ccov{fill:#fffdf7;stroke:#2E4036;stroke-width:3}.cfocus{fill:#fffdf7;stroke:#CC5833;stroke-width:4}.cpt{fill:#2E4036}
 /* sort */
 .sf{display:flex;flex-direction:column;align-items:center;gap:26px}
 .sf-rule{font:600 18px 'IBM Plex Mono',monospace;color:#a33d20;letter-spacing:.06em}
@@ -166,7 +170,7 @@ window.setup = data => {
   const seen = {}
   D.scenes.forEach(s => {
     const v = s.view
-    if (!['longdiv', 'synth', 'graph'].includes(v.kind)) return
+    if (!['longdiv', 'synth', 'graph', 'conic'].includes(v.kind)) return
     seen[v.layout] ??= new Set()
     s.prevKeys = [...seen[v.layout]]
     ;(v.reveal ?? []).forEach(([k]) => seen[v.layout].add(k))
@@ -275,6 +279,52 @@ function build(s) {
     for (const lb of v.labels ?? []) { const e = add('text', { x: sx(lb.x), y: sy(lb.y), class: 'gl' }); e.textContent = lb.text; reveal(e, mark(s, lb.at)) }
     const side = $('div', 'graph-side')
     side.append($('div', 'problem', tex(v.title ?? `y = ${L.tex}`)))
+    for (const l of v.side ?? []) side.append(reveal($('div', `gs${l.strong ? ' strong' : ''}`, l.tex ? tex(l.tex) : l.text), mark(s, l.at)))
+    const wrap = $('div', 'graph-wrap'); wrap.append(svg, side)
+    stage.append(wrap)
+  } else if (v.kind === 'conic') {
+    // Square graph so circles stay round. Features appear on their reveal markers.
+    const L = D.layouts[v.layout], [x0, x1, y0, y1] = L.win
+    const W = 460, pad = 22
+    const sx = x => pad + (x - x0) / (x1 - x0) * (W - 2 * pad), sy = y => W - pad - (y - y0) / (y1 - y0) * (W - 2 * pad)
+    const span = x1 - x0, g = span > 30 ? 4 : span > 14 ? 2 : 1
+    let grid = ''
+    for (let x = Math.ceil(x0 / g) * g; x <= x1 + 1e-9; x += g) grid += `<line x1="${sx(x)}" x2="${sx(x)}" y1="${pad}" y2="${W - pad}" class="gg"/>${x !== 0 && Math.round(x / g) % 2 === 0 ? `<text x="${sx(x)}" y="${Math.min(Math.max(sy(0) + 18, pad + 14), W - pad - 4)}" class="gt">${x}</text>` : ''}`
+    for (let y = Math.ceil(y0 / g) * g; y <= y1 + 1e-9; y += g) grid += `<line y1="${sy(y)}" y2="${sy(y)}" x1="${pad}" x2="${W - pad}" class="gg"/>${y !== 0 && Math.round(y / g) % 2 === 0 ? `<text x="${Math.min(Math.max(sx(0) - 7, pad + 22), W - pad)}" y="${sy(y) + 5}" class="gt gty">${y}</text>` : ''}`
+    const axes = `${y0 <= 0 && y1 >= 0 ? `<line x1="${pad}" x2="${W - pad}" y1="${sy(0)}" y2="${sy(0)}" class="ga"/>` : ''}${x0 <= 0 && x1 >= 0 ? `<line y1="${pad}" y2="${W - pad}" x1="${sx(0)}" x2="${sx(0)}" class="ga"/>` : ''}`
+    const svg = $('div', 'graph', `<svg viewBox="0 0 ${W} ${W}" width="${W}" height="${W}"><defs><clipPath id="cc"><rect x="${pad}" y="${pad}" width="${W - 2 * pad}" height="${W - 2 * pad}"/></clipPath></defs>${grid}${axes}</svg>`)
+    const svgEl = svg.querySelector('svg'), ns = 'http://www.w3.org/2000/svg'
+    const add = (tag, attrs) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svgEl.append(e); return e }
+    const prev = new Set(s.prevKeys), now = Object.fromEntries((v.reveal ?? []).map(([k, m]) => [k, mark(s, m)]))
+    const when = k => prev.has(k) ? -9 : k in now ? now[k] : null
+    const show = (k, el) => { const at = when(k); if (at == null) el.style.display = 'none'; else reveal(el, at); return el }
+    const seg = ([a, b], cls) => add('line', { x1: sx(a[0]), y1: sy(a[1]), x2: sx(b[0]), y2: sy(b[1]), class: cls, 'clip-path': 'url(#cc)' })
+    if (L.box) { const [bx0, by0, bx1, by1] = L.box; show('box', add('rect', { x: sx(bx0), y: sy(by1), width: sx(bx1) - sx(bx0), height: sy(by0) - sy(by1), class: 'cbox' })) }
+    for (const [key, cls] of [['asymptotes', 'cdash'], ['directrix', 'cdash'], ['axis', 'caxis']]) {
+      const ls = L.lines?.[key]
+      if (!ls) continue
+      const grp = document.createElementNS(ns, 'g'); svgEl.append(grp)
+      ls.forEach(l => { const e = seg(l, cls); grp.append(e) })
+      show(key, grp)
+    }
+    const curve = add('path', { d: L.segs.map(sg => 'M' + sg.map(([x, y]) => `${sx(x).toFixed(1)},${sy(y).toFixed(1)}`).join('L')).join(''), class: 'gcurve', 'clip-path': 'url(#cc)', pathLength: 1000 })
+    const cAt = when('curve'); if (cAt == null) curve.style.display = 'none'; else draws.push({ el: curve, at: cAt })
+    const dotSet = (key, list, cls, r) => {
+      if (!list) return
+      const grp = document.createElementNS(ns, 'g'); svgEl.append(grp)
+      for (const [x, y] of list) { const e = document.createElementNS(ns, 'circle'); e.setAttribute('cx', sx(x)); e.setAttribute('cy', sy(y)); e.setAttribute('r', r); e.setAttribute('class', cls); grp.append(e) }
+      show(key, grp)
+    }
+    dotSet('points', L.pts.points, 'cpt', 6)
+    dotSet('coVertices', L.pts.coVertices, 'ccov', 7)
+    dotSet('vertices', L.pts.vertices, 'cvert', 9)
+    dotSet('foci', L.pts.foci, 'cfocus', 9)
+    dotSet('focus', L.pts.focus, 'cfocus', 9)
+    dotSet('center', [L.pts.center], L.kind === 'parabola' ? 'cvert' : 'ccenter', 8)
+    for (const d of v.dots ?? []) reveal(add('circle', { cx: sx(d.x), cy: sy(d.y), r: 7, class: 'gd' }), mark(s, d.at))
+    for (const lb of v.labels ?? []) { const e = add('text', { x: sx(lb.x), y: sy(lb.y), class: 'gl' }); e.textContent = lb.text; reveal(e, mark(s, lb.at)) }
+    const side = $('div', 'graph-side')
+    side.append($('div', 'problem', tex(v.title ?? L.tex)))
     for (const l of v.side ?? []) side.append(reveal($('div', `gs${l.strong ? ' strong' : ''}`, l.tex ? tex(l.tex) : l.text), mark(s, l.at)))
     const wrap = $('div', 'graph-wrap'); wrap.append(svg, side)
     stage.append(wrap)

@@ -1,5 +1,6 @@
 // Unit 5: Radical Expressions, plus the Fall Final Exam Review. Lessons, homework, videos, and the day plan.
-// The class packet has no notes for this unit, so the lessons are built from HW #1.
+// The class packet has no notes for this unit, so the lessons are built from HW #1. Each lesson has a
+// narrated video (math-videos/videos/unit-5) plus a Khan Academy video.
 import { MathLines } from '../../Visuals.jsx'
 import { HOMEWORK } from './homework.js'
 import VIDEOS from './videos.json'
@@ -102,7 +103,7 @@ const unit5 = {
   homework: HOMEWORK,
   hwFor: HW_FOR,
   shelf: SHELF,
-  videoIds: [],
+  videoIds: ['01-simplifying-radicals', '02-multiplying-radicals', '03-dividing-rationalizing'],
   videos: VIDEOS,
   dayPlan: {
     title: 'Radicals and the final in a day',

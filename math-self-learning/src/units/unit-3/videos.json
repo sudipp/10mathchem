@@ -1,1 +1,26 @@
-{}
+{
+ "01-circles": {
+  "seconds": 182
+ },
+ "02-parabolas": {
+  "seconds": 195
+ },
+ "03-writing-circles-parabolas": {
+  "seconds": 195
+ },
+ "04-ellipses": {
+  "seconds": 189
+ },
+ "05-writing-ellipses": {
+  "seconds": 159
+ },
+ "06-hyperbolas": {
+  "seconds": 211
+ },
+ "07-writing-hyperbolas": {
+  "seconds": 157
+ },
+ "08-classifying-conics": {
+  "seconds": 145
+ }
+}
