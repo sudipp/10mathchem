@@ -109,6 +109,8 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .cdash{stroke:#8a948c;stroke-width:2.5;stroke-dasharray:9 7}.caxis{stroke:#CC5833;stroke-width:2;stroke-dasharray:3 7}
 .cbox{fill:none;stroke:#aab3a6;stroke-width:2;stroke-dasharray:5 6}
 .ccenter{fill:#2E4036}.cvert{fill:#CC5833}.ccov{fill:#fffdf7;stroke:#2E4036;stroke-width:3}.cfocus{fill:#fffdf7;stroke:#CC5833;stroke-width:4}.cpt{fill:#2E4036}
+.pshade{fill:#CC583326}.pdash{stroke-dasharray:14 10}
+.pdot.closed,.pdot.key{fill:#2E4036}.pdot.open{fill:#fffdf7;stroke:#2E4036;stroke-width:3.5}.pdot.vertex{fill:#CC5833}.pdot.sol{fill:#fffdf7;stroke:#CC5833;stroke-width:4.5}
 /* sort */
 .sf{display:flex;flex-direction:column;align-items:center;gap:26px}
 .sf-rule{font:600 18px 'IBM Plex Mono',monospace;color:#a33d20;letter-spacing:.06em}
@@ -170,7 +172,7 @@ window.setup = data => {
   const seen = {}
   D.scenes.forEach(s => {
     const v = s.view
-    if (!['longdiv', 'synth', 'graph', 'conic'].includes(v.kind)) return
+    if (!['longdiv', 'synth', 'graph', 'conic', 'plane'].includes(v.kind)) return
     seen[v.layout] ??= new Set()
     s.prevKeys = [...seen[v.layout]]
     ;(v.reveal ?? []).forEach(([k]) => seen[v.layout].add(k))
@@ -326,6 +328,53 @@ function build(s) {
     const side = $('div', 'graph-side')
     side.append($('div', 'problem', tex(v.title ?? L.tex)))
     for (const l of v.side ?? []) side.append(reveal($('div', `gs${l.strong ? ' strong' : ''}`, l.tex ? tex(l.tex) : l.text), mark(s, l.at)))
+    const wrap = $('div', 'graph-wrap'); wrap.append(svg, side)
+    stage.append(wrap)
+  } else if (v.kind === 'plane') {
+    // Square coordinate plane; each item appears on its reveal key (cumulative across scenes).
+    const L = D.layouts[v.layout], [x0, x1, y0, y1] = L.win
+    const W = 460, pad = 22
+    const sx = x => pad + (x - x0) / (x1 - x0) * (W - 2 * pad), sy = y => W - pad - (y - y0) / (y1 - y0) * (W - 2 * pad)
+    const span = Math.max(x1 - x0, y1 - y0), g = span > 40 ? 5 : span > 24 ? 4 : span > 14 ? 2 : 1, lab = g === 1 ? 2 : g
+    let grid = ''
+    for (let x = Math.ceil(x0 / g) * g; x <= x1 + 1e-9; x += g) grid += `<line x1="${sx(x)}" x2="${sx(x)}" y1="${pad}" y2="${W - pad}" class="gg"/>${x !== 0 && x % lab === 0 ? `<text x="${sx(x)}" y="${Math.min(Math.max(sy(0) + 18, pad + 14), W - pad - 4)}" class="gt">${x}</text>` : ''}`
+    for (let y = Math.ceil(y0 / g) * g; y <= y1 + 1e-9; y += g) grid += `<line y1="${sy(y)}" y2="${sy(y)}" x1="${pad}" x2="${W - pad}" class="gg"/>${y !== 0 && y % lab === 0 ? `<text x="${Math.min(Math.max(sx(0) - 7, pad + 22), W - pad)}" y="${sy(y) + 5}" class="gt gty">${y}</text>` : ''}`
+    const axes = `${y0 <= 0 && y1 >= 0 ? `<line x1="${pad}" x2="${W - pad}" y1="${sy(0)}" y2="${sy(0)}" class="ga"/>` : ''}${x0 <= 0 && x1 >= 0 ? `<line y1="${pad}" y2="${W - pad}" x1="${sx(0)}" x2="${sx(0)}" class="ga"/>` : ''}`
+    const svg = $('div', 'graph', `<svg viewBox="0 0 ${W} ${W}" width="${W}" height="${W}"><defs><clipPath id="pc"><rect x="${pad}" y="${pad}" width="${W - 2 * pad}" height="${W - 2 * pad}"/></clipPath></defs><g class="pshades"></g>${grid}${axes}</svg>`)
+    const svgEl = svg.querySelector('svg'), ns = 'http://www.w3.org/2000/svg'
+    const add = (tag, attrs, parent = svgEl) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.append(e); return e }
+    const prev = new Set(s.prevKeys), now = Object.fromEntries((v.reveal ?? []).map(([k, m]) => [k, mark(s, m)]))
+    const when = k => prev.has(k) ? -9 : k in now ? now[k] : null
+    const pathOf = segs => segs.map(sg => 'M' + sg.map(([x, y]) => `${sx(x).toFixed(1)},${sy(y).toFixed(1)}`).join('L')).join('')
+    const order = it => ({ shade: 0, axis: 1, vline: 2, fn: 2, dots: 3 })[it.kind]
+    for (const it of [...L.items].sort((a, b) => order(a) - order(b))) {
+      const at = when(it.key)
+      let el
+      if (it.kind === 'shade') el = add('path', { d: 'M' + it.poly.map(([x, y]) => `${sx(x).toFixed(1)},${sy(y).toFixed(1)}`).join('L') + 'Z', class: 'pshade', 'clip-path': 'url(#pc)' }, svgEl.querySelector('.pshades'))
+      else if (it.kind === 'axis') el = add('line', { x1: sx(it.x), x2: sx(it.x), y1: pad, y2: W - pad, class: 'caxis' })
+      else if (it.kind === 'vline') el = add('line', { x1: sx(it.x), x2: sx(it.x), y1: pad, y2: W - pad, class: `gcurve${it.alt ? ' gcurve2' : ''}${it.dashed ? ' pdash' : ''}`, 'clip-path': 'url(#pc)' })
+      else if (it.kind === 'fn') {
+        el = add('path', { d: pathOf(it.segs), class: `gcurve${it.alt ? ' gcurve2' : ''}${it.dashed ? ' pdash' : ''}`, 'clip-path': 'url(#pc)', ...(it.dashed ? {} : { pathLength: 1000 }) })
+        if (at == null) { el.style.display = 'none'; continue }
+        if (!it.dashed) { draws.push({ el, at }); continue }
+      } else if (it.kind === 'dots') {
+        el = document.createElementNS(ns, 'g'); svgEl.append(el)
+        for (const [x, y] of it.pts) {
+          add('circle', { cx: sx(x), cy: sy(y), r: it.style === 'open' || it.style === 'closed' ? 7.5 : 8, class: `pdot ${it.style ?? 'key'}` }, el)
+          if (it.labels) { const tx = add('text', { x: sx(x), y: sy(y) - 15, class: 'gl' }, el); tx.textContent = `(${+x.toFixed(2)}, ${+y.toFixed(2)})` }
+        }
+      }
+      if (at == null) el.style.display = 'none'; else reveal(el, at)
+    }
+    const side = $('div', 'graph-side')
+    side.append($('div', 'problem', tex(v.title ?? L.tex)))
+    for (const l of v.side ?? []) side.append(reveal($('div', `gs${l.strong ? ' strong' : ''}`, l.tex ? tex(l.tex) : l.text), mark(s, l.at)))
+    if (s.countdown) {
+      const t = $('div', 'timer', `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#e1e3d9" stroke-width="10"/><circle class="ring" cx="60" cy="60" r="52" fill="none" stroke="#CC5833" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg><div class="num"></div>`)
+      timer = { el: t, ring: t.querySelector('.ring'), num: t.querySelector('.num') }
+      side.prepend($('div', 'gs strong', 'Your turn!'))
+      side.append(t)
+    }
     const wrap = $('div', 'graph-wrap'); wrap.append(svg, side)
     stage.append(wrap)
   } else if (v.kind === 'sort') {

@@ -2,7 +2,9 @@
 
 A React 19 learning site for Accelerated Math II/III, organized by unit.
 Each unit has narrated video lessons, step-by-step animations, quick checks,
-and homework help. Available now: **Unit 3, Conic Sections**, **Unit 4,
+and homework help. Available now: **Unit 0, Linear, Absolute Value &
+Piecewise Functions**, **Unit 1, Quadratic Functions**, **Unit 2, Solving
+Quadratics, Systems & Inequalities**, **Unit 3, Conic Sections**, **Unit 4,
 Polynomial Functions**, and **Unit 5, Radical Expressions** (with the Fall
 Final Exam Review).
 
@@ -22,7 +24,10 @@ use `..\site-host\Start Self Learning Sites.bat`.
 | Address | Page |
 |---|---|
 | `/math/` | All units |
-| `/math/#/unit-3` | Unit 3 home (`/lessons`, `/day`, `/resources` jump to a section) |
+| `/math/#/unit-0` | Unit 0 home (`/lessons`, `/day`, `/resources` jump to a section) |
+| `/math/#/unit-1/homework/hw1` | Unit 1 homework help |
+| `/math/#/unit-2/homework/hw11` | Unit 2 homework help |
+| `/math/#/unit-3` | Unit 3 home |
 | `/math/#/unit-3/homework/hw1` | Unit 3 homework help |
 | `/math/#/unit-4` | Unit 4 home |
 | `/math/#/unit-4/homework/hw3` | Unit 4 homework help |
@@ -44,8 +49,15 @@ public/videos/unit-4/         lesson videos and poster images
 
 Shared pieces live in `src/`: the lesson page parts (`Lesson.jsx`), homework
 help (`Homework.jsx`, `solve.jsx`), math rendering (`TeX.jsx`), drawings
-(`Visuals.jsx`, `ConicGraph.jsx`), the polynomial engine (`poly.js`), and the
-conics engine (`conics.js`).
+(`Visuals.jsx`, `ConicGraph.jsx`, `PlaneGraph.jsx`), the polynomial engine
+(`poly.js`), the conics engine (`conics.js`), the lines / absolute value /
+piecewise engine (`lines.js`), and the quadratics engine (`quadratics.js`).
+
+`PlaneGraph.jsx` draws any coordinate plane from plain data: curves on an
+interval, vertical lines, dashed boundaries, shaded half-planes and parabola
+regions, an axis of symmetry, and open, closed, vertex, or solution dots. A
+problem's `given` graph is shown with the prompt (for "write the equation of
+this graph"), and its `plane` graph appears with the last step.
 
 ### Adding a unit
 
@@ -57,6 +69,40 @@ conics engine (`conics.js`).
 3. Optional videos: write scripts in `../math-videos/videos/unit-<n>/`, render
    them, then `node ../math-videos/publish.mjs unit-<n>`.
 4. `npm run build`.
+
+## Unit 0: Linear, Absolute Value & Piecewise Functions
+
+Built from the Day 4–5 notes, the interval notation handout, and HW #1, #2,
+#4 (absolute value and piecewise), #5, and #6. Five lessons: lines review
+(slope, the three forms, parallel and perpendicular), linear inequalities and
+interval notation, absolute value functions, graphing piecewise functions,
+and writing piecewise functions with domain and range. `src/lines.js`
+generates every line, inequality, absolute value, and piecewise problem from
+its equation with exact fractions and draws the graph. Answer-key notes: the
+interval handout's "or" example gives $x > 4$ but $5x - 5 > 25$ means
+$x > 6$; HW #5 #7's key uses the wrong piece for $f(-2)$ (it is undefined).
+
+## Unit 1: Quadratic Functions
+
+Built from the Day 1–5 notes and HW #1–#7. Five lessons: graphing in standard
+form, transformations and vertex form, characteristics (intercepts, domain and
+range, increasing and decreasing), intercept form, and writing quadratics.
+`src/quadratics.js` finds the vertex, axis, intercepts (exact roots), range,
+and intervals, makes a table around the vertex, converts between forms, and
+writes equations from a vertex or zeros and a point. Answer-key notes: HW #1
+#3 and #9 have wrong vertices in the key, and HW #7 additional review #2's key
+writes $2x + 4$ where the graph shows $2x - 4$.
+
+## Unit 2: Solving Quadratics, Systems & Inequalities
+
+Built from the Day 11–18 notes (with the filled-in formula and discriminant
+notes) and HW #11–#19. Six lessons: the quadratic formula, the discriminant
+and complex numbers, completing the square and changing forms,
+linear–quadratic systems, quadratic–quadratic systems, and quadratic
+inequalities. The quadratics engine solves by formula, factoring, square
+roots, or completing the square, with simplified surds and imaginary roots;
+does complex arithmetic; solves systems by substitution; and shades quadratic
+inequalities. One-variable inequalities reuse the Unit 4 sign-chart engine.
 
 ## Unit 3: Conic Sections
 
@@ -173,7 +219,7 @@ variables, as the worksheet does.
 ## Checking the answers
 
 ```powershell
-node scripts/verify.mjs          # engine output vs. the Unit 3, 4, and 5 answer keys
+node scripts/verify.mjs          # engine output vs. the Unit 0–5 answer keys
 python scripts/verify_sympy.py   # hand-written solutions vs. sympy
 ```
 
@@ -182,3 +228,5 @@ polynomial-from-zeros, and graph (zeros and extrema to the nearest tenth)
 against the worksheet answer keys. It also exports the hand-written
 solutions (factoring, roots, function operations) to `scripts/checks.json`,
 which `verify_sympy.py` confirms with sympy (needs `pip install sympy`).
+
+For Units 0–2, sympy also confirms every line (same line as the key, through the given points, parallel or perpendicular as asked), every quadratic's vertex and zeros, every system's intersection points, point-in-system checks, piecewise functions written from graphs (compared to the key on sample inputs, including endpoints), and inequality solution sets. Engine facts such as open and closed endpoint dots, the direction a parabola opens, and the shaded side are compared to the key in `verify.mjs`.

@@ -175,3 +175,12 @@ button.hero-link,button.nav-cta{border:0;font:inherit;cursor:pointer}button.hero
 .conic-legend i{display:inline-block;width:9px;height:9px;border-radius:50%}
 .lg-center{background:#2e4036}.lg-vertex{background:#cc5833}.lg-focus{border:2px solid #cc5833;background:#fffdf7}.lg-cov{border:2px solid #2e4036;background:#fffdf7}
 .lg-dash{width:16px!important;height:0!important;border-radius:0!important;border-top:2px dashed #8a948c}
+
+/* Plane graphs (lines, absolute value, piecewise, inequalities, systems) */
+.pg-dashed{stroke-dasharray:7 5}
+.pg-shade{fill:#cc583322;stroke:none}.pg-shade.alt{fill:#2e403622}
+.pg-dot.closed{fill:#2e4036}.pg-dot.open{fill:#fffdf7;stroke:#2e4036;stroke-width:2}
+.pg-dot.vertex{fill:#cc5833}.pg-dot.key{fill:#2e4036}.pg-dot.sol{fill:#fffdf7;stroke:#cc5833;stroke-width:2.6}
+.g-legend span.dash::before{background:repeating-linear-gradient(90deg,#2e4036 0 5px,transparent 5px 8px)}
+.g-legend span.shade::before{height:10px;background:#cc583333}
+.g-legend span.axis::before{background:repeating-linear-gradient(90deg,#cc5833 0 2px,transparent 2px 5px)}

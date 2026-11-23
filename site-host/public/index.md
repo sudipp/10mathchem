@@ -10,7 +10,7 @@ Chapter 4, Lewis Structures & Nomenclature: valence electrons, Lewis structures,
 
 ## Math, one unit at a time
 
-Now available: Unit 3, Conic Sections; Unit 4, Polynomial Functions; and Unit 5, Radical Expressions, with the Fall Final Exam Review. Lessons, videos, and step-by-step homework help for every assignment. More units are on the way.
+Now available: Unit 0, Linear, Absolute Value & Piecewise Functions; Unit 1, Quadratic Functions; Unit 2, Solving Quadratics, Systems & Inequalities; Unit 3, Conic Sections; Unit 4, Polynomial Functions; and Unit 5, Radical Expressions, with the Fall Final Exam Review. Lessons, videos, and step-by-step homework help for every assignment. More units are on the way.
 
 [Open math](https://perspireai.com/math/)
 

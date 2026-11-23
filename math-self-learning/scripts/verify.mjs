@@ -4,6 +4,9 @@ import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
 import { HOMEWORK as HOMEWORK3 } from '../src/units/unit-3/homework.js'
 import { HOMEWORK as HOMEWORK5 } from '../src/units/unit-5/homework.js'
+import { HOMEWORK as HOMEWORK0 } from '../src/units/unit-0/homework.js'
+import { HOMEWORK as HOMEWORK1 } from '../src/units/unit-1/homework.js'
+import { HOMEWORK as HOMEWORK2 } from '../src/units/unit-2/homework.js'
 import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree, num } from '../src/poly.js'
 import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy, candidates } from '../src/roots.js'
 import { inequality, parabola } from '../src/extra.js'
@@ -72,7 +75,7 @@ function checkConic(c, e = {}) {
 }
 const generalSympy = g => ['A', 'C', 'D', 'E', 'F'].map((key, i) => `(${qSympy(toQ(g[key] ?? 0))})*${['x**2', 'y**2', 'x', 'y', '1'][i]}`).join(' + ')
 
-for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3], ['u5 ', HOMEWORK5]]) for (const hw of list) {
+for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3], ['u5 ', HOMEWORK5], ['u0 ', HOMEWORK0], ['u1 ', HOMEWORK1], ['u2 ', HOMEWORK2]]) for (const hw of list) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
     const label = `${unitTag}${hw.id} §${s + 1} #${i + 1} (${p.type})`
     if (p.choice) {
@@ -204,6 +207,12 @@ for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3], ['u5 ', HOMEW
       report(classifyConic(g) === p.exp, label, classifyConic(g))
     } else if (p.check) {
       checks.push({ label, ...p.check })
+    }
+    // Engine facts (vertex, opens, shading, …) against the worksheet key.
+    if (p.facts && p.exp) {
+      const norm = v => Array.isArray(v) && v.length && v.every(Array.isArray) ? JSON.stringify([...v].map(x => JSON.stringify(x)).sort()) : JSON.stringify(v)
+      const bad = Object.entries(p.exp).filter(([k, v]) => norm(p.facts[k]) !== norm(v))
+      report(!bad.length, `${label} facts`, JSON.stringify(Object.fromEntries(bad.map(([k]) => [k, p.facts[k]]))))
     }
   }))
 }

@@ -4,6 +4,7 @@ import { buildFromRoots, candidates, candidatesLatex, conjugate, isPaired, pairQ
 import { REL, factoredForm, inequality, parabola } from './extra.js'
 import { answerLines, classifySteps, featureSteps, features, fromGeneral, makeConic, stdLatex } from './conics.js'
 import { ConicGraph } from './ConicGraph.jsx'
+import { PlaneGraph } from './PlaneGraph.jsx'
 import { classify, degreeName, funcOp, product, resultLatex, termsName, writtenLatex } from './funcs.js'
 
 const R = String.raw
@@ -151,6 +152,11 @@ function solveCore(p) {
   if (p.type === 'conicType') { const r = classifySteps(p.g); return { prompt: `${pre}${p.prompt}`, steps: r.steps, answer: R`\text{${r.kind[0].toUpperCase()}${r.kind.slice(1)}}` } }
   if (p.graph) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <FnGraph {...p.graph} /> : null }
   if (p.poly) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <Graph poly={P(p.poly)} window={p.window} /> : null }
+  if (p.given || p.plane) return {
+    prompt: p.prompt, steps: p.steps, answer: p.answer,
+    figure: p.given ? <PlaneGraph {...p.given} /> : null,
+    visual: p.plane ? n => n >= (p.planeAt ?? p.steps.length) ? <PlaneGraph {...p.plane} /> : null : undefined,
+  }
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
 }
 

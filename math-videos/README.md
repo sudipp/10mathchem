@@ -1,10 +1,12 @@
 # Math lesson videos
 
 Narrated, captioned lesson videos (about 2–3 minutes each) for the math site,
-organized by unit: `unit-3` is Conic Sections, `unit-4` is Polynomial
-Functions, and `unit-5` is Radical Expressions. Each video follows the class
-notes (Unit 5 has none, so its videos follow HW #1), ends with a timed "Your
-turn" problem, and checks the answer.
+organized by unit: `unit-0` is Linear, Absolute Value & Piecewise Functions,
+`unit-1` is Quadratic Functions, `unit-2` is Solving Quadratics, Systems &
+Inequalities, `unit-3` is Conic Sections, `unit-4` is Polynomial Functions,
+and `unit-5` is Radical Expressions. Each video follows the class notes
+(Unit 5 has none, so its videos follow HW #1), ends with a timed "Your turn"
+problem, and checks the answer.
 
 ## Folders
 
@@ -27,6 +29,11 @@ out/<unit>/<id>.mp4/.webm finished videos
    It writes `build/<unit>/<id>/spec.json`. A `conic` view reveals each
    feature on its own narration marker, e.g.
    `reveal: [['center', 1], ['vertices', 2], ['box', 3], ['asymptotes', 4], ['curve', 5]]`.
+   A `plane` layout (Units 0–2) lists its own items, each with a reveal
+   `key`: curves on an interval (`fn`, optionally `dashed` or `alt`),
+   vertical lines, shaded regions above/below a curve or left/right of
+   `x = c`, an axis of symmetry, and open, closed, vertex, or solution dots.
+   A `plane` scene with a `countdown` shows the timer beside the graph.
 3. `python make_video.py <unit>/<id>` narrates each scene (neural voice,
    cached), lines up markers and captions with the spoken words, renders
    `player.html` frame by frame in headless Edge, and writes
@@ -45,6 +52,37 @@ Node.js, Python 3, Microsoft Edge, and the Python packages `edge-tts`,
 playwright`). Narration uses Microsoft's online neural voices, so an internet
 connection is needed the first time a script is narrated; only the lesson
 script text is sent.
+
+## Unit 0 videos
+
+| Id | Lesson | Based on |
+|---|---|---|
+| 01-lines | Slope, three forms, graphing, parallel and perpendicular | HW #1 #11, #39 |
+| 02-linear-inequalities | Boundary, shading, reading a graph, interval notation | HW #2, handout |
+| 03-absolute-value | Vertex, a/h/k, graphing, writing from a graph | Day 4, HW #4 |
+| 04-piecewise-graphs | Open and closed dots, graphing, evaluating | Day 4 Ex. 8–9 |
+| 05-writing-piecewise | Rules from a graph, domain and range | Day 5, HW #5 |
+
+## Unit 1 videos
+
+| Id | Lesson | Based on |
+|---|---|---|
+| 01-standard-form | Vertex from −b/2a, graphing, domain and range | Day 1, HW #1 |
+| 02-transformations | Vertex form, shifts, reflections, stretches | Day 2, HW #2 |
+| 03-characteristics | Intercepts, range, increasing and decreasing | Day 3, HW #3 |
+| 04-intercept-form | Zeros, axis halfway, vertex | Day 4, HW #4 |
+| 05-writing-quadratics | Vertex or zeros plus a point; converting forms | Day 5, HW #5 |
+
+## Unit 2 videos
+
+| Id | Lesson | Based on |
+|---|---|---|
+| 01-quadratic-formula | The formula, steps, simplifying the root | Day 11, HW #11 |
+| 02-discriminant | Three cases, imaginary i, complex arithmetic | Day 12, HW #12 |
+| 03-completing-the-square | Changing forms, vertex form, solving | Day 13, HW #13 |
+| 04-linear-quadratic-systems | Checking a point, substitution, no solution | Day 16, HW #16 |
+| 05-quadratic-systems | Setting two parabolas equal, one solution, x² cancels | Day 17, HW #17 |
+| 06-quadratic-inequalities | Shading a parabola, number line, special cases | Day 18, HW #18 |
 
 ## Unit 3 videos
 

@@ -70,6 +70,37 @@ function graphData(num, win = [-8, 8, -8, 8], extra = [], diag = false) {
   return { type: 'graph', win, pts, curves, diag, zeros: zeros.map(z => +z.toFixed(4)), extrema: extrema.map(e => ({ ...e, x: +e.x.toFixed(4), y: +e.y.toFixed(4) })), tex: polyLatex(p) }
 }
 
+// A coordinate plane for lines, absolute value, piecewise functions, parabolas,
+// shaded inequalities, and systems. Each item has a reveal `key`:
+//   { key, kind: 'fn', f, from, to, dashed, alt } · { key, kind: 'vline', x, dashed }
+//   { key, kind: 'shade', f | x, side } · { key, kind: 'axis', x } · { key, kind: 'dots', pts, style }
+function planeData(l) {
+  const [x0, x1, y0, y1] = l.window, pad = (y1 - y0) * 0.6, N = 600
+  const items = l.items.map(it => {
+    if (it.kind === 'fn') {
+      const a = Math.max(it.from ?? -Infinity, x0 - 1), b = Math.min(it.to ?? Infinity, x1 + 1)
+      const segs = [[]]
+      for (let i = 0; i <= N; i++) {
+        const x = a + (b - a) * i / N, y = it.f(x)
+        if (!Number.isFinite(y) || y < y0 - pad || y > y1 + pad) { if (segs.at(-1).length) segs.push([]); continue }
+        segs.at(-1).push([+x.toFixed(4), +y.toFixed(4)])
+      }
+      return { key: it.key, kind: 'fn', segs: segs.filter(s => s.length > 1), dashed: !!it.dashed, alt: !!it.alt }
+    }
+    if (it.kind === 'shade') {
+      if (it.x != null) {
+        const [a, b] = it.side === 'left' ? [x0 - 1, it.x] : [it.x, x1 + 1]
+        return { key: it.key, kind: 'shade', poly: [[a, y0 - 1], [b, y0 - 1], [b, y1 + 1], [a, y1 + 1]] }
+      }
+      const edge = it.side === 'above' ? y1 + 2 : y0 - 2, poly = []
+      for (let i = 0; i <= N; i++) { const x = x0 - 1 + (x1 - x0 + 2) * i / N; poly.push([+x.toFixed(4), +Math.max(Math.min(it.f(x), y1 + 2), y0 - 2).toFixed(4)]) }
+      return { key: it.key, kind: 'shade', poly: [...poly, [x1 + 1, edge], [x0 - 1, edge]] }
+    }
+    return { ...it }
+  })
+  return { type: 'plane', win: l.window, items, tex: l.tex ?? '' }
+}
+
 // A conic in standard form: curve segments plus every key feature, in data coordinates.
 function conicData(spec, win) {
   const c = makeConic(spec), f = features(c)
@@ -126,9 +157,10 @@ for (const [name, l] of Object.entries(spec.layouts ?? {})) {
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }
   if (l.type === 'graph') layouts[name] = graphData(l.num, l.window, l.extra, l.diag)
   if (l.type === 'conic') layouts[name] = conicData(l.conic, l.window)
+  if (l.type === 'plane') layouts[name] = planeData(l)
 }
 const out = new URL(`./build/${id}/`, import.meta.url)
 mkdirSync(out, { recursive: true })
 writeFileSync(new URL('spec.json', out), JSON.stringify({ ...spec, layouts }, null, 1))
 console.log(`Wrote build/${id}/spec.json: ${spec.scenes.length} scenes`)
-for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)
+for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'plane' ? `plane ${l.items.length} items, window ${l.win.join(' ')}` : l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)
