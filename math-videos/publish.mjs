@@ -1,19 +1,25 @@
-// Copies a unit's finished videos into the math site:
-//   out/<unit>/<id>.{mp4,webm}  ->  ../math-self-learning/public/videos/<unit>/<id>.{mp4,webm,jpg}
-// and writes ../math-self-learning/src/units/<unit>/videos.json with each video's duration.
-// Usage: node publish.mjs unit-4
+// Copies a unit's finished videos into its site:
+//   math:      out/unit-N/<id>.{mp4,webm} -> ../math-self-learning/public/videos/unit-N/<id>.{mp4,webm,jpg}
+//              and ../math-self-learning/src/units/unit-N/videos.json
+//   chemistry: out/chem-N/<id>.{mp4,webm} -> ../chemistry-self-learning/public/videos/chapter-N/<id>.{mp4,webm,jpg}
+//              and ../chemistry-self-learning/src/videos/chapter-N.json
+// Each manifest records every video's duration. Usage: node publish.mjs unit-4 | chem-2
 import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const unit = process.argv[2]
-if (!/^unit-\d+$/.test(unit ?? '')) { console.error('usage: node publish.mjs unit-<number>, e.g. unit-4'); process.exit(1) }
+if (!/^(unit|chem)-\d+$/.test(unit ?? '')) { console.error('usage: node publish.mjs unit-<number> | chem-<chapter>, e.g. unit-4 or chem-2'); process.exit(1) }
 const here = path.dirname(fileURLToPath(import.meta.url))
-const site = path.resolve(here, '..', 'math-self-learning')
-const outDir = path.join(here, 'out', unit), dest = path.join(site, 'public', 'videos', unit)
-const unitDir = path.join(site, 'src', 'units', unit)
+// Math units publish to the math site; chemistry chapters (chem-N) publish to the chemistry site.
+const chem = unit.startsWith('chem-')
+const site = path.resolve(here, '..', chem ? 'chemistry-self-learning' : 'math-self-learning')
+const slug = chem ? unit.replace('chem-', 'chapter-') : unit
+const outDir = path.join(here, 'out', unit), dest = path.join(site, 'public', 'videos', slug)
+const unitDir = chem ? path.join(site, 'src', 'videos') : path.join(site, 'src', 'units', unit)
 if (!existsSync(outDir)) { console.error(`No rendered videos in ${outDir}`); process.exit(1) }
+if (chem) mkdirSync(unitDir, { recursive: true })
 if (!existsSync(unitDir)) { console.error(`No unit folder ${unitDir}. Create the unit in the site first.`); process.exit(1) }
 mkdirSync(dest, { recursive: true })
 const ffmpeg = execFileSync('python', ['-c', 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())']).toString().trim()
@@ -32,5 +38,5 @@ for (const file of readdirSync(outDir).filter(f => /^\d\d-.*\.mp4$/.test(f) && !
   manifest[id] = { seconds: Math.round(Number(h) * 3600 + Number(m) * 60 + Number(s)) }
   console.log(`${unit}/${id}: ${manifest[id].seconds}s`)
 }
-writeFileSync(path.join(unitDir, 'videos.json'), JSON.stringify(manifest, null, 1) + '\n')
+writeFileSync(path.join(unitDir, chem ? `${slug}.json` : 'videos.json'), JSON.stringify(manifest, null, 1) + '\n')
 console.log(`Published ${Object.keys(manifest).length} videos to ${dest}`)

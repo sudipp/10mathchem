@@ -1,0 +1,14 @@
+{
+ "01-prefixes": {
+  "seconds": 130
+ },
+ "02-conversion-factors": {
+  "seconds": 112
+ },
+ "03-temperature": {
+  "seconds": 142
+ },
+ "04-periodic-table": {
+  "seconds": 110
+ }
+}

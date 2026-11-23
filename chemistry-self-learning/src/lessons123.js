@@ -9,7 +9,7 @@ import { aufbau, configText } from './electrons.js'
 
 const CH1 = [
   {
-    id: 'c1-prefixes', chapter: 1, title: 'Metric prefixes', short: 'Metric prefixes', tag: 'Powers of ten',
+    id: 'c1-prefixes', narrated: 'chapter-1/01-prefixes', chapter: 1, title: 'Metric prefixes', short: 'Metric prefixes', tag: 'Powers of ten',
     intro: 'Every metric unit is a base unit (gram, liter, meter, second) with an optional prefix in front. The prefix is just a power of ten, so changing units means moving the decimal point.',
     points: [
       ['The prefix ladder', 'mega (M) 10⁶ · kilo (k) 10³ · base 10⁰ · deci (d) 10⁻¹ · centi (c) 10⁻² · milli (m) 10⁻³ · micro (μ) 10⁻⁶ · nano (n) 10⁻⁹ · pico (p) 10⁻¹². This is the first table on your reference sheet.'],
@@ -24,7 +24,7 @@ const CH1 = [
     Figure: PrefixLadder, Extra: PrefixRef,
   },
   {
-    id: 'c1-factor', chapter: 1, title: 'Converting units with conversion factors', short: 'Conversion factors', tag: 'Cancel what you don’t want',
+    id: 'c1-factor', narrated: 'chapter-1/02-conversion-factors', chapter: 1, title: 'Converting units with conversion factors', short: 'Conversion factors', tag: 'Cancel what you don’t want',
     intro: 'A conversion factor is a fraction made from an equality on your reference sheet, like 1 gallon = 3.78 liters. Because the top equals the bottom, multiplying by it changes the units without changing the amount.',
     points: [
       ['Two ways to write every equality', '1 in = 2.54 cm gives (2.54 cm / 1 in) or (1 in / 2.54 cm). Both equal 1. Pick the one that cancels.'],
@@ -39,7 +39,7 @@ const CH1 = [
     Figure: FactorChain, Extra: ConversionRef,
   },
   {
-    id: 'c1-temp', chapter: 1, title: 'Temperature, energy and pressure', short: 'Temperature & constants', tag: 'The rest of the reference sheet',
+    id: 'c1-temp', narrated: 'chapter-1/03-temperature', chapter: 1, title: 'Temperature, energy and pressure', short: 'Temperature & constants', tag: 'The rest of the reference sheet',
     intro: 'Temperature does not convert with a single factor, because the scales start at different zeros. Your reference sheet gives formulas for those, plus equalities for energy and pressure and the constants you will use all year.',
     points: [
       ['Celsius and Fahrenheit', '°C = 5/9(°F − 32) and °F = (°C × 9/5) + 32. Do the parentheses first. Water freezes at 0 °C (32 °F) and boils at 100 °C (212 °F).'],
@@ -54,7 +54,7 @@ const CH1 = [
     Figure: Thermometers, Extra: ConstantsRef,
   },
   {
-    id: 'c1-table', chapter: 1, title: 'Reading the periodic table', short: 'Reading the table', tag: 'One box, four facts',
+    id: 'c1-table', narrated: 'chapter-1/04-periodic-table', chapter: 1, title: 'Reading the periodic table', short: 'Reading the table', tag: 'One box, four facts',
     intro: 'Every box on the periodic table packs in the same information. Rows are periods, columns are groups, and your class copy adds the usual ion charge above each main group.',
     points: [
       ['One box, four facts', 'Atomic number (the number of protons) at the top, then the symbol, the name, and the average atomic mass in amu at the bottom.'],
@@ -73,7 +73,7 @@ const CH1 = [
 
 const CH2 = [
   {
-    id: 'c2-theory', chapter: 2, title: 'Models of the atom: a timeline', short: 'Atomic theory', tag: 'Who found what',
+    id: 'c2-theory', narrated: 'chapter-2/01-atomic-theory', chapter: 2, title: 'Models of the atom: a timeline', short: 'Atomic theory', tag: 'Who found what',
     intro: 'Our picture of the atom was built one experiment at a time. Your exam asks for the contribution of nine people (or groups), including the model or experiment when there is one.',
     points: [
       ['Ideas before experiments', 'Democritus reasoned that matter is made of uncuttable particles. Alchemists never made gold, but their lab tools and techniques led to real chemistry.'],
@@ -88,7 +88,7 @@ const CH2 = [
     Figure: Timeline,
   },
   {
-    id: 'c2-structure', chapter: 2, title: 'Protons, neutrons, electrons and isotopes', short: 'Atomic structure', tag: 'Read the nuclear symbol',
+    id: 'c2-structure', narrated: 'chapter-2/02-atomic-structure', chapter: 2, title: 'Protons, neutrons, electrons and isotopes', short: 'Atomic structure', tag: 'Read the nuclear symbol',
     intro: 'A nuclear symbol such as ²⁶₁₂Mg tells you everything about an atom. The bottom number is the atomic number, the top number is the mass number, and any charge tells you how electrons differ from protons.',
     points: [
       ['Atomic number (Z)', 'The number of protons. It identifies the element: every atom with 12 protons is magnesium.'],
@@ -103,7 +103,7 @@ const CH2 = [
     Figure: IsotopeFigure,
   },
   {
-    id: 'c2-average', chapter: 2, title: 'Average atomic mass', short: 'Average atomic mass', tag: 'A weighted average',
+    id: 'c2-average', narrated: 'chapter-2/03-average-mass', chapter: 2, title: 'Average atomic mass', short: 'Average atomic mass', tag: 'A weighted average',
     intro: 'Most elements are a mix of isotopes. The atomic mass on the periodic table is a weighted average: common isotopes count more than rare ones.',
     points: [
       ['The method', 'Change each percent to a decimal, multiply by that isotope’s mass, then add the results. The answer is in amu.'],
@@ -118,7 +118,7 @@ const CH2 = [
     Figure: AverageFigure,
   },
   {
-    id: 'c2-waves', chapter: 2, title: 'Waves and the electromagnetic spectrum', short: 'Waves & the spectrum', tag: 'c = λν',
+    id: 'c2-waves', narrated: 'chapter-2/04-waves', chapter: 2, title: 'Waves and the electromagnetic spectrum', short: 'Waves & the spectrum', tag: 'c = λν',
     intro: 'Light is an electromagnetic wave. Every kind, from radio to gamma rays, travels at the same speed: c = 3.00 × 10⁸ m/s. What changes is the wavelength and frequency.',
     points: [
       ['Parts of a wave', 'Wavelength (λ) is the length of one complete wave. Frequency (ν) is how many waves pass a point each second, in hertz (Hz = 1/s = s⁻¹). Amplitude is the height from the middle line to a crest or trough.'],
@@ -133,7 +133,7 @@ const CH2 = [
     Figure: WaveFigure, Extra: LightFormulas,
   },
   {
-    id: 'c2-photon', chapter: 2, title: 'Photons and quantum theory', short: 'Photon energy', tag: 'E = hν',
+    id: 'c2-photon', narrated: 'chapter-2/05-photons', chapter: 2, title: 'Photons and quantum theory', short: 'Photon energy', tag: 'E = hν',
     intro: 'Planck found that energy comes in small, specific amounts called quanta. Einstein showed light itself comes in packets, photons, so light acts as both a wave and a particle.',
     points: [
       ['Planck (1900)', 'Studying light from hot objects, he concluded energy is emitted in small, specific amounts (quanta). A quantum is the minimum amount of energy that can change.'],
@@ -148,7 +148,7 @@ const CH2 = [
     Figure: PhotonFigure, Extra: LightFormulas,
   },
   {
-    id: 'c2-bohr', chapter: 2, title: 'The Bohr model and line spectra', short: 'Bohr model', tag: 'Energy in, photon out',
+    id: 'c2-bohr', narrated: 'chapter-2/06-bohr', chapter: 2, title: 'The Bohr model and line spectra', short: 'Bohr model', tag: 'Energy in, photon out',
     intro: 'Heat or electricity can push an electron to a higher energy level (the excited state). When it falls back toward the ground state, it gives off a photon whose energy equals the gap between the levels.',
     points: [
       ['Fixed energy levels', 'In Bohr’s model, electrons exist only in orbits with specific energies. So an electron can only gain or lose certain amounts of energy, and only certain photons are produced.'],
@@ -163,7 +163,7 @@ const CH2 = [
     Figure: BohrFigure,
   },
   {
-    id: 'c2-nuclear', chapter: 2, title: 'Nuclear radiation and equations', short: 'Nuclear equations', tag: 'Balance the top and bottom',
+    id: 'c2-nuclear', narrated: 'chapter-2/07-nuclear', chapter: 2, title: 'Nuclear radiation and equations', short: 'Nuclear equations', tag: 'Balance the top and bottom',
     intro: 'Chemical reactions rearrange electrons. Nuclear reactions rearrange protons and neutrons to make a more stable nucleus, and the element itself can change.',
     points: [
       ['The particles', 'Alpha ⁴₂He (charge +2), beta ⁰₋₁e (a fast electron, −1), positron ⁰₊₁e (+1), gamma ⁰₀γ (pure energy). Paper stops alpha; beta and positrons need more; gamma needs thick lead or concrete.'],
@@ -178,7 +178,7 @@ const CH2 = [
     Figure: NuclearFigure, Extra: ParticleTable,
   },
   {
-    id: 'c2-halflife', chapter: 2, title: 'Half-life', short: 'Half-life', tag: 'Half is left, every time',
+    id: 'c2-halflife', narrated: 'chapter-2/08-half-life', chapter: 2, title: 'Half-life', short: 'Half-life', tag: 'Half is left, every time',
     intro: 'The half-life (t½) is the time it takes for half of the atoms in a radioactive sample to decay. Atoms with short half-lives are less stable.',
     points: [
       ['Halving', 'After 1 half-life, ½ is left; after 2, ¼; after 3, ⅛. The class formula is m_f = m_i(.5)ᴺ, where N = time ÷ half-life.'],
@@ -196,7 +196,7 @@ const CH2 = [
 
 const CH3 = [
   {
-    id: 'c3-blocks', chapter: 3, title: 'Blocks and families of the periodic table', short: 'Blocks & families', tag: 'A map of the electrons',
+    id: 'c3-blocks', narrated: 'chapter-3/01-blocks', chapter: 3, title: 'Blocks and families of the periodic table', short: 'Blocks & families', tag: 'A map of the electrons',
     intro: 'The shape of the periodic table comes from electrons. Each region, called a block, is where one kind of sublevel (s, p, d or f) is being filled. Columns with similar behavior also have family names.',
     points: [
       ['Four blocks', 's-block: groups 1–2. p-block: groups 13–18. d-block: groups 3–12 (energy level n − 1). f-block: the two rows at the bottom (n − 2).'],
@@ -212,7 +212,7 @@ const CH3 = [
     Figure: BlocksFigure, Extra: SublevelRef,
   },
   {
-    id: 'c3-rules', chapter: 3, title: 'Three rules for orbital diagrams', short: 'Aufbau, Pauli, Hund', tag: 'Boxes and arrows',
+    id: 'c3-rules', narrated: 'chapter-3/02-orbital-rules', chapter: 3, title: 'Three rules for orbital diagrams', short: 'Aufbau, Pauli, Hund', tag: 'Boxes and arrows',
     intro: 'An orbital diagram draws each orbital as a box (or line) and each electron as an arrow. Three rules decide where every arrow goes.',
     points: [
       ['Pauli exclusion principle', 'Each orbital holds at most TWO electrons, and they must have opposite spins: ↑↓, never ↑↑.'],
@@ -227,7 +227,7 @@ const CH3 = [
     Figure: RulesFigure, Extra: SublevelRef,
   },
   {
-    id: 'c3-longhand', chapter: 3, title: 'Writing electron configurations', short: 'Electron configuration', tag: 'Read the table like a book',
+    id: 'c3-longhand', narrated: 'chapter-3/03-configurations', chapter: 3, title: 'Writing electron configurations', short: 'Electron configuration', tag: 'Read the table like a book',
     intro: 'An electron configuration lists the occupied sublevels in filling order with the number of electrons as a superscript. In 2p⁴: 2 is the period (energy level), p is the block, and 4 is how many columns into that block.',
     points: [
       ['Read across, left to right', 'Start at hydrogen and read each row of the table in order until you reach your element: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p…'],
@@ -242,7 +242,7 @@ const CH3 = [
     Figure: LonghandFigure, Extra: SublevelRef,
   },
   {
-    id: 'c3-shorthand', chapter: 3, title: 'Shorthand configurations and exceptions', short: 'Shorthand & exceptions', tag: 'Let a noble gas do the work',
+    id: 'c3-shorthand', narrated: 'chapter-3/04-shorthand', chapter: 3, title: 'Shorthand configurations and exceptions', short: 'Shorthand & exceptions', tag: 'Let a noble gas do the work',
     intro: 'Shorthand (noble gas) configuration saves writing. From your element, go up one period and all the way right to a noble gas. Put it in brackets and write only what comes after it.',
     points: [
       ['The steps', 'Find your atom. Go up one period to the noble gas at the end of that row. Bracket it, then write the configuration for whatever is left over. Sulfur: [Ne] 3s² 3p⁴.'],
@@ -257,7 +257,7 @@ const CH3 = [
     Figure: ShorthandFigure,
   },
   {
-    id: 'c3-ions', chapter: 3, title: 'Electron configurations of ions', short: 'Ion configurations', tag: 'Add or subtract electrons first',
+    id: 'c3-ions', narrated: 'chapter-3/05-ions', chapter: 3, title: 'Electron configurations of ions', short: 'Ion configurations', tag: 'Add or subtract electrons first',
     intro: 'An ion has gained or lost electrons. Work out its new electron count first, then write the configuration exactly the way you would for an atom.',
     points: [
       ['Count electrons', 'Start from the atomic number. A positive charge means subtract (+2 → take away 2). A negative charge means add (−3 → add 3).'],
@@ -271,7 +271,7 @@ const CH3 = [
     Figure: IonFigure,
   },
   {
-    id: 'c3-radius', chapter: 3, title: 'Atomic and ionic radius', short: 'Atomic & ionic radius', tag: 'Bigger down and to the left',
+    id: 'c3-radius', narrated: 'chapter-3/06-radius', chapter: 3, title: 'Atomic and ionic radius', short: 'Atomic & ionic radius', tag: 'Bigger down and to the left',
     intro: 'Atomic radius is the size of an atom. Two things decide it: how many energy levels the atom has, and how hard its protons pull on its electrons.',
     points: [
       ['Down a group: bigger', 'Each new period adds an energy level, so the outer electrons are farther from the nucleus and shielded by inner electrons.'],
@@ -287,7 +287,7 @@ const CH3 = [
     Figure: RadiusFigure, Extra: TrendRef,
   },
   {
-    id: 'c3-energy', chapter: 3, title: 'Ionization energy, electronegativity and electron affinity', short: 'Ionization & electronegativity', tag: 'Bigger up and to the right',
+    id: 'c3-energy', narrated: 'chapter-3/07-ionization-electronegativity', chapter: 3, title: 'Ionization energy, electronegativity and electron affinity', short: 'Ionization & electronegativity', tag: 'Bigger up and to the right',
     intro: 'These three trends all measure how tightly an atom holds electrons. They run opposite to atomic radius: small atoms hold on hardest.',
     points: [
       ['Ionization energy', 'The energy needed to remove an electron from an atom. First ionization energy removes the first (outermost) electron. It increases across a period and decreases down a group.'],

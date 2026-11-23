@@ -4,7 +4,7 @@ Free, self-paced lessons for 10th-grade chemistry and math by Perspire AI. Short
 
 ## Chemistry: atoms, electrons & bonds
 
-Now available: Chapter 1, Measurement & Reference Sheets; Chapter 2, Atomic Theory & Nuclear Chemistry; Chapter 3, Electron Configuration & Periodic Trends; and Chapter 4, Lewis Structures & Nomenclature. Animated lessons, videos, a periodic table, and step-by-step help for every worksheet and unit review.
+Now available: Chapter 1, Measurement & Reference Sheets; Chapter 2, Atomic Theory & Nuclear Chemistry; Chapter 3, Electron Configuration & Periodic Trends; and Chapter 4, Lewis Structures & Nomenclature. Animated lessons, narrated videos with exam reviews, a periodic table, and step-by-step help for every worksheet and unit review.
 
 [Open chemistry](https://perspireai.com/chemistry/)
 

@@ -1,4 +1,4 @@
-# Math lesson videos
+# Math and chemistry lesson videos
 
 Narrated, captioned lesson videos (about 2–3 minutes each) for the math site,
 organized by unit: `unit-0` is Linear, Absolute Value & Piecewise Functions,
@@ -7,6 +7,9 @@ Inequalities, `unit-3` is Conic Sections, `unit-4` is Polynomial Functions,
 and `unit-5` is Radical Expressions. Each video follows the class notes
 (Unit 5 has none, so its videos follow HW #1), ends with a timed "Your turn"
 problem, and checks the answer.
+
+The same pipeline makes the chemistry videos (`chem-1` to `chem-3`, see
+[Chemistry videos](#chemistry-videos) below).
 
 ## Folders
 
@@ -123,3 +126,44 @@ script text is sent.
 | 01-simplifying-radicals | Perfect squares, even and odd exponents | HW #1 #1, #4 |
 | 02-multiplying-radicals | Outside × outside, inside × inside, distributing | HW #1 #8, #10, #11, #16 |
 | 03-dividing-rationalizing | Quotient property, rationalizing the denominator | HW #1 #17, #19, #22 |
+
+## Chemistry videos
+
+Scripts live in `videos/chem-1` … `videos/chem-3` (Chapters 1–3) and share
+`videos/chem.mjs`, which computes electron configurations, shorthand, and
+element lists with the chemistry site's engines
+(`../chemistry-self-learning/src/electrons.js`, `atomic.js`, `measure.js`), so
+the videos match the worksheet help. Some scripts also throw if a worked
+example no longer matches the engine.
+
+Chemistry views in `player.html`:
+
+- `ptable`: the periodic table (layout `{ type: 'ptable' }`) with colored
+  `groups` (cell text can be replaced, e.g. `3d` or `+2`), `rings`, block
+  `labels`, and trend `arrows` (`up`, `down`, `left`, `right`).
+- `orbitals`: orbital boxes from `{ type: 'orbitals', z, charge, only }` or
+  explicit `rows` (`bad` marks a broken box). `reveal: [[count, marker]]` adds
+  arrows in Hund order; `config` shows the configuration.
+- `waves` (wavelength and amplitude markers), `spectrum` (radio → gamma with
+  frequency, energy and wavelength arrows), `bohr` (energy levels, electron
+  falls, and hydrogen's bright lines), `circles` (atom and ion sizes),
+  `tile` (one periodic-table box), and `models` (Dalton, plum pudding, gold
+  foil, nuclear, Bohr, electron cloud, neutron).
+- Every chemistry view accepts `title`, `notes`, and a `side` panel; with a
+  `countdown`, a timer appears beside it.
+
+`node publish.mjs chem-2` copies `out/chem-2` to
+`../chemistry-self-learning/public/videos/chapter-2/` and writes
+`../chemistry-self-learning/src/videos/chapter-2.json`. Lessons point to their
+video with `narrated: 'chapter-2/07-nuclear'` in `src/lessons123.js`; the exam
+reviews appear on the Unit 2 and Unit 3 Exam Review worksheet tabs.
+
+| Chapter | Videos |
+|---|---|
+| 1 Measurement | 01-prefixes, 02-conversion-factors, 03-temperature, 04-periodic-table |
+| 2 Atomic theory & nuclear | 01-atomic-theory, 02-atomic-structure, 03-average-mass, 04-waves, 05-photons, 06-bohr, 07-nuclear, 08-half-life, 09-exam-review |
+| 3 Electrons & trends | 01-blocks, 02-orbital-rules, 03-configurations, 04-shorthand, 05-ions, 06-radius, 07-ionization-electronegativity, 08-exam-review |
+
+Each lesson video has a picture for every idea, an "Exam tip" scene, a timed
+"Your turn" problem with its answer, and a recap. The exam reviews are eight
+pause-and-try questions modeled on the class review sheets.

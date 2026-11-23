@@ -3,6 +3,9 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { P, analyze, coefAt, evalNum, isZero, longDivide, polyLatex, termLatex, mul, num, q, qLatex, synthetic } from '../math-self-learning/src/poly.js'
 import { features, makeConic, stdLatex, surdNum } from '../math-self-learning/src/conics.js'
+import { ELEMENT_LIST } from '../chemistry-self-learning/src/elements.js'
+import { cellOf } from '../chemistry-self-learning/src/grid.js'
+import { position, configOf, orbitals as orbitalBoxes } from '../chemistry-self-learning/src/electrons.js'
 
 const id = process.argv[2]
 if (!id) { console.error('usage: node build.mjs <unit>/<video-id>, e.g. unit-4/03-long-division'); process.exit(1) }
@@ -151,8 +154,28 @@ function conicData(spec, win) {
   return { type: 'conic', kind: c.kind, win, segs, pts, lines, box, tex: stdLatex(c) }
 }
 
+// Chemistry: every element's grid cell, for the periodic-table view.
+function ptableData() {
+  return { type: 'ptable', cells: ELEMENT_LIST.map(e => ({ z: e.z, sym: e.symbol, ...cellOf(e.z), block: position(e.z).block })) }
+}
+
+// Chemistry: orbital boxes and the order arrows go in (Hund: all ↑ first, then ↓).
+// { z, charge } uses the chemistry engine; { rows: [{ sub, boxes: ['↑↓', '↑', ''], bad: [1] }] } draws a given diagram.
+function orbitalData(l) {
+  const subs = l.rows ?? orbitalBoxes(configOf(l.z, l.charge ?? 0)).filter(r => !l.only || l.only.includes(r.sub))
+  const order = []
+  subs.forEach((sub, s) => {
+    sub.boxes.forEach((b, i) => { if (b[0]) order.push({ s, b: i, spin: b[0] }) })
+    sub.boxes.forEach((b, i) => { if (b[1]) order.push({ s, b: i, spin: b[1] }) })
+  })
+  const tex = subs.filter(r => r.boxes.join('').length).map(r => `\\mathrm{${r.sub}}^{${r.boxes.join('').length}}`).join('\\,')
+  return { type: 'orbitals', subs, order, tex }
+}
+
 const layouts = {}
 for (const [name, l] of Object.entries(spec.layouts ?? {})) {
+  if (l.type === 'ptable') layouts[name] = ptableData()
+  if (l.type === 'orbitals') layouts[name] = orbitalData(l)
   if (l.type === 'longdiv') layouts[name] = { type: 'longdiv', ...longDivCells(l.num, l.den) }
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }
   if (l.type === 'graph') layouts[name] = graphData(l.num, l.window, l.extra, l.diag)
@@ -163,4 +186,4 @@ const out = new URL(`./build/${id}/`, import.meta.url)
 mkdirSync(out, { recursive: true })
 writeFileSync(new URL('spec.json', out), JSON.stringify({ ...spec, layouts }, null, 1))
 console.log(`Wrote build/${id}/spec.json: ${spec.scenes.length} scenes`)
-for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'plane' ? `plane ${l.items.length} items, window ${l.win.join(' ')}` : l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)
+for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'ptable' ? 'periodic table' : l.type === 'orbitals' ? `orbitals ${l.tex}` : l.type === 'plane' ? `plane ${l.items.length} items, window ${l.win.join(' ')}` : l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)

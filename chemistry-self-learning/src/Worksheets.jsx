@@ -8,6 +8,8 @@ import { CHAPTERS, WORKSHEETS, dueInfo } from './chapters.js'
 import { ConversionSheet } from './ch1.jsx'
 import { HalfLifeSheet, NuclearSheet, Unit2Sheet, WaveSheet } from './ch2.jsx'
 import { EconfigSheet, OrbitalSheet, TrendsSheet, Unit3Sheet } from './ch3.jsx'
+import NarratedVideo from './NarratedVideo.jsx'
+import { REVIEW_VIDEOS } from './narrated.js'
 
 const EARLY_SHEETS = { conversions: ConversionSheet, waves: WaveSheet, nuclear: NuclearSheet, halflife: HalfLifeSheet, unit2: Unit2Sheet, orbitals: OrbitalSheet, econfig: EconfigSheet, trends: TrendsSheet, unit3: Unit3Sheet }
 
@@ -320,6 +322,7 @@ export default function WorksheetsPage({ openLesson, openLessonId }) {
       </div>)}
     </section>
     <div className="ws-due-row"><span className="eyebrow">CHAPTER {sheet.chapter} · {sheet.label.toUpperCase()}</span><DueBadge due={sheet.due} /></div>
+    {REVIEW_VIDEOS[tab] && <div className="ws-review-video"><NarratedVideo key={tab} path={REVIEW_VIDEOS[tab].path} title={REVIEW_VIDEOS[tab].title} review /></div>}
 
     {Sheet ? <Sheet openLessonId={openLessonId} /> : tab === 'flowchart' ? <section className="ws-section">
       <div className="ws-intro">

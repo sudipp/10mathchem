@@ -1,0 +1,26 @@
+{
+ "01-blocks": {
+  "seconds": 132
+ },
+ "02-orbital-rules": {
+  "seconds": 148
+ },
+ "03-configurations": {
+  "seconds": 123
+ },
+ "04-shorthand": {
+  "seconds": 140
+ },
+ "05-ions": {
+  "seconds": 125
+ },
+ "06-radius": {
+  "seconds": 113
+ },
+ "07-ionization-electronegativity": {
+  "seconds": 129
+ },
+ "08-exam-review": {
+  "seconds": 232
+ }
+}

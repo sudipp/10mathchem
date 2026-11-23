@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="../math-self-learning/node_modules/katex/dist/katex.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=block" rel="stylesheet" />
 <script src="../math-self-learning/node_modules/katex/dist/katex.min.js"></script>
+<script src="../math-self-learning/node_modules/katex/dist/contrib/mhchem.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1280px;height:720px;overflow:hidden;background:#F2F0E9;font-family:'Plus Jakarta Sans',sans-serif;color:#2E4036;-webkit-font-smoothing:antialiased}
@@ -132,7 +133,7 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .cards-title{font-size:34px;font-weight:800;letter-spacing:-.03em}
 .card.wide{width:auto;min-width:300px;height:auto;padding:26px 30px;gap:14px}
 .card.dark{background:#2E4036;color:#F2F0E9;border-color:#2E4036}.card.dark .d{color:#c9d4c3}
-.ctex{font-size:34px}
+.ctex{font-size:42px}.card.wide .d{font-size:22px;color:inherit;opacity:.85}.card.wide .name{font-size:36px}
 .chips{display:flex;gap:12px}.chips span{font-size:22px;font-weight:700;background:#CC5833;color:#fff;border-radius:18px;padding:8px 18px}
 /* function machine */
 .machine-wrap{display:flex;flex-direction:column;align-items:center;gap:30px}
@@ -143,6 +144,61 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .mbox.hl{outline:4px solid #CC5833;outline-offset:3px}
 .marrow{font-size:34px;color:#879783}
 .mline{font-size:38px}
+/* chemistry: shared side panel */
+.chem-wrap{display:flex;gap:40px;align-items:center;justify-content:center}
+.chem-side{display:flex;flex-direction:column;gap:14px;max-width:340px;font-size:26px}
+.chem-side .gs{font-size:25px}
+.chem-col{display:flex;flex-direction:column;align-items:center;gap:22px}
+.chem-title{font-size:34px;font-weight:800;letter-spacing:-.03em}
+.chem-note{font-size:34px;font-weight:600;background:#fffdf7;border:1px solid #e1e2d9;border-radius:20px;padding:10px 24px}
+.chem-note.strong{background:#2E4036;color:#F2F0E9;border-color:#2E4036}
+/* periodic table */
+.pt-cell{fill:#ecebe3}.pt-sym{font:600 15px 'Plus Jakarta Sans',sans-serif;fill:#8a948c;text-anchor:middle}
+.pt-hl-sym{font:700 16px 'Plus Jakarta Sans',sans-serif;text-anchor:middle}
+.pt-label{font:700 26px 'Plus Jakarta Sans',sans-serif;fill:#a33d20;text-anchor:middle}
+.pt-ring{fill:none;stroke:#2E4036;stroke-width:4}
+.pt-arrow{stroke:#CC5833;stroke-width:7;fill:none}
+.pt-arrow-label{font:700 20px 'Plus Jakarta Sans',sans-serif;fill:#a33d20}
+/* orbital boxes */
+.orb-row{display:flex;gap:30px;align-items:flex-end;flex-wrap:nowrap}
+.orb-sub{display:flex;flex-direction:column;align-items:center;gap:8px;border-radius:14px;padding:6px}
+.orb-sub.hl{background:#f6d8ca;box-shadow:0 0 0 3px #CC5833 inset}
+.orb-boxes{display:flex}
+.orb-box{width:72px;height:80px;border:3px solid #2E4036;margin-left:-3px;background:#fffdf7;display:flex;align-items:center;justify-content:center;gap:2px;font-size:44px;font-weight:700}
+.orb-box:first-child{margin-left:0}
+.orb-box.bad{background:#fbe3d8;border-color:#CC5833}
+.orb-lbl{font:600 24px 'IBM Plex Mono',monospace;color:#6b756d}
+.orb-config{font-size:46px}
+/* waves */
+.waves{display:flex;flex-direction:column;gap:18px}
+.wave-row{display:flex;align-items:center;gap:26px}
+.wave-lbl{width:250px;text-align:right;font-size:26px;font-weight:700}
+.wave-lbl small{display:block;font:500 17px 'IBM Plex Mono',monospace;color:#6b756d;margin-top:4px}
+.wave-svg path.wv{fill:none;stroke-width:5;stroke-linecap:round}
+.wave-mark{stroke:#2E4036;stroke-width:3;fill:none}.wave-mark-t{font:700 24px 'Plus Jakarta Sans',sans-serif;fill:#2E4036;text-anchor:middle}
+/* spectrum */
+.spec{display:flex;flex-direction:column;align-items:center;gap:20px}
+.spec-row{display:flex;gap:6px}
+.spec-seg{width:150px;height:96px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;text-align:center;line-height:1.15}
+.spec-arrow{display:flex;align-items:center;gap:16px;font-size:24px;font-weight:700;width:1080px}
+.spec-arrow .bar{flex:1;height:6px;background:#CC5833;border-radius:3px;position:relative}
+.spec-arrow .bar.r::after{content:'';position:absolute;right:-4px;top:-9px;border-left:18px solid #CC5833;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.spec-arrow .bar.l::before{content:'';position:absolute;left:-4px;top:-9px;border-right:18px solid #CC5833;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.spec-arrow span{width:270px}
+.spec-arrow span.end{text-align:right}
+/* bohr */
+.bohr-ring{fill:none;stroke:#b6beb3;stroke-width:2}.bohr-n{font:500 15px 'IBM Plex Mono',monospace;fill:#8a948c}
+.bohr-box{fill:#151815}.bohr-nm{font:600 16px 'IBM Plex Mono',monospace;fill:#2E4036;text-anchor:middle}
+/* circles */
+.circ{display:flex;gap:50px;align-items:center;justify-content:center}
+.circ-item{display:flex;flex-direction:column;align-items:center;gap:12px}
+.circ-ball{border-radius:50%;border:3px solid #2E4036;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px}
+.circ-sub{font:600 18px 'IBM Plex Mono',monospace;color:#6b756d}
+/* element tile */
+.tile{width:300px;height:360px;background:#fffdf7;border:4px solid #2E4036;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.tile .tz{font:700 44px 'IBM Plex Mono',monospace}.tile .ts{font-size:120px;font-weight:800;line-height:1;letter-spacing:-.04em}
+.tile .tn{font-size:30px;font-weight:600}.tile .tm{font:600 28px 'IBM Plex Mono',monospace;color:#536157}
+.tile .on{color:#CC5833}
 </style>
 </head>
 <body>
@@ -200,7 +256,8 @@ function build(s) {
     if (v.title) w.append(reveal($('h2', '', v.title), 0))
     for (const l of v.lines) {
       const row = $('div', `line${l.big ? ' big' : ''}${l.box ? ' box' : ''}${l.glow ? ' glow' : ''}`)
-      if (l.parts) l.parts.forEach(p => row.append(reveal($('span', '', tex(p.tex, true)), mark(s, p.at))))
+      if (l.parts) l.parts.forEach(p => row.append(reveal($('span', '', p.text ? inl(p.text) : tex(p.tex, true)), mark(s, p.at))))
+      else if (l.text) { row.innerHTML = inl(l.text); reveal(row, mark(s, l.at)) }
       else { row.innerHTML = tex(l.tex, true); reveal(row, mark(s, l.at)) }
       w.append(row)
     }
@@ -361,7 +418,7 @@ function build(s) {
         el = document.createElementNS(ns, 'g'); svgEl.append(el)
         for (const [x, y] of it.pts) {
           add('circle', { cx: sx(x), cy: sy(y), r: it.style === 'open' || it.style === 'closed' ? 7.5 : 8, class: `pdot ${it.style ?? 'key'}` }, el)
-          if (it.labels) { const tx = add('text', { x: sx(x), y: sy(y) - 15, class: 'gl' }, el); tx.textContent = `(${+x.toFixed(2)}, ${+y.toFixed(2)})` }
+          if (it.labels) { const tx = add('text', { x: sx(x), y: sy(y) - 15, class: 'gl' }, el); tx.textContent = `(${+x.toFixed(3)}, ${+y.toFixed(3)})` }
         }
       }
       if (at == null) el.style.display = 'none'; else reveal(el, at)
@@ -402,7 +459,7 @@ function build(s) {
     if (v.title) w.append($('h2', '', v.title))
     const g = $('div', 'tgrid')
     v.rows.forEach(r => {
-      const a = $('div', 'tl', r.tex ? tex(r.left) : r.left), b = $('div', 'tr', r.right)
+      const a = $('div', 'tl', r.tex ? tex(r.left) : r.left), b = $('div', 'tr', inl(r.right))
       g.append(reveal(a, mark(s, r.at)), reveal(b, mark(s, r.at) + 0.1))
     })
     w.append(g)
@@ -416,7 +473,7 @@ function build(s) {
       const el = $('div', `card wide${c.dark ? ' dark' : ''}`)
       if (c.head) el.append($('div', 'name', c.head))
       if (c.tex) el.append($('div', 'ctex', tex(c.tex, true)))
-      if (c.text) el.append($('div', 'd', c.text))
+      if (c.text) el.append($('div', 'd', inl(c.text)))
       cards.append(reveal(el, mark(s, c.at)))
     })
     w.append(cards)
@@ -437,8 +494,8 @@ function build(s) {
     stage.append(out)
   } else if (v.kind === 'try') {
     const w = $('div', 'try')
-    w.append($('div', 'big', 'Your <em>turn.</em>'), $('div', 'prob', tex(v.tex)))
-    const hint = $('div', 'hint'); (v.hint ?? MOVES.map(m => m[0])).forEach(n => hint.append($('span', '', n))); w.append(hint)
+    w.append($('div', 'big', v.label ?? 'Your <em>turn.</em>'), $('div', 'prob', v.text ? inl(v.text) : tex(v.tex)))
+    const hint = $('div', 'hint'); (v.hint ?? MOVES.map(m => m[0])).forEach(n => hint.append($('span', '', inl(n)))); w.append(hint)
     const t = $('div', 'timer', `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#e1e3d9" stroke-width="10"/><circle class="ring" cx="60" cy="60" r="52" fill="none" stroke="#CC5833" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg><div class="num"></div>`)
     timer = { el: t, ring: t.querySelector('.ring'), num: t.querySelector('.num') }
     w.append(t, $('div', 'pause', 'Need more time? Pause the video.'))
@@ -448,10 +505,26 @@ function build(s) {
     const w = $('div', 'recap')
     w.append($('h2', '', 'Quick <em>recap.</em>'))
     v.items.forEach(it => {
-      const row = $('div', 'item', `<span class="ck">✓</span><span>${it.tex ? tex(it.tex) : it.text}</span>`)
+      const row = $('div', 'item', `<span class="ck">✓</span><span>${it.tex ? tex(it.tex) : inl(it.text)}</span>`)
       w.append(reveal(row, mark(s, it.at)))
     })
     stage.append(w)
+  } else if (v.kind === 'ptable') {
+    stage.append(chemPtable(s, v))
+  } else if (v.kind === 'orbitals') {
+    stage.append(chemOrbitals(s, v))
+  } else if (v.kind === 'waves') {
+    stage.append(chemWaves(s, v))
+  } else if (v.kind === 'spectrum') {
+    stage.append(chemSpectrum(s, v))
+  } else if (v.kind === 'bohr') {
+    stage.append(chemBohr(s, v))
+  } else if (v.kind === 'circles') {
+    stage.append(chemCircles(s, v))
+  } else if (v.kind === 'models') {
+    stage.append(chemModels(s, v))
+  } else if (v.kind === 'tile') {
+    stage.append(chemTile(s, v))
   }
   // shrink the scene to fit the stage if needed
   const sw = outer.clientWidth, sh = outer.clientHeight
@@ -465,6 +538,276 @@ function build(s) {
   chapterEls.forEach((e, i) => { e.className = i < s.ch ? 'done' : i === s.ch ? 'on' : '' })
 }
 
+// ---------- chemistry views ----------
+const inl = s => s == null ? '' : String(s).replace(/\$([^$]+)\$/g, (_, t) => tex(t))
+const NS = 'http://www.w3.org/2000/svg'
+function svgEl(tag, attrs = {}, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.append(e); return e }
+function sidePanel(s, list, cls = 'chem-side') {
+  const side = $('div', cls)
+  for (const l of list ?? []) {
+    const el = $('div', `gs${l.strong ? ' strong' : ''}`, inl(l.text))
+    if (l.color) { el.style.borderLeft = `14px solid ${l.color}` }
+    side.append(reveal(el, mark(s, l.at), { until: l.until != null ? mark(s, l.until) : undefined }))
+  }
+  return side
+}
+const at2 = (s, o) => ({ until: o.until != null ? mark(s, o.until) : undefined })
+function wrapWithSide(s, v, main) {
+  const col = $('div', 'chem-col')
+  if (v.title) col.append($('div', 'chem-title', inl(v.title)))
+  col.append(main)
+  for (const n of v.notes ?? []) col.append(reveal($('div', `chem-note${n.strong ? ' strong' : ''}`, inl(n.text)), mark(s, n.at), at2(s, n)))
+  if (s.countdown) {
+    const t = $('div', 'timer', `<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#e1e3d9" stroke-width="10"/><circle class="ring" cx="60" cy="60" r="52" fill="none" stroke="#CC5833" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg><div class="num"></div>`)
+    timer = { el: t, ring: t.querySelector('.ring'), num: t.querySelector('.num') }
+    const side = sidePanel(s, v.side); side.prepend($('div', 'gs strong', 'Your turn! Pause if you need more time.')); side.append(t)
+    const w = $('div', 'chem-wrap'); w.append(col, side); return w
+  }
+  if (!v.side?.length) return col
+  const w = $('div', 'chem-wrap'); w.append(col, sidePanel(s, v.side)); return w
+}
+
+function chemPtable(s, v) {
+  const L = D.layouts[v.layout]
+  const W = v.side?.length ? 44 : 50, H = v.side?.length ? 34 : 38, padL = v.arrows?.some(a => a.dir === 'up' || a.dir === 'down') ? 46 : 8, padT = v.labels?.length ? 30 : 6
+  const cells = L.cells.filter(c => !(v.skipF && c.block === 'f'))
+  const maxRow = Math.max(...cells.map(c => c.row))
+  const hasH = v.arrows?.some(a => a.dir === 'left' || a.dir === 'right')
+  const width = padL + 18 * W + 8, height = padT + maxRow * H + (hasH ? 70 : 8)
+  const svg = svgEl('svg', { viewBox: `0 0 ${width} ${height}`, width, height })
+  const pos = c => [padL + (c.col - 1) * W, padT + (c.row - 1) * H]
+  const byZ = Object.fromEntries(cells.map(c => [c.z, c]))
+  for (const c of cells) {
+    const [x, y] = pos(c)
+    svgEl('rect', { x: x + 1.5, y: y + 1.5, width: W - 3, height: H - 3, rx: 6, class: 'pt-cell' }, svg)
+    const t = svgEl('text', { x: x + W / 2, y: y + H / 2 + 5, class: 'pt-sym' }, svg); t.textContent = c.sym
+  }
+  for (const g of v.groups ?? []) {
+    const grp = svgEl('g', {}, svg)
+    for (const z of g.z) {
+      const c = byZ[z]; if (!c) continue
+      const [x, y] = pos(c)
+      svgEl('rect', { x: x + 1.5, y: y + 1.5, width: W - 3, height: H - 3, rx: 6, fill: g.color ?? '#CC5833' }, grp)
+      const t = svgEl('text', { x: x + W / 2, y: y + H / 2 + 5, class: 'pt-hl-sym', fill: g.textColor ?? (g.dark === false ? '#2E4036' : '#ffffff') }, grp); t.textContent = g.text?.[z] ?? c.sym
+    }
+    reveal(grp, mark(s, g.at), { ...at2(s, g), noMove: true })
+  }
+  for (const r of v.rings ?? []) {
+    const c = byZ[r.z]; const [x, y] = pos(c)
+    reveal(svgEl('rect', { x: x - 1, y: y - 1, width: W + 2, height: H + 2, rx: 8, class: 'pt-ring' }, svg), mark(s, r.at), { ...at2(s, r), noMove: true })
+  }
+  for (const l of v.labels ?? []) {
+    const t = svgEl('text', { x: padL + (l.col - 0.5) * W, y: padT + (l.row - 1) * H - 8, class: 'pt-label' }, svg); t.textContent = l.text
+    reveal(t, mark(s, l.at), { ...at2(s, l), noMove: true })
+  }
+  const bottom = padT + 7 * H
+  for (const a of v.arrows ?? []) {
+    const g = svgEl('g', {}, svg)
+    let d, tx, ty, anchor = 'middle'
+    if (a.dir === 'right') { d = `M${padL + 20},${bottom + 26} L${padL + 18 * W - 20},${bottom + 26}`; tx = padL + 9 * W; ty = bottom + 60 }
+    if (a.dir === 'left') { d = `M${padL + 18 * W - 20},${bottom + 26} L${padL + 20},${bottom + 26}`; tx = padL + 9 * W; ty = bottom + 60 }
+    if (a.dir === 'up') { d = `M22,${bottom - 6} L22,${padT + 8}` }
+    if (a.dir === 'down') { d = `M22,${padT + 8} L22,${bottom - 6}` }
+    svgEl('path', { d, class: 'pt-arrow', 'marker-end': 'url(#pt-head)' }, g)
+    if (a.label && tx) { const t = svgEl('text', { x: tx, y: ty, class: 'pt-arrow-label', 'text-anchor': anchor }, g); t.textContent = a.label }
+    reveal(g, mark(s, a.at), { ...at2(s, a), noMove: true })
+  }
+  const defs = svgEl('defs', {}, svg), m = svgEl('marker', { id: 'pt-head', markerUnits: 'userSpaceOnUse', markerWidth: 26, markerHeight: 26, refX: 13, refY: 13, orient: 'auto' }, defs)
+  svgEl('path', { d: 'M0,0 L26,13 L0,26 z', fill: '#CC5833' }, m)
+  const box = $('div', 'graph'); box.append(svg)
+  return wrapWithSide(s, v, box)
+}
+
+function chemOrbitals(s, v) {
+  const L = D.layouts[v.layout]
+  const rows = $('div', 'chem-col')
+  const perRow = v.perRow ?? 99
+  let row = null
+  const subEls = []
+  const spans = []
+  L.subs.forEach((sub, i) => {
+    if (i % perRow === 0) { row = $('div', 'orb-row'); rows.append(row) }
+    const el = $('div', 'orb-sub'), boxes = $('div', 'orb-boxes')
+    const bx = sub.boxes.map((_, j) => { const b = $('div', `orb-box${sub.bad?.includes(j) ? ' bad' : ''}`); boxes.append(b); return b })
+    el.append(boxes, $('div', 'orb-lbl', sub.sub))
+    row.append(el); subEls.push(el)
+    spans.push(bx)
+  })
+  // electrons in fill order; each arrow appears when its count is reached
+  const steps = (v.reveal ?? [[L.order.length, 0]]).map(([n, m]) => [n, m === 0 ? 0 : m === -9 ? -9 : mark(s, m)])
+  L.order.forEach((e, i) => {
+    const arrow = $('span', '', e.spin)
+    if (e.color) arrow.style.color = e.color
+    spans[e.s][e.b].append(arrow)
+    const step = steps.find(([n]) => i < n)
+    if (!step) { arrow.style.visibility = 'hidden'; return }
+    const k = steps.indexOf(step), prevN = k ? steps[k - 1][0] : 0
+    reveal(arrow, step[1] + (step[1] > 0 ? Math.min(0.9, (i - prevN) * (v.gap ?? 0.12)) : 0))
+  })
+  for (const [sub, a, b] of v.hl ?? []) { const idx = L.subs.findIndex(x => x.sub === sub); if (idx >= 0) hls.push({ el: subEls[idx], at: mark(s, a), until: b != null ? mark(s, b) : 1e9 }) }
+  const main = $('div', 'chem-col'); main.append(rows)
+  if (v.config) main.append(reveal($('div', 'orb-config', tex(v.config.tex ?? L.tex)), mark(s, v.config.at)))
+  return wrapWithSide(s, v, main)
+}
+
+function chemWaves(s, v) {
+  const w = $('div', 'waves'), Wd = 700, Hh = 110
+  v.waves.forEach((wv, i) => {
+    const row = $('div', 'wave-row')
+    row.append($('div', 'wave-lbl', `${inl(wv.label)}${wv.sub ? `<small>${inl(wv.sub)}</small>` : ''}`))
+    const svg = svgEl('svg', { viewBox: `0 0 ${Wd} ${Hh}`, width: Wd, height: Hh, class: 'wave-svg' })
+    const amp = (wv.amp ?? 0.8) * (Hh / 2 - 8), mid = Hh / 2
+    let d = ''
+    for (let k = 0; k <= 600; k++) { const x = 10 + (Wd - 20) * k / 600, y = mid - amp * Math.sin(2 * Math.PI * wv.cycles * k / 600); d += (k ? 'L' : 'M') + x.toFixed(1) + ',' + y.toFixed(1) }
+    svgEl('line', { x1: 10, x2: Wd - 10, y1: mid, y2: mid, stroke: '#d5dacd', 'stroke-width': 2, 'stroke-dasharray': '6 6' }, svg)
+    const p = svgEl('path', { d, class: 'wv', stroke: wv.color ?? '#2E4036', pathLength: 1000 }, svg)
+    draws.push({ el: p, at: mark(s, wv.at) })
+    if (wv.lambdaAt != null) {
+      const x0 = 10 + (Wd - 20) * 0.25 / wv.cycles, x1 = x0 + (Wd - 20) / wv.cycles, yT = mid - amp - 2
+      const g = svgEl('g', {}, svg)
+      svgEl('path', { d: `M${x0},${yT + 10} L${x0},${yT - 2} L${x1},${yT - 2} L${x1},${yT + 10}`, class: 'wave-mark' }, g)
+      const t = svgEl('text', { x: (x0 + x1) / 2, y: yT - 8, class: 'wave-mark-t' }, g); t.textContent = 'λ'
+      svg.setAttribute('viewBox', `0 -30 ${Wd} ${Hh + 30}`); svg.setAttribute('height', Hh + 30)
+      reveal(g, mark(s, wv.lambdaAt), { noMove: true })
+    }
+    if (wv.ampAt != null) {
+      const x = 10 + (Wd - 20) * 1.75 / wv.cycles
+      const g = svgEl('g', {}, svg)
+      svgEl('path', { d: `M${x},${mid} L${x},${mid + amp}`, class: 'wave-mark', stroke: '#CC5833' }, g).setAttribute('stroke', '#CC5833')
+      const t = svgEl('text', { x: x + 75, y: mid + amp / 2 + 8, class: 'wave-mark-t' }, g); t.textContent = 'amplitude'; t.setAttribute('fill', '#CC5833')
+      reveal(g, mark(s, wv.ampAt), { noMove: true })
+    }
+    row.append(svg)
+    w.append(reveal(row, mark(s, wv.at) - 0.05))
+  })
+  return wrapWithSide(s, v, w)
+}
+
+const SPEC = [['Radio', '#6d7b8f'], ['Micro-<br>wave', '#7d8a6b'], ['Infrared', '#b0533a'], ['Visible', 'linear-gradient(90deg,#e04436,#f2a33a,#f0d43a,#4fb35a,#3a7fd4,#7b48c4)'], ['Ultra-<br>violet', '#6b3fa0'], ['X-ray', '#3f4b8a'], ['Gamma', '#232a4d']]
+function chemSpectrum(s, v) {
+  const w = $('div', 'spec'), row = $('div', 'spec-row')
+  SPEC.forEach(([name, bg], i) => {
+    const seg = $('div', 'spec-seg', name); seg.style.background = bg
+    row.append(reveal(seg, mark(s, v.segAt?.[i] ?? v.at ?? 0)))
+  })
+  const arrow = (left, right, dir, at) => { const a = $('div', 'spec-arrow', `<span>${left}</span><div class="bar ${dir}"></div><span class="end">${right}</span>`); return reveal(a, mark(s, at)) }
+  if (v.freqAt != null) w.append(arrow('Low frequency', 'High frequency', 'r', v.freqAt))
+  if (v.energyAt != null) w.append(arrow('Low energy', 'High energy', 'r', v.energyAt))
+  w.append(row)
+  if (v.waveAt != null) w.append(arrow('Long wavelength', 'Short wavelength', 'r', v.waveAt))
+  return wrapWithSide(s, v, w)
+}
+
+const LINE_COLORS = { 656: '#e5483a', 486: '#2fb8a0', 434: '#3a7fd4', 410: '#8a46c8' }
+function chemBohr(s, v) {
+  const W = 760, H = 420, cx = 210, cy = 210, r = n => 22 + n * 30
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H })
+  for (let n = 1; n <= 6; n++) {
+    svgEl('circle', { cx, cy, r: r(n), class: 'bohr-ring' }, svg)
+    const t = svgEl('text', { x: cx - r(n) + 4, y: cy - 4, class: 'bohr-n' }, svg); t.textContent = n
+  }
+  svgEl('circle', { cx, cy, r: 16, fill: '#CC5833' }, svg)
+  const ang = -0.65, px = n => cx + r(n) * Math.cos(ang), py = n => cy + r(n) * Math.sin(ang)
+  if (v.groundAt != null) reveal(svgEl('circle', { cx: cx + r(1), cy, r: 9, fill: '#2E4036' }, svg), mark(s, v.groundAt), { ...(v.groundUntil != null ? { until: mark(s, v.groundUntil) } : {}), noMove: true })
+  const bx = 440, by = 120, bw = 300, bh = 130
+  svgEl('rect', { x: bx, y: by, width: bw, height: bh, rx: 12, class: 'bohr-box' }, svg)
+  const t = svgEl('text', { x: bx + bw / 2, y: by + bh + 70, class: 'bohr-nm', 'font-size': 18 }, svg); t.textContent = 'hydrogen bright-line spectrum (nm)'
+  const sx = nm => bx + 15 + (nm - 400) / 300 * (bw - 30)
+  ;(v.jumps ?? []).forEach((j, k) => {
+    const at = mark(s, j.at), next = v.jumps[k + 1] ? mark(s, v.jumps[k + 1].at) : undefined
+    const col = LINE_COLORS[j.nm] ?? '#CC5833'
+    const g = svgEl('g', {}, svg)
+    svgEl('circle', { cx: px(j.from), cy: py(j.from), r: 9, fill: '#2E4036', opacity: 0.3 }, g)
+    svgEl('line', { x1: px(j.from), y1: py(j.from), x2: px(j.to), y2: py(j.to), stroke: col, 'stroke-width': 6 }, g)
+    svgEl('circle', { cx: px(j.to), cy: py(j.to), r: 9, fill: '#2E4036' }, g)
+    // wavy photon leaving the atom
+    let d = ''; for (let q = 0; q <= 40; q++) { const x = px(j.to) + 60 + q * 2.2, y = py(j.to) - 30 + 8 * Math.sin(q / 2.2); d += (q ? 'L' : 'M') + x.toFixed(1) + ',' + y.toFixed(1) }
+    svgEl('path', { d, stroke: col, 'stroke-width': 4, fill: 'none' }, g)
+    reveal(g, at, { until: next, noMove: true })
+    const line = svgEl('g', {}, svg)
+    svgEl('rect', { x: sx(j.nm) - 3, y: by + 6, width: 6, height: bh - 12, fill: col }, line)
+    const lt = svgEl('text', { x: sx(j.nm) + (j.nm === 410 ? -9 : j.nm === 434 ? 9 : 0), y: by + bh + 26, class: 'bohr-nm' }, line); lt.textContent = j.nm
+    reveal(line, at + 0.4, { noMove: true })
+  })
+  const box = $('div', 'graph'); box.append(svg)
+  return wrapWithSide(s, v, box)
+}
+
+function chemCircles(s, v) {
+  const w = $('div', 'circ')
+  for (const c of v.items) {
+    const it = $('div', 'circ-item'), ball = $('div', 'circ-ball', inl(c.label))
+    ball.style.width = ball.style.height = `${c.r * 2}px`; ball.style.background = c.color ?? '#e5e6db'
+    if (c.r < 34) ball.style.fontSize = '20px'
+    it.append(ball, $('div', 'circ-sub', inl(c.sub ?? '')))
+    w.append(reveal(it, mark(s, c.at)))
+  }
+  return wrapWithSide(s, v, w)
+}
+
+function chemTile(s, v) {
+  const t = $('div', 'tile')
+  const parts = [['tz', v.z], ['ts', v.sym], ['tn', v.name], ['tm', v.mass]]
+  parts.forEach(([cls, val]) => {
+    const el = $('div', cls, val); t.append(el)
+    const on = v.on?.[cls]; if (on) hls.push({ el, at: mark(s, on[0]), until: on[1] != null ? mark(s, on[1]) : 1e9, cls: 'on' })
+  })
+  reveal(t, 0)
+  return wrapWithSide(s, v, t)
+}
+
+function modelSvg(type) {
+  const S = 220, c = S / 2, svg = svgEl('svg', { viewBox: `0 0 ${S} ${S}`, width: S, height: S })
+  if (type === 'sphere') { svgEl('circle', { cx: c, cy: c, r: 80, fill: '#9aa69c' }, svg); svgEl('circle', { cx: c - 26, cy: c - 28, r: 22, fill: '#ffffff', opacity: 0.45 }, svg) }
+  if (type === 'plum') {
+    svgEl('circle', { cx: c, cy: c, r: 86, fill: '#f2c9b8', stroke: '#CC5833', 'stroke-width': 3 }, svg)
+    for (const [x, y] of [[-40, -38], [24, -52], [52, 4], [-8, 8], [-52, 34], [20, 48], [-20, 66], [58, -40]]) { svgEl('circle', { cx: c + x, cy: c + y, r: 11, fill: '#2E4036' }, svg); const t = svgEl('text', { x: c + x, y: c + y + 5, 'text-anchor': 'middle', 'font-size': 16, 'font-weight': 700, fill: '#fff' }, svg); t.textContent = '−' }
+    const t = svgEl('text', { x: c + 30, y: c + 30, 'font-size': 26, 'font-weight': 800, fill: '#CC5833' }, svg); t.textContent = '+'
+  }
+  if (type === 'nuclear') {
+    svgEl('circle', { cx: c, cy: c, r: 92, fill: 'none', stroke: '#d5dacd', 'stroke-width': 2, 'stroke-dasharray': '6 6' }, svg)
+    svgEl('circle', { cx: c, cy: c, r: 10, fill: '#CC5833' }, svg)
+    for (const [x, y] of [[-60, -40], [50, -62], [70, 30], [-30, 70], [-78, 20]]) svgEl('circle', { cx: c + x, cy: c + y, r: 7, fill: '#2E4036' }, svg)
+  }
+  if (type === 'bohr') {
+    for (const r of [40, 66, 92]) svgEl('circle', { cx: c, cy: c, r, fill: 'none', stroke: '#879783', 'stroke-width': 2 }, svg)
+    svgEl('circle', { cx: c, cy: c, r: 14, fill: '#CC5833' }, svg)
+    for (const [r, a] of [[40, 0.4], [66, 2.2], [66, -0.9], [92, 3.6]]) svgEl('circle', { cx: c + r * Math.cos(a), cy: c + r * Math.sin(a), r: 8, fill: '#2E4036' }, svg)
+  }
+  if (type === 'cloud') {
+    const defs = svgEl('defs', {}, svg), g = svgEl('radialGradient', { id: 'cloudg' }, defs)
+    svgEl('stop', { offset: '0%', 'stop-color': '#3D6B9A', 'stop-opacity': 0.75 }, g); svgEl('stop', { offset: '100%', 'stop-color': '#3D6B9A', 'stop-opacity': 0 }, g)
+    svgEl('circle', { cx: c, cy: c, r: 96, fill: 'url(#cloudg)' }, svg)
+    svgEl('circle', { cx: c, cy: c, r: 10, fill: '#CC5833' }, svg)
+  }
+  if (type === 'neutron') {
+    for (const [x, y, p] of [[-14, -10, 1], [12, -12, 0], [-10, 14, 0], [14, 12, 1], [0, 0, 1]]) { svgEl('circle', { cx: c + x * 2.2, cy: c + y * 2.2, r: 26, fill: p ? '#CC5833' : '#9aa69c', stroke: '#fff', 'stroke-width': 3 }, svg); const t = svgEl('text', { x: c + x * 2.2, y: c + y * 2.2 + 8, 'text-anchor': 'middle', 'font-size': 22, 'font-weight': 800, fill: '#fff' }, svg); t.textContent = p ? '+' : 'n' }
+  }
+  if (type === 'tube') {
+    svgEl('rect', { x: 20, y: 80, width: 180, height: 60, rx: 30, fill: '#e5e6db', stroke: '#2E4036', 'stroke-width': 3 }, svg)
+    svgEl('line', { x1: 50, y1: 110, x2: 185, y2: 110, stroke: '#3D6B9A', 'stroke-width': 5, 'stroke-dasharray': '10 6' }, svg)
+    for (const [x, s] of [[30, '−'], [180, '+']]) { const t = svgEl('text', { x, y: 70, 'text-anchor': 'middle', 'font-size': 28, 'font-weight': 800, fill: '#CC5833' }, svg); t.textContent = s }
+  }
+  if (type === 'plate') {
+    svgEl('rect', { x: 40, y: 50, width: 140, height: 120, rx: 10, fill: '#2b2f2c' }, svg)
+    svgEl('circle', { cx: 110, cy: 110, r: 34, fill: '#f4f1d8', opacity: 0.8 }, svg)
+    const t = svgEl('text', { x: 110, y: 198, 'text-anchor': 'middle', 'font-size': 18, 'font-weight': 700, fill: '#2E4036' }, svg); t.textContent = 'fogged by uranium'
+  }
+  return svg
+}
+const FOIL = `<svg viewBox="0 0 640 260" width="640" height="260"><rect x="300" y="20" width="16" height="220" fill="#E9C46A" stroke="#b8902e" stroke-width="2"/><text x="308" y="256" text-anchor="middle" font-size="16" font-weight="700" fill="#2E4036">gold foil</text><rect x="10" y="110" width="70" height="40" rx="8" fill="#2E4036"/><text x="45" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">α source</text>${[50, 85, 175, 210].map(y => `<line x1="80" y1="130" x2="620" y2="${y + (y - 130) * 0.6}" stroke="#CC5833" stroke-width="3" opacity=".55"/>`).join('')}<line x1="80" y1="130" x2="620" y2="130" stroke="#CC5833" stroke-width="3" opacity=".55"/><path d="M80,128 L300,122 L120,40" stroke="#2E4036" stroke-width="4" fill="none"/><path d="M80,132 L300,140 L150,236" stroke="#2E4036" stroke-width="4" fill="none"/><text x="630" y="30" text-anchor="end" font-size="18" font-weight="700" fill="#a33d20">most pass straight through</text><text x="120" y="24" font-size="18" font-weight="700" fill="#2E4036">a few bounce back!</text></svg>`
+function chemModels(s, v) {
+  const row = $('div', 'cards')
+  for (const it of v.items) {
+    const card = $('div', 'card wide model-card')
+    card.append(it.type === 'foil' ? $('div', '', FOIL) : modelSvg(it.type))
+    if (it.label) card.append($('div', 'name', inl(it.label)))
+    if (it.sub) card.append($('div', 'd', inl(it.sub)))
+    row.append(reveal(card, mark(s, it.at)))
+  }
+  return wrapWithSide(s, v, row)
+}
+
 window.render = t => {
   let i = 0
   while (i < D.scenes.length - 1 && t >= D.scenes[i].start + D.scenes[i].dur) i++
@@ -472,9 +815,10 @@ window.render = t => {
   if (i !== cur) { cur = i; build(s) }
   const sig = [i]
   for (const it of items) {
-    const p = ease(clamp((lt - it.at) / 0.45))
+    let p = ease(clamp((lt - it.at) / 0.45))
+    if (it.until != null && lt >= it.until) p = Math.min(p, 1 - ease(clamp((lt - it.until) / 0.3)))
     it.el.style.opacity = p
-    it.el.style.transform = p < 1 ? `translateY(${((1 - p) * 16).toFixed(1)}px)` : ''
+    it.el.style.transform = p < 1 && !it.noMove ? `translateY(${((1 - p) * 16).toFixed(1)}px)` : ''
     sig.push(Math.round(p * 30))
   }
   for (const h of hls) { const on = lt >= h.at && lt < (h.until ?? 1e9); h.el.classList.toggle(h.cls ?? 'hl', on); sig.push(+on) }

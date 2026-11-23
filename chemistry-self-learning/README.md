@@ -136,7 +136,14 @@ The lesson selector supports arrow keys, Home, and End.
 
 ## Videos and outside resources
 
-Videos come only from Khan Academy and Tyler DeWitt. The Lewis dot and CO2
+Every Chapter 1–3 lesson has its own narrated, captioned video (2–3 minutes)
+hosted with the site in `public/videos/chapter-N/`, plus an exam-review video
+on the Unit 2 and Unit 3 Exam Review worksheet tabs. They are made with the
+pipeline in `../math-videos` (see its README) and listed in
+`src/videos/chapter-N.json`; `src/narrated.js` and `src/NarratedVideo.jsx`
+show them.
+
+The other videos come only from Khan Academy and Tyler DeWitt. The Lewis dot and CO2
 lessons link to the [Khan Academy lesson](https://www.khanacademy.org/science/hs-chemistry/x2613d8165d88df5e:chemical-bonding/x2613d8165d88df5e:covalent-bonds/v/lewis-diagrams-for-molecules),
 which opens on khanacademy.org. The other lessons embed Tyler DeWitt or Khan
 Academy videos from YouTube. This project does not download or reproduce

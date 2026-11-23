@@ -9,6 +9,7 @@ import { FlowchartDiagram, FlowchartReference } from './Flowchart.jsx'
 import { LESSON_WALK, nameFormula, walkCaption } from './nomenclature.js'
 import { CHAPTERS, WORKSHEETS, chapterOf, dueInfo } from './chapters.js'
 import { EARLY_LESSONS } from './lessons123.js'
+import NarratedVideo from './NarratedVideo.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -481,6 +482,7 @@ function App() {
             {active === 9 && <PolyatomicTable />}
             {active === 10 && <FlowchartReference />}
             {practice && <a className="table-callout" href={`#/worksheets/${practice.id}`}><div><span className="eyebrow">PRACTICE</span><h3>{practice.label} help</h3>{practiceDue && <span className={`due-badge ${practiceDue.when}`}><CalendarClock size={14} /> {practiceDue.text}</span>}<p>Work through every worksheet problem with step-by-step answers you reveal when you are ready.</p></div><ArrowRight size={22} /></a>}
+            {lesson.narrated && <NarratedVideo key={`narrated-${active}`} path={lesson.narrated} title={lesson.title} />}
             <Video key={`video-${active}`} lesson={lesson} />
             <Quiz key={`quiz-${active}`} lesson={lesson} completed={completed.includes(active)} onComplete={() => setCompleted(previous => previous.includes(active) ? previous : [...previous, active])} />
             <div className="lesson-bottom"><Button disabled={pos === 0} onClick={() => selectLesson(chapterLessons[pos - 1])}><ChevronLeft size={17} /> Previous lesson</Button><Button className="primary" disabled={pos === count - 1} onClick={() => selectLesson(chapterLessons[pos + 1])}>Next lesson <ChevronRight size={17} /></Button></div>
