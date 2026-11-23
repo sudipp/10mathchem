@@ -1,8 +1,9 @@
 # Self Learning: math
 
 A React 19 learning site for Accelerated Math II/III, organized by unit.
-Each unit has narrated video lessons, step-by-step animations, quick checks,
-and homework help. Available now: **Unit 4, Polynomial Functions**.
+Each unit has step-by-step animations, quick checks, videos, and homework
+help. Available now: **Unit 3, Conic Sections** and **Unit 4, Polynomial
+Functions** (Unit 4 also has narrated video lessons).
 
 ## Run locally
 
@@ -20,7 +21,9 @@ use `..\site-host\Start Self Learning Sites.bat`.
 | Address | Page |
 |---|---|
 | `/math/` | All units |
-| `/math/#/unit-4` | Unit 4 home (`/lessons`, `/day`, `/resources` jump to a section) |
+| `/math/#/unit-3` | Unit 3 home (`/lessons`, `/day`, `/resources` jump to a section) |
+| `/math/#/unit-3/homework/hw1` | Unit 3 homework help |
+| `/math/#/unit-4` | Unit 4 home |
 | `/math/#/unit-4/homework/hw3` | Unit 4 homework help |
 
 Links from before units existed (`#lessons`, `#/homework/hw3`) redirect to
@@ -39,17 +42,46 @@ public/videos/unit-4/         lesson videos and poster images
 
 Shared pieces live in `src/`: the lesson page parts (`Lesson.jsx`), homework
 help (`Homework.jsx`, `solve.jsx`), math rendering (`TeX.jsx`), drawings
-(`Visuals.jsx`), and the polynomial engine (`poly.js`).
+(`Visuals.jsx`, `ConicGraph.jsx`), the polynomial engine (`poly.js`), and the
+conics engine (`conics.js`).
 
 ### Adding a unit
 
 1. Copy `src/units/unit-4/` to `src/units/unit-<n>/` and replace its lessons,
    homework, day plan, and bookshelf. Set `number`, `slug: 'unit-<n>'`, and
-   `title`. Start `videos.json` as `{}` until videos exist.
+   `title`. Start `videos.json` as `{}` and `videoIds` as `[]` until videos
+   exist (Unit 3 does this: each lesson shows its Khan Academy video instead).
 2. Import it in `src/units/index.js` and add it to `UNITS`.
 3. Optional videos: write scripts in `../math-videos/videos/unit-<n>/`, render
    them, then `node ../math-videos/publish.mjs unit-<n>`.
 4. `npm run build`.
+
+## Unit 3: Conic Sections
+
+Built from the class notes (Days 1–7) and HW #1 to HW #8 (HW #8 is the unit
+review). Eight lessons, each with a step-by-step animation drawn by
+`ConicGraph.jsx`, a short reading, a quick check, and a Khan Academy video:
+
+1. Circles: standard form, center and radius, completing the square.
+2. Parabolas: vertex form, $p = \tfrac{1}{4a}$, focus, directrix, axis.
+3. Writing equations of circles and parabolas from clues.
+4. Ellipses: vertices, co-vertices, and foci ($c^2 = a^2 - b^2$).
+5. Writing equations of ellipses.
+6. Hyperbolas: transverse axis, the box, asymptotes, foci ($c^2 = a^2 + b^2$).
+7. Writing equations of hyperbolas.
+8. Classifying conics from $Ax^2 + Cy^2 + Dx + Ey + F = 0$.
+
+Homework help covers HW #1–#8 plus the class-note examples. Graphing problems
+give only the equation's coefficients: `src/conics.js` completes the square
+with exact fractions and simplified square roots, reads off the center,
+vertices, co-vertices, foci, directrix, and asymptotes, and draws the graph.
+Writing problems have worked steps and an engine-drawn answer. `verify.mjs`
+checks every answer-key value, the definition of each conic on sample points
+(focus–directrix distance, constant sum or difference to the foci), and that
+general and standard forms describe the same curve; sympy confirms each
+equation matches the answer key. Answer-key notes: HW #8 Ellipses #2 writes
+$\sqrt{63}$ (the site also shows the simplified $3\sqrt7$), and HW #8
+Ellipses #10–11 ask for the foci, which the key leaves out; the site lists them.
 
 ## Unit 4: Polynomial Functions
 
@@ -116,7 +148,7 @@ actual graph.
 ## Checking the answers
 
 ```powershell
-node scripts/verify.mjs          # engine output vs. the Unit 4 answer keys
+node scripts/verify.mjs          # engine output vs. the Unit 3 and Unit 4 answer keys
 python scripts/verify_sympy.py   # hand-written solutions vs. sympy
 ```
 

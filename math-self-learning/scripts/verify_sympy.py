@@ -22,7 +22,13 @@ def roots_match(c):
 for c in checks:
     label = c["label"]
     try:
-        if "factored" in c:
+        if "conicStd" in c:
+            # Same curve: the given/key equation is a nonzero constant times the engine's standard form.
+            ratio = cancel(sympify(c["conicGeneral"], ns) / sympify(c["conicStd"], ns))
+            good = not ratio.free_symbols and ratio != 0
+            if not good:
+                print("   ratio:", ratio)
+        elif "factored" in c:
             good = expand(sympify(c["expr"], ns) - sympify(c["factored"], ns)) == 0
             if good and c.get("roots") is not None:
                 good = roots_match(c)

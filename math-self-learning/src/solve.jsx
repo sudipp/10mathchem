@@ -2,6 +2,8 @@ import { FnGraph, Graph, LongDivisionView, SignChart, SyntheticView } from './Vi
 import { P, analyze, endBehavior, evaluate, fromFactors, fromZeros, isZeroPoly, longDivide, polyLatex, polyMul, q, qLatex, synthetic, tenth, testPoints } from './poly.js'
 import { buildFromRoots, candidates, candidatesLatex, conjugate, isPaired, pairQuadratic, rationalRoots, rootKind, rootLatex, zerosLatex } from './roots.js'
 import { REL, factoredForm, inequality, parabola } from './extra.js'
+import { answerLines, classifySteps, featureSteps, features, fromGeneral, makeConic, stdLatex } from './conics.js'
+import { ConicGraph } from './ConicGraph.jsx'
 import { classify, degreeName, funcOp, product, resultLatex, termsName, writtenLatex } from './funcs.js'
 
 const R = String.raw
@@ -144,6 +146,9 @@ function solveCore(p) {
   if (p.type === 'fta') return ftaSolution(p, pre)
   if (p.type === 'ineq') return ineqSolution(p, pre)
   if (p.type === 'parabola') return parabolaSolution(p, pre)
+  if (p.type === 'conic') return conicSolution(p, pre)
+  if (p.type === 'conicEq') return conicEqSolution(p, pre)
+  if (p.type === 'conicType') { const r = classifySteps(p.g); return { prompt: `${pre}${p.prompt}`, steps: r.steps, answer: R`\text{${r.kind[0].toUpperCase()}${r.kind.slice(1)}}` } }
   if (p.graph) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <FnGraph {...p.graph} /> : null }
   if (p.poly) return { prompt: p.prompt, steps: p.steps, answer: p.answer, visual: n => n >= p.steps.length ? <Graph poly={P(p.poly)} window={p.window} /> : null }
   return { prompt: p.prompt, steps: p.steps, answer: p.answer }
@@ -201,6 +206,31 @@ function ineqSolution(p, pre) {
     prompt: `${pre}${s.promptLhs} ${rel} ${s.promptRhs}`, steps,
     visual: n => n >= chartStep ? <SignChart pts={s.pts} signs={n > chartStep ? s.signs : s.signs.map(() => 0)} atoms={s.atoms} showSolution={n >= steps.length} /> : null,
     answer: s.answer,
+  }
+}
+
+// Conic from an equation: standard form (completing the square if needed), then its features and graph.
+function conicSolution(p, pre) {
+  const std = () => { const c = makeConic(p.std); return { conic: c, steps: p.lead ?? [R`It is already in **standard form**: $${stdLatex(c)}$.`] } }
+  const r = p.g ? (() => { const g = fromGeneral(p.g); return { ...g, steps: [...(p.lead ?? []), ...g.steps] } })() : std()
+  const f = features(r.conic)
+  const steps = [...r.steps, ...featureSteps(r.conic, f), ...(p.after ?? [])]
+  const from = r.steps.length
+  return {
+    prompt: `${pre}${p.prompt}`, steps,
+    visual: n => n > from ? <ConicGraph conic={r.conic} window={p.window} label={`Graph of ${stdLatex(r.conic)}`} /> : null,
+    answer: R`\begin{array}{l} ${answerLines(r.conic, f, p.ask ?? []).join(R` \\ `)} \end{array}`,
+  }
+}
+
+// Writing a conic's equation from given information: worked steps, then the graph.
+function conicEqSolution(p, pre) {
+  const c = makeConic(p.conic)
+  const f = features(c)
+  return {
+    prompt: `${pre}${p.prompt}`, steps: p.steps,
+    visual: n => n >= p.steps.length ? <ConicGraph conic={c} window={p.window} label={`Graph of ${stdLatex(c)}`} /> : null,
+    answer: (p.ask ?? []).length ? R`\begin{array}{l} ${answerLines(c, f, p.ask).join(R` \\ `)} \end{array}` : stdLatex(c),
   }
 }
 

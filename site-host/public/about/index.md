@@ -5,7 +5,7 @@ Self Learning is a free, self-paced study site for 10th-grade chemistry and math
 ## What you'll find
 
 - [Chemistry](https://perspireai.com/chemistry/): Chapter 4, Lewis Structures & Nomenclature, with an interactive periodic table and worksheet help.
-- [Math](https://perspireai.com/math/): organized by unit. Unit 4, Polynomial Functions, has fourteen narrated video lessons and homework help for HW #1–#17.
+- [Math](https://perspireai.com/math/): organized by unit. Unit 3, Conic Sections, has eight lessons and homework help for HW #1–#8; Unit 4, Polynomial Functions, has fourteen narrated video lessons and homework help for HW #1–#17.
 
 ## How it works
 

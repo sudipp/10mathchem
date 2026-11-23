@@ -2,10 +2,12 @@
 // hand-solved checks to JSON for scripts/verify_sympy.py.
 import { writeFileSync } from 'node:fs'
 import { HOMEWORK } from '../src/units/unit-4/homework.js'
+import { HOMEWORK as HOMEWORK3 } from '../src/units/unit-3/homework.js'
 import { P, q, longDivide, synthetic, evaluate, fromZeros, analyze, tenth, isZeroPoly, eqQ, trim, polyLatex, endBehavior, fromFactors, degree, num } from '../src/poly.js'
 import { rationalRoots, buildFromRoots, conjugate, isPaired, qSympy, rootSympy, candidates } from '../src/roots.js'
 import { inequality, parabola } from '../src/extra.js'
 import { classify, product, funcOp, polySympy, exprSympy, resultSympy } from '../src/funcs.js'
+import { classify as classifyConic, features as conicFeatures, fromGeneral, makeConic, stdSympy, stdValue, surdNum, toQ } from '../src/conics.js'
 
 const sympyPoly = p => p.map((c, i) => `(${qSympy(c)})*x**${p.length - 1 - i}`).join(' + ')
 
@@ -14,9 +16,64 @@ const checks = []
 const same = (a, b) => trim(a).length === trim(b).length && trim(a).every((x, i) => eqQ(x, trim(b)[i]))
 const report = (ok, label, detail = '') => { if (ok) pass++; else { fail++; console.log('FAIL', label, detail) } }
 
-for (const hw of HOMEWORK) {
+// ---------- conic checks ----------
+const toN = v => Array.isArray(v) ? v[0] / v[1] : v
+const close = (a, b, tol = 1e-9) => Math.abs(a - b) <= tol * Math.max(1, Math.abs(a), Math.abs(b))
+const samePts = (got, exp) => got.length === exp.length && exp.every(e => got.some(g => close(g[0], toN(e[0])) && close(g[1], toN(e[1]))))
+const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1])
+// Points on the curve from its parametrization.
+function samples(c, f) {
+  const [h, k] = [num(c.h), num(c.k)], out = []
+  for (let i = 0; i < 12; i++) {
+    const t = -2.5 + i * 0.45, th = i * Math.PI / 6 + 0.3
+    if (c.kind === 'circle') { const r = surdNum(f.r); out.push([h + r * Math.cos(th), k + r * Math.sin(th)]) }
+    if (c.kind === 'ellipse') out.push([h + Math.sqrt(num(c.X2)) * Math.cos(th), k + Math.sqrt(num(c.Y2)) * Math.sin(th)])
+    if (c.kind === 'parabola') out.push(c.vertical ? [h + t, num(c.a) * t * t + k] : [num(c.a) * t * t + h, k + t])
+    if (c.kind === 'hyperbola') { const [a, b, s] = [surdNum(f.a), surdNum(f.b), i % 2 ? 1 : -1]; out.push(c.vertical ? [h + b * Math.sinh(t), k + s * a * Math.cosh(t)] : [h + s * a * Math.cosh(t), k + b * Math.sinh(t)]) }
+  }
+  return out
+}
+function checkConic(c, e = {}) {
+  const f = conicFeatures(c), bad = []
+  const pts = samples(c, f)
+  if (pts.some(([x, y]) => Math.abs(stdValue(c, x, y)) > 1e-9)) bad.push('samples off the curve')
+  // The definition of each conic, tested on sample points.
+  if (c.kind === 'circle' && pts.some(p => !close(dist(p, f.center.pt), surdNum(f.r)))) bad.push('radius definition')
+  if (c.kind === 'parabola') {
+    const d = p => f.directrix.y ? Math.abs(p[1] - num(f.directrix.y)) : Math.abs(p[0] - num(f.directrix.x))
+    if (pts.some(p => !close(dist(p, f.focus.pt), d(p)))) bad.push('focus-directrix definition')
+  }
+  if (c.kind === 'ellipse' && pts.some(p => !close(dist(p, f.foci.pts[0]) + dist(p, f.foci.pts[1]), 2 * surdNum(f.a)))) bad.push('ellipse sum definition')
+  if (c.kind === 'hyperbola') {
+    if (pts.some(p => !close(Math.abs(dist(p, f.foci.pts[0]) - dist(p, f.foci.pts[1])), 2 * surdNum(f.a)))) bad.push('hyperbola difference definition')
+    const far = c.vertical ? [num(c.h) + surdNum(f.b) * Math.sinh(12), num(c.k) + surdNum(f.a) * Math.cosh(12)] : [num(c.h) + surdNum(f.a) * Math.cosh(12), num(c.k) + surdNum(f.b) * Math.sinh(12)]
+    if (!close((far[1] - num(c.k)) / (far[0] - num(c.h)), surdNum(f.m), 1e-6)) bad.push('asymptote slope')
+  }
+  for (const key of ['vertices', 'coVertices']) if (f[key] && (c.kind === 'ellipse' || key === 'vertices') && f[key].pts.some(([x, y]) => Math.abs(stdValue(c, x, y)) > 1e-9)) bad.push(`${key} off the curve`)
+  // Answer-key values.
+  if (e.center && !samePts([f.center.pt], [e.center])) bad.push('center')
+  if (e.r2 != null && !close(num(c.r2), toN(e.r2))) bad.push('r2')
+  if (e.vertex && !samePts([f.vertex.pt], [e.vertex])) bad.push('vertex')
+  if (e.focus && !samePts([f.focus.pt], [e.focus])) bad.push('focus')
+  if (e.directrix) { const [axis, v] = Object.entries(e.directrix)[0]; if (!(f.directrix[axis] && close(num(f.directrix[axis]), toN(v)))) bad.push('directrix') }
+  if (e.opens && f.opens !== e.opens) bad.push('opens')
+  if (e.intercept != null && !close(num(f.intercept.y ?? f.intercept.x), toN(e.intercept))) bad.push('intercept')
+  for (const key of ['vertices', 'coVertices', 'foci']) if (e[key] && !samePts(f[key].pts, e[key])) bad.push(key)
+  if (e.asym) {
+    const m = surdNum(f.m), [h, k] = [num(c.h), num(c.k)]
+    if (!samePts([[m, k - m * h], [-m, k + m * h]], e.asym)) bad.push('asymptotes')
+  }
+  if (e.slope != null && !close(surdNum(f.m), e.slope)) bad.push('asymptote slope')
+  if (e.passes) for (const [x, y] of e.passes) if (Math.abs(stdValue(c, toN(x), toN(y))) > 1e-9) bad.push(`passes (${x}, ${y})`)
+  if (e.majorLength != null && !close(2 * surdNum(f.a), e.majorLength)) bad.push('major axis length')
+  if (e.minorLength != null && !close(2 * surdNum(f.b), e.minorLength)) bad.push('minor axis length')
+  return bad
+}
+const generalSympy = g => ['A', 'C', 'D', 'E', 'F'].map((key, i) => `(${qSympy(toQ(g[key] ?? 0))})*${['x**2', 'y**2', 'x', 'y', '1'][i]}`).join(' + ')
+
+for (const [unitTag, list] of [['', HOMEWORK], ['u3 ', HOMEWORK3]]) for (const hw of list) {
   hw.sections.forEach((section, s) => section.problems.forEach((p, i) => {
-    const label = `${hw.id} §${s + 1} #${i + 1} (${p.type})`
+    const label = `${unitTag}${hw.id} §${s + 1} #${i + 1} (${p.type})`
     if (p.choice) {
       // The marked letter must match the worked answer (graph pictures and inequalities are checked by hand / by the engine).
       const pick = p.choices.find(c => c[0] === p.choice)?.[1]
@@ -127,6 +184,23 @@ for (const hw of HOMEWORK) {
       if (p.exp.min) ok = ok && JSON.stringify(pts('min')) === JSON.stringify(p.exp.min)
       if (p.exp.max) ok = ok && JSON.stringify(pts('max')) === JSON.stringify(p.exp.max)
       report(ok, label, JSON.stringify({ zeros, min: pts('min'), max: pts('max') }))
+    } else if (p.type === 'conic') {
+      const c = p.g ? fromGeneral(p.g).conic : makeConic(p.std)
+      const bad = checkConic(c, p.exp)
+      if (p.g) {
+        const G = (x, y) => ['A', 'C', 'D', 'E', 'F'].reduce((acc, key, j) => acc + num(toQ(p.g[key] ?? 0)) * [x * x, y * y, x, y, 1][j], 0)
+        if (samples(c, conicFeatures(c)).some(([x, y]) => Math.abs(G(x, y)) > 1e-7 * (1 + Math.abs(x * x) + Math.abs(y * y)))) bad.push('standard form does not match the general equation')
+        checks.push({ label, conicGeneral: generalSympy(p.g), conicStd: stdSympy(c) })
+      }
+      report(!bad.length, label, bad.join(', '))
+    } else if (p.type === 'conicEq') {
+      const c = makeConic(p.conic)
+      const bad = checkConic(c, p.facts)
+      report(!bad.length, label, bad.join(', '))
+      checks.push({ label, conicGeneral: p.key, conicStd: stdSympy(c) })
+    } else if (p.type === 'conicType') {
+      const g = Object.fromEntries(['A', 'C', 'D', 'E', 'F'].map(key => [key, toQ(p.g[key] ?? 0)]))
+      report(classifyConic(g) === p.exp, label, classifyConic(g))
     } else if (p.check) {
       checks.push({ label, ...p.check })
     }
