@@ -78,6 +78,6 @@ createServer(async (req, res) => {
 }).listen(PORT, '0.0.0.0', () => {
   const ips = Object.values(networkInterfaces()).flat().filter(i => i.family === 'IPv4' && !i.internal).map(i => i.address)
   console.log('Self Learning sites are running. Open on any device on this network:')
-  for (const ip of ips) console.log(`  http://${ip}:${PORT}/   (chemistry: /chemistry/  math: /math/)`)
+  for (const ip of ips) console.log(`  http://${ip}:${PORT}/   (chemistry: /chemistry/  math: /math/  history: /history/)`)
   console.log('Keep this window open. Press Ctrl+C to stop.')
 })
