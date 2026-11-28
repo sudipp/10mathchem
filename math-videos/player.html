@@ -199,6 +199,12 @@ header{position:absolute;left:44px;right:44px;top:26px;display:flex;justify-cont
 .tile .tz{font:700 44px 'IBM Plex Mono',monospace}.tile .ts{font-size:120px;font-weight:800;line-height:1;letter-spacing:-.04em}
 .tile .tn{font-size:30px;font-weight:600}.tile .tm{font:600 28px 'IBM Plex Mono',monospace;color:#536157}
 .tile .on{color:#CC5833}
+/* history */
+.hchain{display:flex;flex-direction:column;align-items:center;gap:4px}
+.hchain-row{display:flex;flex-direction:column;align-items:center;gap:4px}
+.hchain-arrow{font-size:30px;font-weight:800;color:#B5482A;line-height:1}
+.hchain-box{font-size:28px;font-weight:700;background:#fffdf7;border:3px solid #24303F;border-radius:18px;padding:10px 26px;text-align:center}
+.hchain-box.last{background:#24303F;color:#F2F0E9}
 </style>
 </head>
 <body>
@@ -521,6 +527,12 @@ function build(s) {
     stage.append(chemBohr(s, v))
   } else if (v.kind === 'circles') {
     stage.append(chemCircles(s, v))
+  } else if (v.kind === 'histmap') {
+    stage.append(histMap(s, v))
+  } else if (v.kind === 'chain') {
+    stage.append(histChain(s, v))
+  } else if (v.kind === 'timeline') {
+    stage.append(histTimeline(s, v))
   } else if (v.kind === 'models') {
     stage.append(chemModels(s, v))
   } else if (v.kind === 'tile') {
@@ -806,6 +818,72 @@ function chemModels(s, v) {
     row.append(reveal(card, mark(s, it.at)))
   }
   return wrapWithSide(s, v, row)
+}
+
+// ---------- history views ----------
+// histmap: one step of the history site's map. Territories fade in at landsAt, routes draw at routesAt[i], cities at citiesAt.
+function histMap(s, v) {
+  const L = D.layouts[v.layout], st = L.steps[v.step]
+  const [vx, vy, vw, vh] = v.vb ?? st.vb, k = vw / L.w
+  const W = v.side?.length || s.countdown ? 800 : 980, H = Math.round(W * vh / vw)
+  const svg = svgEl('svg', { viewBox: `${vx} ${vy} ${vw} ${vh}`, width: W, height: H })
+  const defs = svgEl('defs', {}, svg), clip = svgEl('clipPath', { id: 'hland' }, defs)
+  svgEl('path', { d: L.land }, clip)
+  svgEl('rect', { x: -50, y: -50, width: L.w + 100, height: L.h + 100, fill: '#CFE0E6' }, svg)
+  svgEl('path', { d: L.land, fill: '#F3ECDD' }, svg)
+  svgEl('path', { d: L.lakes, fill: '#CFE0E6' }, svg)
+  for (const r of L.rivers) svgEl('path', { d: r, fill: 'none', stroke: '#8FB2C6', 'stroke-width': 1.4 * k }, svg)
+  const g = svgEl('g', { 'clip-path': 'url(#hland)' }, svg)
+  st.lands.forEach(l => { const lg = svgEl('g', {}, g); svgEl('path', { d: l.d, fill: l.color, opacity: l.faint ? 0.18 : 0.5 }, lg); reveal(lg, mark(s, v.landsAt ?? 0), { noMove: true }) })
+  svgEl('path', { d: L.land, fill: 'none', stroke: '#9DB2B9', 'stroke-width': 0.8 * k }, svg)
+  st.routes.forEach((r, i) => {
+    const at = mark(s, (v.routesAt ?? [])[i] ?? v.routesAt?.[0] ?? 0)
+    if (r.arrow) { const m = svgEl('marker', { id: `hah${i}`, viewBox: '0 0 10 10', refX: 7, refY: 5, markerWidth: 5, markerHeight: 5, orient: 'auto' }, defs); svgEl('path', { d: 'M0,0 L10,5 L0,10 z', fill: r.color }, m) }
+    const p = svgEl('path', { d: r.d, fill: 'none', stroke: r.color, 'stroke-width': (r.label ? 3.4 : 2.2) * k, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', ...(r.arrow ? { 'marker-end': `url(#hah${i})` } : {}), ...(r.dashed ? { 'stroke-dasharray': `${9 * k} ${7 * k}` } : { pathLength: 1000 }) }, svg)
+    if (r.dashed) reveal(p, at, { noMove: true }); else draws.push({ el: p, at })
+    if (r.label) { const tx = svgEl('text', { x: r.at[0], y: r.at[1] - 8 * k, 'text-anchor': 'middle', 'font-size': 19 * k, 'font-weight': 800, fill: r.color, 'paint-order': 'stroke', stroke: '#ffffffcc', 'stroke-width': 3 * k }, svg); tx.textContent = r.label; reveal(tx, at + 1, { noMove: true }) }
+  })
+  st.lands.filter(l => l.label && l.at).forEach(l => { const tx = svgEl('text', { x: l.at[0], y: l.at[1], 'text-anchor': 'middle', 'font-size': 24 * k, 'font-weight': 800, fill: '#3a2a20', 'paint-order': 'stroke', stroke: '#ffffffb0', 'stroke-width': 3 * k }, svg); tx.textContent = l.label; reveal(tx, mark(s, v.landsAt ?? 0) + 0.3, { noMove: true }) })
+  st.tags.forEach(tg => { const tx = svgEl('text', { x: tg.x, y: tg.y, 'text-anchor': 'middle', 'font-size': 17 * k, 'font-weight': 700, 'font-style': 'italic', fill: '#7A3B22', 'paint-order': 'stroke', stroke: '#fffdf8', 'stroke-width': 3 * k }, svg); tx.textContent = tg.text; reveal(tx, mark(s, v.tagsAt ?? 0), { noMove: true }) })
+  const cg = svgEl('g', {}, svg)
+  st.cities.forEach(c => {
+    svgEl('circle', { cx: c.x, cy: c.y, r: (c.big ? 5 : 3.6) * k, fill: '#24303F', stroke: '#fff', 'stroke-width': 0.8 * k }, cg)
+    const tx = svgEl('text', { x: c.x + (c.side === 'left' ? -7 : c.side === 'below' ? 0 : 7) * k, y: c.y + (c.side === 'below' ? 17 : -6) * k, 'text-anchor': c.side === 'left' ? 'end' : c.side === 'below' ? 'middle' : 'start', 'font-size': (c.big ? 20 : 17) * k, 'font-weight': 700, fill: '#24303F', 'paint-order': 'stroke', stroke: '#fffdf8', 'stroke-width': 3 * k }, cg)
+    tx.textContent = c.name
+  })
+  reveal(cg, mark(s, v.citiesAt ?? 0), { noMove: true })
+  const box = $('div', 'graph'); box.append(svg)
+  return wrapWithSide(s, v, box)
+}
+
+// chain: cause → effect boxes, each appearing on its marker.
+function histChain(s, v) {
+  const w = $('div', 'hchain')
+  v.items.forEach((it, i) => {
+    const row = $('div', 'hchain-row')
+    if (i) row.append($('div', 'hchain-arrow', '↓'))
+    row.append($('div', `hchain-box${i === v.items.length - 1 ? ' last' : ''}`, inl(it.text)))
+    w.append(reveal(row, mark(s, it.at)))
+  })
+  return wrapWithSide(s, v, w)
+}
+
+// timeline: a single axis with events appearing on their markers.
+function histTimeline(s, v) {
+  const [y0, y1] = v.range, W = 1080, x = y => 30 + (y - y0) / (y1 - y0) * (W - 60)
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} 380`, width: W, height: 380 })
+  svgEl('line', { x1: 20, x2: W - 20, y1: 180, y2: 180, stroke: '#24303F', 'stroke-width': 4 }, svg)
+  for (const tk of v.ticks ?? []) { const tx = svgEl('text', { x: x(tk), y: 212, 'text-anchor': 'middle', 'font-size': 15, 'font-family': 'IBM Plex Mono', fill: '#6A6F78' }, svg); tx.textContent = tk < 0 ? `${-tk} BCE` : tk === 0 ? '0' : `${tk} CE`; svgEl('line', { x1: x(tk), x2: x(tk), y1: 172, y2: 188, stroke: '#24303F', 'stroke-width': 2 }, svg) }
+  v.events.forEach((e, i) => {
+    const up = i % 2 === 0, g = svgEl('g', {}, svg), ex = x(e.year)
+    svgEl('line', { x1: ex, x2: ex, y1: 180, y2: up ? 120 - (i % 4 === 0 ? 0 : 40) : 258 + (i % 4 === 1 ? 0 : 40), stroke: e.color ?? '#B5482A', 'stroke-width': 2.5 }, g)
+    svgEl('circle', { cx: ex, cy: 180, r: 9, fill: e.color ?? '#B5482A' }, g)
+    const ty = up ? 110 - (i % 4 === 0 ? 0 : 40) : 282 + (i % 4 === 1 ? 0 : 40)
+    const t1 = svgEl('text', { x: ex, y: ty - 18, 'text-anchor': 'middle', 'font-size': 15, 'font-family': 'IBM Plex Mono', 'font-weight': 600, fill: e.color ?? '#B5482A' }, g); t1.textContent = e.date
+    const t2 = svgEl('text', { x: ex, y: ty + 2, 'text-anchor': 'middle', 'font-size': 19, 'font-weight': 800, fill: '#24303F' }, g); t2.textContent = e.label
+    reveal(g, mark(s, e.at), { noMove: true })
+  })
+  return wrapWithSide(s, v, svg)
 }
 
 window.render = t => {

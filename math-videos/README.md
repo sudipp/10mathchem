@@ -167,3 +167,19 @@ reviews appear on the Unit 2 and Unit 3 Exam Review worksheet tabs.
 Each lesson video has a picture for every idea, an "Exam tip" scene, a timed
 "Your turn" problem with its answer, and a recap. The exam reviews are eight
 pause-and-try questions modeled on the class review sheets.
+
+## History videos
+
+Scripts live in `videos/hist-<chapter>/` (e.g. `hist-11/01-rome.mjs`). The
+`histmap` layout (`{ type: 'histmap' }`) loads the history site's map
+(`../history-self-learning/src/geo`) so the video shows the same territories,
+routes and cities as the site. History views in `player.html`:
+
+- `histmap`: one map step (`step`), with `landsAt`, `routesAt` (one marker
+  per route), `tagsAt` and `citiesAt` reveal markers.
+- `chain`: cause → effect boxes, each on its marker.
+- `timeline`: one axis (`range`, `ticks`) with events on their markers.
+
+`node publish.mjs hist-11` copies the videos to
+`../history-self-learning/public/videos/chapter-11/` and writes
+`../history-self-learning/src/videos/chapter-11.json`.

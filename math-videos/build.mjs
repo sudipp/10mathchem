@@ -6,6 +6,31 @@ import { features, makeConic, stdLatex, surdNum } from '../math-self-learning/sr
 import { ELEMENT_LIST } from '../chemistry-self-learning/src/elements.js'
 import { cellOf } from '../chemistry-self-learning/src/grid.js'
 import { position, configOf, orbitals as orbitalBoxes } from '../chemistry-self-learning/src/electrons.js'
+import { LAKES as H_LAKES, LAND as H_LAND, MAP as H_MAP, RIVERS as H_RIVERS, project as hProject } from '../history-self-learning/src/geo/mediterranean.js'
+import { CITIES as H_CITIES, MAP_STEPS as H_STEPS } from '../history-self-learning/src/geo/rome.js'
+
+// History: the history site's Mediterranean map and its steps, projected to SVG paths.
+function histMapData() {
+  const ASPECT = H_MAP.h / H_MAP.w
+  const vbOf = view => {
+    if (!view) return [0, 0, H_MAP.w, H_MAP.h]
+    const [x0, y0] = hProject(view[0], view[3]), [x1, y1] = hProject(view[2], view[1])
+    let w = x1 - x0, h = y1 - y0
+    if (h / w > ASPECT) { const nw = h / ASPECT; return [x0 - (nw - w) / 2, y0, nw, h] }
+    const nh = w * ASPECT; return [x0, y0 - (nh - h) / 2, w, nh]
+  }
+  const path = pts => 'M' + pts.map(p => hProject(...p).map(v => v.toFixed(1)).join(',')).join('L')
+  return {
+    type: 'histmap', w: H_MAP.w, h: H_MAP.h, land: H_LAND, lakes: H_LAKES, rivers: Object.values(H_RIVERS),
+    steps: H_STEPS.map(s => ({
+      title: s.title, vb: vbOf(s.view),
+      lands: (s.lands ?? []).map(l => ({ label: l.label, color: l.color, faint: !!l.faint, d: l.polys.map(p => path(p) + 'Z').join(''), at: l.at ? hProject(...l.at) : null })),
+      routes: (s.routes ?? []).map(r => ({ d: path(r.pts), color: r.color, dashed: !!r.dashed, arrow: !!r.arrow, label: r.label ?? '', at: hProject(...(r.labelAt ?? r.pts[Math.floor(r.pts.length / 2)])) })),
+      cities: (s.cities ?? []).map(id => { const c = H_CITIES[id]; const [x, y] = hProject(...c.at); return { name: c.name, x, y, big: !!c.big, side: c.side ?? 'right' } }),
+      tags: (s.tags ?? []).map(t => { const [x, y] = hProject(...t.at); return { text: t.text, x, y } }),
+    })),
+  }
+}
 
 const id = process.argv[2]
 if (!id) { console.error('usage: node build.mjs <unit>/<video-id>, e.g. unit-4/03-long-division'); process.exit(1) }
@@ -175,6 +200,7 @@ function orbitalData(l) {
 const layouts = {}
 for (const [name, l] of Object.entries(spec.layouts ?? {})) {
   if (l.type === 'ptable') layouts[name] = ptableData()
+  if (l.type === 'histmap') layouts[name] = histMapData()
   if (l.type === 'orbitals') layouts[name] = orbitalData(l)
   if (l.type === 'longdiv') layouts[name] = { type: 'longdiv', ...longDivCells(l.num, l.den) }
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }
@@ -186,4 +212,4 @@ const out = new URL(`./build/${id}/`, import.meta.url)
 mkdirSync(out, { recursive: true })
 writeFileSync(new URL('spec.json', out), JSON.stringify({ ...spec, layouts }, null, 1))
 console.log(`Wrote build/${id}/spec.json: ${spec.scenes.length} scenes`)
-for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'ptable' ? 'periodic table' : l.type === 'orbitals' ? `orbitals ${l.tex}` : l.type === 'plane' ? `plane ${l.items.length} items, window ${l.win.join(' ')}` : l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)
+for (const [name, l] of Object.entries(layouts)) console.log(`  ${name}: ${l.type === 'histmap' ? `history map, ${l.steps.length} steps` : l.type === 'ptable' ? 'periodic table' : l.type === 'orbitals' ? `orbitals ${l.tex}` : l.type === 'plane' ? `plane ${l.items.length} items, window ${l.win.join(' ')}` : l.type === 'conic' ? `${l.tex}, window ${l.win.join(' ')}` : l.type === 'graph' ? `y = ${l.tex}, zeros ${l.zeros.join(', ')}` : `${l.problem} = ${l.answer}`}`)

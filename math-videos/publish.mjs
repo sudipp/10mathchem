@@ -3,19 +3,20 @@
 //              and ../math-self-learning/src/units/unit-N/videos.json
 //   chemistry: out/chem-N/<id>.{mp4,webm} -> ../chemistry-self-learning/public/videos/chapter-N/<id>.{mp4,webm,jpg}
 //              and ../chemistry-self-learning/src/videos/chapter-N.json
-// Each manifest records every video's duration. Usage: node publish.mjs unit-4 | chem-2
+//   history:   out/hist-N/... -> ../history-self-learning/public/videos/chapter-N/ and src/videos/chapter-N.json
+// Each manifest records every video's duration. Usage: node publish.mjs unit-4 | chem-2 | hist-11
 import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const unit = process.argv[2]
-if (!/^(unit|chem)-\d+$/.test(unit ?? '')) { console.error('usage: node publish.mjs unit-<number> | chem-<chapter>, e.g. unit-4 or chem-2'); process.exit(1) }
+if (!/^(unit|chem|hist)-\d+$/.test(unit ?? '')) { console.error('usage: node publish.mjs unit-<n> | chem-<chapter> | hist-<chapter>, e.g. unit-4, chem-2 or hist-11'); process.exit(1) }
 const here = path.dirname(fileURLToPath(import.meta.url))
-// Math units publish to the math site; chemistry chapters (chem-N) publish to the chemistry site.
-const chem = unit.startsWith('chem-')
-const site = path.resolve(here, '..', chem ? 'chemistry-self-learning' : 'math-self-learning')
-const slug = chem ? unit.replace('chem-', 'chapter-') : unit
+// Math units publish to the math site; chemistry (chem-N) and history (hist-N) chapters to their own sites.
+const chem = /^(chem|hist)-/.test(unit)
+const site = path.resolve(here, '..', unit.startsWith('chem-') ? 'chemistry-self-learning' : unit.startsWith('hist-') ? 'history-self-learning' : 'math-self-learning')
+const slug = chem ? unit.replace(/^(chem|hist)-/, 'chapter-') : unit
 const outDir = path.join(here, 'out', unit), dest = path.join(site, 'public', 'videos', slug)
 const unitDir = chem ? path.join(site, 'src', 'videos') : path.join(site, 'src', 'units', unit)
 if (!existsSync(outDir)) { console.error(`No rendered videos in ${outDir}`); process.exit(1) }

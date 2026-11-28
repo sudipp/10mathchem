@@ -1,11 +1,12 @@
 # About Self Learning
 
-Self Learning is a free, self-paced study site for 10th-grade chemistry and math, made by Perspire AI. It started as a way to turn real class notes and worksheets into lessons a student can work through alone, at their own speed.
+Self Learning is a free, self-paced study site for 10th-grade chemistry, math and world history, made by Perspire AI. It started as a way to turn real class notes and worksheets into lessons a student can work through alone, at their own speed.
 
 ## What you'll find
 
 - [Chemistry](https://perspireai.com/chemistry/): Chapters 1–4 (measurement, atomic theory and nuclear chemistry, electron configuration and periodic trends, Lewis structures and nomenclature), with an interactive periodic table and worksheet help.
 - [Math](https://perspireai.com/math/): organized by unit. Unit 0, Linear, Absolute Value & Piecewise Functions, has five narrated video lessons and homework help for HW #1–#6; Unit 1, Quadratic Functions, has five narrated video lessons and homework help for HW #1–#7; Unit 2, Solving Quadratics, Systems & Inequalities, has six narrated video lessons and homework help for HW #11–#19; Unit 3, Conic Sections, has eight narrated video lessons and homework help for HW #1–#8; Unit 4, Polynomial Functions, has fourteen narrated video lessons and homework help for HW #1–#17; Unit 5, Radical Expressions, has three narrated video lessons and homework help for HW #1 and the Fall Final Exam Review.
+- [World History](https://perspireai.com/history/): AP World History, one chapter a day. Chapter 11, Mediterranean Society: The Roman Phase, covers the Roman Republic, the Punic Wars, the fall of the Republic, Augustus and the Pax Romana, Roman society and slavery, and the rise of Christianity, with an interactive timeline, an animated map, a narrated video, flashcards, and AP-style practice with primary sources.
 
 ## How it works
 

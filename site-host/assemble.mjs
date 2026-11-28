@@ -1,8 +1,9 @@
-// Combines the two built sites into one static folder for web hosts (e.g. Hostinger):
+// Combines the built sites into one static folder for web hosts (e.g. Hostinger):
 //   dist/            <- site-host/public (robots.txt, sitemap.xml, llms.txt, about/contact/terms, .htaccess)
 //   dist/index.html  <- site-host/hub.html
 //   dist/chemistry/  <- chemistry-self-learning/dist
 //   dist/math/       <- math-self-learning/dist
+//   dist/history/    <- history-self-learning/dist
 import { cp, mkdir, rm, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,6 +14,7 @@ const out = path.join(root, 'dist')
 const sites = {
   chemistry: path.join(root, 'chemistry-self-learning', 'dist'),
   math: path.join(root, 'math-self-learning', 'dist'),
+  history: path.join(root, 'history-self-learning', 'dist'),
 }
 
 for (const [name, dir] of Object.entries(sites)) {
