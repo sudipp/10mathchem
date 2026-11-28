@@ -48,7 +48,11 @@ em { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 30px max(4vw, 18px); }
 .sec-title { font-size: 1.6rem; margin: 20px 0 16px; }
 .page-title { font-size: 2.4rem; margin-bottom: 8px; }
-.chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 16px; }
+.part-title { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 22px 0 10px; }
+.ch-nav { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 32px; }
+.ch-nav a { color: var(--blue); font-weight: 600; text-decoration: none; }
+.ch-nav a:hover { text-decoration: underline; }
 .chapter-card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 22px; text-decoration: none; display: flex; flex-direction: column; gap: 8px; transition: transform .2s, box-shadow .2s; }
 a.chapter-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px #24303f12; }
 .chapter-card h3 { font-size: 1.25rem; }

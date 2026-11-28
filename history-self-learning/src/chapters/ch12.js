@@ -1,0 +1,348 @@
+// Chapter 12 · Cross-Cultural Exchanges on the Silk Roads (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch12.js.
+export default {
+  hook: 'Around 100 CE a Roman senator’s wife could wear Chinese silk, season her dinner with Indian pepper and wear pearls from the Persian Gulf, though she had never met anyone from China. The silk had changed hands a dozen times on its way west. Along the same roads and sea lanes traveled Buddhist monks, Christian missionaries, the followers of a Persian prophet, and germs no one could see. Those germs helped bring down the two greatest empires of the age, Han China and Rome.',
+  apNote: 'This chapter is classical-era background, before the AP exam period (c. 1200–present). But it sets up Unit 2, “Networks of Exchange”: the Silk Roads, Indian Ocean monsoon trade, the spread of Buddhism, Christianity and Manichaeism, and disease along trade routes are exactly the patterns AP tests for 1200–1450. The collapse of Han China and western Rome is a classic AP comparison.',
+  themes: ['Economic systems', 'Cultural developments', 'Interaction between humans and the environment', 'Governance'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['vfe-eNq-Qyg', 'The Silk Road and Ancient Trade: Crash Course World History #9', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Follow silk, spices, faiths and germs across Eurasia, then watch Han China and western Rome fall apart.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: -330, to: 600 },
+    { label: 'The roads open', from: -330, to: 170 },
+    { label: 'Faiths on the move', from: 0, to: 450 },
+    { label: 'Collapse', from: 160, to: 500 },
+    { label: 'Long view', from: -600, to: 700 },
+  ],
+  bigIdeas: [
+    'Large, stable empires (Rome, Parthia, the Kushans, Han China) made long-distance trade safe enough to flourish by land and by sea.',
+    'Trade moved in stages: few merchants traveled the whole way, but goods passed from China to the Mediterranean over the Silk Roads and the monsoon sea lanes.',
+    'Religions spread with merchants: Buddhism and Hinduism moved east from India; Christianity and Manichaeism spread from Southwest Asia.',
+    'Trade routes also spread epidemics. Disease, internal decay and nomadic pressure brought down the Han (220 CE) and the western Roman empire (476 CE).',
+  ],
+
+  sections: [
+    {
+      id: 'trade-networks', title: 'Empires make long-distance trade possible', when: 'c. 330 BCE – 200 CE', theme: 'Economic systems', map: 0,
+      lead: 'Before the classical empires, a long trip meant crossing land with no police and no safe roads. Empires changed that by keeping order, building roads and protecting merchants.',
+      body: [
+        'Outside cities and states, travelers faced bandits, pirates and local lords who demanded payment. Few people risked long journeys.',
+        'Alexander’s conquests (334–323 BCE) and the Hellenistic kingdoms that followed linked Greece, Egypt, Persia and Bactria. Bactria and India sent spices, pepper, cosmetics, gems and pearls west. Persia and Egypt traded grain. The Mediterranean sent wine, olive oil, jewelry and art east.',
+        'By about 100 CE four empires stretched across Eurasia: Rome, Parthia (in Iran and Mesopotamia), the Kushans (in Bactria and northern India) and Han China. They maintained roads and bridges, and they used the tariffs (taxes on trade) they collected to keep routes open and safe.',
+        'A professional merchant class grew up to run this trade. At sea, sailors learned to use the monsoon winds, which made the Indian Ocean a highway.',
+      ],
+      facts: ['Hellenistic kingdoms link Greece to Bactria', 'Four empires c. 100 CE: Rome, Parthia, Kushan, Han', 'Tariffs pay for open, safe routes', 'Professional merchants and monsoon sailing'],
+      chain: ['Empires keep order', 'Roads, bridges and ports maintained', 'Travel becomes safer', 'Tariff revenue grows', 'Long-distance trade expands'],
+      soWhat: 'AP pattern: trade networks grow when strong states keep the peace, and shrink when those states collapse. You will see it again with the Mongols in the 1200s.',
+      video: ['lLeIclx2lAU', 'Early Silk Road | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'silk-roads', title: 'The Silk Roads', when: 'c. 200 BCE – 300 CE', theme: 'Economic systems', map: 1,
+      lead: 'The Silk Roads were a web of caravan routes from China to the Mediterranean, named for their most famous product. They worked only when the empires along them were stable.',
+      body: [
+        'In 138 BCE the Han emperor Wudi sent the envoy Zhang Qian west to look for allies against the Xiongnu nomads. Zhang Qian returned in 126 BCE with news of rich lands and fine horses in Central Asia. Soon the Han were sending caravans west.',
+        'From Chang’an, routes ran through the Gansu corridor to Dunhuang, split north and south around the Taklamakan Desert through oasis towns, met at Kashgar, and crossed the Pamirs to Samarkand, Bactra and Merv. From there they ran through Parthia to Mesopotamia and the ports of Syria.',
+        'Trade moved in stages. A merchant carried goods for one segment and sold them to the next trader, so prices rose at every stop. The Parthians acted as middlemen and kept Romans and Chinese apart. Romans thought silk grew on trees.',
+        'China sent silk, lacquerware and spices west. Central Asia sent horses and jade. India sent cotton, pepper and gems. Rome sent glass, wine, linen and above all gold and silver coins. Roman writers complained that luxury imports were draining their treasury.',
+      ],
+      facts: ['Zhang Qian’s mission, 138–126 BCE', 'Oasis towns around the Taklamakan Desert', 'Trade in stages; Parthian middlemen', 'Silk west; horses, glass, gold east'],
+      chain: ['Han want horses and allies', 'Zhang Qian travels west', 'Caravan routes open', 'Goods pass from trader to trader', 'Silk reaches Rome; Roman gold flows east'],
+      soWhat: 'The Silk Roads moved luxury goods for elites, but they also moved ideas and germs. Unit 2 of AP World begins with the same routes after 1200.',
+      video: ['vn3e37VWc0k', 'The Silk Road: Connecting the ancient world through trade - Shannon Harris Castelo', 'TED-Ed'],
+    },
+    {
+      id: 'sea-lanes', title: 'Monsoon sea lanes and Southeast Asia', when: 'c. 100 BCE – 500 CE', theme: 'Economic systems', map: 2,
+      lead: 'Ships could carry far more than camels. Once sailors mastered the monsoon winds, sea lanes tied Egypt, Arabia, East Africa, India, Southeast Asia and China together.',
+      body: [
+        'The monsoon winds change direction with the seasons. From about April to September they blow from the southwest, carrying ships from Arabia and Africa to India; from about November to March they blow from the northeast and carry them home.',
+        'A Greek merchant’s guide, the Periplus of the Erythraean Sea (mid-first century CE), credits a pilot named Hippalus with sailing straight across the ocean on these winds. Ships from Roman Egypt sailed from Red Sea ports to Muziris in southwest India for pepper and brought large amounts of Roman coin.',
+        'Sea trade was also organized in stages. Malay and Indian mariners dominated the eastern routes, through the Strait of Malacca to the kingdom of Funan in the Mekong delta and on to China. Persian, Egyptian and Greek sailors worked the western Indian Ocean.',
+        'By the first century CE Indian influence was clear in Southeast Asia. Local rulers called themselves rajas, used Sanskrit for writing, and adopted Hinduism and Buddhism. A Roman gold medallion of Antoninus Pius has been found at Oc Eo, Funan’s port.',
+      ],
+      facts: ['SW monsoon in summer, NE monsoon in winter', 'Periplus: Hippalus crosses the open sea', 'Malay and Indian mariners in the east', 'Rajas, Sanskrit, Hinduism in Southeast Asia'],
+      chain: ['Sailors learn the monsoon', 'Direct voyages across the ocean', 'More goods, lower cost than caravans', 'Indian merchants settle in Southeast Asia', 'Indian titles, writing and faiths spread'],
+      soWhat: 'The Indian Ocean was the world’s busiest trade zone for centuries. AP asks about it again for 1200–1450 (Swahili cities, Calicut, Malacca).',
+      video: ['a6XtBLDmPA0', 'Int\'l Commerce, Snorkeling Camels, and The Indian Ocean Trade: Crash Course World History #18', 'CrashCourse'],
+    },
+    {
+      id: 'buddhism', title: 'Buddhism and Hinduism travel', when: 'c. 200 BCE – 500 CE', theme: 'Cultural developments', map: 3,
+      lead: 'Merchants carried more than goods. Buddhism traveled with them from India through Central Asia to China and became the dominant faith of the Silk Roads from about 200 BCE to 1000 CE.',
+      body: [
+        'Indian merchants who followed the Buddha shared their faith with traders they met. Oasis towns such as Kashgar, Khotan and Dunhuang grew rich and built Buddhist monasteries, which also gave traveling merchants a place to rest and store goods. Their rulers and merchants often became Buddhists themselves.',
+        'Kushan kings such as Kanishka (2nd century CE) supported Buddhism. In Gandhara, where Greek and Indian art met, artists carved some of the first statues of the Buddha in human form.',
+        'In China, Buddhism at first was mostly the faith of foreign merchant communities. A Han prince honored the Buddha in 65 CE, but most Chinese saw it as foreign. Only from the 400s CE did it spread widely. Chinese pilgrims such as Faxian (traveled 399–412 CE) walked to India for holy texts and sailed home on merchant ships.',
+        'By sea, Buddhism reached Sri Lanka in the 200s BCE. Both Buddhism and Hinduism spread to Southeast Asia with Indian merchants and became increasingly popular there.',
+      ],
+      facts: ['Monasteries shelter merchants in oasis towns', 'Kushan kings support Buddhism', 'China: foreign merchants first, wide spread after 400 CE', 'Faxian walks to India, sails home, 399–412'],
+      chain: ['Indian merchants travel the Silk Roads', 'Oasis towns build monasteries', 'Local elites convert', 'Buddhism reaches China’s foreign communities', 'Wider spread in China after 400 CE'],
+      soWhat: 'Buddhism shows a key AP idea: belief systems spread along trade routes and change as they go. Chinese Buddhism later spread to Korea, Japan and Vietnam (chapter 14).',
+      video: ['buccc2fFw4U', 'CULTURAL Effects of Connectivity [AP World Review—Unit 2 Topic 5]', 'Heimler\'s History'],
+    },
+    {
+      id: 'christianity-mani', title: 'Christianity and Manichaeism', when: 'c. 200 – 500 CE', theme: 'Cultural developments', map: 4,
+      lead: 'From Southwest Asia, two universal faiths moved along the same routes: Christianity, and the new religion of the prophet Mani.',
+      body: [
+        'By the 200s CE Christianity was spreading across the Mediterranean basin, through the Middle East, North Africa and Europe. Missionaries like Gregory the Wonderworker (3rd century) won converts in Anatolia. Christian communities grew as far east as India, and around 330 CE the king of Axum in East Africa converted. Jews and Zoroastrians lived alongside them.',
+        'In Southwest Asia many Christians followed ascetic practices: hermits lived alone in the desert and monks lived in monastic communities. After the 400s CE, most Christians in Mesopotamia and Persia followed Nestorius, who stressed the human nature of Jesus. These Nestorians later carried Christianity along the Silk Roads to Central Asia and China.',
+        'Mani (c. 216–274 CE), raised in Mesopotamia in a Zoroastrian setting, saw himself as a prophet for all humanity. His faith mixed ideas from Zoroastrianism, Christianity and Buddhism. It was dualist: the world was a battle of good against evil, light against darkness, spirit against matter.',
+        'Manichaeans were divided into the elect, who lived ascetic lives of celibacy, vegetarianism, prayer and fasting, and the hearers, ordinary believers who supported the elect. The faith spread to cities across the Roman empire and east along the Silk Roads. Zoroastrian priests turned the Sasanid kings against Mani, who was arrested and died in prison. Roman emperors, fearing a Persian faith, persecuted Manichaeans too.',
+      ],
+      facts: ['Christian communities from Spain to India', 'Ascetic hermits and monasteries', 'Nestorians: Jesus’s human nature', 'Mani’s dualism: light vs darkness'],
+      chain: ['Merchants and missionaries travel', 'Christianity and Manichaeism spread', 'Manichaeism attracts converts in Roman and Persian cities', 'Sasanid and Roman rulers see a threat', 'Persecution: Mani dies in prison'],
+      soWhat: 'Manichaeism shows that universal faiths could also fail when states turned against them. Compare the Roman persecution of Christians before Constantine.',
+      factCheck: 'Your notes give Mani’s dates as 216–272 CE. Historians usually say he died in prison around 274 CE (some sources say 276 or 277).',
+    },
+    {
+      id: 'disease', title: 'Epidemic disease on the trade routes', when: '165 – 542 CE', theme: 'Interaction between humans and the environment', map: 5,
+      lead: 'Merchants and soldiers carried germs as well as goods. People with no immunity to new diseases died in huge numbers.',
+      body: [
+        'Diseases such as smallpox and measles moved along the Silk Roads and sea lanes into populations that had never met them. Records are limited, but the population trends are clear.',
+        'The Antonine Plague (165–180 CE), probably smallpox, came back with Roman soldiers from a war in Mesopotamia and killed millions. Another epidemic, the Plague of Cyprian, struck in the 250s. China suffered repeated epidemics from the 160s to the 180s.',
+        'Historians estimate that the Roman empire fell from about 60 million people to about 45 million by 400 CE, and China from about 60 million in 200 CE to about 45 million in 600 CE. In 541–542 the first known outbreak of bubonic plague, the Plague of Justinian, hit the Mediterranean.',
+        'With fewer workers and buyers, both economies slowed. People turned away from long-distance trade toward regional self-sufficiency: estates and regions produced what they needed locally.',
+      ],
+      facts: ['Smallpox, measles, later bubonic plague', 'Antonine Plague, 165–180 CE', 'Rome and China each lose about a quarter of their people', 'Shift to regional self-sufficiency'],
+      chain: ['Trade links distant peoples', 'New germs reach people without immunity', 'Epidemics kill millions', 'Fewer workers and taxpayers', 'Trade shrinks; regions become self-sufficient'],
+      soWhat: 'Disease is a recurring AP theme: the Black Death (1340s) spread along the same routes, and the Columbian Exchange (1500s) did even more damage in the Americas.',
+    },
+    {
+      id: 'fall-han', title: 'The fall of the Han', when: '184 – 589 CE', theme: 'Governance', map: 6,
+      lead: 'The Han rotted from the inside before nomads moved in from the outside. After 220 CE China stayed divided for more than 350 years.',
+      body: [
+        'At court, eunuchs, empresses’ families and officials fought for power. In the countryside, large landholders grabbed more and more land, built private armies and stopped paying taxes, while peasants fell into debt. Epidemics made everything worse.',
+        'In 184 CE the Yellow Turban uprising, led by a Daoist healer who promised a new age of “Great Peace,” swept across northern China. Generals crushed it, but then they took power themselves, allied with the landowners, and turned the emperor into a puppet.',
+        'In 220 CE the last Han emperor gave up the throne. China split into three kingdoms (Wei, Shu and Wu). Nomadic peoples such as the Xiongnu and Xianbei moved into northern China and set up their own states.',
+        'Over time the nomads were sinicized: they farmed, took Chinese names and dress, and married into Chinese families. With the political order in ruins, many Chinese doubted Confucian teachings and turned to Buddhism and Daoism, religions of salvation that promised comfort in hard times. China was not reunified until the Sui dynasty in 589.',
+      ],
+      facts: ['Court intrigue and greedy landlords', 'Yellow Turbans, 184 CE', 'Han ends 220 CE; Three Kingdoms', 'Nomads sinicized; Buddhism and Daoism grow'],
+      chain: ['Landlords build private armies', 'Peasants ruined; epidemics', 'Yellow Turban uprising, 184', 'Generals take power', 'Han abolished, 220 CE', 'Nomads settle north; Buddhism spreads'],
+      soWhat: 'China lost its empire but kept its culture: invaders became Chinese, and the Sui and Tang rebuilt a unified state (chapter 14). That is a key difference from western Rome.',
+      video: ['6L9jWmLkaS0', 'Zhou, Qin and Han Dynasties | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes say the Han dynasty was abolished in 200 CE. The standard date is 220 CE, when the last Han emperor, Xian, abdicated to Cao Pi, founder of the Wei kingdom.',
+    },
+    {
+      id: 'fall-rome', title: 'The fall of western Rome and the Christian empire', when: '235 – 476 CE', theme: 'Governance', map: 7,
+      lead: 'Rome faced the same problems as the Han: weak leaders, disease, a shrinking economy and pressure on its frontiers. The east survived; the west did not. Meanwhile Christianity became the empire’s official faith.',
+      body: [
+        'From 235 to 284 CE the “barracks emperors” fought over the throne: about 26 men claimed power in 50 years, and nearly all died violently. Epidemics and civil war broke the imperial economy into local, self-sufficient ones. Diocletian (r. 284–305) divided the empire into two administrative halves, each with a co-emperor and a lieutenant (the tetrarchs), and reformed the currency and budget. After he retired, civil war returned; Constantine emerged the winner and in 330 founded a new capital, Constantinople.',
+        'The Visigoths had lived on the frontier for years as a buffer and had absorbed Roman law and Christianity. In 376, fleeing the Huns, they crossed the Danube; in 378 they killed the emperor Valens at Adrianople. Germanic peoples then poured in. The Visigoths sacked Rome in 410, Vandals took North Africa in 439, and Attila’s Huns invaded Gaul in 451. In 476 the Germanic general Odoacer deposed the last western emperor, Romulus Augustulus.',
+        'Christianity grew in these same centuries. Constantine said he saw a vision before a battle in 312; in 313 the Edict of Milan allowed Christians to worship freely, and he later became a Christian. In 380 Emperor Theodosius made Christianity the official religion of the empire.',
+        'St. Augustine (354–430) of Hippo in North Africa tried Greek philosophy and Manichaeism before converting to Christianity in 387 and became its greatest theologian. Church leaders argued about the divinity of Jesus and the role of women, and built a hierarchy of bishops under patriarchs, with the bishop of Rome (the pope) claiming first place.',
+      ],
+      facts: ['Barracks emperors, 235–284 CE', 'Diocletian’s tetrarchy; Constantinople, 330', 'Visigoths sack Rome 410; last western emperor deposed 476', 'Edict of Milan 313; official religion 380'],
+      chain: ['Civil wars and epidemics', 'Economy breaks into regions', 'Huns push Goths across the Danube', 'Germanic kingdoms take the west', 'Western empire ends, 476 CE'],
+      soWhat: 'The eastern half lived on as the Byzantine empire until 1453, and the Church became the strongest institution in western Europe (both in chapter 16).',
+      video: ['3PszVWZNWVA', 'Fall of The Roman Empire...in the 15th Century: Crash Course World History #12', 'CrashCourse'],
+      factCheck: 'Your notes say the Huns under Attila attacked the Visigoths in the fifth century and that Germans “established a Germanic emperor” in 476. In fact the Huns drove the Goths across the Danube in the 370s, decades before Attila led them (c. 434–453). And Odoacer did not call himself emperor: he ruled Italy as king and sent the imperial regalia to the eastern emperor in Constantinople.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: -323, end: -30, label: 'Hellenistic kingdoms trade', track: 'society', detail: 'Alexander’s successors link Greece, Egypt, Persia and Bactria. Spices and gems go west; wine and oil go east.' },
+    { year: -138, end: -126, label: 'Zhang Qian’s mission west', track: 'politics', detail: 'The Han emperor Wudi sends him to Central Asia to find allies against the Xiongnu.' },
+    { year: -130, label: 'Silk Roads open', track: 'society', detail: 'Approximate. Han caravans begin to travel west; silk reaches the Mediterranean.' },
+    { year: -104, end: -101, label: 'Han war for Ferghana horses', track: 'war', detail: 'Han armies march to Central Asia to win the famous “heavenly horses.”' },
+    { year: 30, label: 'Kushan empire rises', track: 'politics', detail: 'Approximate. Nomads from Central Asia build an empire in Bactria and northern India.' },
+    { year: 65, label: 'Buddhism at the Han court', track: 'religion', detail: 'Liu Ying, a Han prince, honors the Buddha: the first clear record of Buddhism in China.' },
+    { year: 127, end: 150, label: 'Kanishka, Kushan patron of Buddhism', track: 'religion', detail: 'Approximate dates. Gandharan art shows the Buddha in human form.' },
+    { year: 165, end: 180, label: 'Antonine Plague', track: 'society', detail: 'Probably smallpox. Brought back by soldiers from Mesopotamia; kills millions in the Roman empire.' },
+    { year: 166, label: '“Roman envoys” reach China', track: 'politics', detail: 'The Hou Hanshu says envoys of “An-tun” (Marcus Aurelius) arrived by sea. They may have been merchants.' },
+    { year: 184, label: 'Yellow Turban uprising', track: 'war', detail: 'A huge peasant revolt led by a Daoist healer. Generals crush it and take power.' },
+    { year: 220, label: 'Han dynasty ends', track: 'politics', detail: 'The last emperor abdicates. China splits into three kingdoms (220–280).' },
+    { year: 224, label: 'Sasanids replace the Parthians', track: 'politics', detail: 'A new Persian dynasty that backs Zoroastrianism.' },
+    { year: 216, end: 274, label: 'Life of Mani', track: 'religion', detail: 'Prophet of Manichaeism. He dies in a Sasanid prison (date approximate).' },
+    { year: 235, end: 284, label: 'Barracks emperors', track: 'politics', detail: 'About 26 claimants in 50 years; nearly all die violently.' },
+    { year: 284, end: 305, label: 'Diocletian divides the empire', track: 'politics', detail: 'Two halves, co-emperors and lieutenants (the tetrarchy); currency and budget reforms.' },
+    { year: 312, label: 'Constantine’s vision', track: 'religion', detail: 'Before the battle of the Milvian Bridge, he says he saw a sign of Christ.' },
+    { year: 313, label: 'Edict of Milan', track: 'religion', detail: 'Constantine and Licinius allow Christians to worship freely.' },
+    { year: 330, label: 'Constantinople founded', track: 'politics', detail: 'Constantine’s new capital on the site of Byzantium.' },
+    { year: 376, label: 'Visigoths cross the Danube', track: 'war', detail: 'Fleeing the Huns. In 378 they kill Emperor Valens at Adrianople.' },
+    { year: 380, label: 'Christianity becomes official', track: 'religion', detail: 'Emperor Theodosius makes it the religion of the empire. The empire splits for good at his death in 395.' },
+    { year: 387, label: 'Augustine converts', track: 'religion', detail: 'Baptized in Milan after years as a Manichaean hearer; later bishop of Hippo.' },
+    { year: 399, end: 412, label: 'Faxian’s pilgrimage to India', track: 'religion', detail: 'Walks across Central Asia for Buddhist texts; sails home via Sri Lanka.' },
+    { year: 410, label: 'Visigoths sack Rome', track: 'war', detail: 'Led by Alaric. The first sack of Rome in 800 years.' },
+    { year: 431, label: 'Nestorius condemned', track: 'religion', detail: 'Council of Ephesus. His followers form the Church of the East in Persia.' },
+    { year: 451, label: 'Attila invades Gaul', track: 'war', detail: 'Romans and Visigoths stop the Huns; Attila raids Italy in 452 and dies in 453.' },
+    { year: 476, label: 'Last western emperor deposed', track: 'politics', detail: 'Odoacer removes Romulus Augustulus and rules Italy as king.' },
+    { year: -268, end: -232, label: 'Ashoka spreads Buddhism', track: 'world', detail: 'The Mauryan emperor sends missionaries, including to Sri Lanka.' },
+    { year: 320, label: 'Gupta empire founded', track: 'world', detail: 'India’s classical golden age; Hinduism revives (background for chapter 15).' },
+    { year: 527, end: 565, label: 'Justinian rules Byzantium', track: 'world', detail: 'Bubonic plague strikes his empire in 541–542 (chapter 16).' },
+    { year: 589, label: 'Sui reunify China', track: 'world', detail: 'Ends more than 350 years of division (chapter 14).' },
+  ],
+
+  terms: [
+    ['Silk Roads', 'Network of caravan routes linking China, Central Asia, India, Persia and the Mediterranean.', 'The main overland trade network of Eurasia.'],
+    ['Hellenistic trade', 'Commerce across the kingdoms founded by Alexander’s successors.', 'Linked the Mediterranean with Persia, Bactria and India.'],
+    ['Tariffs', 'Taxes on goods that cross a border or pass a market.', 'Gave empires money and a reason to keep routes safe.'],
+    ['Monsoon', 'Seasonal winds: southwest in summer, northeast in winter.', 'Made regular Indian Ocean voyages possible.'],
+    ['Periplus of the Erythraean Sea', 'Greek merchant’s guide to Red Sea and Indian Ocean ports, mid-1st century CE.', 'Shows what Rome bought and sold in India.'],
+    ['Trade in stages', 'Goods passed from merchant to merchant over short segments.', 'Few traders made the whole journey; prices rose at each step.'],
+    ['Oasis towns', 'Desert cities such as Kashgar, Khotan and Dunhuang.', 'Rest stops and markets that became Buddhist centers.'],
+    ['Zhang Qian', 'Han envoy sent to Central Asia, 138–126 BCE.', 'His reports helped open the Silk Roads.'],
+    ['Parthians', 'Iranian empire between Rome and Central Asia (247 BCE–224 CE).', 'Middlemen who controlled the silk trade.'],
+    ['Kushans', 'Empire in Bactria and northern India, c. 30–375 CE.', 'Linked the Silk Roads with India; patrons of Buddhism.'],
+    ['Rajas', 'Indian title for kings, adopted by Southeast Asian rulers.', 'Sign of Indian influence spread by sea trade.'],
+    ['Sanskrit', 'Classical language of India, used for writing in Southeast Asia.', 'Carried Hindu and Buddhist texts and ideas.'],
+    ['Buddhist monasteries', 'Communities of monks in oasis towns along the Silk Roads.', 'Sheltered merchants and spread the faith.'],
+    ['Faxian', 'Chinese monk who traveled to India for Buddhist texts, 399–412 CE.', 'His record describes travel by land and sea.'],
+    ['Gregory the Wonderworker', '3rd-century bishop who spread Christianity in Anatolia.', 'Example of missionary work in the Roman east.'],
+    ['Nestorians', 'Christians who stressed Jesus’s human nature (after Nestorius).', 'Dominant church in Persia; later reached China.'],
+    ['Asceticism', 'Giving up comfort and pleasure for spiritual reasons.', 'Shaped Christian hermits, monks and the Manichaean elect.'],
+    ['Manichaeism', 'Faith of the prophet Mani (c. 216–274 CE).', 'A universal religion spread along the Silk Roads.'],
+    ['Dualism', 'Belief that the world is a struggle of good and evil, light and dark, spirit and matter.', 'Core idea of Manichaeism.'],
+    ['Elect and hearers', 'Manichaean ascetics and the lay believers who supported them.', 'Shows how the faith organized its followers.'],
+    ['Sasanids', 'Persian dynasty (224–651 CE) that favored Zoroastrianism.', 'Persecuted Mani and his followers.'],
+    ['Regional self-sufficiency', 'Producing what you need locally instead of trading far away.', 'Result of epidemics and collapse.'],
+    ['Yellow Turban uprising', 'Huge peasant revolt in China, 184 CE.', 'Helped bring down the Han dynasty.'],
+    ['Sinicization', 'Adopting Chinese ways: farming, names, dress, marriage.', 'Nomads who conquered north China became Chinese.'],
+    ['Barracks emperors', 'Army-backed Roman emperors of 235–284 CE.', 'Their civil wars weakened the empire.'],
+    ['Diocletian and the tetrarchy', 'Emperor (r. 284–305) who split rule among co-emperors and lieutenants.', 'Brief stability; divided east and west.'],
+    ['Edict of Milan', '313 CE decree allowing Christians to worship freely.', 'Ended persecution; Christianity grows fast.'],
+    ['St. Augustine', 'Bishop of Hippo (354–430), former Manichaean.', 'Most influential early Christian theologian.'],
+  ],
+
+  compare: [
+    {
+      title: 'Fall of Han China vs fall of western Rome (a favorite AP comparison)',
+      head: ['', 'Han China', 'Western Roman empire'],
+      rows: [
+        ['End date', '220 CE (last Han emperor abdicates)', '476 CE (last western emperor deposed)'],
+        ['Internal problems', 'Court intrigue; landlords with private armies; Yellow Turban revolt', 'Barracks emperors and civil war; economy breaks into regions'],
+        ['Disease', 'Epidemics from the 160s; population about 60 → 45 million (200–600)', 'Antonine Plague and others; population about 60 → 45 million by 400'],
+        ['Outside pressure', 'Xiongnu, Xianbei and other nomads settle the north', 'Huns push Visigoths and other Germanic peoples into the empire'],
+        ['Religion afterwards', 'Buddhism and Daoism grow as Confucian order fails', 'Christianity becomes official (380) and the Church grows stronger'],
+        ['What came next', 'Nomads sinicized; China reunified by the Sui in 589', 'Germanic kingdoms in the west; the east survives as Byzantium'],
+      ],
+    },
+    {
+      title: 'Spread of Buddhism vs spread of Christianity',
+      head: ['', 'Buddhism', 'Christianity'],
+      rows: [
+        ['Origin', 'Northern India, c. 500 BCE', 'Judea in the Roman empire, c. 30 CE'],
+        ['Carried by', 'Merchants, monks and pilgrims (Faxian)', 'Missionaries, merchants and travelers (Paul, Gregory)'],
+        ['Routes', 'Silk Roads to Central Asia and China; sea lanes to Sri Lanka and Southeast Asia', 'Roman roads and Mediterranean sea lanes; east to Persia and India'],
+        ['Royal support', 'Ashoka; Kushan kings such as Kanishka', 'Constantine (313) and Theodosius (380)'],
+        ['Appeal', 'Salvation from suffering, open to all classes', 'Salvation and equal worth before God, open to all'],
+        ['Similarity', 'Both universal faiths spread along trade networks', 'Both grew fastest when old political orders were collapsing'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Pliny the Elder, a Roman official and naturalist, writing in Rome, c. 77 CE (the Seres are the Chinese)', text: 'But it is the sea of Arabia that has even a still greater right to be called “happy,” for it is this that furnishes us with pearls. At the very lowest computation, India, the Seres, and the Arabian Peninsula, withdraw from our empire one hundred millions of sesterces every year—so dearly do we pay for our luxury and our women.', cite: 'Pliny the Elder, Natural History 12.41, trans. J. Bostock and H. T. Riley (1855)' },
+      questions: [
+        { q: 'The passage best illustrates which feature of trade between Rome and Asia?', options: ['Rome exported more manufactured goods than it imported', 'Rome paid for Asian luxury goods largely with gold and silver', 'Chinese merchants regularly traveled to Rome to sell silk', 'Trade with Asia was controlled by the Roman Senate'], correct: 1, why: 'Pliny complains that money flows out of the empire to pay for luxuries; Roman coins have been found in India.' },
+        { q: 'The product the Romans most wanted from the Seres was most likely', options: ['pepper', 'pearls', 'silk', 'horses'], correct: 2, why: 'The Seres (Chinese) were known to Romans almost entirely as the source of silk.' },
+        { q: 'A historian using this passage should consider that Pliny', options: ['was a Chinese official who wanted to limit trade', 'was a Roman moralist who disapproved of luxury, so he may have exaggerated the cost', 'had traveled the whole Silk Road himself', 'was writing after the fall of the western Roman empire'], correct: 1, why: 'Point of view: Pliny criticized luxury (and blames “our women”), so his figure is a complaint, not an exact account.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'The Hou Hanshu (History of the Later Han), compiled by the Chinese court historian Fan Ye c. 445 CE from Han records, describing Ta-ts’in (the Roman empire or its eastern provinces). Ar-hsi is Parthia.', text: 'They make coins of gold and silver. Ten units of silver are worth one of gold. They traffic by sea with Ar-hsi and T’ien-chu [India], the profit of which trade is ten-fold. … Their kings always desired to send embassies to Zhongguo [China], but the Ar-hsi wished to carry on trade with them in Han silks, and it is for this reason that they were cut off from communication. This lasted till the ninth year of the Yen-hsi period during the emperor Huan-ti’s reign [166 C.E.] when the king of Ta-ts’in, An-tun [Marcus Aurelius Antoninus], sent an embassy who, from the frontier of Jih-nan [Annam] offered ivory, rhinoceros horns, and tortoise shell.', cite: 'Hou Hanshu ch. 88, trans. F. Hirth, China and the Roman Orient (1885), as edited in the Internet East Asian History Sourcebook' },
+      questions: [
+        { q: 'According to the passage, direct contact between Rome and China was blocked mainly because', options: ['the Taklamakan Desert could not be crossed', 'Parthian merchants wanted to keep control of the silk trade as middlemen', 'the Han emperors refused to receive foreigners', 'Rome had no ships that could sail the Indian Ocean'], correct: 1, why: 'The Parthians (Ar-hsi) profited by standing between Rome and China, which is why trade moved in stages.' },
+        { q: 'The route taken by the embassy of 166 CE, arriving through Jih-nan (Vietnam), suggests that', options: ['the overland Silk Roads were the only link between Rome and China', 'sea lanes through the Indian Ocean and Southeast Asia could bypass Parthia', 'Roman armies had conquered India', 'Buddhism had become the religion of Rome'], correct: 1, why: 'Arriving by sea from the south shows the monsoon sea lanes linked the Roman world to China without going through Parthia.' },
+        { q: 'Which is the best reason to be careful when using this source as evidence about Rome?', options: ['It was written by a Roman who disliked China', 'It was compiled centuries later from secondhand reports by people who had never seen Rome', 'It was written in Latin and poorly translated', 'It describes only Chinese farming'], correct: 1, why: 'Sourcing: Chinese officials relied on reports from foreign travelers; the text itself doubts the embassy because it brought no jewels.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'The Periplus of the Erythraean Sea, a guide written in Greek by an unknown merchant from Roman Egypt, mid-first century CE, describing Muziris and other ports of southwest India', text: 'They send large ships to these market-towns on account of the great quantity and bulk of pepper and malabathrum. There are imported here, in the first place, a great quantity of coin; topaz, thin clothing, not much; figured linens, antimony, coral, crude glass, copper, tin, lead… There is exported pepper, which is produced in quantity in only one region near these markets… Hippalus was the pilot who by observing the location of the ports and the conditions of the sea, first discovered how to lay his course straight across the ocean. For at the same time when with us the Etesian winds are blowing, on the shores of India the wind sets in from the ocean, and this southwest wind is called Hippalus, from the name of him who first discovered the passage across.', cite: 'Periplus of the Erythraean Sea 56–57, trans. W. H. Schoff (1912)' },
+      questions: [
+        { q: 'The “southwest wind” described in the passage is', options: ['the summer monsoon, which carried ships from Arabia and Africa to India', 'a desert wind that blocked caravans in Central Asia', 'the wind that carried Chinese ships to Rome', 'a storm that ended Indian Ocean trade'], correct: 0, why: 'The southwest monsoon blows toward India in summer; the northeast monsoon brings ships back in winter.' },
+        { q: 'The phrase “a great quantity of coin” is most consistent with which other evidence?', options: ['Faxian’s description of the desert', 'Pliny’s complaint that Asian luxuries drained money from Rome', 'The Yellow Turban uprising', 'The Edict of Milan'], correct: 1, why: 'Both sources show Roman coin flowing east to pay for pepper, pearls and silk.' },
+        { q: 'The main purpose of the Periplus was most likely to', options: ['convert Indians to Christianity', 'give practical advice to merchants about ports, goods and winds', 'record the laws of the Kushan empire', 'praise the Roman emperor'], correct: 1, why: 'It lists what to buy, what to sell and when to sail: a handbook for traders.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Faxian, a Chinese Buddhist monk, describing his journey to India for Buddhist texts (399–412 CE), written soon after his return to China', text: 'Le Hao, the prefect of T’un-hwang, had supplied them with the means of crossing the desert (before them), in which there are many evil demons and hot winds. (Travellers) who encounter them perish all to a man. There is not a bird to be seen in the air above, nor an animal on the ground below. … Having obtained these Sanskrit works, he took passage in a large merchantman, on board of which there were more than 200 men, and to which was attached by a rope a smaller vessel, as a provision against damage or injury to the large one from the perils of the navigation.', cite: 'Faxian, A Record of Buddhistic Kingdoms, chs. 1 and 40, trans. J. Legge (1886)' },
+      questions: [
+        { q: 'Faxian’s journey best illustrates which development?', options: ['Chinese emperors forcing Buddhism on Central Asia', 'Buddhism spreading to China through travel and the exchange of texts along trade routes', 'The decline of Buddhism in India and China', 'Christian missionaries reaching China'], correct: 1, why: 'He traveled to India to bring Sanskrit Buddhist texts home, a typical way Buddhism spread east.' },
+        { q: 'That Faxian sailed home on a large merchant ship suggests that', options: ['religious travelers depended on the same networks as merchants', 'monks owned most ships in the Indian Ocean', 'sea travel was safer than land travel in every way', 'Buddhism was spread only by sea'], correct: 0, why: 'Monks and pilgrims rode with caravans and merchant ships; faith and trade traveled together.' },
+        { q: 'The dangers described in the desert help explain why', options: ['the Silk Roads were run in stages through oasis towns', 'the Han dynasty collapsed in 220 CE', 'Rome built roads in Gaul', 'the monsoon changed direction'], correct: 0, why: 'Long desert crossings were deadly, so traders moved between oases and passed goods along.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Ammianus Marcellinus, a retired Roman army officer from Antioch, writing in Rome c. 390 CE about the Goths on the Danube in 376 CE', text: 'Accordingly, under the command of their leader Alavivus, they occupied the banks of the Danube; and having sent ambassadors to Valens, they humbly entreated to be received by him as his subjects, promising to live quietly, and to furnish a body of auxiliary troops if any necessity for such a force should arise. … the affair seemed a cause of joy rather than of fear, according to the skilful flatterers who were always extolling and exaggerating the good fortune of the emperor; congratulating him that an embassy had come from the furthest corners of the earth unexpectedly, offering him a large body of recruits… In this way, through the turbulent zeal of violent people, the ruin of the Roman empire was brought on.', cite: 'Ammianus Marcellinus, Roman History 31.4, trans. C. D. Yonge (1862)' },
+      questions: [
+        { q: 'The Goths described in the passage came to the Danube mainly because', options: ['they were fleeing the Huns, who had attacked them from the east', 'the Roman emperor had invited them to conquer Persia', 'an epidemic had emptied the Roman provinces', 'they wanted to escape the Yellow Turbans'], correct: 0, why: 'Ammianus begins Book 31 with the Huns, who drove the Goths from their lands toward Rome.' },
+        { q: 'Why did Roman leaders first welcome the Goths, according to the passage?', options: ['They hoped to gain soldiers for the army', 'They wanted to convert them to Christianity', 'They needed Goths to farm silk', 'The Senate ordered it'], correct: 0, why: 'Flatterers told Valens the Goths would give him a huge supply of recruits.' },
+        { q: 'Ammianus’s claim that this event “brought on” the ruin of the empire is shaped most by the fact that he', options: ['wrote after the Goths destroyed a Roman army and killed Valens at Adrianople in 378', 'was a Goth who wanted to defend his people', 'wrote after Odoacer deposed the last western emperor', 'had never served in the Roman army'], correct: 0, why: 'Sourcing: writing around 390, he knew the disaster at Adrianople that followed. He wrote before 410 and 476.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE similarity in the causes of the collapse of Han China and the western Roman empire.',
+        'Explain ONE difference between what happened in China and in western Europe after their empires collapsed.',
+        'Explain ONE way the collapse of either empire affected religion.',
+      ],
+      guide: [
+        'Accept: internal political weakness (court intrigue / barracks emperors); epidemics that cut the population; economic decline and regional self-sufficiency; pressure from nomadic or migrating peoples; powerful landowners.',
+        'Accept with explanation: nomads in China were sinicized and China was reunified by the Sui (589), while the western empire was never rebuilt and Germanic kingdoms took over; the eastern Roman empire survived; Chinese culture and bureaucracy revived, while the Church replaced the state as the main institution in the west.',
+        'Accept with explanation: in China, Buddhism and Daoism gained followers because Confucian order seemed to have failed; in Rome, Christianity became the official religion (380) and the Church grew stronger as the state weakened.',
+      ],
+      model: [
+        'Both empires were weakened by epidemics: the Antonine Plague and other outbreaks cut Rome’s population from about 60 to 45 million, and China lost a similar share.',
+        'Nomads who settled in northern China adopted Chinese names, dress and farming, so Chinese culture survived and the Sui reunified China in 589. In the west, Germanic kingdoms replaced Roman rule, and no one rebuilt the western empire.',
+        'When the Han fell, many Chinese doubted Confucian teachings and turned to Buddhism, which promised salvation in a time of chaos.',
+      ],
+    },
+    {
+      prompt: 'Use the passage from Faxian in the practice questions above.',
+      parts: [
+        'Identify ONE belief system that spread along the Silk Roads or sea lanes between 200 BCE and 600 CE.',
+        'Explain ONE way trade networks helped that belief system spread.',
+        'Explain ONE reason a belief system that spread along these routes faced opposition.',
+      ],
+      guide: [
+        'Accept: Buddhism, Hinduism, Christianity (including Nestorian Christianity), Manichaeism.',
+        'Accept with explanation: merchants shared their faith with trading partners; monasteries in oasis towns sheltered merchants and gained patrons; pilgrims like Faxian traveled with caravans and merchant ships; Indian merchants brought Hinduism and Buddhism to Southeast Asian rulers.',
+        'Accept with explanation: Sasanid kings, urged by Zoroastrian priests, persecuted Manichaeans and imprisoned Mani; Romans persecuted Manichaeans as a Persian faith; many Chinese saw Buddhism as foreign; Roman emperors persecuted Christians before 313.',
+      ],
+      model: [
+        'Buddhism spread from India through Central Asia to China.',
+        'Oasis towns such as Kashgar and Dunhuang built Buddhist monasteries that also housed traveling merchants, and monks like Faxian traveled with caravans and on merchant ships, so the faith moved with trade.',
+        'Manichaeism faced opposition because Zoroastrian priests saw it as a threat; the Sasanid king had Mani arrested, and he died in prison. Roman emperors also persecuted it because it came from their enemy, Persia.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which long-distance trade networks changed the societies of Afro-Eurasia between c. 200 BCE and 600 CE.',
+    theses: [
+      { text: 'The Silk Roads and sea lanes connected many societies between 200 BCE and 600 CE.', ok: false, why: 'True but too general. It does not answer “to what extent” they changed societies.' },
+      { text: 'Trade networks greatly changed Afro-Eurasian societies by spreading new religions and deadly diseases, although most people still lived as farmers and trade mainly served elites.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both change (religion, disease) and continuity (farming life, elite trade).' },
+      { text: 'Silk was the most important product traded on the Silk Roads.', ok: false, why: 'A fact, not an argument about change.' },
+    ],
+    contextHint: 'What was Eurasia like around 200 BCE that matters for the question?',
+    contextStart: 'By about 200 BCE, four large empires…',
+    context: 'After about 200 BCE, Rome, Parthia, the Kushans and Han China kept order across Eurasia. Their roads, protected routes and tariffs, plus sailors’ knowledge of the monsoon, made long-distance trade safer than ever before.',
+    evidence: [
+      { text: 'Buddhism spread from India through Central Asian oasis towns to China.', side: 'change' },
+      { text: 'Southeast Asian rulers took the title raja and wrote in Sanskrit.', side: 'change' },
+      { text: 'Epidemics cut the populations of Rome and China by about a quarter.', side: 'change' },
+      { text: 'Christianity and Manichaeism spread east into Persia, India and Central Asia.', side: 'change' },
+      { text: 'Most people remained farmers; silk, spices and pearls were luxuries for elites.', side: 'continuity' },
+      { text: 'Trade moved in stages, so few people ever met traders from distant lands.', side: 'continuity' },
+      { text: 'Nomads in north China adopted Chinese ways, so Chinese culture survived the Han collapse.', side: 'continuity' },
+      { text: 'Zoroastrian Persia persecuted Manichaeism and kept its state religion.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining both sides: trade carried ideas and germs that transformed religion and population, but daily life for most farmers stayed the same, and local traditions often absorbed or resisted the new ideas. You could also note a paradox: the trade that enriched the empires spread the diseases that helped bring them down.',
+  },
+
+  recall: [
+    { q: 'Who were the Parthians in Silk Road trade?', a: 'Middlemen between Rome and China' },
+    { q: 'Which winds made Indian Ocean voyages regular?', a: 'The monsoon winds' },
+    { q: 'Which religion became the dominant faith of the Silk Roads, 200 BCE–1000 CE?', a: 'Buddhism' },
+    { q: 'What was the core belief of Manichaeism?', a: 'Dualism: good vs evil, light vs dark' },
+    { q: 'When did the Han dynasty and the western Roman empire end?', a: '220 CE and 476 CE' },
+  ],
+}

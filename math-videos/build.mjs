@@ -6,29 +6,28 @@ import { features, makeConic, stdLatex, surdNum } from '../math-self-learning/sr
 import { ELEMENT_LIST } from '../chemistry-self-learning/src/elements.js'
 import { cellOf } from '../chemistry-self-learning/src/grid.js'
 import { position, configOf, orbitals as orbitalBoxes } from '../chemistry-self-learning/src/electrons.js'
-import { LAKES as H_LAKES, LAND as H_LAND, MAP as H_MAP, RIVERS as H_RIVERS, project as hProject } from '../history-self-learning/src/geo/mediterranean.js'
-import { CITIES as H_CITIES, MAP_STEPS as H_STEPS } from '../history-self-learning/src/geo/rome.js'
+import { pathOf, routeLabelAt, viewBoxOf } from '../history-self-learning/src/mapView.js'
 
-// History: the history site's Mediterranean map and its steps, projected to SVG paths.
-function histMapData() {
-  const ASPECT = H_MAP.h / H_MAP.w
-  const vbOf = view => {
-    if (!view) return [0, 0, H_MAP.w, H_MAP.h]
-    const [x0, y0] = hProject(view[0], view[3]), [x1, y1] = hProject(view[2], view[1])
-    let w = x1 - x0, h = y1 - y0
-    if (h / w > ASPECT) { const nw = h / ASPECT; return [x0 - (nw - w) / 2, y0, nw, h] }
-    const nh = w * ASPECT; return [x0, y0 - (nh - h) / 2, w, nh]
-  }
-  const path = pts => 'M' + pts.map(p => hProject(...p).map(v => v.toFixed(1)).join(',')).join('L')
+// History: a chapter's map from the history site (src/maps/ch<n>.js) with its base maps, projected to SVG paths.
+// Each step carries the name of its base map; the player draws that base.
+async function histMapData(l) {
+  const map = (await import(`../history-self-learning/src/maps/ch${l.chapter ?? 11}.js`)).default
+  const names = [...new Set([map.base, ...map.steps.map(s => s.base).filter(Boolean)])]
+  const bases = Object.fromEntries(await Promise.all(names.map(async n => [n, await import(`../history-self-learning/src/geo/${n}.js`)])))
+  const aspect = l.aspect ?? map.aspect ?? 0.62
   return {
-    type: 'histmap', w: H_MAP.w, h: H_MAP.h, land: H_LAND, lakes: H_LAKES, rivers: Object.values(H_RIVERS),
-    steps: H_STEPS.map(s => ({
-      title: s.title, vb: vbOf(s.view),
-      lands: (s.lands ?? []).map(l => ({ label: l.label, color: l.color, faint: !!l.faint, d: l.polys.map(p => path(p) + 'Z').join(''), at: l.at ? hProject(...l.at) : null })),
-      routes: (s.routes ?? []).map(r => ({ d: path(r.pts), color: r.color, dashed: !!r.dashed, arrow: !!r.arrow, label: r.label ?? '', at: hProject(...(r.labelAt ?? r.pts[Math.floor(r.pts.length / 2)])) })),
-      cities: (s.cities ?? []).map(id => { const c = H_CITIES[id]; const [x, y] = hProject(...c.at); return { name: c.name, x, y, big: !!c.big, side: c.side ?? 'right' } }),
-      tags: (s.tags ?? []).map(t => { const [x, y] = hProject(...t.at); return { text: t.text, x, y } }),
-    })),
+    type: 'histmap',
+    bases: Object.fromEntries(names.map(n => { const B = bases[n]; return [n, { w: B.MAP.w, h: B.MAP.h, land: B.LAND, lakes: B.LAKES, rivers: Object.values(B.RIVERS) }] })),
+    steps: map.steps.map(s => {
+      const bn = s.base ?? map.base, B = bases[bn], P = (lon, lat) => B.project(lon, lat), vb = viewBoxOf(B, s.view, aspect)
+      return {
+        title: s.title, base: bn, vb: [vb.x, vb.y, vb.w, vb.h],
+        lands: (s.lands ?? []).map(t => ({ label: t.label, color: t.color, faint: !!t.faint, d: t.polys.map(p => pathOf(B, p) + 'Z').join(''), at: t.at ? P(...t.at) : null })),
+        routes: (s.routes ?? []).map(r => ({ d: pathOf(B, r.pts), color: r.color, dashed: !!r.dashed, arrow: !!r.arrow, label: r.label ?? '', at: P(...routeLabelAt(r)) })),
+        cities: (s.cities ?? []).map(id => { const c = map.cities[id]; if (!c) throw new Error(`unknown city ${id}`); const [x, y] = P(...c.at); return { name: c.name, x, y, big: !!c.big, side: c.side ?? 'right' } }),
+        tags: (s.tags ?? []).map(t => { const [x, y] = P(...t.at); return { text: t.text, x, y } }),
+      }
+    }),
   }
 }
 
@@ -200,7 +199,7 @@ function orbitalData(l) {
 const layouts = {}
 for (const [name, l] of Object.entries(spec.layouts ?? {})) {
   if (l.type === 'ptable') layouts[name] = ptableData()
-  if (l.type === 'histmap') layouts[name] = histMapData()
+  if (l.type === 'histmap') layouts[name] = await histMapData(l)
   if (l.type === 'orbitals') layouts[name] = orbitalData(l)
   if (l.type === 'longdiv') layouts[name] = { type: 'longdiv', ...longDivCells(l.num, l.den) }
   if (l.type === 'synth') layouts[name] = { type: 'synth', ...syntheticCells(l.num, l.k) }

@@ -1,0 +1,348 @@
+// Chapter 19 · The Increasing Influence of Europe (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch19.js.
+export default {
+  hook: 'Around the year 1000, western Europe was a poor, rural corner of Eurasia, far behind Byzantium, the Islamic world and Song China. Three centuries later its population had roughly doubled, its towns were full of merchants and guilds, and its universities were arguing about Aristotle. Its knights had marched more than 3,000 kilometers to capture Jerusalem. And in 1204 crusaders even sacked Constantinople, the greatest Christian city in the world.',
+  apNote: 'This chapter falls inside the AP World History exam period (c. 1200–present). AP Unit 1.6, “Developments in Europe,” tests exactly this material: decentralized monarchies, feudalism and manorialism, the power of the Catholic Church, agricultural growth, and towns and guilds. Unit 2 uses the Crusades as an example of contact with Dar al-Islam, and the Hanseatic League and the Italian city-states as examples of growing trade networks.',
+  themes: ['Governance', 'Economic systems', 'Social structures', 'Cultural developments'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['ZaGC4rlc7nk', 'Developments in EUROPE [AP World History Review—Unit 1 Topic 6]', "Heimler's History"],
+  mapSub: 'Press Play all, or step through. Watch Byzantium shrink while western Europe’s kingdoms, trade routes and crusading armies spread outward.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 950, to: 1360 },
+    { label: 'Popes & kings', from: 950, to: 1230 },
+    { label: 'Crusades', from: 1060, to: 1300 },
+    { label: 'Towns & learning', from: 1080, to: 1360 },
+    { label: 'Long view', from: 850, to: 1500 },
+  ],
+  bigIdeas: [
+    'Byzantium declined after 1025: landowners undermined the theme system, the Seljuq Turks took Anatolia (Manzikert, 1071) and crusaders sacked Constantinople (1204).',
+    'Western Europe stayed divided into regional monarchies and city-states, and popes and emperors fought over who controlled the Church.',
+    'Better farming led to more people, more towns and more trade: Italian cities in the Mediterranean, the Hanseatic League in the north, guilds in every town.',
+    'A confident Latin Christendom built universities and new religious orders, and expanded by force: the Reconquista, the Baltic crusades and the Crusades to the Holy Land.',
+  ],
+
+  sections: [
+    {
+      id: 'byzantium', title: 'The late Byzantine Empire', when: '1025 – 1453', theme: 'Governance', map: 0,
+      lead: 'In 1025 Byzantium was the richest and strongest Christian state. Over the next two centuries rich landowners, Turkish invaders and western crusaders pulled it apart.',
+      body: [
+        'The Byzantine army rested on the theme system: free peasants received land in a province (a theme) in return for military service. In the 1000s wealthy landowners bought up or seized these farms. Free peasants became dependent laborers on big estates, so the state lost both soldiers and tax money.',
+        'Pressure came from the west. Western Europe’s economy was growing. Norman knights, descendants of Scandinavian settlers in Normandy, took the last Byzantine towns in southern Italy by 1071. Venetian merchants won special trading rights in Constantinople (1082) that drained Byzantine trade income.',
+        'Pressure also came from the east. The Seljuq Turks, Muslim nomads from Central Asia, crushed the Byzantine army at Manzikert in 1071 and captured the emperor. Civil war followed, and Turkish herders spread over Anatolia, the empire’s grain land and best recruiting ground.',
+        'The Crusades made things worse. In 1204 the Fourth Crusade sacked Constantinople and set up a “Latin Empire.” The Byzantines won the city back in 1261, but the empire was now a small state. In 1453 the Ottoman Turks captured Constantinople and made it their capital, Istanbul.',
+      ],
+      facts: ['Theme system: land for military service', 'Manzikert, 1071: Seljuqs win Anatolia', '1204: Fourth Crusade sacks Constantinople', '1453: Ottomans take the city'],
+      chain: ['Landowners absorb free peasant farms', 'Fewer soldiers and taxes', 'Defeat at Manzikert, 1071', 'Anatolia’s grain and men lost', 'Sack of 1204', 'Ottoman conquest, 1453'],
+      soWhat: 'Byzantium’s call for help in 1095 started the Crusades, and its slow fall opened the way for the Ottoman Empire (AP Unit 3). Compare its decline with Rome’s: inequality on the land, weaker armies and outside pressure.',
+      video: ['Okph9wt8I0A', 'The rise and fall of the Byzantine Empire - Leonora Neville', 'TED-Ed'],
+      factCheck: 'Your notes say Constantinople was renamed Istanbul in 1453. Istanbul (from a Greek phrase meaning “to the city”) was already the everyday name and became common under the Ottomans, but the official Ottoman name stayed Kostantiniyye for centuries. Istanbul became the only official name in 1930.',
+    },
+    {
+      id: 'popes-emperors', title: 'The Holy Roman Empire and the popes', when: '936 – 1190', theme: 'Governance', map: 1,
+      lead: 'The strongest ruler in western Europe called himself emperor, but he spent much of his energy fighting the pope over who controlled the Church.',
+      body: [
+        'As the Carolingian empire broke apart, Otto I of Saxony built a strong kingdom in Germany (king from 936). He crushed the Magyars at Lechfeld in 955, raided into eastern Europe, and twice marched into Italy to help the pope. In 962 Pope John XII crowned him emperor. His realm later became known as the Holy Roman Empire.',
+        'Emperors relied on bishops and abbots to govern, so they chose and installed them, a practice called lay investiture. Pope Gregory VII (1073–1085) wanted a Church free from lay control and banned it. Emperor Henry IV (r. 1056–1106) refused. Gregory excommunicated him, and German princes used the chance to rebel; Henry put them down only with difficulty.',
+        'In 1077 Henry stood in the snow at Canossa in northern Italy to beg the pope’s forgiveness, but the Investiture Contest outlived both men. The Concordat of Worms (1122) split the difference: the Church chose bishops, and the emperor kept a say over their lands.',
+        'Frederick I Barbarossa (“red beard,” r. 1152–1190) tried to absorb the rich cities of Lombardy in northern Italy. The popes feared an emperor that strong and backed the cities’ Lombard League, which defeated him at Legnano in 1176. Frederick had to back down, and the empire stayed a loose patchwork of princes and cities.',
+      ],
+      facts: ['Otto I crowned emperor, 962', 'Investiture Contest: Gregory VII vs Henry IV', 'Canossa 1077 · Concordat of Worms 1122', 'Barbarossa defeated at Legnano, 1176'],
+      chain: ['Emperors appoint bishops', 'Gregory VII bans lay investiture', 'Henry IV excommunicated', 'German princes rebel', 'Emperors stay weak; Germany and Italy stay divided'],
+      soWhat: 'Unlike Byzantium or China, western Europe had two rival sources of authority: kings and the pope. That rivalry kept any one ruler from uniting Europe, and Germany and Italy stayed divided until the 1800s.',
+      video: ['C8Fd7RSNK0s', 'How did the Holy Roman Empire Work? (Short Animated Documentary)', 'History Matters'],
+    },
+    {
+      id: 'monarchies', title: 'Regional monarchies: France, England, Italy and Iberia', when: '987 – 1300', theme: 'Governance', map: 1,
+      lead: 'While emperor and pope quarreled, kings in France and England slowly built stronger states, and Italy and Iberia split into many smaller powers.',
+      body: [
+        'In France, Hugh Capet became king in 987. At first the Capetian kings controlled little more than the region around Paris. Over three centuries they used marriage, inheritance and war to bring the great lords under royal authority. In 1204 Philip II took Normandy from the English king.',
+        'In England, Duke William of Normandy invaded in 1066 and won the Battle of Hastings. William the Conqueror and his Norman nobles dominated the Angles, Saxons and other Germanic peoples, recorded the kingdom’s wealth in the Domesday Book (1086), and built a fairly centralized monarchy. In 1215 rebellious barons forced King John to accept Magna Carta, which said that even the king must follow the law.',
+        'Italy was a patchwork of church states, city-states and principalities. The pope ruled the Papal States, a good-sized territory in central Italy. By the 1100s cities such as Milan, Florence, Genoa and Venice governed themselves and pushed aside the bishops who had ruled them. In the south, Normans drove out Byzantine and Muslim rulers and built the Kingdom of Sicily.',
+        'Muslims had ruled most of the Iberian Peninsula since the 700s. From the 1000s the Christian kingdoms of the north (León, Castile, Navarre, Aragon and Portugal) pushed south. By the late 1200s only the emirate of Granada remained in Muslim hands.',
+      ],
+      facts: ['Capetian France from 987, centered on Paris', 'Norman conquest of England, 1066', 'Papal States and self-governing Italian cities', 'Iberia: Christian kingdoms push south'],
+      chain: ['Carolingian empire breaks up', 'Local lords hold real power', 'Kings expand from a home base (Paris, London)', 'Royal courts, taxes and loyal vassals', 'Stronger regional monarchies'],
+      soWhat: 'These regional states, not a revived Roman Empire, became the base of modern France, England, Spain and Portugal. AP Unit 1.6 asks you to explain this decentralized but slowly centralizing Europe.',
+      video: ['66ZcXBUx5IA', 'The Magna Carta Explained: Global History Review', 'Hip Hughes (HipHughes)'],
+      factCheck: 'Your notes say Hugh Capet succeeded the last Carolingian emperor. He succeeded Louis V, the last Carolingian king of West Francia (France). The imperial title had passed to the German kings: Otto I was crowned emperor in 962.',
+    },
+    {
+      id: 'growth', title: 'Farms, towns and trade', when: 'c. 1000 – 1300', theme: 'Economic systems', map: 2,
+      lead: 'Once Viking, Magyar and Muslim raids ended, Europeans cleared land, farmed better and multiplied. More food meant more people, more towns and more trade.',
+      body: [
+        'With nomad and Viking invasions over, peasants and lords cleared forests and drained swamps to make new fields. Better methods raised yields: crop rotation (often a three-field system that left a third of the land fallow instead of half), new crops such as beans that return nitrogen to the soil, and heavy plows. Horseshoes and padded horse collars let horses, which are faster than oxen, pull the plows.',
+        'Europe’s population roughly doubled between 1000 and 1300. Food surpluses let more people leave farming. They gathered in towns and specialized as weavers, smiths, bakers and merchants. Flanders and northern Italy became centers of woolen textile production.',
+        'Italian cities were well placed for Mediterranean trade. Venice and Genoa set up colonies and trading quarters in major ports from Constantinople to Caffa on the Black Sea, and bought silk, spices and sugar in Egyptian and Syrian markets. Great fairs in Champagne, in eastern France, brought northern and southern merchants together.',
+        'In the north, the Hanseatic League (the Hansa) was an association of trading cities led by Lübeck and Hamburg. Hansa merchants traded on the Baltic and North seas between Poland, northern Germany, Scandinavia, Novgorod in Russia, London and Bruges, carrying grain, herring, timber, furs, wax and amber.',
+      ],
+      facts: ['Crop rotation, beans, horse collars', 'Population roughly doubles, 1000–1300', 'Venice and Genoa: Mediterranean colonies', 'Hanseatic League: Baltic and North Sea'],
+      chain: ['Invasions end; new land cleared', 'Better tools and crop rotation', 'More food, more people', 'Towns and specialized labor', 'Long-distance trade revives'],
+      soWhat: 'This is a favorite AP cause-and-effect chain: farm surplus → population growth → urbanization → trade. Through Italian ports Europe was now plugged into the Afro-Eurasian trade network (Unit 2).',
+      video: ['r1fZAArcOJw', 'The Hanseatic League: Explained (Short Animated History Documentary)', 'History Matters'],
+    },
+    {
+      id: 'society', title: 'Estates, knights and townspeople', when: 'c. 1000 – 1300', theme: 'Social structures',
+      lead: 'Medieval writers said society had three orders: those who pray, those who fight and those who work. The growing towns did not fit neatly into that picture.',
+      body: [
+        'The three estates were the clergy (those who pray), the nobles and knights (those who fight) and the peasants (those who work). It was an ideal and an oversimplification: it left out merchants, artisans, lawyers and doctors, and it ignored huge differences in wealth inside each group.',
+        'The Church sponsored chivalry, a code of conduct for nobles, to reduce fighting among Christians. In theory a knight was loyal, generous and brave, served the Christian faith and protected women and the weak. Troubadours, traveling poets and singers from southern France, spread songs of romantic love, probably borrowing from Islamic love poetry in al-Andalus. Aristocratic women such as Eleanor of Aquitaine (1122–1204), queen of France and then of England, were their great patrons.',
+        'Townspeople fit awkwardly into a world built on land and loyalty. From the late 1000s towns demanded charters from kings and lords granting them self-government: their own councils, courts and taxes. A serf who lived in a chartered town for a year and a day often became free.',
+        'Guilds were associations of merchants, artisans or workers in the same trade. By the 1200s they controlled much of the urban economy: they set prices and quality standards, decided who could join, and helped members who were sick, poor or widowed. Towns also opened new chances for women, who dominated the needle trades, worked in many crafts and were admitted to most guilds; some guilds were for women only.',
+      ],
+      facts: ['Three estates: pray, fight, work', 'Chivalry: Church-sponsored code for knights', 'Charters gave towns self-government', 'Guilds: prices, quality, membership, aid'],
+      chain: ['Towns grow', 'Merchants and artisans don’t fit the three estates', 'Towns win charters', 'Guilds regulate each trade', 'A new urban middle group (and work for women)'],
+      soWhat: 'Towns and guilds created a new group of merchants and artisans with their own wealth and rights. Compare European guilds with craft and merchant associations in Song China and the Islamic world.',
+      video: ['p3pYuY4buIk', 'Feudal system during the Middle Ages | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'faith-learning', title: 'Schools, universities and popular faith', when: 'c. 1050 – 1300', theme: 'Cultural developments',
+      lead: 'New wealth paid for schools and universities, where scholars fitted Greek philosophy into Christian belief. Ordinary people, meanwhile, practiced a vivid faith of sacraments, saints and relics.',
+      body: [
+        'In the early Middle Ages Europe was too unstable for advanced schools: monasteries taught a little, and a few scholars served at royal courts. After 1000, cathedral schools taught Latin literature, philosophy, some law and medicine, and theology. In the 1100s students and teachers formed guilds of their own, which became universities at Bologna, Paris, Oxford and elsewhere. Fights between students and townspeople were common.',
+        'Scholars read Aristotle in Latin translations of Byzantine Greek texts, and in translations by Jewish and Muslim scholars from Arabic versions. Scholasticism used Aristotle’s logic to explain Christian teaching. Its greatest thinker, Thomas Aquinas (1225–1274), taught at the University of Paris and argued in his Summa Theologica that reason and faith work together.',
+        'Most people never read philosophy. Their religion centered on the seven sacraments, above all the Eucharist (holy communion), and on saints who could plead with God for them. People made pilgrimages to Rome, Santiago de Compostela and Jerusalem, honored relics, and prayed to the Virgin Mary.',
+        'Some believers felt the Church had grown too rich. St. Dominic (1170–1221) and St. Francis (1182–1226) founded mendicant (begging) orders who vowed poverty, preached in towns and fought heresy. Waldensians in southern France and northern Italy wanted lay people to preach and give sacraments; Cathars (Albigensians), like the Bogomils of Byzantium, rejected the official Church. Church and governments crushed them in campaigns such as the Albigensian Crusade (1209–1229), and by the 1300s they survived only in remote places.',
+      ],
+      facts: ['Cathedral schools → universities (1100s)', 'Aquinas: faith + Aristotle = Scholasticism', 'Sacraments, saints, relics, pilgrimage', 'Franciscans and Dominicans vs heresy'],
+      chain: ['Wealth grows', 'Cathedral schools and universities', 'Aristotle arrives from Greek and Arabic', 'Scholasticism (Aquinas)', 'Europe joins a wider world of learning'],
+      soWhat: 'European learning grew by borrowing: Greek texts kept in Byzantium and Arabic texts and commentaries from Dar al-Islam. That transfer is a classic AP example of cultural diffusion across Afro-Eurasia.',
+    },
+    {
+      id: 'expansion', title: 'Europe pushes outward', when: 'c. 870 – 1492', theme: 'Governance', map: 3,
+      lead: 'Growing Europe pushed outward on every side: across the North Atlantic, around the Baltic, into Sicily and Spain, and finally toward Jerusalem.',
+      body: [
+        'Scandinavian seafarers settled Iceland (c. 870) and Greenland (985). Around 1000 Leif Erikson reached Vinland, on the coast of Newfoundland in Canada, but the settlement there lasted only a short time. At home, Scandinavian kings became Christian: Denmark’s king around 965, then Norway’s; Sweden and Finland followed.',
+        'Devout knights formed military-religious orders: the Templars, the Hospitallers and the Teutonic Knights. They took religious vows, swore to fight Islam and paganism, and founded churches and monasteries. In the 1200s the Teutonic Knights and other crusaders conquered and forcibly converted the pagan peoples of Prussia and Livonia on the Baltic coast.',
+        'Muslims had conquered Sicily in the 800s. Norman knights reconquered it between 1061 and 1091. Islam faded only slowly, and for a time Palermo was a meeting place of Greek, Arabic and Latin learning.',
+        'In Iberia, two small Christian states in the northern mountains survived the Muslim conquest and became the nucleus of the Reconquista. Toledo fell in 1085. After the great victory at Las Navas de Tolosa (1212), Castile took Córdoba (1236) and Seville (1248), and Aragon took Valencia (1238). Christian rule was imposed quickly and forcefully. Only Granada held out, until 1492.',
+      ],
+      facts: ['Norse in Iceland, Greenland, Vinland', 'Templars, Hospitallers, Teutonic Knights', 'Normans reconquer Sicily, 1061–1091', 'Reconquista: Toledo 1085 → Granada 1492'],
+      chain: ['Population and wealth grow', 'Knights seek land and salvation', 'Military-religious orders', 'Conquest on the frontiers: Spain, Sicily, the Baltic', 'Latin Christendom expands'],
+      soWhat: 'The Reconquista trained Spain and Portugal in religious war and frontier settlement, the same habits they carried across the Atlantic after 1492 (Chapter 22).',
+      video: ['Rb8btnQEUQw', 'How did the Reconquista Actually Happen? - Explained in 11 Minutes', 'Knowledgia'],
+    },
+    {
+      id: 'crusades', title: 'The Crusades', when: '1095 – 1291', theme: 'Cultural developments', map: 5,
+      lead: 'In 1095 Pope Urban II called on western knights to help the Byzantines and free Jerusalem from Muslim rule. For two centuries crusading armies fought in the eastern Mediterranean.',
+      body: [
+        'The Byzantine emperor Alexios I asked the pope for soldiers against the Seljuq Turks. At the Council of Clermont (1095) Urban II asked for much more: an armed pilgrimage to free Jerusalem. He promised forgiveness of sins to those who went, and the crowd answered “Deus vult!” (“God wills it!”).',
+        'The First Crusade (1096–1099) was the best organized. On the way some crusaders massacred Jewish communities in the Rhineland. Armies of French, Norman and German knights marched through Constantinople and Anatolia, took Antioch, and captured Jerusalem in 1099, killing many of its Muslim and Jewish inhabitants. They won largely because the Muslim states of Syria were divided. The victors founded four crusader states.',
+        'Muslim leaders slowly united. Salah al-Din (Saladin) recaptured Jerusalem in 1187. By the mid-1200s there had been five major crusades, and none matched the first. The Fourth Crusade (1202–1204) never reached the Holy Land: deep in debt to Venice, the crusaders sacked Christian Constantinople instead. Acre, the last crusader stronghold, fell in 1291.',
+        'As wars, the Crusades failed, but they brought Europeans into direct contact with Muslim ideas and trade. Together with contacts in Spain and Sicily, they helped bring Aristotle’s works, “Arabic” numerals (first developed in India) and paper making to Europe, and they built demand for the sugar, spices and silk that Italian merchants carried.',
+      ],
+      facts: ['Clermont, 1095: “God wills it!”', 'Jerusalem taken, 1099', 'Saladin retakes Jerusalem, 1187', '1204: crusaders sack Constantinople'],
+      chain: ['Seljuqs threaten Byzantium', 'Alexios asks the pope for help', 'Urban II calls a crusade, 1095', 'Jerusalem taken, 1099', 'Contact with Muslim learning and trade'],
+      soWhat: 'AP treats the Crusades as cross-cultural contact: a military failure but a channel for trade and ideas. Always show both sides: Muslims saw the “Franks” as violent, unsophisticated invaders.',
+      video: ['X0zudTQelzI', 'The Crusades - Pilgrimage or Holy War?: Crash Course World History #15', 'CrashCourse'],
+      factCheck: 'Your notes say none of the later crusades succeeded. That is true of their main goal, but there were partial successes: the Third Crusade (1189–1192) won back Acre and much of the coast, and in 1229 Emperor Frederick II regained Jerusalem by treaty. Christians held it until 1244.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 962, label: 'Otto I crowned emperor', track: 'politics', detail: 'Pope John XII crowns the Saxon king; the start of the Holy Roman Empire.' },
+    { year: 987, label: 'Hugh Capet king of France', track: 'politics', detail: 'The Capetians slowly expand royal power outward from Paris.' },
+    { year: 1000, label: 'Norse reach Vinland', track: 'society', detail: 'Approximate. Leif Erikson’s voyage to Newfoundland; the settlement lasts only a short time.' },
+    { year: 1054, label: 'East–West Schism', track: 'religion', detail: 'Rome and Constantinople excommunicate each other (Chapter 16).' },
+    { year: 1061, end: 1091, label: 'Normans conquer Sicily', track: 'war', detail: 'Norman knights take the island from its Muslim rulers.' },
+    { year: 1066, label: 'Norman conquest of England', track: 'war', detail: 'William the Conqueror wins at Hastings.' },
+    { year: 1071, label: 'Battle of Manzikert', track: 'war', detail: 'The Seljuq Turks crush the Byzantine army; Anatolia is opened to Turkish settlement.' },
+    { year: 1075, end: 1122, label: 'Investiture Contest', track: 'religion', detail: 'Gregory VII vs Henry IV; Canossa 1077; settled by the Concordat of Worms (1122).' },
+    { year: 1085, label: 'Castile takes Toledo', track: 'war', detail: 'A major step in the Reconquista.' },
+    { year: 1088, label: 'University of Bologna', track: 'society', detail: 'Traditional founding date; Paris and Oxford follow in the 1100s.' },
+    { year: 1095, label: 'Council of Clermont', track: 'religion', detail: 'Urban II calls the First Crusade: “God wills it!”' },
+    { year: 1096, end: 1099, label: 'First Crusade', track: 'war', detail: 'Crusaders take Jerusalem in July 1099 and found four crusader states.' },
+    { year: 1152, end: 1190, label: 'Frederick Barbarossa', track: 'politics', detail: 'Tries to absorb Lombardy; defeated by the Lombard League at Legnano (1176).' },
+    { year: 1187, label: 'Saladin retakes Jerusalem', track: 'war', detail: 'After his victory at Hattin. The Third Crusade (1189–1192) fails to win the city back.' },
+    { year: 1202, end: 1204, label: 'Fourth Crusade', track: 'war', detail: 'Crusaders sack Constantinople and found a Latin Empire.' },
+    { year: 1209, end: 1229, label: 'Albigensian Crusade', track: 'religion', detail: 'Church and French crown destroy the Cathar heretics of southern France.' },
+    { year: 1210, label: 'Franciscan order approved', track: 'religion', detail: 'Approximate. The Dominicans are approved in 1216.' },
+    { year: 1212, label: 'Las Navas de Tolosa', track: 'war', detail: 'Christian kingdoms defeat the Almohads; Córdoba (1236) and Seville (1248) follow.' },
+    { year: 1215, label: 'Magna Carta', track: 'politics', detail: 'English barons force King John to accept limits on royal power.' },
+    { year: 1225, end: 1274, label: 'Thomas Aquinas', track: 'religion', detail: 'Scholastic thinker at the University of Paris; Summa Theologica.' },
+    { year: 1241, label: 'Lübeck–Hamburg alliance', track: 'society', detail: 'Mutual protection of merchants; the core of the Hanseatic League.' },
+    { year: 1261, label: 'Byzantines retake Constantinople', track: 'politics', detail: 'Michael VIII ends the Latin Empire, but Byzantium is now a small state.' },
+    { year: 1291, label: 'Fall of Acre', track: 'war', detail: 'The last crusader stronghold in the Holy Land falls to the Mamluks.' },
+    { year: 1347, end: 1350, label: 'Black Death', track: 'society', detail: 'Plague kills perhaps a third of Europe’s people (Chapter 21).' },
+    { year: 1453, label: 'Ottomans take Constantinople', track: 'politics', detail: 'The end of the Byzantine Empire.' },
+    { year: 1492, label: 'Granada falls', track: 'war', detail: 'The Reconquista is complete.' },
+    { year: 960, end: 1279, label: 'Song dynasty, China', track: 'world', detail: 'Far richer and more urban than Europe at the time (Chapter 14).' },
+    { year: 1185, label: 'Kamakura shogunate, Japan', track: 'world', detail: 'Japan’s own feudal age of samurai and military lords begins (Chapter 14).' },
+    { year: 1206, label: 'Chinggis Khan unites Mongols', track: 'world', detail: 'Mongol armies reach eastern Europe by 1241 (Chapter 17).' },
+    { year: 1324, label: 'Mansa Musa’s hajj', track: 'world', detail: 'The ruler of Mali carries so much gold to Cairo that he upsets its gold market (Chapter 18).' },
+  ],
+
+  terms: [
+    ['Theme system', 'Byzantine system giving free peasants land in a province in return for military service.', 'Its decay in the 1000s cost Byzantium soldiers and taxes.'],
+    ['Seljuq Turks', 'Muslim Turkish nomads who conquered much of Southwest Asia in the 1000s.', 'Took Anatolia from Byzantium and helped trigger the Crusades.'],
+    ['Battle of Manzikert', 'Seljuq victory over the Byzantine army in 1071.', 'Opened Anatolia, Byzantium’s grain land, to the Turks.'],
+    ['Holy Roman Empire', 'German-based empire of princes and cities; Otto I crowned emperor in 962.', 'Claimed Rome’s legacy but stayed decentralized.'],
+    ['Lay investiture', 'Appointment of bishops and abbots by kings or emperors.', 'The issue at the heart of the Investiture Contest.'],
+    ['Investiture Contest', 'Struggle (1075–1122) between Pope Gregory VII, Emperor Henry IV and their successors over appointing bishops.', 'Weakened the emperors; ended by the Concordat of Worms.'],
+    ['Frederick Barbarossa', 'Holy Roman Emperor (1152–1190) who tried to conquer Lombardy.', 'Popes and the Lombard League stopped him (Legnano, 1176).'],
+    ['Capetians', 'French royal dynasty founded by Hugh Capet in 987.', 'Slowly built royal power outward from Paris.'],
+    ['Norman conquest', 'Invasion of England by William the Conqueror in 1066.', 'Created a strong, fairly centralized English monarchy.'],
+    ['Papal States', 'Territory in central Italy ruled directly by the pope.', 'Made the pope an Italian ruler as well as a church leader.'],
+    ['Reconquista', 'Christian reconquest of Iberia from Muslim rulers, 1000s–1492.', 'Shaped Spain and Portugal before their Atlantic voyages.'],
+    ['Crop rotation', 'Changing crops in a field each year (often three fields: two planted, one fallow).', 'With beans and horse collars, it raised harvests and fed more people.'],
+    ['Hanseatic League', 'Association of northern trading cities led by Lübeck and Hamburg.', 'Dominated Baltic and North Sea trade.'],
+    ['Champagne fairs', 'Great trade fairs in eastern France in the 1100s and 1200s.', 'Where Italian and Flemish merchants met.'],
+    ['Three estates', 'Medieval idea of society: those who pray, those who fight, those who work.', 'An ideal that ignored merchants and artisans.'],
+    ['Chivalry', 'Church-sponsored code of conduct for knights.', 'Tried to tame violence among Christian warriors.'],
+    ['Troubadours', 'Traveling poets and singers who sang of romantic love.', 'Spread courtly love; backed by Eleanor of Aquitaine.'],
+    ['Town charter', 'Grant from a king or lord giving a town self-government.', 'Gave townspeople rights outside the feudal order.'],
+    ['Guild', 'Association of merchants, artisans or workers in one trade.', 'Controlled prices, quality and membership, and aided members.'],
+    ['Cathedral schools', 'Schools attached to cathedrals teaching Latin texts, philosophy, law, medicine and theology.', 'Forerunners of the universities.'],
+    ['University', 'Guild of teachers and students, first formed in the 1100s.', 'Raised standards of learning (Bologna, Paris, Oxford).'],
+    ['Scholasticism', 'Using Aristotle’s logic to explain and defend Christian faith.', 'Shows Greek and Arabic learning entering Europe.'],
+    ['Thomas Aquinas', 'Dominican scholar (1225–1274) at the University of Paris; wrote the Summa Theologica.', 'The leading Scholastic, joining faith and reason.'],
+    ['Sacraments', 'Seven holy rituals of the Church, especially the Eucharist.', 'The center of popular religion.'],
+    ['Mendicants', 'Begging orders of friars, Franciscans and Dominicans, who vowed poverty.', 'Preached in towns and opposed heresy.'],
+    ['Popular heresies', 'Waldensians (lay preaching) and Cathars or Albigensians (rejected the Church).', 'Crushed by crusade and inquisition in the 1200s.'],
+    ['Military-religious orders', 'Knights under religious vows: Templars, Hospitallers, Teutonic Knights.', 'Fought in the Holy Land, Spain and the Baltic.'],
+    ['Crusades', 'Wars called by popes to win Jerusalem and fight non-Christians, 1095–1291.', 'Brought Europeans into contact with Muslim trade and learning.'],
+  ],
+
+  compare: [
+    {
+      title: 'Byzantine east vs Latin west, c. 1000–1300',
+      head: ['', 'Byzantine Empire', 'Western Europe'],
+      rows: [
+        ['Government', 'One emperor, a central bureaucracy and capital (Constantinople)', 'Many regional monarchies, princes and city-states'],
+        ['Church and state', 'Emperor dominates the patriarch (Orthodox, Greek)', 'Independent pope clashes with kings (Latin, Catholic)'],
+        ['Army', 'Theme soldiers decline; mercenaries hired', 'Knights bound to lords by oaths of loyalty'],
+        ['Economy', 'Rich capital, but trade slips to Venetians', 'Farming, towns and Italian and Hansa trade all grow'],
+        ['Trend', 'Shrinks: Manzikert 1071, sack 1204, fall 1453', 'Expands: Reconquista, Baltic, Crusades'],
+      ],
+    },
+    {
+      title: 'European vs Japanese feudalism (compare Chapter 14)',
+      head: ['', 'Western Europe', 'Japan (Kamakura and after)'],
+      rows: [
+        ['Warriors', 'Knights, mounted and armored', 'Samurai, mounted archers and swordsmen'],
+        ['The bond', 'Vassal swears loyalty to a lord for a fief (land)', 'Samurai serve a lord for land or rice income'],
+        ['Warrior ideal', 'Chivalry, sponsored by the Church', 'Loyalty and honor (later called bushido)'],
+        ['Top of society', 'Kings, weak at first but growing', 'Emperor as symbol; the shogun holds military power'],
+        ['Religion', 'One powerful, independent Catholic Church', 'Buddhism and Shinto; no single church authority'],
+        ['Same pattern', 'Weak central power → land for military service', 'Weak central power → land for military service'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Pope Urban II at the Council of Clermont, France, 1095, as recorded by Fulcher of Chartres, a French priest who later went on the First Crusade', text: '“For your brethren who live in the east are in urgent need of your help, and you must hasten to give them the aid which has often been promised them. For, as the most of you have heard, the Turks and Arabs have attacked them and have conquered the territory of Romania [the Greek empire] as far west as the shore of the Mediterranean and the Hellespont… All who die by the way, whether by land or by sea, or in battle against the pagans, shall have immediate remission of sins… Let those who have been accustomed unjustly to wage private warfare against the faithful now go against the infidels and end with victory this war which should have been begun long ago. Let those who, for a long time, have been robbers, now become knights.”', cite: 'Fulcher of Chartres, History of the Expedition to Jerusalem 1.3, trans. O. J. Thatcher and E. H. McNeal (1905)' },
+      questions: [
+        { q: 'Urban II’s appeal most directly responded to which development?', options: ['Seljuq Turkish conquests in Anatolia that led the Byzantine emperor to ask for help', 'Saladin’s capture of Jerusalem from the crusader states', 'Mongol invasions of eastern Europe', 'The Muslim conquest of Iberia in the 700s'], correct: 0, why: '“Romania” is the Byzantine (Greek) empire. After Manzikert (1071) the Seljuqs took Anatolia, and Alexios I asked the pope for soldiers. Saladin (1187) and the Mongols came later.' },
+        { q: 'Urban’s call for those who “wage private warfare against the faithful” to fight “the infidels” suggests that one goal of the crusade was to', options: ['end the practice of lay investiture', 'convert the Byzantines to Latin Christianity', 'redirect the violence of western knights away from fighting other Christians', 'open new trade routes to China'], correct: 2, why: 'Urban had just renewed the Truce of God. Sending quarrelsome knights east would bring peace at home and serve the Church.' },
+        { q: 'Which detail about this source should a historian consider most carefully?', options: ['It was written in Latin, which few people could read.', 'Fulcher wrote it after the crusade had succeeded, as a participant who supported it.', 'It describes events outside Europe.', 'Urban II was not a member of the clergy.'], correct: 1, why: 'Sourcing: Fulcher wrote years later, knowing Jerusalem had fallen, and wanted to present the crusade as God’s will. The words are his version of Urban’s speech, not a transcript.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Anna Comnena, daughter of the Byzantine emperor Alexios I, describing the arrival of the First Crusade in 1096; she wrote in Constantinople about fifty years later', text: '“Before he had enjoyed even a short rest, he heard a report of the approach of innumerable Frankish armies. Now he dreaded their arrival for he knew their irresistible manner of attack, their unstable and mobile character and all the peculiar natural and concomitant characteristics which the Frank retains throughout; and he also knew that they were always agape for money, and seemed to disregard their truces readily for any reason that cropped up… For the whole of the West and all the barbarian tribes which dwell between the further side of the Adriatic and the pillars of Heracles, had all migrated in a body and were marching into Asia through the intervening Europe, and were making the journey with all their household.”', cite: 'Anna Comnena, The Alexiad, Book X, trans. E. A. Dawes (1928)' },
+      questions: [
+        { q: 'Anna Comnena’s description best reflects which Byzantine attitude toward the crusaders?', options: ['Gratitude for a rescue the emperor had long hoped for', 'Suspicion of western knights as greedy and unreliable allies', 'Admiration for the Franks’ learning and culture', 'Indifference, since the crusaders never entered Byzantine land'], correct: 1, why: 'She calls them “barbarian tribes,” “agape for money” and quick to break truces. Alexios wanted mercenaries, not huge unruly armies.' },
+        { q: 'Which later event most strongly confirmed the fears Anna describes?', options: ['The Concordat of Worms, 1122', 'The Battle of Las Navas de Tolosa, 1212', 'The Fourth Crusade’s sack of Constantinople, 1204', 'The founding of the Hanseatic League'], correct: 2, why: 'In 1204 crusaders in debt to Venice looted the city and set up a Latin Empire.' },
+        { q: 'Anna Comnena’s point of view was most likely shaped by her', options: ['position as a member of the Byzantine imperial family who wished to praise her father', 'experience as a crusading knight', 'Muslim faith', 'education at the University of Paris'], correct: 0, why: 'Sourcing: the Alexiad honors Alexios I. Showing the Franks as dangerous makes his handling of them look wise.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Usama ibn Munqidh, a Syrian Muslim nobleman, poet and soldier, recalling visits to crusader-held Jerusalem in his memoirs, written in old age in the 1180s', text: '“Everyone who is a fresh emigrant from the Frankish lands is ruder in character than those who have become acclimatized and have held long association with the Moslems… When I used to enter the Aqsa Mosque, which was occupied by the Templars, who were my friends, the Templars would evacuate the little adjoining mosque so that I might pray in it. One day I entered this mosque, repeated the first formula, ‘Allah is great,’ and stood up in the act of praying, upon which one of the Franks rushed on me, got hold of me and turned my face eastward saying, ‘This is the way thou shouldst pray!’ A group of Templars hastened to him, seized him and repelled him from me… They apologized to me, saying, ‘This is a stranger who has only recently arrived from the land of the Franks and he has never before seen anyone praying except eastward.’”', cite: 'Usamah ibn-Munqidh, Memoirs (Kitab al-I’tibar), trans. P. K. Hitti (1929), pp. 163–64' },
+      questions: [
+        { q: 'The passage best supports which conclusion about the crusader states?', options: ['All Franks refused any contact with Muslims.', 'Many Muslims in Jerusalem converted to Christianity.', 'Franks who lived there for years often adapted to and tolerated their Muslim neighbors.', 'The Templars banned Muslim worship in Jerusalem.'], correct: 2, why: 'Usama contrasts “acclimatized” Franks, including his Templar friends, with rude newcomers.' },
+        { q: 'The Templars occupied the Aqsa Mosque because', options: ['the crusaders had captured Jerusalem in 1099 and the military-religious orders made their headquarters there', 'Saladin had given the mosque to them as part of a peace treaty', 'the Byzantine emperor had ordered it', 'Venice had bought the building'], correct: 0, why: 'After 1099 the King of Jerusalem gave part of the Temple Mount to the new order, which took its name (Knights of the Temple) from it.' },
+        { q: 'Usama’s account is most similar to Anna Comnena’s in that both', options: ['praise the pope’s leadership', 'show newly arrived western Europeans as rough, ill-mannered outsiders', 'describe the sack of Constantinople', 'were written by Christian clergy'], correct: 1, why: 'Comparison: a Byzantine princess and a Muslim nobleman both saw the Franks as crude, though Usama notes exceptions.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Rules of the guild merchant of Southampton, an English port town; the rules were collected in the 1300s, and the earliest date from before 1300', text: '“And if a gildsman is ill and is in the city, wine shall be sent to him, two loaves of bread and a gallon of wine and a dish from the kitchen; and two approved men of the gild shall go to visit him and look after his condition… And no one of the city of Southampton shall buy anything to sell again in the same city, unless he is of the gild merchant or of the franchise… If any gildsman falls into poverty and has not the wherewithal to live, and is not able to work or to provide for himself, he shall have one mark from the gild to relieve his condition.”', cite: 'Ordinances of the Gild Merchant of Southampton, trans. E. P. Cheyney, Translations and Reprints from the Original Sources of European History II.1 (1897)' },
+      questions: [
+        { q: 'The rule about buying “to sell again” shows that the guild’s main economic goal was to', options: ['encourage free competition among all residents', 'abolish serfdom in the countryside', 'control local trade by limiting who could buy and resell goods', 'end trade with foreign merchants'], correct: 2, why: 'Only guild members (or those in the town’s “franchise”) could trade for profit. Guilds protected their members’ monopoly.' },
+        { q: 'The rules about sick and poor members show that guilds also', options: ['served as a social support network for their members', 'were run by the Church', 'admitted only nobles', 'collected taxes for the king'], correct: 0, why: 'Visits, food and money for the sick and poor were typical guild benefits.' },
+        { q: 'The growth of guilds like this one between 1000 and 1300 was most directly caused by', options: ['the Black Death', 'Mongol control of the Silk Roads', 'the failure of the Crusades', 'the growth of towns that followed rising food production'], correct: 3, why: 'Farm surpluses → population growth → towns and specialized trades → guilds to organize them.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Thomas Aquinas, Dominican friar and professor at the University of Paris, in the Summa Theologica, written 1265–1274', text: '“But sacred doctrine makes use even of human reason, not, indeed, to prove faith (for thereby the merit of faith would come to an end), but to make clear other things that are put forward in this doctrine. Since therefore grace does not destroy nature but perfects it, natural reason should minister to faith as the natural bent of the will ministers to charity… Hence sacred doctrine makes use also of the authority of philosophers in those questions in which they were able to know the truth by natural reason.”', cite: 'Thomas Aquinas, Summa Theologica I, q. 1, a. 8, reply to obj. 2, trans. Fathers of the English Dominican Province (1920)' },
+      questions: [
+        { q: 'The passage is an example of which intellectual movement?', options: ['Scholasticism, which combined Christian faith with reason and Greek philosophy', 'The Waldensian demand for lay preaching', 'Byzantine iconoclasm', 'Neo-Confucianism'], correct: 0, why: 'Aquinas says reason “should minister to faith” and uses “the authority of philosophers,” above all Aristotle.' },
+        { q: 'The philosophers’ works Aquinas relied on were available in Latin Europe largely because', options: ['Roman libraries had kept them in Latin since antiquity', 'Mongol rulers sent them to the pope', 'scholars translated them from Byzantine Greek texts and from Arabic versions made in Dar al-Islam', 'the troubadours set them to music'], correct: 2, why: 'Translators in places such as Toledo and Sicily, including Jewish and Muslim scholars, brought Aristotle and Arabic commentaries to the West.' },
+        { q: 'Aquinas’s career best illustrates which development of the period 1000–1300?', options: ['The decline of learning after the fall of Rome', 'The growth of universities out of cathedral schools in wealthier towns', 'The end of the Church’s influence over education', 'The spread of printing in Europe'], correct: 1, why: 'Paris grew from a cathedral school into a university, a guild of masters and students. Printing came only in the 1450s.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE cause of the First Crusade.',
+        'Explain ONE way the Crusades affected the Byzantine Empire.',
+        'Explain ONE way the Crusades led to economic or cultural exchange between Europe and Dar al-Islam.',
+      ],
+      guide: [
+        'Accept: Seljuq conquest of Anatolia after Manzikert (1071); Alexios I’s request for help; Urban II’s call at Clermont (1095); desire to free Jerusalem and holy sites; promise of forgiveness of sins; knights seeking land or wealth; the pope’s wish to stop knights fighting each other.',
+        'Accept with explanation: the Fourth Crusade sacked Constantinople (1204) and set up a Latin Empire; Venice took over trade; Byzantium never recovered its power, making the Ottoman conquest (1453) easier; distrust between Latin and Orthodox Christians deepened.',
+        'Accept with explanation: demand for sugar, spices and silk grew, enriching Venice and Genoa; Europeans gained Arabic numerals, paper making and access to Aristotle and Arabic learning; crusaders who settled adopted local food and customs.',
+      ],
+      model: [
+        'After the Seljuq Turks defeated Byzantium at Manzikert in 1071 and took Anatolia, Emperor Alexios I asked the pope for help, and Urban II called the First Crusade in 1095.',
+        'The Fourth Crusade sacked Constantinople in 1204. The Byzantines lost wealth, land and trade to Venice, and even after retaking the city in 1261 their state was too weak to stop the Ottomans in 1453.',
+        'Crusaders and pilgrims developed a taste for eastern goods such as sugar and spices. Venetian and Genoese merchants met that demand by trading in Syrian and Egyptian ports, tying Europe more closely to Muslim trade networks.',
+      ],
+    },
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE agricultural change in western Europe between 1000 and 1300.',
+        'Explain ONE way the growth of food production led to the growth of towns.',
+        'Explain ONE way towns did not fit the idea of society as “three estates.”',
+      ],
+      guide: [
+        'Accept: clearing forests and draining swamps; crop rotation or the three-field system; new crops such as beans; heavy plows; horseshoes and horse collars that let horses replace oxen.',
+        'Accept with explanation: surpluses fed people who did not farm; population roughly doubled; people moved to towns and specialized (textiles, crafts, trade); markets and fairs grew.',
+        'Accept with explanation: merchants, artisans, lawyers and doctors did not pray, fight or farm; towns won charters for self-government outside lords’ control; guilds gave townspeople their own organizations; urban women worked in many trades.',
+      ],
+      model: [
+        'Farmers adopted crop rotation, planting two of three fields each year and adding beans that restored the soil.',
+        'Bigger harvests fed more people than were needed on the farms. Extra people moved to towns and became weavers, smiths and merchants, so towns such as those in Flanders and northern Italy grew.',
+        'A merchant was not a priest, a knight or a peasant. Townspeople won charters that let them govern themselves and formed guilds, which gave them rights and an identity outside the old three-estate order.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which economic growth changed western European society between c. 1000 and c. 1300.',
+    theses: [
+      { text: 'Western European society changed between 1000 and 1300.', ok: false, why: 'Restates the prompt. It makes no claim about the extent of change or why.' },
+      { text: 'Between 1000 and 1300 Europe’s population roughly doubled.', ok: false, why: 'A true fact, but not an argument about how much society changed.' },
+      { text: 'Although most Europeans remained peasants and the Church and nobles kept their power, economic growth greatly changed society by creating chartered towns, guilds and a new class of merchants and artisans who did not fit the three estates.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both change (towns, guilds, merchants) and continuity (peasants, Church, nobles).' },
+    ],
+    contextHint: 'What was western Europe like around 1000, before the growth began?',
+    contextStart: 'Around the year 1000, western Europe…',
+    context: 'Around 1000, western Europe was rural, poor and politically divided. When Viking, Magyar and Muslim raids ended, peasants and lords could clear new land, and the Church taught that society had three estates: those who pray, fight and work.',
+    evidence: [
+      { text: 'Crop rotation, beans and horse collars raised harvests; population roughly doubled.', side: 'change' },
+      { text: 'Towns won charters of self-government from kings and lords.', side: 'change' },
+      { text: 'Guilds controlled prices, quality and membership and aided their members.', side: 'change' },
+      { text: 'Venice, Genoa and the Hanseatic League built long-distance trade networks.', side: 'change' },
+      { text: 'Urban women worked in many trades and joined most guilds.', side: 'change' },
+      { text: 'Most people were still peasants working the land for lords.', side: 'continuity' },
+      { text: 'The Church stayed powerful: sacraments, pilgrimages, mendicant orders.', side: 'continuity' },
+      { text: 'Nobles and knights still ruled and fought; chivalry was their ideal.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining that change and continuity were linked: new wealth from towns also paid for cathedrals, universities and crusades, so growth often strengthened the Church and the nobles instead of replacing them.',
+  },
+
+  recall: [
+    { q: 'Where did the Seljuq Turks defeat the Byzantines in 1071?', a: 'Manzikert' },
+    { q: 'What was the Investiture Contest about?', a: 'Whether popes or emperors appointed bishops' },
+    { q: 'Which league of trading cities was led by Lübeck?', a: 'The Hanseatic League' },
+    { q: 'Who combined Aristotle and Christian faith in the Summa Theologica?', a: 'Thomas Aquinas' },
+    { q: 'What did the Fourth Crusade attack in 1204?', a: 'Constantinople' },
+  ],
+}

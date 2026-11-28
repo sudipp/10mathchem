@@ -1,0 +1,346 @@
+// Chapter 16 · The Two Worlds of Christendom (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch16.js.
+export default {
+  hook: 'In 532 a furious crowd burned the center of Constantinople and crowned a new emperor in the Hippodrome. Ships stood ready to carry Justinian to safety, until the empress Theodora said she would rather die in royal purple than live as a fugitive. He stayed, and the Eastern Roman Empire lasted another nine centuries. In the West, meanwhile, Roman cities shrank, Germanic kings ruled, and Viking longships rowed up rivers to raid monasteries. This chapter is about two Christian worlds that slowly became strangers.',
+  apNote: 'Most of this chapter comes before the AP World exam period (1200–present), but it is the background for AP Unit 1.6, “Developments in Europe”: feudalism, manorialism and the Church as a unifying force. It also sets up the Byzantine–Orthodox world of Unit 1. The schism of 1054 and Byzantine trade lead straight into the Crusades (Chapter 19) and the Ottoman conquest of Constantinople in 1453.',
+  themes: ['Governance', 'Cultural developments', 'Social structures', 'Economic systems'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['QV7CanyzhZg', 'The Dark Ages...How Dark Were They, Really?: Crash Course World History #14', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Watch the Roman world split into a Greek-speaking East and a Latin West, and then into Orthodox and Catholic Europe.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 300, to: 1100 },
+    { label: 'Justinian’s age', from: 320, to: 610 },
+    { label: 'Islam, Franks & Charlemagne', from: 600, to: 860 },
+    { label: 'Invasions, Slavs & schism', from: 780, to: 1100 },
+    { label: 'Long view', from: 200, to: 1500 },
+  ],
+  bigIdeas: [
+    'Byzantium kept the Roman state alive in the East: an emperor who ruled both state and church (caesaropapism), Roman law, strong walls and a rich trading economy.',
+    'In the West, Germanic kingdoms replaced Rome. The Franks allied with the pope, and Charlemagne briefly rebuilt an empire, crowned by the pope in 800.',
+    'After the empire split in 843, invasions and weak kings left power with local lords: vassals who served for land, and serfs bound to the soil.',
+    'Christianity united both halves but also divided them. Disputes over authority, ritual and doctrine ended in the schism of 1054, while Byzantium converted the Slavs.',
+  ],
+
+  sections: [
+    {
+      id: 'constantinople', title: 'The new Rome on the Bosporus', when: '330 – 1453 CE', theme: 'Governance', map: 0,
+      lead: 'In 330 CE Constantine made the old Greek town of Byzantium his capital and renamed it Constantinople. The eastern half of the Roman Empire, which historians call the Byzantine Empire, survived there for more than a thousand years.',
+      body: [
+        'Byzantium sat on the Bosporus, the narrow strait between Europe and Asia, with a deep harbor called the Golden Horn. Whoever held it controlled the sea route from the Black Sea to the Mediterranean and the land route between the Balkans and Anatolia. Water on three sides and huge land walls made it very hard to capture.',
+        'Constantine named the city after himself and moved the capital there after 330. When the western provinces fell to Germanic peoples in the 400s, the East kept Roman law, Roman taxes and a Roman army. Its people called themselves Romans, but they spoke Greek. “Byzantine” is a name that historians gave the empire centuries later.',
+        'Power was centered on the emperor. Under caesaropapism he ruled the state and also took part in ruling the church. A Christian emperor could not claim to be a god, as some pagan emperors had, but he claimed to rule with God’s authority, so his power was absolute.',
+        'Court ceremony drove the point home. Only the emperor wore royal purple, and visitors prostrated themselves, lying flat on the floor before him. Mechanical devices, such as golden lions that roared beside the throne, were built to fill foreign envoys with awe. The empire lasted until the Ottoman Turks took the city in 1453 and renamed it Istanbul.',
+      ],
+      facts: ['Constantinople: capital after 330 CE', 'Bosporus + Golden Horn: trade and defense', 'Caesaropapism: emperor rules state and church', 'Falls to the Ottoman Turks, 1453 (Istanbul)'],
+      chain: ['Western provinces under pressure', 'Constantine builds a capital on the Bosporus', 'Walls, harbor and trade make it rich and safe', 'The East survives the fall of the West', 'Byzantium lasts until 1453'],
+      soWhat: 'Byzantium preserved Roman law, Greek learning and Christianity while the West broke apart. AP Unit 1 asks you to compare it with other states around 1200, and its fall to the Ottomans in 1453 opens Unit 3.',
+      video: ['3PszVWZNWVA', 'Fall of The Roman Empire...in the 15th Century: Crash Course World History #12', 'CrashCourse'],
+    },
+    {
+      id: 'justinian', title: 'Justinian and Theodora', when: '527 – 565 CE', theme: 'Governance', map: 1,
+      lead: 'Justinian, the “sleepless emperor,” tried to restore the old Roman Empire. With his wife Theodora at his side he rebuilt Constantinople, organized Roman law and reconquered much of the West, but he could not hold it.',
+      body: [
+        'Justinian ruled from 527 to 565 and was famous for working through the night. His wife Theodora had been a circus performer and actress, an unusual past for an empress, but she became one of his closest advisors.',
+        'In 532 rival fans of the chariot races, the Blues and the Greens, joined forces in the Nika riot and burned much of the city. Justinian thought about fleeing by ship. Theodora urged him to stay, and his general Belisarius trapped the rioters in the Hippodrome, killing more than 30,000 of them.',
+        'Then Justinian rebuilt. The church of Hagia Sophia (“Holy Wisdom”), finished in 537, had a dome so wide it seemed to float. His legal experts collected centuries of Roman laws and legal writings into the Body of Civil Law (Corpus iuris civilis), usually called Justinian’s Code.',
+        'From 533 Belisarius retook North Africa from the Vandals, fought for about twenty years to take Italy from the Ostrogoths, and seized a strip of southern Spain. The wars, plus a terrible plague in 541–542, drained the empire. The Byzantines governed Italy from Ravenna rather than Rome, and three years after Justinian died, the Lombards overran most of the peninsula.',
+      ],
+      facts: ['Reigned 527–565 · the “sleepless emperor”', 'Theodora: former performer, key advisor', 'Hagia Sophia finished 537', 'Corpus iuris civilis: Roman law codified'],
+      chain: ['Dream of restoring Rome', 'Nika riot crushed, 532', 'Hagia Sophia and the law code', 'Reconquest of Africa, Italy, southern Spain', 'War costs and plague drain the empire', 'Lombards take most of Italy, 568'],
+      soWhat: 'Justinian’s Code is one of the most influential law books in history. Rediscovered in Italy around 1100, it shaped the legal systems of Europe and, through them, much of the world. His overstretched reconquest shows the limits of even a rich empire.',
+      video: ['Y4-F3zk7pFc', 'Justinian and the Byzantine Empire | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'byzantium-islam', title: 'Surviving Islam: Greek fire and the themes', when: '632 – 1071 CE', theme: 'Governance', map: 2,
+      lead: 'In the 600s Arab Muslim armies took Byzantium’s richest provinces: Syria, Egypt and North Africa. Constantinople itself survived two sieges, thanks to its walls and a secret weapon called Greek fire.',
+      body: [
+        'After Muhammad died in 632, Arab armies swept out of Arabia. Within about ten years they took Syria, Palestine and Egypt from the Byzantines, and in 698 they took Carthage; the rest of North Africa soon followed. In the same years Slavs and Bulgars settled much of the Balkans.',
+        'Arab forces besieged Constantinople in 674–678 and again in 717–718. Both times the city held. Byzantine sailors used Greek fire, a flammable liquid sprayed from tubes that kept burning even on water. Its recipe was a state secret and is still unknown today.',
+        'To survive constant war, emperors reorganized the provinces into themes. Each theme was run by a general who commanded the army and also ran the civil government, but who answered to the emperor in Constantinople.',
+        'Theme soldiers were free peasants who received land grants in return for military service. They farmed and fought, so the empire got a loyal army without paying high wages. This free peasantry kept Byzantium strong until the 1000s, when wealthy landowners bought up peasant land. Weakened, the empire lost most of Anatolia to the Seljuk Turks after the battle of Manzikert in 1071.',
+      ],
+      facts: ['Syria and Egypt lost to Arab armies, 630s–640s', 'Constantinople besieged 674–678 and 717–718', 'Greek fire: burns even on water', 'Themes: generals rule provinces; soldiers get land'],
+      chain: ['Arab Muslim expansion', 'Byzantium loses Syria, Egypt and North Africa', 'Constantinople besieged twice', 'Greek fire and walls save the city', 'Theme system: soldier-farmers defend Anatolia'],
+      soWhat: 'Byzantium blocked Arab expansion into Europe from the east, as the Franks did in the west. When the free peasantry declined and Manzikert was lost, the emperor asked the pope for help in 1095: the start of the Crusades (Chapter 19).',
+    },
+    {
+      id: 'franks', title: 'The Franks and Charlemagne', when: '476 – 814 CE', theme: 'Governance', map: 3,
+      lead: 'In the West, Germanic kingdoms replaced Roman rule. The Franks built the strongest of them by allying with the Roman church, and under Charlemagne they rebuilt an empire across western Europe.',
+      body: [
+        'In 476 the Germanic general Odoacer deposed the last western Roman emperor, a boy named Romulus Augustulus. Visigoths ruled Spain, Ostrogoths and later Lombards ruled Italy, and Franks ruled Gaul. Roman officials and laws survived for a while, but cities lost people and trade slowed.',
+        'The Frankish king Clovis converted to Roman Christianity around 496. Most other Germanic kings followed Arian Christianity, which the Roman church called heresy, so his conversion won the support of his Roman subjects and began a firm alliance between the Franks and the pope.',
+        'In 732 Charles Martel (“the Hammer”) defeated a Muslim army from Spain at the battle of Tours. His grandson Charlemagne (r. 768–814) conquered the Saxons, the Lombards and the Avars and built the largest Western state since Rome. He could barely write, but he gathered scholars such as Alcuin at his capital, Aachen, and had monks copy ancient books.',
+        'Charlemagne traveled constantly. He also sent officials called missi dominici (“envoys of the lord ruler”) on yearly tours to check on local counts. On Christmas Day 800, Pope Leo III crowned him emperor in Rome. That was a direct challenge to Byzantium, whose emperor claimed to be the only Roman emperor.',
+      ],
+      facts: ['476: Odoacer deposes the last western emperor', 'Clovis converts c. 496 → Franks ally with the pope', 'Battle of Tours, 732', 'Charlemagne crowned emperor, 800'],
+      chain: ['Roman rule in the West collapses, 476', 'Germanic successor kingdoms', 'Franks convert to Roman Christianity', 'Alliance with the pope', 'Charlemagne conquers and centralizes', 'Crowned emperor, 800'],
+      soWhat: 'The coronation of 800 created a western emperor who rivaled Byzantium and tied Western kingship to the pope. That partnership, and rivalry, of crown and church runs through later European history.',
+      video: ['H2J_3RTKB1c', 'Ten Minute History - Charlemagne and the Carolingian Empire (Short Documentary)', 'History Matters'],
+      factCheck: 'Your notes say Charles Martel began the Carolingian dynasty. The dynasty is named after him, but he ruled as “mayor of the palace,” not as king; his son Pepin the Short became the first Carolingian king in 751. Historians also debate how decisive Tours was: Muslim forces held Narbonne in southern France until 759, and Muslim states ruled much of Spain until 1492.',
+    },
+    {
+      id: 'invasions-feudalism', title: 'Invasions and the rise of lords', when: '814 – 1000 CE', theme: 'Social structures', map: 5,
+      lead: 'After Charlemagne died his empire split apart, and Vikings, Magyars and Muslim raiders attacked from every side. With no strong king to protect them, people turned to local lords.',
+      body: [
+        'Charlemagne’s son Louis the Pious (r. 814–840) lost control of the counts and nobles. His three sons fought a civil war, and the Treaty of Verdun in 843 split the empire into West Francia, a Middle Kingdom and East Francia: roughly the future France, a strip from the Low Countries to Italy, and Germany.',
+        'Then came the invasions. Muslim raiders from North Africa took Sicily and attacked Italy and southern France. Magyars, horse nomads who settled in Hungary, raided Germany, Italy and France until the German king Otto I crushed them in 955. From Scandinavia came the Vikings, pushed by population growth and the hunt for wealth.',
+        'Viking longships had shallow drafts, so they could cross open seas and also row far up rivers. From the 790s Vikings raided towns and especially monasteries, which were rich and undefended. They besieged Paris and settled in England, Ireland, Normandy and Russia. The Carolingians had no navy, so defense fell to local leaders.',
+        'Local nobles took over government. They built small private armies of retainers, or vassals, and rewarded them with land, income from mills or cash; vassals swore loyalty and military service. These retainers became a hereditary warrior class that also kept order and judged disputes. Most people were serfs, who owed their lord labor and payments in kind, could not leave the land, and paid a fee to marry a serf of another lord.',
+      ],
+      facts: ['Treaty of Verdun, 843: empire split in three', 'Vikings, Magyars, Muslims raid in the 800s–900s', 'Lords give land to vassals for military service', 'Serfs: labor and dues, bound to the land'],
+      chain: ['Weak heirs and civil war', 'Empire divided at Verdun, 843', 'Invasions from north, east and south', 'Kings cannot defend their lands', 'Local lords and vassals take over', 'Serfs trade freedom for protection'],
+      soWhat: 'Historians call this system feudalism (lords and vassals) and manorialism (lords and serfs), though many now find “feudalism” too neat for such improvised local deals. It is the core of AP Unit 1.6. Compare it with Japan’s samurai warriors, a similar system that grew up separately.',
+      video: ['ZaGC4rlc7nk', 'Developments in EUROPE [AP World History Review—Unit 1 Topic 6]', 'Heimler\'s History'],
+      factCheck: 'Your notes say “Viking” comes from the village of Vik in Norway and that Vikings sacked Constantinople three times. The word’s origin is uncertain: the Vík (Viken) region around the Oslofjord is one theory, and another links it to vík, “bay.” Rus Vikings did attack Constantinople (in 860 and 941, and the Russian chronicle tells of a raid in 907), but they never captured it. The city first fell in 1204, to crusaders.',
+    },
+    {
+      id: 'economy', title: 'Two economies: rich East, rural West', when: '550 – 1100 CE', theme: 'Economic systems', map: 6,
+      lead: 'Byzantium was an economic powerhouse of cities, crafts and trade. The West, battered by invasions, became a land of villages and manors until new farming tools and calmer times brought recovery in the 900s.',
+      body: [
+        'Byzantium had a large farm surplus and sat where trade routes met. Around 552 monks smuggled silkworm eggs out of China, and Byzantine workshops began making their own silk, a closely guarded state industry. Its gold coin, the bezant, became the standard currency of the Mediterranean, and taxes on goods from the silk roads filled the treasury.',
+        'Constantinople may have held half a million people in Justinian’s time. Aristocrats lived in palaces, artisans in apartments above their shops, and the working poor in crowded shared rooms. Everyone could go to the Hippodrome for chariot races, where the Blues and the Greens cheered, and sometimes rioted over politics.',
+        'In the West, invasions and turmoil disrupted trade, and farm output fell. Most exchange was small and local, though some sea trade continued in the Mediterranean. Then new tools raised harvests: the heavy plow turned the thick, wet soils of northern Europe, water mills ground grain, and a padded horse collar let horses pull heavy loads without choking.',
+        'The Norse were raiders when it paid and merchants when that paid better. Rus traders carried furs, honey, amber and slaves down Russian rivers to Constantinople and the Caspian Sea, and brought back silver coins from the Islamic world. As raids faded and kingdoms steadied in the 900s, Europe’s population, which had fallen after the 400s, began to grow again.',
+      ],
+      facts: ['Bezant: standard gold coin of the Mediterranean', 'Byzantine silk industry from c. 552', 'Heavy plow, water mill, horse collar', 'Norse traders link Europe to the Islamic world'],
+      chain: ['Invasions fade in the 900s', 'More political stability', 'Heavy plow, mills, horse collar', 'Bigger harvests', 'Population and trade grow again'],
+      soWhat: 'The West’s farming revolution set up the busy towns and trade fairs of the High Middle Ages (Chapter 19). Byzantine silk and gold coins show how a well-placed empire could profit from the Silk Roads, a key AP Unit 2 theme.',
+    },
+    {
+      id: 'church', title: 'One faith, two churches', when: '330 – 843 CE', theme: 'Cultural developments',
+      lead: 'Christianity was the main source of religious, moral and cultural authority in both halves of Christendom, but East and West organized their churches very differently.',
+      body: [
+        'In the West, Pope Gregory I (“Gregory the Great,” 590–604) insisted that the bishop of Rome had authority over the whole church: papal primacy. A leading theologian, he stressed the sacrament of penance, confessing sins and doing good works to make up for them. He also sent missionaries who reached the Anglo-Saxons of England in 597.',
+        'In the East, church and state were closely tied. Emperors appointed the patriarchs of Constantinople and treated the church almost as a department of government. This caesaropapism caused dissent when emperors tried to dictate belief.',
+        'The clearest case was iconoclasm (“icon-breaking”). Emperor Leo III (r. 717–741) banned icons, the holy images of Christ and the saints, and after 726 had many destroyed, arguing that people were worshiping images. Monks and ordinary believers protested and rioted. After a long struggle the policy was abandoned for good in 843.',
+        'Some Christians chose asceticism: living as hermits, fasting, praying and staying celibate. St. Basil (329–379) in the East and St. Benedict (480–547) in the West wrote rules that organized monks into communities bound by poverty, chastity and obedience, and Benedict’s sister St. Scholastica adapted his rule for convents of nuns. Monasteries ran inns, orphanages and hospitals, copied books, and sent missionaries to England, northern Germany and Scandinavia.',
+      ],
+      facts: ['Gregory I: papal primacy and penance', 'Eastern emperors appoint the patriarchs', 'Iconoclasm: icons destroyed, 726–843', 'Basil, Benedict, Scholastica: monastic rules'],
+      chain: ['Emperor controls the Eastern church', 'Leo III bans icons, 726', 'Protests and riots', 'Icons restored for good, 843', 'Rift with Rome deepens'],
+      soWhat: 'Monasteries kept learning alive and spread Christianity across Europe, much as Buddhist monasteries did in East Asia. The different powers of pope and patriarch help explain the split of 1054.',
+    },
+    {
+      id: 'slavs-schism', title: 'The Slavs and the schism of 1054', when: '863 – 1054 CE', theme: 'Cultural developments', map: 7,
+      lead: 'Byzantine missionaries carried their form of Christianity to the Slavs, and by 1054 the two halves of Christendom had become rival churches: Eastern Orthodox and Roman Catholic.',
+      body: [
+        'In 863 the brothers Cyril and Methodius, Greek priests from Thessalonica, went as missionaries to Moravia, and they also worked among the Bulgarians, whose ruler was baptized around 864. They translated the liturgy and scripture into Slavic and invented an alphabet to write it. Their followers developed the Cyrillic alphabet, still used in Russia, Ukraine, Bulgaria and Serbia.',
+        'Around 988–989 Prince Vladimir of Kiev was baptized, married a Byzantine princess and ordered his people to convert. Russia and other Slavic lands took their religion, alphabet, art and ideas about rulers from Byzantium rather than Rome.',
+        'Meanwhile East and West drifted apart. They argued over ritual: Greek priests wore beards while Latin priests shaved, and the Greeks used leavened bread in the Mass while the Latins used unleavened bread. They argued over theology: iconoclasm, and the nature of the Trinity, after the West added filioque (“and the Son”) to the creed.',
+        'Above all they argued over authority. Were the patriarchs independent, or did the pope in Rome rule the whole church? In 1054 the patriarch of Constantinople and the representatives of the pope excommunicated each other. The split created the Eastern Orthodox church and the Roman Catholic church, and it still exists today.',
+      ],
+      facts: ['Cyril and Methodius to Moravia, 863', 'Cyrillic alphabet for Slavic languages', 'Vladimir of Kiev converts, c. 988', '1054: mutual excommunication → schism'],
+      chain: ['Greek East vs Latin West', 'Disputes over ritual and the Trinity', 'Pope claims authority over the patriarchs', 'Mutual excommunications, 1054', 'Orthodox East, Catholic West'],
+      soWhat: 'The schism drew a religious map of Europe that still exists: Catholic Poland and Hungary, Orthodox Russia and Serbia. Bitterness between Latins and Greeks helps explain why crusaders sacked Constantinople in 1204 (Chapter 19).',
+      video: ['a6rWf0k8d78', 'Great Schism: The Bitter Rivalry Between Greek and Latin Christianity', 'Kings and Generals'],
+      factCheck: 'Your notes say Cyril and Methodius created the Cyrillic alphabet. Most scholars think Cyril created an earlier script, Glagolitic; the Cyrillic alphabet was developed by their followers in Bulgaria around 900 and named in Cyril’s honor. Also, in 1054 it was the pope’s legate, Cardinal Humbert, who excommunicated Patriarch Michael Cerularius (Pope Leo IX had already died), and the patriarch then excommunicated the legates. Both sides lifted the excommunications in 1965.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 330, label: 'Constantinople becomes capital', track: 'politics', detail: 'Constantine dedicates his new capital on the site of Byzantium.' },
+    { year: 395, label: 'Empire split East and West', track: 'politics', detail: 'After Theodosius I dies, his two sons rule the eastern and western halves.' },
+    { year: 476, label: 'Last western emperor deposed', track: 'politics', detail: 'Odoacer removes Romulus Augustulus. Germanic kingdoms rule the West.' },
+    { year: 496, label: 'Clovis converts', track: 'religion', detail: 'Traditional date (some historians say c. 508). The Franks adopt Roman Christianity and ally with the pope.' },
+    { year: 527, end: 565, label: 'Justinian’s reign', track: 'politics', detail: 'The “sleepless emperor,” with Theodora as advisor.' },
+    { year: 529, label: 'Benedict founds Monte Cassino', track: 'religion', detail: 'Approximate date. His Rule shapes Western monasteries.' },
+    { year: 529, end: 534, label: 'Justinian’s Code compiled', track: 'society', detail: 'Code, Digest and Institutes: the Corpus iuris civilis.' },
+    { year: 532, label: 'Nika riot', track: 'society', detail: 'Blues and Greens revolt; more than 30,000 killed in the Hippodrome.' },
+    { year: 533, end: 554, label: 'Byzantine reconquest of the West', track: 'war', detail: 'North Africa (533–534), Italy (535–554) and southern Spain (552).' },
+    { year: 537, label: 'Hagia Sophia completed', track: 'religion', detail: 'Justinian’s great domed church in Constantinople.' },
+    { year: 590, end: 604, label: 'Pope Gregory the Great', track: 'religion', detail: 'Asserts papal primacy; his missionaries reach England in 597.' },
+    { year: 636, end: 642, label: 'Arabs take Syria and Egypt', track: 'war', detail: 'Byzantium loses its richest provinces to Arab Muslim armies.' },
+    { year: 674, end: 678, label: 'First Arab siege of Constantinople', track: 'war', detail: 'Greek fire helps save the city.' },
+    { year: 717, end: 718, label: 'Second Arab siege of Constantinople', track: 'war', detail: 'The city holds again under Leo III.' },
+    { year: 726, end: 843, label: 'Iconoclasm', track: 'religion', detail: 'Leo III orders icons destroyed; the policy is finally abandoned in 843.' },
+    { year: 732, label: 'Battle of Tours', track: 'war', detail: 'Charles Martel defeats a Muslim army from Spain.' },
+    { year: 768, end: 814, label: 'Charlemagne’s reign', track: 'politics', detail: 'Conquers Saxons, Lombards and Avars; capital at Aachen.' },
+    { year: 793, label: 'Vikings raid Lindisfarne', track: 'war', detail: 'A famous early raid on a monastery in northern England.' },
+    { year: 800, label: 'Charlemagne crowned emperor', track: 'politics', detail: 'Pope Leo III crowns him in Rome on Christmas Day.' },
+    { year: 843, label: 'Treaty of Verdun', track: 'politics', detail: 'Louis the Pious’s three sons split the empire into three kingdoms.' },
+    { year: 863, label: 'Cyril and Methodius to Moravia', track: 'religion', detail: 'Byzantine missionaries bring Slavic-language Christianity.' },
+    { year: 955, label: 'Otto I defeats the Magyars', track: 'war', detail: 'Battle of Lechfeld ends Magyar raids into Germany.' },
+    { year: 988, label: 'Vladimir of Kiev baptized', track: 'religion', detail: 'Date given as 988 or 989. Kievan Rus turns to Orthodox Christianity.' },
+    { year: 1054, label: 'East–West Schism', track: 'religion', detail: 'Patriarch and papal legates excommunicate each other.' },
+    { year: 1071, label: 'Seljuks win at Manzikert', track: 'war', detail: 'Byzantium loses most of Anatolia to the Seljuk Turks.' },
+    { year: 618, label: 'Tang dynasty founded', track: 'world', detail: 'China reunites under the Tang, a golden age of trade and Buddhism.' },
+    { year: 622, label: 'Muhammad’s hijra to Medina', track: 'world', detail: 'The start of the Islamic calendar; Arab expansion follows (Chapter 13).' },
+    { year: 750, label: 'Abbasids take the caliphate', track: 'world', detail: 'Baghdad (founded 762) becomes a center of trade and learning.' },
+    { year: 1095, label: 'First Crusade called', track: 'world', detail: 'Pope Urban II answers a Byzantine request for help (Chapter 19).' },
+    { year: 1453, label: 'Ottomans take Constantinople', track: 'world', detail: 'The Byzantine Empire ends; the city becomes Istanbul.' },
+  ],
+
+  terms: [
+    ['Constantinople', 'Byzantine capital on the Bosporus, founded on the site of Byzantium in 330.', 'Controlled trade and defense between Europe and Asia for 1,100 years.'],
+    ['Caesaropapism', 'System in which the emperor rules the state and also leads the church.', 'Key difference between Byzantium and the West.'],
+    ['Justinian', 'Byzantine emperor, 527–565, the “sleepless emperor.”', 'Law code, Hagia Sophia, reconquest of the West.'],
+    ['Theodora', 'Justinian’s wife, a former performer and his trusted advisor.', 'Her courage saved his throne in the Nika riot.'],
+    ['Hagia Sophia', 'Huge domed church in Constantinople, finished in 537.', 'Symbol of Byzantine wealth and faith; later a mosque.'],
+    ['Corpus iuris civilis', '“Body of Civil Law,” Justinian’s collection of Roman law.', 'Foundation of later European legal systems.'],
+    ['Greek fire', 'Flammable liquid sprayed from tubes that burned even on water.', 'Saved Constantinople from Arab sieges.'],
+    ['Theme system', 'Provinces run by generals; soldiers got land for service.', 'Gave Byzantium a loyal army of free peasants.'],
+    ['Bezant', 'Byzantine gold coin.', 'Standard currency of Mediterranean trade.'],
+    ['Odoacer', 'Germanic general who deposed the last western emperor in 476.', 'Traditional end of the western Roman Empire.'],
+    ['Franks', 'Germanic people who ruled Gaul and allied with the pope.', 'Strongest successor state in the West.'],
+    ['Charles Martel', 'Frankish leader who won the battle of Tours in 732.', 'Stopped a Muslim advance; grandfather of Charlemagne.'],
+    ['Charlemagne', 'Frankish king (768–814), crowned emperor in 800.', 'Rebuilt an empire in the West and revived learning.'],
+    ['Missi dominici', '“Envoys of the lord ruler” who inspected local officials.', 'How Charlemagne controlled a huge empire.'],
+    ['Treaty of Verdun', '843 agreement splitting Charlemagne’s empire in three.', 'Ended unity; roots of France and Germany.'],
+    ['Vikings', 'Norse raiders and traders from Scandinavia.', 'Raided Europe and linked it to the Islamic world.'],
+    ['Magyars', 'Horse nomads who settled in Hungary c. 900.', 'Raided central Europe until defeated in 955.'],
+    ['Feudalism', 'System of lords who gave land to vassals for military service.', 'How a decentralized West organized defense (AP 1.6).'],
+    ['Serfs', 'Peasants bound to the land who owed labor and dues to a lord.', 'Most of the people of medieval western Europe.'],
+    ['Manorialism', 'The economic system of lords’ estates worked by serfs.', 'Basis of the rural western economy.'],
+    ['Heavy plow', 'Iron plow that could turn heavy, wet northern soils.', 'With mills and horse collars, raised harvests.'],
+    ['Papal primacy', 'Claim that the pope has authority over the whole church.', 'Asserted by Gregory I; a cause of the schism.'],
+    ['Iconoclasm', 'Destruction of holy images, ordered by Leo III after 726.', 'Split Byzantine society and angered Rome.'],
+    ['Asceticism', 'Giving up comforts: fasting, prayer, celibacy, solitude.', 'Root of the monastic movement.'],
+    ['Benedictine Rule', 'Benedict’s rules for monks: poverty, chastity, obedience.', 'Model for Western monasteries and convents.'],
+    ['Cyril and Methodius', 'Byzantine missionaries to the Slavs from 863.', 'Slavic Christianity and the alphabet behind Cyrillic.'],
+    ['Vladimir of Kiev', 'Prince of Kievan Rus baptized c. 988.', 'Tied Russia to Byzantine Orthodoxy.'],
+    ['Schism of 1054', 'Mutual excommunication of Rome and Constantinople.', 'Created separate Catholic and Orthodox churches.'],
+  ],
+
+  compare: [
+    {
+      title: 'Byzantine East vs Latin West (c. 600–1054)',
+      head: ['', 'Byzantine East', 'Latin West'],
+      rows: [
+        ['Government', 'One emperor, a central bureaucracy, themes run by generals', 'Weak kings; power held by local lords and vassals'],
+        ['Church and state', 'Caesaropapism: emperor appoints the patriarch', 'Pope claims authority over all Christians, even kings'],
+        ['Economy', 'Big cities, silk industry, gold bezant, long-distance trade', 'Rural manors, serfs, local exchange; recovery after 900'],
+        ['Language', 'Greek', 'Latin (church and learning)'],
+        ['Defense', 'Walls, Greek fire, soldier-farmers of the themes', 'Private armies of mounted vassals and castles'],
+        ['Spread their faith to', 'Bulgarians, Serbs, Russians (Orthodox)', 'Anglo-Saxons, Germans, Scandinavians, Poles (Catholic)'],
+      ],
+    },
+    {
+      title: 'Caesaropapism vs papal authority',
+      head: ['', 'Caesaropapism (Constantinople)', 'Papal authority (Rome)'],
+      rows: [
+        ['Head of the church', 'The emperor, with the patriarch under him', 'The pope, as successor of St. Peter'],
+        ['Who chooses church leaders', 'Emperors appoint patriarchs', 'Church officials (often disputed with kings)'],
+        ['Relation to rulers', 'Church acts like a department of state', 'Popes crown emperors (Charlemagne, 800)'],
+        ['Famous clash', 'Iconoclasm: emperor bans icons, people riot', 'Later fights with kings over appointing bishops'],
+        ['Result by 1054', 'Eastern Orthodox church', 'Roman Catholic church'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Procopius of Caesarea, Byzantine historian and secretary to the general Belisarius, describing the Nika riot in Constantinople (532), written c. 550', text: 'In every city the population has been divided for a long time past into the Blue and the Green factions… The emperor and his court were deliberating as to whether it would be better for them if they remained or if they took to flight in the ships… And the Empress Theodora also spoke to the following effect: “My opinion then is that the present time, above all others, is inopportune for flight, even though it bring safety… May I never be separated from this purple, and may I not live that day on which those who meet me shall not address me as mistress. If, now, it is your wish to save yourself, O Emperor, there is no difficulty. For we have much money, and there is the sea, here the boats… For as for myself, I approve a certain ancient saying that royalty is a good burial-shroud.”', cite: 'Procopius, History of the Wars 1.24, trans. H. B. Dewing (1914)' },
+      questions: [
+        { q: 'The crisis described in the passage began with', options: ['an Arab fleet attacking Constantinople', 'rioting by chariot-racing factions in the capital', 'a Viking raid up the Bosporus', 'a dispute between the emperor and the pope over icons'], correct: 1, why: 'The Blues and the Greens, fan factions of the Hippodrome, united in the Nika riot of 532.' },
+        { q: 'Theodora’s saying that “royalty is a good burial-shroud” most directly argues that', options: ['the emperor should share power with the Senate', 'the imperial family should flee to the West', 'it is better to die as a ruler than to live after giving up the throne', 'royal purple should be worn only at funerals'], correct: 2, why: 'She means she would rather die still holding power than survive as a fugitive.' },
+        { q: 'Which aspect of the source should a historian consider most carefully?', options: ['Procopius worked for Belisarius, who crushed the riot, and wrote the speech years later in dramatic style', 'Procopius was a Frankish monk who never visited Constantinople', 'The passage was written in Latin for the pope', 'Procopius witnessed the battle of Tours'], correct: 0, why: 'Sourcing: he was close to events but wrote the speech afterward, in the classical style of composed speeches, so the exact words may be his.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'The Institutes, a law textbook issued by order of the emperor Justinian in Constantinople, 533 CE', text: 'Justice is the constant and perpetual wish to render every one his due… That which seems good to the emperor has also the force of law; for the people, by the Lex Regia, which is passed to confer on him his power, make over to him their whole power and authority. Therefore whatever the emperor ordains by rescript, or decides in adjudging a cause, or lays down by edict, is unquestionably law…', cite: 'Justinian, Institutes 1.1 and 1.2.6, in O. J. Thatcher, ed., The Library of Original Sources (1907)' },
+      questions: [
+        { q: 'The passage best supports which claim about Byzantine government?', options: ['Laws were made by elected assemblies of citizens.', 'Local lords and vassals made most laws.', 'The pope approved all imperial laws.', 'The emperor held supreme legal authority.'], correct: 3, why: 'Whatever the emperor decreed was “unquestionably law,” which fits the absolute power of Byzantine emperors.' },
+        { q: 'Justinian ordered Roman law collected and organized mainly to', options: ['give the empire one clear, uniform legal system', 'replace Roman law with Germanic customs', 'end the power of the emperor over the church', 'prepare for the schism with Rome'], correct: 0, why: 'The Corpus iuris civilis brought centuries of scattered and contradictory laws into one ordered system.' },
+        { q: 'Which was a long-term effect of Justinian’s legal work?', options: ['It caused the iconoclast riots.', 'It was rediscovered in western Europe and shaped later legal systems.', 'It ended slavery in the Byzantine Empire.', 'It created the theme system.'], correct: 1, why: 'Scholars in Italy revived it around 1100; it became the base of civil-law systems in much of Europe and beyond.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Einhard, a Frankish scholar at Charlemagne’s court and his biographer, describing the coronation of 800, written c. 817–830', text: 'Charles accordingly went to Rome, to set in order the affairs of the Church, which were in great confusion, and passed the whole winter there. It was then that he received the titles of Emperor and Augustus, to which he at first had such an aversion that he declared that he would not have set foot in the Church the day that they were conferred, although it was a great feast-day, if he could have foreseen the design of the Pope. He bore very patiently with the jealousy which the Roman emperors showed upon his assuming these titles, for they took this step very ill; and by dint of frequent embassies and letters, in which he addressed them as brothers, he made their haughtiness yield to his magnanimity…', cite: 'Einhard, Life of Charlemagne 28, trans. S. E. Turner (1880)' },
+      questions: [
+        { q: 'The “Roman emperors” who were jealous of Charlemagne’s new title ruled from', options: ['Rome', 'Aachen', 'Constantinople', 'Ravenna'], correct: 2, why: 'The Byzantine emperors in Constantinople saw themselves as the only true Roman emperors.' },
+        { q: 'Einhard most likely claimed that Charlemagne disliked the title in order to', options: ['present Charlemagne as humble and not greedy for power', 'show that the pope opposed the coronation', 'prove that Charlemagne could not read', 'criticize Charlemagne for weakness'], correct: 0, why: 'Point of view: Einhard admired Charlemagne and wrote a flattering biography; a ruler who refuses honors looks virtuous.' },
+        { q: 'The coronation described in the passage best illustrates', options: ['the theme system of military provinces', 'the alliance between Frankish kings and the papacy', 'caesaropapism in western Europe', 'the influence of the Vikings on the Franks'], correct: 1, why: 'The pope crowning a Frankish king shows the partnership that began with Clovis’s conversion.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Fulbert, bishop of Chartres (France), in a letter to Duke William of Aquitaine explaining the duties of lords and vassals, 1020', text: 'He who swears fealty to his lord ought always to have these six things in memory; what is harmless, safe, honorable, useful, easy, practicable… It remains, therefore, that in the same six things mentioned above he should faithfully counsel and aid his lord, if he wishes to be looked upon as worthy of his benefice and to be safe concerning the fealty which he has sworn. The lord also ought to act toward his faithful vassal reciprocally in all these things. And if he does not do this he will be justly considered guilty of bad faith…', cite: 'Fulbert of Chartres, letter to William of Aquitaine, trans. E. P. Cheyney (1898)' },
+      questions: [
+        { q: 'The relationship described in the letter is best characterized as', options: ['a contract of mutual duties between a lord and an armed follower', 'the obligation of serfs to work the lord’s fields', 'the loyalty of a bishop to the Byzantine emperor', 'a trade agreement between two cities'], correct: 0, why: 'Vassals owe counsel and aid in return for a benefice (fief), and the lord must act “reciprocally.”' },
+        { q: 'Which development most directly led to relationships like the one Fulbert describes?', options: ['The growth of a strong central bureaucracy in France', 'The spread of the theme system to western Europe', 'The breakup of Carolingian power amid invasions', 'The conquest of Spain by the Franks'], correct: 2, why: 'With weak kings and Viking, Magyar and Muslim raids, local lords built private armies of vassals.' },
+        { q: 'The system Fulbert describes is most similar to', options: ['the Byzantine emperor’s control of the patriarch', 'the bond between Japanese warlords and their samurai', 'the Roman Republic’s consuls and Senate', 'the Abbasid caliph’s bureaucracy'], correct: 1, why: 'In both, warriors served a lord in return for land or income and swore personal loyalty.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Benedict of Nursia, founder of the monastery of Monte Cassino (Italy), from the rule he wrote for his monks, c. 530–540', text: 'More than anything else is this special vice to be cut off root and branch from the monastery, that one should presume to give or receive anything without the order of the abbot, or should have anything of his own… All things shall be common to all… Idleness is the enemy of the soul. And therefore, at fixed times, the brothers ought to be occupied in manual labour; and again, at fixed times, in sacred reading.', cite: 'Rule of St. Benedict, chapters 33 and 48, trans. E. F. Henderson (1910)' },
+      questions: [
+        { q: 'The rules in the passage most directly reflect which monastic vows?', options: ['Chastity and pilgrimage', 'Poverty and obedience', 'Silence and fasting', 'Celibacy and crusade'], correct: 1, why: 'Monks may own nothing (poverty) and act only with the abbot’s order (obedience).' },
+        { q: 'Which was a broader effect of monasteries that followed rules like this one?', options: ['They preserved books and learning and ran hospitals and inns.', 'They replaced the pope as leaders of the Western church.', 'They caused the decline of Western agriculture.', 'They led the iconoclast movement in Byzantium.'], correct: 0, why: 'Labor and reading made monasteries centers of farming, copying books and social welfare.' },
+        { q: 'Benedictine monasteries were most similar to which institution in another region?', options: ['Byzantine themes', 'The Hippodrome factions', 'Buddhist monasteries in East Asia', 'Viking trading posts'], correct: 2, why: 'Both were communities of monks under rules who spread their faith, kept learning alive and served society.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE way the government of the Byzantine Empire differed from government in western Europe between c. 800 and 1050.',
+        'Explain ONE reason political power became decentralized in western Europe in the 800s and 900s.',
+        'Explain ONE way the Byzantine Empire influenced the Slavic peoples.',
+      ],
+      guide: [
+        'Accept: Byzantium had one strong emperor with a central bureaucracy and the theme system, while the West was run by local lords and vassals; the Byzantine emperor controlled the church (caesaropapism), while Western popes claimed independence.',
+        'Accept with explanation: weak heirs and civil war after Charlemagne; the Treaty of Verdun (843) split the empire; Viking, Magyar and Muslim raids that kings could not stop, so local lords took over defense.',
+        'Accept with explanation: Cyril and Methodius brought Christianity and an alphabet (Cyrillic); Vladimir of Kiev converted c. 988, so Rus adopted Orthodox Christianity, Byzantine art and ideas of rulership; trade along the Dnieper to Constantinople.',
+      ],
+      model: [
+        'The Byzantine emperor ruled through a central government and appointed the patriarch, while in the West kings were weak and real power belonged to local lords.',
+        'After Charlemagne’s grandsons split his empire at Verdun in 843, Vikings, Magyars and Muslim raiders attacked. The kings had no navy and could not respond quickly, so people relied on local lords and their armed vassals for protection.',
+        'After Prince Vladimir of Kiev was baptized around 988, Kievan Rus adopted Orthodox Christianity from Byzantium, so Russians wrote with the Cyrillic alphabet and built churches in the Byzantine style.',
+      ],
+    },
+    {
+      prompt: 'Use the letter of Fulbert of Chartres (1020) in the practice questions above.',
+      parts: [
+        'Identify ONE obligation a vassal owed to his lord according to Fulbert.',
+        'Explain ONE way the invasions of the 800s and 900s contributed to the system Fulbert describes.',
+        'Explain ONE similarity OR difference between western European feudalism and the Byzantine theme system.',
+      ],
+      guide: [
+        'Accept: not harm the lord’s body, secrets, honor or possessions; give counsel and aid; be loyal (fealty).',
+        'Accept with explanation: kings could not defend against fast Viking, Magyar or Muslim raids, so local lords raised private armies and rewarded vassals with land.',
+        'Similar: both gave land in return for military service. Different: Byzantine theme soldiers were free peasants under generals controlled by a strong emperor, while Western vassals served private lords and weakened central power.',
+      ],
+      model: [
+        'A vassal had to give his lord “counsel and aid,” such as fighting for him.',
+        'Vikings in longships could raid deep inland and leave before a king’s army arrived. Local nobles who could fight back on the spot gained power and recruited vassals with grants of land.',
+        'Both systems paid soldiers with land instead of wages. But Byzantine theme soldiers served the emperor, which kept the state centralized, while Western vassals were loyal to their own lord, which split power among many nobles.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which the Byzantine Empire and western Europe differed in their political and religious development between c. 500 and 1054.',
+    theses: [
+      { text: 'The Byzantine Empire and western Europe were both Christian.', ok: false, why: 'A fact, not an argument, and it does not address the extent of difference.' },
+      { text: 'Byzantium and western Europe were different in many ways.', ok: false, why: 'Too vague: it does not say how or how much they differed.' },
+      { text: 'Although both inherited Christianity and Roman traditions, Byzantium and the West differed greatly because Byzantium kept a strong emperor who controlled the church, while the West split into local lordships and looked to an independent pope, a difference that ended in the schism of 1054.', ok: true, why: 'Makes a defensible claim about extent, names a similarity and the main differences, and points to evidence.' },
+    ],
+    contextHint: 'What did both halves of Christendom inherit from Rome before 500?',
+    contextStart: 'When the western Roman Empire fell in 476…',
+    context: 'Both halves of Christendom grew out of the Roman Empire. Constantine moved the capital to Constantinople in 330, and after 476 Germanic kingdoms replaced Roman rule in the West while the eastern empire survived.',
+    evidence: [
+      { text: 'Byzantine emperors appointed patriarchs (caesaropapism); Pope Gregory I asserted papal primacy.', side: 'different' },
+      { text: 'Byzantium kept a central government and the theme system; the West split into lordships after Verdun (843).', side: 'different' },
+      { text: 'Byzantium had big cities, silk workshops and the gold bezant; the West became rural and local.', side: 'different' },
+      { text: 'Greek vs Latin, leavened vs unleavened bread, filioque, and the mutual excommunications of 1054.', side: 'different' },
+      { text: 'Both inherited Christianity and Roman law and traditions from the Roman Empire.', side: 'similar' },
+      { text: 'Both fought off Muslim expansion: Greek fire at Constantinople, Charles Martel at Tours (732).', side: 'similar' },
+      { text: 'Both spread Christianity through monks and missionaries: Benedictines in the West, Cyril and Methodius to the Slavs.', side: 'similar' },
+      { text: 'Rulers in both claimed God’s authority: Byzantine emperors as God’s chosen, Charlemagne crowned by the pope.', side: 'similar' },
+    ],
+    complexity: 'Show complexity by explaining why the same Roman and Christian inheritance produced different results: Byzantium’s walls, wealth and strong emperor preserved central rule, while invasions in the West shifted power to local lords and left the pope as the main source of unity.',
+  },
+
+  recall: [
+    { q: 'In what year did Constantinople become the Roman capital?', a: '330 CE' },
+    { q: 'What weapon helped save Constantinople from Arab sieges?', a: 'Greek fire' },
+    { q: 'Who crowned Charlemagne emperor in 800?', a: 'Pope Leo III' },
+    { q: 'Which treaty split Charlemagne’s empire in 843?', a: 'The Treaty of Verdun' },
+    { q: 'In what year did the Eastern and Western churches split?', a: '1054' },
+  ],
+}

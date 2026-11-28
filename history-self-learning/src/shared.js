@@ -1,16 +1,35 @@
-// Shared helpers: saved progress (this device only), the chapter list, and time formatting.
+// Shared helpers: saved progress (this device only), the chapter list and loader, and time formatting.
 import { useEffect, useState } from 'react'
-import { CH11 } from './chapters/ch11.js'
+import { CHAPTER_LIST } from './chapters/index.js'
 
-export const CHAPTERS = [CH11]
+const CONTENT = import.meta.glob('./chapters/ch*.js')
+const MAPS = import.meta.glob('./maps/ch*.js')
+const BASES = import.meta.glob('./geo/*.js')
+
+// Chapters whose content has been written, in textbook order.
+export const CHAPTERS = CHAPTER_LIST.filter(c => CONTENT[`./chapters/ch${c.n}.js`] && MAPS[`./maps/ch${c.n}.js`])
 export const chapterBy = n => CHAPTERS.find(c => c.n === Number(n))
+
+// Loads a chapter's content, its map and every base map its steps use.
+export async function loadChapter(n) {
+  const meta = chapterBy(n)
+  const [content, mapMod] = await Promise.all([CONTENT[`./chapters/ch${n}.js`](), MAPS[`./maps/ch${n}.js`]()])
+  const map = mapMod.default
+  const names = [...new Set([map.base, ...map.steps.map(s => s.base).filter(Boolean)])]
+  const bases = await Promise.all(names.map(b => BASES[`./geo/${b}.js`]()))
+  return { ...meta, ...content.default, map: { ...map, bases: Object.fromEntries(names.map((b, i) => [b, bases[i]])) } }
+}
+// Timeline events of every written chapter, each tagged with its chapter number.
+export const loadAllTimelines = () => Promise.all(CHAPTERS.map(c => CONTENT[`./chapters/ch${c.n}.js`]()
+  .then(m => m.default.timeline.map(e => ({ ...e, ch: c.n })))))
+
 
 // The six parts of a lesson day, in order. `id` matches the section anchors on the chapter page.
 export const DAY_STEPS = [
   { id: 'big', label: 'Big picture', mins: 5, note: 'The question, the hook and the video' },
   { id: 'timeline', label: 'Timeline', mins: 5, note: 'When it happened, and what else was going on' },
-  { id: 'map', label: 'Map', mins: 5, note: 'Watch the empire grow' },
-  { id: 'lesson', label: 'Lesson', mins: 20, note: 'Eight short sections with cause and effect' },
+  { id: 'map', label: 'Map', mins: 5, note: 'Watch empires, routes and ideas move' },
+  { id: 'lesson', label: 'Lesson', mins: 20, note: 'Short sections with cause and effect' },
   { id: 'compare', label: 'Compare & terms', mins: 10, note: 'Tables and flashcards' },
   { id: 'practice', label: 'Practice', mins: 15, note: 'AP-style questions with answers' },
 ]

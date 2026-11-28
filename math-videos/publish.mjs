@@ -3,7 +3,8 @@
 //              and ../math-self-learning/src/units/unit-N/videos.json
 //   chemistry: out/chem-N/<id>.{mp4,webm} -> ../chemistry-self-learning/public/videos/chapter-N/<id>.{mp4,webm,jpg}
 //              and ../chemistry-self-learning/src/videos/chapter-N.json
-//   history:   out/hist-N/... -> ../history-self-learning/public/videos/chapter-N/ and src/videos/chapter-N.json
+//   history:   out/hist-N/<id>.mp4 -> ../history-self-learning/public/videos/chapter-N/<id>.{mp4,jpg} (no webm)
+//              and src/videos/chapter-N.json
 // Each manifest records every video's duration. Usage: node publish.mjs unit-4 | chem-2 | hist-11
 import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
@@ -29,9 +30,10 @@ const manifest = {}
 for (const file of readdirSync(outDir).filter(f => /^\d\d-.*\.mp4$/.test(f) && !f.includes('preview')).sort()) {
   const id = file.replace(/\.mp4$/, '')
   const mp4 = path.join(outDir, file), webm = path.join(outDir, `${id}.webm`)
-  if (!existsSync(webm)) { console.log(`skip ${id}: no webm`); continue }
+  const hist = unit.startsWith('hist-') // history videos are MP4 only
+  if (!hist && !existsSync(webm)) { console.log(`skip ${id}: no webm`); continue }
   copyFileSync(mp4, path.join(dest, `${id}.mp4`))
-  copyFileSync(webm, path.join(dest, `${id}.webm`))
+  if (!hist) copyFileSync(webm, path.join(dest, `${id}.webm`))
   execFileSync(ffmpeg, ['-y', '-loglevel', 'error', '-ss', '2.2', '-i', mp4, '-frames:v', '1', '-vf', 'scale=1280:-1', '-q:v', '3', path.join(dest, `${id}.jpg`)])
   let info = ''
   try { execFileSync(ffmpeg, ['-hide_banner', '-i', mp4], { stdio: 'pipe' }) } catch (e) { info = e.stderr.toString() }

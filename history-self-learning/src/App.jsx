@@ -3,7 +3,8 @@ import { ArrowRight, BookOpen, Check, Clock, Compass, Landmark, Map as MapIcon, 
 import MapPlayer from './MapPlayer.jsx'
 import Timeline from './Timeline.jsx'
 import { Chain, Flashcards, LeqBuilder, McqSet, Recall, Saq, YouTube } from './Bits.jsx'
-import { CHAPTERS, DAY_STEPS, chapterBy, useStored } from './shared.js'
+import { CHAPTERS, DAY_STEPS, TRACKS, chapterBy, loadAllTimelines, loadChapter, useStored } from './shared.js'
+import { CHAPTER_LIST } from './chapters/index.js'
 import { chapterVideo, minutes } from './narrated.js'
 
 function useRoute() {
@@ -30,25 +31,29 @@ export default function App() {
         <a href="/math/" className="nav-switch"><Sigma size={14} /> Math</a>
       </nav>
     </header>
-    <main id="main">{chapter ? <ChapterPage key={chapter.n} ch={chapter} /> : isTimeline ? <TimelinePage /> : <Home />}</main>
+    <main id="main">{chapter ? <ChapterLoader key={chapter.n} n={chapter.n} /> : isTimeline ? <TimelinePage /> : <Home />}</main>
     <footer><p><strong>Self Learning · World History.</strong> Original explanations and maps; primary sources are public-domain translations. Map data: Natural Earth. Videos remain with their creators.</p><p>Progress is saved on this device only.</p></footer>
   </>
 }
 
+const stepsDone = n => { try { return JSON.parse(localStorage.getItem(`hist-done-${n}`) ?? '[]').length } catch { return 0 } }
+
 function Home() {
-  const next = CHAPTERS[0]
+  // today's chapter: the first one not finished yet
+  const next = CHAPTERS.find(c => stepsDone(c.n) < DAY_STEPS.length) ?? CHAPTERS[0]
+  const parts = [...new Set(CHAPTERS.map(c => c.part))]
   return <>
     <section className="hero">
       <span className="eyebrow">AP WORLD HISTORY · SELF LEARNING</span>
       <h1>World history,<br /><em>one chapter a day.</em></h1>
       <p>About an hour a day: a big question, a timeline, an animated map, a short lesson, and AP-style practice with answers.</p>
-      <a className="btn accent big" href={`#/chapter/${next.n}`}>Start today’s chapter <ArrowRight size={17} /></a>
+      <a className="btn accent big" href={`#/chapter/${next.n}`}>Start today’s chapter: {next.short} <ArrowRight size={17} /></a>
     </section>
     <section className="wrap">
       <h2 className="sec-title">Chapters</h2>
-      <div className="chapter-grid">{CHAPTERS.map(c => <ChapterCard key={c.n} ch={c} />)}
-        <div className="chapter-card soon"><span className="eyebrow">NEXT CHAPTERS</span><h3>Coming as they are assigned</h3><p className="muted">Each new chapter gets the same daily plan, map, timeline and practice.</p></div>
-      </div>
+      {parts.map(p => <div key={p}><h3 className="part-title">{p}</h3>
+        <div className="chapter-grid">{CHAPTERS.filter(c => c.part === p).map(c => <ChapterCard key={c.n} ch={c} />)}</div></div>)}
+      {CHAPTERS.length < CHAPTER_LIST.length && <div className="chapter-grid"><div className="chapter-card soon"><span className="eyebrow">NEXT CHAPTERS</span><h3>Coming as they are assigned</h3><p className="muted">Each new chapter gets the same daily plan, map, timeline and practice.</p></div></div>}
       <h2 className="sec-title">How a day works</h2>
       <ol className="day-plan">{DAY_STEPS.map((s, i) => <li key={s.id}><span className="num">{i + 1}</span><div><strong>{s.label}</strong><span className="muted"> · {s.mins} min</span><p>{s.note}</p></div></li>)}</ol>
       <div className="tip"><Compass size={20} /><p><strong>Teacher tip:</strong> the next day, start with the five “exit ticket” questions from the chapter before. Remembering yesterday’s lesson is what makes it stick.</p></div>
@@ -64,10 +69,32 @@ function ChapterCard({ ch }) {
   </a>
 }
 
+// Zoom buttons for the master timeline: everything, then one per chapter.
+function masterZooms(events) {
+  const span = evs => { const a = Math.min(...evs.map(e => e.year)), b = Math.max(...evs.map(e => e.end ?? e.year)), pad = Math.max(10, (b - a) * 0.04); return { from: Math.floor(a - pad), to: Math.ceil(b + pad) } }
+  const own = n => events.filter(e => e.ch === n && e.track !== 'world')
+  // "Everything" starts at the Greek Bronze Age; the few older events (Sahara drying, New Guinea farming) appear in their chapter's zoom
+  const all = span(events)
+  return [{ label: 'Everything', from: Math.max(all.from, -2300), to: all.to }, ...CHAPTERS.filter(c => own(c.n).length).map(c => ({ label: `Ch ${c.n}`, ...span(own(c.n)) }))]
+}
+
 function TimelinePage() {
-  const events = CHAPTERS.flatMap(c => c.timeline)
+  const [events, setEvents] = useState(null)
+  // each chapter's own events only: its "meanwhile in the world" events are covered by other chapters
+  useEffect(() => { let live = true; loadAllTimelines().then(all => { if (live) setEvents(all.flat().filter(e => e.track !== 'world')) }); return () => { live = false } }, [])
   return <section className="wrap"><span className="eyebrow">ALL CHAPTERS SO FAR</span><h1 className="page-title">Master timeline</h1>
-    <p className="muted">Every chapter adds its events here, so you can see how the eras connect.</p><Timeline events={events} /></section>
+    <p className="muted">Every chapter adds its events here, so you can see how the eras connect. Use the chapter buttons to zoom in.</p>
+    {events ? <Timeline events={events} zooms={masterZooms(events)} tracks={MASTER_TRACKS} /> : <p className="muted">Loading the timeline…</p>}</section>
+}
+const MASTER_TRACKS = TRACKS.filter(t => t.id !== 'world')
+
+function ChapterLoader({ n }) {
+  const [ch, setCh] = useState(null)
+  const [failed, setFailed] = useState(false)
+  useEffect(() => { let live = true; loadChapter(n).then(c => { if (live) setCh(c) }, () => { if (live) setFailed(true) }); return () => { live = false } }, [n])
+  if (failed) return <section className="wrap"><p>Could not load this chapter. Check your connection and reload the page.</p></section>
+  if (!ch) return <section className="wrap"><p className="muted">Loading Chapter {n}…</p></section>
+  return <ChapterPage ch={ch} />
 }
 
 function ChapterPage({ ch }) {
@@ -98,22 +125,22 @@ function ChapterPage({ ch }) {
           <h4>Four big ideas to carry with you</h4><ol className="big-ideas">{ch.bigIdeas.map(b => <li key={b}>{b}</li>)}</ol>
           <div className="ap-note"><BookOpen size={18} /><p>{ch.apNote}</p></div></div>
         <div>{video ? <div className="narrated"><span className="eyebrow">WATCH THE LESSON · {minutes(video.seconds)}</span>
-          <video controls playsInline preload="metadata" poster={`${video.base}.jpg`}><source src={`${video.base}.mp4`} type="video/mp4" /><source src={`${video.base}.webm`} type="video/webm" /></video>
+          <video controls playsInline preload="metadata" poster={`${video.base}.jpg`}><source src={`${video.base}.mp4`} type="video/mp4" /></video>
           <p className="muted">Narrated with captions. Pause at each “Your turn.”</p></div> : null}
-          <YouTube id="oPf27gAup9U" title="The Roman Empire. Or Republic. Or… Which Was It?" creator="CrashCourse" /></div>
+          {ch.video && <YouTube id={ch.video[0]} title={ch.video[1]} creator={ch.video[2]} />}</div>
       </div>
       {doneBtn('big')}
     </section>
 
     <section id="timeline" className="wrap step">
       <StepHead n={2} title="Timeline" mins={5} sub="Read it left to right. The purple lane shows what was happening elsewhere at the same time." />
-      <Timeline events={ch.timeline} />
+      <Timeline events={ch.timeline} zooms={ch.zooms} />
       {doneBtn('timeline')}
     </section>
 
     <section id="map" className="wrap step">
-      <StepHead n={3} title="The map" mins={5} sub="Press Play all, or step through. Watch how Rome grows from one city to an empire around the whole Mediterranean." />
-      <MapPlayer step={mapStep} setStep={setMapStep} />
+      <StepHead n={3} title="The map" mins={5} sub={ch.mapSub ?? 'Press Play all, or step through.'} />
+      <MapPlayer map={ch.map} step={mapStep} setStep={setMapStep} />
       {doneBtn('map')}
     </section>
 
@@ -158,7 +185,16 @@ function ChapterPage({ ch }) {
       <Recall items={ch.recall} />
       {doneBtn('practice')}
     </section>
+    {chapterNav(ch.n)}
   </>
+}
+
+function chapterNav(n) {
+  const i = CHAPTERS.findIndex(c => c.n === n), prev = CHAPTERS[i - 1], next = CHAPTERS[i + 1]
+  return <nav className="wrap ch-nav" aria-label="Other chapters">
+    {prev ? <a href={`#/chapter/${prev.n}`}>← Chapter {prev.n}: {prev.short}</a> : <span />}
+    {next && <a href={`#/chapter/${next.n}`}>Chapter {next.n}: {next.short} →</a>}
+  </nav>
 }
 
 function StepHead({ n, title, mins, sub }) {

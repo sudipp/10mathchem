@@ -1,0 +1,347 @@
+// Chapter 15 · India and the Indian Ocean Basin (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch15.js.
+export default {
+  hook: 'In 1025 a Turkish raider, Mahmud of Ghazni, smashed the great Hindu temple of Somnath and carried its gold back to Afghanistan. That same year a fleet from the Hindu Chola kingdom of southern India sailed across the Bay of Bengal to attack Srivijaya, the kingdom that guarded the sea lanes to China. India was never united in these centuries, yet it sat at the center of the busiest trading ocean on earth. Pepper, cotton and steel went out from its ports; Islam, new rulers and new ideas came in.',
+  apNote: 'Much of this chapter is directly tested. AP Topic 1.3, “Developments in South and Southeast Asia, c. 1200–1450,” covers the Delhi Sultanate, Vijayanagara, Hindu–Muslim interaction, bhakti and Sufism, and Southeast Asian states such as Srivijaya, Majapahit and the Khmer Empire (Angkor). Topic 2.3, “Exchange in the Indian Ocean,” covers the monsoon winds, lateen sails and junks, and diasporic merchant communities. The material before 1200 (Harsha, Srivijaya, the Cholas) is background you can use in essays.',
+  themes: ['Governance', 'Economic systems', 'Cultural developments', 'Social structures', 'Humans and the environment'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['a6XtBLDmPA0', 'Int\'l Commerce, Snorkeling Camels, and The Indian Ocean Trade: Crash Course World History #18', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Watch northern India split and reunite, Islam arrive from the northwest, Hindu kingdoms hold the south, and sea lanes tie the whole ocean together from East Africa to China.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 440, to: 1530 },
+    { label: 'After the Gupta', from: 440, to: 900 },
+    { label: 'Raiders & sultans', from: 990, to: 1570 },
+    { label: 'Southeast Asia & the sea', from: 650, to: 1530 },
+    { label: 'Long view', from: 300, to: 1550 },
+  ],
+  bigIdeas: [
+    'After the Gupta fell, northern India stayed politically divided. Harsha reunited it only briefly; later, Turkish Muslims ruled the north as the Sultanate of Delhi (1206–1526), while Hindu kingdoms such as the Cholas and Vijayanagara held the south.',
+    'Predictable monsoon winds, bigger ships and cosmopolitan port cities (emporia) made the Indian Ocean the world’s busiest trade zone, with India at its center.',
+    'Islam came by conquest, by trade and through Sufi missionaries; Buddhism faded in India, while devotional Hinduism and the bhakti movement grew.',
+    'Southeast Asian states (Funan, Srivijaya, Angkor, Majapahit, Melaka) borrowed Indian kingship and religions without caste, and later many converted to Islam along the trade routes.',
+  ],
+
+  sections: [
+    {
+      id: 'after-gupta', title: 'India after the Gupta: Harsha', when: 'c. 455 – 650 CE', theme: 'Governance', map: 0,
+      lead: 'Attacks by the White Huns broke the Gupta Empire, and northern India split into rival kingdoms. King Harsha reunited much of the north for about forty years, but his state did not outlive him.',
+      body: [
+        'Nomads from Central Asia, the White Huns (Hephthalites, called Hunas in India), began attacking the Gupta Empire in the mid-400s. By the mid-500s the Gupta state had collapsed, and northern India broke into many small kingdoms that fought each other.',
+        'More nomads, including Turkish peoples, moved into the north. Many settled down, married into local families and were absorbed into Indian society.',
+        'Harsha (r. 606–647) ruled from Kanauj on the Ganges. He was a Buddhist but also supported Hindu priests, gave huge gifts to the poor, and wrote three plays in Sanskrit. When he tried to push south, the Chalukya king Pulakeshin II stopped him at the Narmada River.',
+        'The Chinese monk Xuanzang spent years in India in the 630s and 640s. He studied at Nalanda, the great Buddhist monastery-university, and attended Harsha’s court. When Harsha died without a strong heir, no one could hold his kingdom together, and the north split apart again.',
+      ],
+      facts: ['White Huns attack from the mid-400s', 'Gupta state collapses by the mid-500s', 'Harsha rules from Kanauj, 606–647', 'Buddhist, tolerant, generous; wrote three plays'],
+      chain: ['White Huns invade', 'Gupta Empire collapses', 'North splits into rival kingdoms', 'Harsha reunites the north for a time', 'No strong heir', 'Division returns'],
+      soWhat: 'Political division is the thread of this chapter. It left the north open to invaders, but it never stopped Indian goods, religions and ideas from shaping the whole Indian Ocean world. Compare China, which reunified under the Sui and Tang (Chapter 14).',
+      factCheck: 'Your notes give 451 CE for the first Hun invasion and 606–648 for Harsha, and say he was assassinated. Historians usually date the first Huna attack on the Gupta to about 455 CE, early in the reign of Skandagupta (451 is the year Attila’s Huns invaded Gaul). Most date Harsha’s death to 647; the sources do not clearly say how he died, only that he left no heir.',
+    },
+    {
+      id: 'islam-arrives', title: 'Islam reaches northern India', when: '711 – 1030 CE', theme: 'Cultural developments', map: 1,
+      lead: 'Islam came to India in three ways: Arab conquest in Sind, Muslim merchants in the ports, and Turkish raiders from Afghanistan.',
+      body: [
+        'In 711 an Arab army led by Muhammad ibn Qasim conquered Sind, in the lower Indus valley (today’s Pakistan). Sind became a province of the Umayyad and then the Abbasid caliphate, at the far eastern edge of the Islamic world. Most of its people stayed Hindu or Buddhist; they could keep their faiths if they paid a special tax.',
+        'Arab and Persian merchants had traded with India long before Islam. From the 600s to the 1400s Muslim merchants dominated trade between India and the lands to the west. They settled in port cities such as Cambay in Gujarat and the ports of the Malabar coast, married local women and built mosques, creating Muslim communities inside Hindu kingdoms.',
+        'The biggest shock came from Mahmud of Ghazni, the leader of the Turks in Afghanistan. Between 1001 and 1027 he raided northern India about seventeen times. He looted rich Hindu and Buddhist temples, often built mosques on their ruins, and carried off enormous treasure. His sack of the temple of Somnath in 1025 became legendary.',
+        'Mahmud wanted loot more than new lands, but he did annex the Punjab. The scholar al-Biruni, who traveled with Mahmud’s court, learned Sanskrit and wrote a detailed study of Hindu religion, science and customs.',
+      ],
+      facts: ['711: Arabs conquer Sind', 'Muslim merchants settle in Cambay and Malabar ports', 'Mahmud of Ghazni raids, 1001–1027', 'Temples plundered; Somnath, 1025'],
+      chain: ['Islam expands east', 'Arabs conquer Sind, 711', 'Muslim merchants settle in Indian ports', 'Turks in Afghanistan grow strong', 'Mahmud’s raids, 1001–1027', 'Path opens for the Delhi Sultanate'],
+      soWhat: 'Islam entered India both peacefully, through trade, and violently, through raids. AP questions often ask you to compare these paths of diffusion. See Chapter 13 for the Umayyad and Abbasid caliphates.',
+      factCheck: 'Your notes say the Abbasids held Sind until 1258. In practice the caliphs lost real control of Sind in the late 800s: local Arab rulers at Mansura and Multan governed on their own, and Mahmud of Ghazni took over the region in the early 1000s. The year 1258 is when the Mongols destroyed the Abbasid caliphate in Baghdad.',
+    },
+    {
+      id: 'delhi-sultanate', title: 'The Sultanate of Delhi', when: '1206 – 1526 CE', theme: 'Governance', map: 2,
+      lead: 'Turkish Muslim generals turned the old raiding grounds into a lasting state. From Delhi, a series of sultans ruled much of northern India for 320 years.',
+      body: [
+        'In the late 1100s another Turkish ruler from Afghanistan, Muhammad of Ghur, conquered much of northern India. After he was killed in 1206, his general Qutb ud-Din Aibak, a former slave soldier, made himself sultan, and his successors ruled from Delhi. The sultanate lasted until 1526, when the Mughals replaced it.',
+        'The sultans held the cities and main roads, but their administration was weak. They relied on Hindu kings and local chiefs who paid tribute and kept order in the countryside. Politics at court was deadly: 19 of the 35 sultans were assassinated.',
+        'The sultanate reached its greatest size under Muhammad bin Tughluq (r. 1325–1351), stretching almost to the southern tip of India. It also held back the Mongols in the late 1200s and early 1300s, which few states managed. After the Central Asian conqueror Timur sacked Delhi in 1398, the sultanate shrank to a regional kingdom.',
+        'The sultans brought Persian and Islamic culture to the north: grand mosques and towers such as the Qutb Minar, Persian as a language of government, and Islamic law. Muslim rule did not make most Indians Muslim, but it created a lasting Islamic presence in northern India.',
+      ],
+      facts: ['Founded 1206; capital Delhi', 'Relied on tribute from Hindu kings', '19 of 35 sultans assassinated', 'Largest c. 1330; Mongols held back'],
+      chain: ['Turkish raids weaken northern kingdoms', 'Muhammad of Ghur conquers the north', 'Sultanate of Delhi, 1206', 'Weak control; Hindu kings pay tribute', 'Peak c. 1330', 'Timur sacks Delhi, 1398; decline'],
+      soWhat: 'The Delhi Sultanate is AP’s main example of a Muslim state ruling a mostly Hindu population (Topic 1.3). Use it to discuss how rulers legitimized and kept power over people of another faith, and compare it with the later Mughal Empire.',
+      video: ['AMGPVDvo2VE', 'State Building in SOUTH Asia & SOUTHEAST Asia [AP World Review—Unit 1 Topic 3]', 'Heimler\'s History'],
+    },
+    {
+      id: 'southern-kingdoms', title: 'Hindu kingdoms of the south', when: '850 – 1565 CE', theme: 'Governance', map: 3,
+      lead: 'Southern India stayed under Hindu kings. The Chola kingdom became a sea power, and later Vijayanagara held off the Muslim sultanates for two centuries.',
+      body: [
+        'The Chola kingdom (850–1267 in your notes) ruled the Coromandel coast of the southeast. Its kings Rajaraja I and Rajendra I built a strong navy, conquered Sri Lanka and the Maldives, marched north to the Ganges, and in 1025 sent a fleet across the Bay of Bengal to raid Srivijaya, which controlled the straits to China.',
+        'The Chola state was not highly centralized. Villages and town assemblies ran their own affairs, while kings showed their power through huge temples like the Brihadishvara temple at Thanjavur, finished in 1010.',
+        'Vijayanagara was founded in 1336 by two brothers, Harihara and Bukka. According to tradition they had served the Delhi Sultanate and converted to Islam; sent south to govern for the sultan, they renounced Islam, returned to Hinduism and founded their own kingdom. Even so, they kept up relations with the sultanate.',
+        'From its enormous capital (today’s Hampi), Vijayanagara dominated the south and fought the Muslim Bahmani Sultanate to its north. Yet it hired Muslim soldiers and bought war horses from Muslim merchants. It lasted until an alliance of sultanates crushed its army at Talikota in 1565.',
+      ],
+      facts: ['Chola: sea power, conquers Sri Lanka', 'Chola fleet raids Srivijaya, 1025', 'Vijayanagara founded 1336 by Harihara and Bukka', 'Defeated at Talikota, 1565'],
+      chain: ['Delhi sultans push south', 'Harihara and Bukka sent to govern', 'They renounce Islam, 1336', 'Vijayanagara rules the south', 'Rivalry with the Bahmani Sultanate', 'Defeat at Talikota, 1565'],
+      soWhat: 'Vijayanagara is one of AP’s South Asian states. It shows that Hindu–Muslim relations were not only conflict: rivals traded, hired each other’s soldiers and borrowed each other’s building styles.',
+      factCheck: 'Your notes date the Chola kingdom 850–1267 and place Vijayanagara in the northern Deccan. Most reference works end Chola rule in 1279, and Vijayanagara was centered in the southern Deccan; its capital stood on the Tungabhadra River in today’s Karnataka.',
+    },
+    {
+      id: 'monsoon-economy', title: 'Farming, temples and caste', when: 'c. 600 – 1500 CE', theme: 'Economic systems',
+      lead: 'The monsoon set the rhythm of life in India. Irrigation fed a growing population, Hindu temples became the centers of local economies, and caste spread and adapted.',
+      body: [
+        'In spring and summer the monsoon blows from the southwest and brings heavy rain; in fall and winter the wind blows from the northeast and the land dries out. Where rain was unreliable, especially in the south, farmers needed irrigation to avoid drought and famine, so kings and temples built huge reservoirs, canals, wells and even tunnels.',
+        'More food meant more people: India’s population roughly doubled, from about 50 million in 600 to about 100 million in 1500. Most regions grew their own food, but some goods were traded across the whole subcontinent: iron, copper, salt and pepper. Southern India, spared most of the wars of the north, grew rich on trade.',
+        'Hindu temples were far more than places of worship. Large temples owned land and villages, organized irrigation and farm work, ran schools, and acted as banks that lent money.',
+        'Caste changed too. Migrations, Islam, growing cities and new trades created new groups, and people organized into jati, subcastes tied to an occupation that worked much like guilds. Supported by temples and schools, the caste system spread from the north into the south.',
+      ],
+      facts: ['SW monsoon: summer rain · NE monsoon: dry winter', 'Reservoirs, canals and tunnels', 'Population ≈ doubles, 600–1500', 'Temples: land, schools, banks · jati like guilds'],
+      chain: ['Seasonal monsoon rains', 'Irrigation projects', 'More food', 'Population grows', 'New trades and jati', 'Temples run local economies'],
+      soWhat: 'Farm surpluses made India’s huge trade possible. This is the AP theme of humans and the environment; compare Song China’s fast-ripening rice and population boom (Chapter 14).',
+    },
+    {
+      id: 'indian-ocean', title: 'Trade in the Indian Ocean basin', when: 'c. 600 – 1500 CE', theme: 'Economic systems', map: 5,
+      lead: 'With India in the middle, the Indian Ocean became the busiest trade zone in the world. Merchants timed every voyage to the monsoon winds.',
+      body: [
+        'Sailors learned to ride the monsoon: sail one way with the summer winds, wait in port, and return with the winter winds. Bigger ships made trade cheaper: Arab and Indian dhows with triangular lateen sails, and huge Chinese junks with watertight compartments and magnetic compasses that could carry hundreds of tons.',
+        'Trade moved in stages. Ports where the monsoon routes met became emporia: cosmopolitan cities with warehouses where cargo changed ships. Cambay and Calicut in India, Aden and Hormuz in the west, Melaka in the straits, Kilwa in East Africa and Guangzhou in China each hosted merchants from many lands.',
+        'Merchants formed diasporic communities far from home: Arabs and Persians in Indian and Chinese ports, Gujarati Indians in Aden and Melaka, Chinese in Southeast Asia. Regions specialized: India sold cotton cloth and high-carbon steel, Southeast Asia spices, China silk and porcelain, East Africa gold and ivory, Arabia horses and incense.',
+        'Trade could build states. Axum, in the highlands of northern Ethiopia, rose from about the first century CE on Red Sea trade. Its kings adopted Christianity in the 300s, replaced Kush as Egypt’s link to the south by destroying the Kushite capital Meroë in the mid-300s, and kept expanding until the late 500s.',
+      ],
+      facts: ['Monsoon timing: go with one wind, return with the next', 'Dhows (lateen sails) and junks', 'Emporia: Cambay, Calicut, Aden, Melaka, Kilwa', 'India exports cotton cloth and steel'],
+      chain: ['Monsoon winds are predictable', 'Bigger ships: dhows and junks', 'Trade moves in stages through emporia', 'Merchant communities settle abroad', 'Goods, religions and ideas spread'],
+      soWhat: 'Topic 2.3 is built on this. Causes: monsoon knowledge, new ships, demand for goods. Effects: diasporic communities, rich port states such as Melaka, and the spread of Islam and Buddhism. Compare with the Silk Roads (Chapter 12).',
+      video: ['r-D9F2TiirY', 'The INDIAN OCEAN TRADE Network, Explained [AP World History Review—Unit 2 Topic 3]', 'Heimler\'s History'],
+    },
+    {
+      id: 'faith', title: 'Buddhism fades; Hinduism and Islam grow', when: 'c. 800 – 1500 CE', theme: 'Cultural developments',
+      lead: 'As Turkish armies destroyed monasteries, Buddhism faded from the land of its birth. Hinduism grew through devotion to Vishnu and Shiva, and Islam won millions of converts, often through Sufis.',
+      body: [
+        'Buddhism depended on its monasteries, and Turkish invasions destroyed many of them. In the 1190s Muslim forces sacked the great monastic university of Nalanda and burned its library, and thousands of monks fled to Tibet, Nepal and Southeast Asia. Devotional Hinduism also absorbed many Buddhist ideas and followers.',
+        'Hinduism became more devotional. Cults of Vishnu and Shiva promised salvation to anyone who loved the god, and they spread from the south to the north. Two brahmin philosophers shaped Hindu thought: Shankara (800s), a devotee of Shiva who preferred rigorous logic to emotion, and Ramanuja (1000s–1100s), who argued that loving devotion matters more than logic and laid the foundations of much of modern Hinduism.',
+        'By 1500 about 25 million Indians, roughly a quarter of the population, were Muslims. Some lower-caste Hindus hoped conversion would raise their status, but usually a whole caste or jati converted together, so its social rank stayed the same. Sufis, Muslim mystics with a personal, emotional faith, were the most effective missionaries because they were flexible about local customs.',
+        'The bhakti (devotion) movement began among Tamil poet-saints in the south and spread north. In the 1400s teachers such as Kabir (1440–1518), a weaver, taught that Hindu and Muslim names for God point to one God and that caste means nothing to God. Most Hindus and Muslims kept their separate faiths, so the attempt to unite them largely failed, but bhakti ideas fed into Sikhism.',
+      ],
+      facts: ['Nalanda sacked in the 1190s', 'Devotion to Vishnu and Shiva', 'Shankara (logic) · Ramanuja (devotion)', '≈ 25 million Muslims by 1500; Sufis; Kabir'],
+      chain: ['Turkish raids destroy monasteries', 'Buddhism declines in India', 'Devotional Hinduism grows', 'Sufis win converts to Islam', 'Bhakti teachers like Kabir seek common ground'],
+      soWhat: 'AP loves the blending here: bhakti and Sufism both put personal devotion above ritual. They are strong evidence for Hindu–Muslim interaction in Topic 1.3.',
+      video: ['SZUipvwNx3w', 'Bhakti movement | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes say bhakti began in the twelfth century as an attempt to bring Hinduism and Islam together. Bhakti actually began much earlier, with Tamil poet-saints (the Alvars and Nayanars) between about the 500s and 900s CE. Bridging Hinduism and Islam was a later goal of northern teachers such as Kabir in the 1400s.',
+    },
+    {
+      id: 'southeast-asia', title: 'Indian influence and Islam in Southeast Asia', when: 'c. 100 – 1511 CE', theme: 'Cultural developments', map: 7,
+      lead: 'Southeast Asian rulers borrowed Indian ideas of kingship, Hinduism, Buddhism and Sanskrit, but not the caste system. Later, Muslim merchants and Sufis carried Islam along the same sea lanes.',
+      body: [
+        'Indian traders were reaching Southeast Asia by about 500 BCE. Local rulers adopted Indian ideas because they made kings look sacred and powerful: Hindu god-kings, Buddhist ideals of righteous rule, Sanskrit writing and epics such as the Ramayana. The caste system had little influence.',
+        'Funan (1st–6th centuries CE), on the lower Mekong, grew rich because ships sailing between India and China stopped at its port, Oc Eo. Srivijaya (670–1025), based at Palembang on Sumatra, used its navy to control the Strait of Malacca and taxed passing ships. It was also a great center of Buddhist learning. The Chola raids of 1025 broke its power.',
+        'Angkor, the Khmer kingdom of Cambodia (889–1431), grew rich on irrigated rice. Its kings built magnificent temple cities; Angkor Wat, built in the early 1100s for the god Vishnu, is still the largest religious monument in the world. Angkor later became Buddhist and was sacked by the Thai kingdom of Ayutthaya in 1431. On Java, Majapahit (1293–c. 1520) ruled a Hindu-Buddhist sea empire.',
+        'Muslim traders settled in Southeast Asian ports, and Sufis made Islam popular; many converts kept Hindu or Buddhist customs. Melaka, founded around 1400 by Parameswara, a rebel prince from Sumatra, controlled the straits. Its rulers became Muslim in the mid-1400s, and Islam spread through the islands along Melaka’s trade routes. The Portuguese captured Melaka in 1511.',
+      ],
+      facts: ['Indian kingship and religions, not caste', 'Funan (1st–6th c.) · Srivijaya (670–1025)', 'Angkor (889–1431): Angkor Wat', 'Majapahit (1293–c. 1520) · Melaka (c. 1400)'],
+      chain: ['Indian merchants arrive', 'Rulers adopt Indian kingship and religions', 'Trading states rise: Funan, Srivijaya', 'Muslim merchants and Sufis settle', 'Melaka becomes Muslim', 'Islam spreads through the islands'],
+      soWhat: 'Southeast Asia shows cultural diffusion without conquest: ideas spread by trade, not armies. Topic 1.3 names Srivijaya, Majapahit and the Khmer Empire; compare Srivijaya’s sea power with Angkor’s rice-based land power.',
+      video: ['2dBwMsfse1I', 'Lost City of Angkor Wat | Lost Temples', 'National Geographic'],
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 350, label: 'Axum conquers Meroë (Kush)', track: 'war', detail: 'Approximate (your notes: c. 360). Christian Axum replaces Kush as the trade link south of Egypt.' },
+    { year: 455, label: 'White Huns attack the Gupta', track: 'war', detail: 'Approximate. Skandagupta drives back the first attack; later waves around 500 break the empire.' },
+    { year: 550, label: 'Gupta Empire collapses', track: 'politics', detail: 'By the mid-500s northern India is divided among rival kingdoms.' },
+    { year: 606, end: 647, label: 'Harsha rules north India', track: 'politics', detail: 'From Kanauj. Buddhist, tolerant and generous; stopped at the Narmada by Pulakeshin II.' },
+    { year: 630, end: 643, label: 'Xuanzang travels in India', track: 'religion', detail: 'The Chinese monk studies at Nalanda and visits Harsha’s court; he is back in China by 645.' },
+    { year: 670, end: 1025, label: 'Srivijaya controls the straits', track: 'politics', detail: 'Buddhist sea kingdom based at Palembang on Sumatra.' },
+    { year: 711, label: 'Arabs conquer Sind', track: 'war', detail: 'Muhammad ibn Qasim brings the lower Indus valley into the caliphate.' },
+    { year: 788, end: 820, label: 'Shankara, Hindu philosopher', track: 'religion', detail: 'Traditional dates. A devotee of Shiva who stressed logical analysis.' },
+    { year: 850, end: 1267, label: 'Chola kingdom in the south', track: 'politics', detail: 'Dates from your notes; most reference works end Chola rule in 1279.' },
+    { year: 889, end: 1431, label: 'Kingdom of Angkor (Khmer)', track: 'politics', detail: 'Ends when the Thai kingdom of Ayutthaya sacks Angkor in 1431.' },
+    { year: 1001, end: 1027, label: 'Mahmud of Ghazni’s raids', track: 'war', detail: 'About seventeen raids into northern India from Afghanistan.' },
+    { year: 1017, end: 1137, label: 'Ramanuja, devotional philosopher', track: 'religion', detail: 'Traditional dates. He puts loving devotion above logic.' },
+    { year: 1025, label: 'Mahmud sacks Somnath', track: 'war', detail: 'The famous temple on the coast of Gujarat is looted and destroyed.' },
+    { year: 1025, label: 'Chola fleet raids Srivijaya', track: 'war', detail: 'Rajendra I’s navy attacks the ports that control the Strait of Malacca.' },
+    { year: 1113, end: 1150, label: 'Angkor Wat built', track: 'religion', detail: 'Under King Suryavarman II, dedicated to the god Vishnu.' },
+    { year: 1196, label: 'Nalanda destroyed', track: 'religion', detail: 'Date from your notes; often given as about 1193. Thousands of monks flee.' },
+    { year: 1206, end: 1526, label: 'Sultanate of Delhi', track: 'politics', detail: 'Turkish, later Afghan, sultans rule northern India.' },
+    { year: 1293, end: 1520, label: 'Majapahit empire on Java', track: 'politics', detail: 'Hindu-Buddhist sea empire; the end date is approximate.' },
+    { year: 1325, end: 1351, label: 'Muhammad bin Tughluq rules', track: 'politics', detail: 'The Delhi Sultanate reaches its largest size.' },
+    { year: 1333, end: 1342, label: 'Ibn Battuta in India', track: 'society', detail: 'The Moroccan traveler serves as a judge in Delhi, then sails down the Malabar coast to the Maldives.' },
+    { year: 1336, end: 1565, label: 'Kingdom of Vijayanagara', track: 'politics', detail: 'Founded by Harihara and Bukka; defeated at Talikota in 1565.' },
+    { year: 1398, label: 'Timur sacks Delhi', track: 'war', detail: 'The Central Asian conqueror loots the city; the sultanate never fully recovers.' },
+    { year: 1400, label: 'Melaka founded', track: 'politics', detail: 'Approximate. Founded by Parameswara, a prince from Sumatra.' },
+    { year: 1440, end: 1518, label: 'Kabir, bhakti poet', track: 'religion', detail: 'Dates from your notes; scholars debate them.' },
+    { year: 1445, label: 'Melaka’s rulers adopt Islam', track: 'religion', detail: 'Approximate: by the mid-1400s Melaka is a Muslim sultanate.' },
+    { year: 618, end: 907, label: 'Tang dynasty, China', track: 'world', detail: 'Chapter 14. Chinese demand for spices and Buddhist texts pulls trade through the straits.' },
+    { year: 750, label: 'Abbasid caliphate begins', track: 'world', detail: 'Chapter 13. Baghdad links the Indian Ocean to the Mediterranean.' },
+    { year: 1258, label: 'Mongols sack Baghdad', track: 'world', detail: 'Chapter 17. The Abbasid caliphate ends.' },
+    { year: 1405, end: 1433, label: 'Zheng He’s voyages', track: 'world', detail: 'Chapter 21. Ming fleets visit Melaka, Calicut, Hormuz and East Africa.' },
+    { year: 1498, label: 'Vasco da Gama reaches Calicut', track: 'world', detail: 'Chapter 21. Europeans sail into the Indian Ocean trade.' },
+  ],
+
+  terms: [
+    ['White Huns', 'Central Asian nomads (Hephthalites) who attacked the Gupta Empire from the mid-400s.', 'Their invasions broke the Gupta state and left the north divided.'],
+    ['Harsha', 'Buddhist king who reunited northern India from Kanauj, 606–647.', 'A brief exception to centuries of division in the north.'],
+    ['Xuanzang', 'Chinese Buddhist monk who traveled in India in the 630s and 640s.', 'His account is a key source on Harsha and Nalanda.'],
+    ['Sind', 'The lower Indus valley; conquered by Arabs in 711.', 'The first Muslim-ruled region of South Asia.'],
+    ['Mahmud of Ghazni', 'Turkish ruler of Afghanistan who raided India from 1001 to 1027.', 'Plundered temples and opened the way for Muslim states in the north.'],
+    ['Sultanate of Delhi', 'Turkish Muslim state that ruled northern India from Delhi, 1206–1526.', 'AP’s main example of a Muslim state ruling a mostly Hindu population.'],
+    ['Chola kingdom', 'Hindu kingdom of southeastern India, strong at sea (c. 850–1267).', 'Shows the wealth and naval reach of the south.'],
+    ['Vijayanagara', 'Hindu kingdom of southern India, founded in 1336.', 'Resisted the sultanates for two centuries.'],
+    ['Monsoon', 'Seasonal winds: from the southwest in spring and summer, from the northeast in fall and winter.', 'Shaped farming and set the schedule of ocean trade.'],
+    ['Dhow', 'Arab and Indian sailing ship with triangular lateen sails.', 'Carried much of the western Indian Ocean trade.'],
+    ['Lateen sail', 'Triangular sail that lets a ship sail at an angle to the wind.', 'A key AP sailing technology.'],
+    ['Junk', 'Large Chinese ship with watertight compartments.', 'Carried bulk goods like porcelain across the eastern ocean.'],
+    ['Emporium (pl. emporia)', 'Cosmopolitan port city with warehouses where goods changed ships.', 'Trade moved in stages from one emporium to the next.'],
+    ['Diasporic community', 'Group of merchants living far from home, such as Arabs in Calicut or Gujaratis in Melaka.', 'Spread religions, foods and customs along trade routes.'],
+    ['Cambay', 'Port in Gujarat with a large Muslim merchant community.', 'Linked India with Arabia and Persia.'],
+    ['Axum', 'Christian trading kingdom in the highlands of northern Ethiopia.', 'Example of a state built on Red Sea trade.'],
+    ['Jati', 'Subcaste tied to an occupation, organized much like a guild.', 'Shows how caste adapted to economic change.'],
+    ['Nalanda', 'Great Buddhist monastery and university in northeastern India.', 'Its destruction in the 1190s marks Buddhism’s decline in India.'],
+    ['Shankara', 'Brahmin philosopher of the 800s; devotee of Shiva who stressed logic.', 'Shaped Hindu philosophy.'],
+    ['Ramanuja', 'Brahmin philosopher (1000s–1100s) who stressed loving devotion.', 'Laid the foundations of much of modern Hinduism.'],
+    ['Sufis', 'Muslim mystics with a personal, emotional faith.', 'The most effective missionaries of Islam in India and Southeast Asia.'],
+    ['Bhakti movement', 'Hindu movement of loving devotion to a god.', 'Some teachers tried to bridge Hinduism and Islam.'],
+    ['Kabir', 'Weaver and poet (1440–1518) who taught that every name for God points to one God.', 'A symbol of Hindu–Muslim blending; honored by Sikhs.'],
+    ['Funan', 'Early state on the lower Mekong (1st–6th centuries CE).', 'Grew rich from India–China sea trade.'],
+    ['Srivijaya', 'Buddhist sea kingdom based on Sumatra (670–1025).', 'Controlled the Strait of Malacca and taxed shipping.'],
+    ['Angkor', 'Khmer kingdom of Cambodia (889–1431) that built Angkor Wat.', 'A land and rice power shaped by Hinduism and Buddhism.'],
+    ['Majapahit', 'Hindu-Buddhist kingdom on Java (1293–c. 1520).', 'Ruled a sea empire across the islands.'],
+    ['Melaka', 'Port state on the Malay peninsula, founded c. 1400; became Muslim.', 'Controlled the straits and helped spread Islam.'],
+  ],
+
+  compare: [
+    {
+      title: 'Sultanate of Delhi vs Vijayanagara',
+      head: ['', 'Sultanate of Delhi (1206–1526)', 'Vijayanagara (1336–1565)'],
+      rows: [
+        ['Rulers’ faith', 'Muslim (Turkish, later Afghan)', 'Hindu (the founders had briefly been Muslim)'],
+        ['Region and capital', 'Northern India; Delhi', 'Southern India; Vijayanagara (today’s Hampi)'],
+        ['How it ruled', 'Weak central control; Hindu kings paid tribute', 'Strong kings; local commanders held land in return for troops'],
+        ['The other faith', 'Ruled a Hindu majority, usually tolerated for a tax', 'Fought the sultanates but hired Muslim soldiers and traded with Muslim merchants'],
+        ['Main threats', 'Mongol raids; Timur’s sack of Delhi, 1398', 'The Bahmani and Deccan sultanates; defeat at Talikota, 1565'],
+        ['Similarity', 'Both: wealth from farming and trade', 'Both: grand capitals mixing Persian and Indian styles'],
+      ],
+    },
+    {
+      title: 'Srivijaya vs Angkor: sea power and land power',
+      head: ['', 'Srivijaya (670–1025)', 'Angkor (889–1431)'],
+      rows: [
+        ['Base', 'Palembang on Sumatra; islands and coasts', 'Cambodia; the Mekong and Tonle Sap plain'],
+        ['Source of wealth', 'Sea trade: tolls on ships in the Strait of Malacca', 'Land: irrigated rice farming'],
+        ['Tools of power', 'A navy that policed the straits', 'Huge labor force; reservoirs and canals'],
+        ['Religion', 'Mahayana Buddhism; a center of learning', 'Hindu god-kings (Vishnu, Shiva), later Buddhism'],
+        ['Monuments', 'Few survive; Borobudur on Java was built by the related Sailendra dynasty', 'Angkor Wat and Angkor Thom'],
+        ['Decline', 'Chola raids (1025) and rival ports', 'Thai attacks; Ayutthaya sacks Angkor in 1431'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Xuanzang, a Chinese Buddhist monk who stayed at King Harsha’s court, describing the king; written after his return to China in 645', text: 'He forbade the slaughter of any living thing or flesh as food throughout the Five Indies on pain of death without pardon. He built on the banks of the river Ganges several thousand stûpas, each about 100 feet high; in all the highways of the towns and villages throughout India he erected hospices, provided with food and drink, and stationed there physicians, with medicines for travellers and poor persons round about, to be given without any stint. … Once in five years he held the great assembly called Moksha. He emptied his treasuries to give all away in charity, only reserving the soldiers’ arms, which were unfit to give as alms.', cite: 'Xuanzang, Si-yu-ki (Buddhist Records of the Western World), Book 5, trans. S. Beal (1884)' },
+      questions: [
+        { q: 'Which of Harsha’s policies described in the passage most clearly reflects his Buddhist faith?', options: ['Building mosques on the sites of older temples', 'Requiring all of his subjects to join the warrior caste', 'Banning the killing of animals and building stupas', 'Taxing merchants to pay for a navy'], correct: 2, why: 'Nonviolence toward living things and building stupas (Buddhist shrines) are Buddhist practices.' },
+        { q: 'Xuanzang’s point of view in this passage is most likely shaped by the fact that he', options: ['was a Muslim scholar traveling with a conquering army', 'was a Buddhist pilgrim describing a king who generously supported Buddhism', 'was a Hindu priest who opposed Harsha’s policies', 'was a merchant seeking trade privileges from Harsha'], correct: 1, why: 'Sourcing: a Buddhist monk had good reason to praise a ruler who supported monks and Buddhist shrines.' },
+        { q: 'Which development in northern India followed Harsha’s death in 647?', options: ['Unification of the whole subcontinent under the Chola kingdom', 'The immediate founding of the Sultanate of Delhi', 'Conversion of most of the north to Buddhism', 'A return to division among rival regional kingdoms'], correct: 3, why: 'Harsha left no strong heir, and the north split into rival kingdoms again for centuries.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Al-Biruni, a Muslim scholar from Central Asia who served at the court of Mahmud of Ghazni and learned Sanskrit, writing about India, c. 1030', text: '…his son Yamin-addaula Mahmûd marched into India during a period of thirty years and more. God be merciful to both father and son! Mahmûd utterly ruined the prosperity of the country, and performed there wonderful exploits, by which the Hindus became like atoms of dust scattered in all directions, and like a tale of old in the mouth of the people. Their scattered remains cherish, of course, the most inveterate aversion towards all Muslims. This is the reason, too, why Hindu sciences have retired far away from those parts of the country conquered by us, and have fled to places which our hand cannot yet reach, to Kashmir, Benares, and other places.', cite: 'Alberuni’s India, ch. 1, trans. E. C. Sachau (1888)' },
+      questions: [
+        { q: 'The passage provides the most direct evidence for which effect of Mahmud of Ghazni’s campaigns?', options: ['Lasting hostility between many Hindus and Muslims in northern India', 'The conversion of most Hindus to Islam', 'Closer cooperation between Hindu scholars and Muslim rulers', 'The rapid spread of Buddhism into Kashmir'], correct: 0, why: 'Al-Biruni says the survivors feel “the most inveterate aversion towards all Muslims.”' },
+        { q: 'Al-Biruni’s account is especially valuable to historians because he', options: ['was a Hindu priest whose temple had been destroyed', 'never visited India and relied on old legends', 'wrote several centuries after the raids took place', 'served Mahmud’s court yet described honestly the damage the raids caused'], correct: 3, why: 'Sourcing: an insider at Mahmud’s court who still admits the harm done is a credible witness.' },
+        { q: 'Mahmud’s raids most directly prepared the way for which later development?', options: ['The rise of the Chola kingdom', 'Turkish Muslim rule in the north under the Sultanate of Delhi', 'The empire of Harsha', 'The kingdom of Srivijaya'], correct: 1, why: 'Later Turkish rulers from Afghanistan built on Mahmud’s conquests to found the Delhi Sultanate in 1206.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Marco Polo, a Venetian merchant who sailed home from China through the Indian Ocean, describing the Malabar coast of southwestern India; dictated in 1298', text: 'Melibar is a great kingdom lying towards the west. The people are Idolaters; they have a language of their own, and a king of their own, and pay tribute to nobody. … There is in this kingdom a great quantity of pepper, and ginger, and cinnamon, and turbit, and of nuts of India. They also manufacture very delicate and beautiful buckrams. The ships that come from the east bring copper in ballast. They also bring hither cloths of silk and gold, and sendels; also gold and silver, cloves and spikenard, and other fine spices for which there is a demand here, and exchange them for the products of these countries. Ships come hither from many quarters, but especially from the great province of Manzi. Coarse spices are exported hence both to Manzi and to the west, and that which is carried by the merchants to Aden goes on to Alexandria, but the ships that go in the latter direction are not one to ten of those that go to the eastward.', cite: 'Marco Polo, Travels, Book 3, ch. 25, trans. H. Yule, rev. H. Cordier (1903)' },
+      questions: [
+        { q: 'The passage best illustrates which feature of Indian Ocean trade c. 1300?', options: ['European merchants controlled the spice trade', 'Indian ports were hubs where goods from east and west were exchanged', 'Trade had collapsed because of the Mongol conquests', 'India imported far more than it exported'], correct: 1, why: 'Ships from China (Manzi) and from the west meet at Malabar to exchange pepper, cloth, metals and spices.' },
+        { q: 'Polo’s observation that far more ships sailed east to Manzi (southern China) than west toward Aden is best explained by', options: ['Mongol rulers closing the Red Sea to trade', 'the absence of Muslim merchants in India', 'strong demand for pepper and spices in Song and Yuan China', 'European fleets dominating the western routes'], correct: 2, why: 'China’s huge, wealthy population bought enormous amounts of pepper; Europe’s demand was small by comparison.' },
+        { q: 'Which factor most directly made the voyages Polo describes possible?', options: ['Mongol protection of the overland Silk Roads', 'Portuguese naval patrols in the Arabian Sea', 'Camel caravans across the Sahara', 'Knowledge of the monsoon winds and large ships such as junks and dhows'], correct: 3, why: 'Ships crossed the ocean by riding the seasonal monsoons in large dhows and junks.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Yijing (I-tsing), a Chinese Buddhist monk, describing his voyages between India and China by way of Srivijaya (here called Bhoga, at Palembang), c. 690', text: 'We stay in Ka-cha till winter, then start on board ship for the south, and we come after a month to the country of Malayu, which has now become Bhoga; there are many states (under it). The time of arrival is generally in the first or second month. We stay there till the middle of summer and we sail to the north; in about a month we reach Kwang-fu (Kwang-tung). … Many kings and chieftains in the islands of the Southern Ocean admire and believe (Buddhism), and their hearts are set on accumulating good actions. In the fortified city of Bhoga Buddhist priests number more than 1,000, whose minds are bent on learning and good practices. … If a Chinese priest wishes to go to the West in order to hear (lectures) and read (the original), he had better stay here one or two years and practise the proper rules and then proceed to Central India.', cite: 'I-tsing, quoted in A Record of the Buddhist Religion, general introduction, p. xxxiv, trans. J. Takakusu (1896)' },
+      questions: [
+        { q: 'Yijing’s schedule of waiting months in port and then sailing north in midsummer is best explained by', options: ['the seasonal reversal of the monsoon winds', 'Mongol control of the sea lanes', 'Srivijaya’s ban on foreign ships in winter', 'the need to follow the coast of East Africa'], correct: 0, why: 'Ships had to wait for the monsoon to change direction before continuing.' },
+        { q: 'The passage best supports which claim about Srivijaya?', options: ['It was a Muslim sultanate that controlled the spice trade', 'It was a land-based rice empire with little interest in trade', 'It was both a stop on the sea route between China and India and a center of Buddhist learning', 'It refused to admit Chinese visitors'], correct: 2, why: 'Yijing stops there between India and Guangzhou and praises its more than 1,000 learned monks.' },
+        { q: 'Which best explains how Indian religions reached places like Srivijaya?', options: ['Indian armies conquered Southeast Asia', 'Merchants and monks carried them along the sea routes', 'The caste system required conversion', 'Chinese emperors forced Southeast Asian rulers to convert'], correct: 1, why: 'Hinduism and Buddhism spread peacefully with traders and pilgrims, not by conquest.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Kabir, a weaver and poet-saint of the bhakti movement in northern India, songs composed in Hindi in the 1400s', text: 'O servant, where dost thou seek Me? Lo! I am beside thee. I am neither in temple nor in mosque: I am neither in Kaaba nor in Kailash: Neither am I in rites and ceremonies, nor in Yoga and renunciation. … It is needless to ask of a saint the caste to which he belongs; For the priest, the warrior, the tradesman, and all the thirty-six castes, alike are seeking for God. … Hindus and Moslems alike have achieved that End, where remains no mark of distinction.', cite: 'Songs of Kabir, I and II, trans. Rabindranath Tagore (1915)' },
+      questions: [
+        { q: 'Kabir’s mention of both the Kaaba (in Mecca) and Kailash (the sacred mountain of Shiva) is meant to show that', options: ['Muslims should make pilgrimages to Kailash', 'Hindu temples are holier than mosques', 'religion should be controlled by the state', 'God cannot be found only in the holy places of either Islam or Hinduism'], correct: 3, why: 'He rejects both faiths’ holy sites and rituals as the only path to God.' },
+        { q: 'Kabir’s ideas are most similar to those of which other group in South Asia?', options: ['Sufis, who stressed personal, emotional devotion to God', 'Brahmin priests who stressed correct rituals', 'Delhi sultans who taxed non-Muslims', 'Buddhist monks at Nalanda who studied logic'], correct: 0, why: 'Like Sufis, bhakti teachers put love of God above ritual and social rank.' },
+        { q: 'Which best describes the long-term result of efforts by teachers like Kabir to bring Hindus and Muslims together?', options: ['It made Islam the majority religion of India', 'It largely failed to unite the two faiths, though it influenced later movements such as Sikhism', 'It ended the caste system by 1600', 'It led directly to the founding of the Delhi Sultanate'], correct: 1, why: 'Most people kept their separate faiths, but bhakti ideas shaped Guru Nanak and Sikhism.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE technology or kind of knowledge that helped Indian Ocean trade grow between c. 600 and c. 1500.',
+        'Explain ONE way the monsoon winds shaped how Indian Ocean trade was organized.',
+        'Explain ONE effect of Indian Ocean trade on states or societies in Southeast Asia.',
+      ],
+      guide: [
+        'Accept: knowledge of the monsoon winds; lateen sails; dhows; junks with watertight compartments; the magnetic compass; the astrolabe.',
+        'Accept with explanation: ships sailed with one monsoon and waited months for the return wind; trade moved in stages; merchants lived for months in foreign ports, creating emporia and diasporic communities.',
+        'Accept with explanation: Srivijaya and Melaka grew rich by controlling the straits; Indian kingship, Hinduism and Buddhism spread (Funan, Angkor); Muslim merchants and Sufis brought Islam (Melaka).',
+      ],
+      model: [
+        'Sailors’ knowledge of the monsoon winds, which reverse direction every season, let ships plan long voyages across open water.',
+        'Because the monsoon blows from the southwest in summer and from the northeast in winter, ships had to wait months in port for the wind to turn. So trade moved in stages through emporia like Calicut and Melaka, where merchants from many lands lived side by side.',
+        'Melaka grew powerful by controlling the strait between the Indian Ocean and the South China Sea. Its rulers became Muslim in the mid-1400s, which helped Islam spread through the islands of Southeast Asia.',
+      ],
+    },
+    {
+      prompt: 'Use the passage from Kabir in the practice questions above.',
+      parts: [
+        'Identify ONE belief expressed in the passage.',
+        'Explain ONE reason Islam won many converts in South Asia between c. 1000 and c. 1500.',
+        'Explain ONE way Hindu society showed continuity despite the spread of Islam.',
+      ],
+      guide: [
+        'Accept: God is found by the true seeker, not only in temples or mosques; caste does not matter to God; Hindus and Muslims can reach the same goal.',
+        'Accept with explanation: Sufis were flexible, emotional missionaries; some lower-caste Hindus hoped to improve their status; Muslim rulers and merchants gave advantages to converts.',
+        'Accept with explanation: whole jati converted together and kept their rank; Hindu kings still ruled locally under the sultans; about three-quarters of Indians stayed Hindu in 1500; Vijayanagara remained a Hindu kingdom.',
+      ],
+      model: [
+        'Kabir taught that God is not found only in a temple or a mosque but beside every sincere seeker.',
+        'Sufi mystics preached a personal, emotional faith and were flexible about local customs, so their Islam felt familiar to Indians who already practiced devotional Hinduism.',
+        'The caste system continued. Usually a whole jati converted to Islam together, so its members kept the same social rank they had before.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which the arrival of Islam changed society in South Asia from c. 1000 to c. 1500.',
+    theses: [
+      { text: 'Islam came to India and changed many things.', ok: false, why: 'Too vague. It does not say what changed or how much.' },
+      { text: 'Mahmud of Ghazni raided India between 1001 and 1027.', ok: false, why: 'A fact, not an argument about the extent of change.' },
+      { text: 'Although Islam brought new rulers, millions of converts and new blended movements like Kabir’s bhakti, South Asian society largely continued, because most Indians stayed Hindu and caste survived even among converts.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both change and continuity.' },
+    ],
+    contextHint: 'What was South Asia like before about 1000 that matters for the question?',
+    contextStart: 'Before the Turkish raids began, northern India…',
+    context: 'Before 1000, northern India was divided among rival Hindu kingdoms after the Gupta collapse and Harsha’s brief reign. Islam had already arrived in Sind (711) and with Arab merchants in the ports, but most Indians were Hindu or Buddhist.',
+    evidence: [
+      { text: 'The Delhi Sultanate (1206–1526) put Muslim rulers in power and brought Persian culture and Islamic law.', side: 'change' },
+      { text: 'About 25 million Indians, a quarter of the population, were Muslim by 1500.', side: 'change' },
+      { text: 'Buddhism declined after Turkish forces destroyed monasteries such as Nalanda.', side: 'change' },
+      { text: 'Sufis and bhakti teachers like Kabir created new blended ideas.', side: 'change' },
+      { text: 'About three-quarters of Indians remained Hindu.', side: 'continuity' },
+      { text: 'Whole jati converted together and kept their social rank.', side: 'continuity' },
+      { text: 'The sultans relied on Hindu kings who paid tribute and ran the countryside.', side: 'continuity' },
+      { text: 'Hindu Vijayanagara dominated the south from 1336 to 1565.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by separating regions and groups: change was greatest among rulers and in northern cities, while villages, caste and the south showed strong continuity. You can also point out that Islam itself adapted to India through the Sufis.',
+  },
+
+  recall: [
+    { q: 'Which king briefly reunited northern India from 606 to 647?', a: 'Harsha' },
+    { q: 'Who raided northern India from Afghanistan between 1001 and 1027?', a: 'Mahmud of Ghazni' },
+    { q: 'Which Muslim state ruled northern India from 1206 to 1526?', a: 'The Sultanate of Delhi' },
+    { q: 'Which seasonal winds set the schedule of Indian Ocean trade?', a: 'The monsoons' },
+    { q: 'Which Sumatra-based kingdom controlled the Strait of Malacca from about 670 to 1025?', a: 'Srivijaya' },
+  ],
+}

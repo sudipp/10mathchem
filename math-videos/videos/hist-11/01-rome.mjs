@@ -4,7 +4,7 @@ export default {
   id: '01-rome',
   tag: 'WORLD HISTORY · CHAPTER 11 · THE ROMAN PHASE',
   chapters: ['Republic', 'Expansion', 'Fall', 'Empire', 'Society', 'Faith', 'Exam tip', 'Your turn', 'Recap'],
-  layouts: { map: { type: 'histmap' } },
+  layouts: { map: { type: 'histmap', chapter: 11 } },
   scenes: [
     {
       ch: 0, say: 'How did one small town on the Tiber River come to rule the whole Mediterranean? And why did it trade its republic for an emperor? Let’s find out.',

@@ -1,0 +1,36 @@
+// Every chapter's title, era and big question, in textbook order (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// The full chapter (./ch<n>.js) and its map (../maps/ch<n>.js) load only when the chapter is opened.
+const CLASSICAL = 'Classical era', POST = 'Postclassical era', CROSS = 'Age of cross-cultural interaction', GLOBAL = 'Early modern era'
+
+export const CHAPTER_LIST = [
+  { n: 10, title: 'Mediterranean Society: The Greek Phase', short: 'The Greek Phase', era: 'c. 2200 – 31 BCE', part: CLASSICAL,
+    question: 'How did small, quarrelsome Greek city-states shape the whole Mediterranean, and how did Alexander spread Greek culture as far as India?' },
+  { n: 11, title: 'Mediterranean Society: The Roman Phase', short: 'The Roman Phase', era: 'c. 2000 BCE – 117 CE', part: CLASSICAL,
+    question: 'How did a small town on the Tiber River come to rule the whole Mediterranean, and why did it trade its republic for an emperor?' },
+  { n: 12, title: 'Cross-Cultural Exchanges on the Silk Roads', short: 'The Silk Roads', era: 'c. 200 BCE – 600 CE', part: CLASSICAL,
+    question: 'What traveled along the Silk Roads besides silk, and why did the great classical empires collapse?' },
+  { n: 13, title: 'The Expansive Realm of Islam', short: 'The Realm of Islam', era: '570 – 1258 CE', part: POST,
+    question: 'How did a faith born in a desert trading town become a civilization stretching from Spain to India in about a century?' },
+  { n: 14, title: 'The Resurgence of Empire in East Asia', short: 'Empire in East Asia', era: '589 – 1279 CE', part: POST,
+    question: 'How did the Sui, Tang and Song rebuild a unified China, and why did Korea, Vietnam and Japan borrow so much from it?' },
+  { n: 15, title: 'India and the Indian Ocean Basin', short: 'India & the Indian Ocean', era: 'c. 500 – 1500 CE', part: POST,
+    question: 'How did a politically divided India become the hub of a vast Indian Ocean trading world?' },
+  { n: 16, title: 'The Two Worlds of Christendom', short: 'Two Worlds of Christendom', era: 'c. 330 – 1100 CE', part: POST,
+    question: 'Why did the Christian world split into a rich Byzantine east and a rebuilding Latin west?' },
+  { n: 17, title: 'Nomadic Empires and Eurasian Integration', short: 'Nomadic Empires', era: 'c. 1000 – 1450 CE', part: CROSS,
+    question: 'How did nomadic herders, above all the Mongols, build the largest land empire in history, and how did it knit Eurasia together?' },
+  { n: 18, title: 'States and Societies of Sub-Saharan Africa', short: 'Sub-Saharan Africa', era: 'c. 500 – 1500 CE', part: CROSS,
+    question: 'How did trade across the Sahara and the Indian Ocean create rich African kingdoms and city-states?' },
+  { n: 19, title: 'The Increasing Influence of Europe', short: 'The Rise of Europe', era: 'c. 1000 – 1350 CE', part: CROSS,
+    question: 'How did western Europe go from a poor, divided region to one that was growing, trading and crusading?' },
+  { n: 20, title: 'Worlds Apart: The Americas and Oceania', short: 'The Americas & Oceania', era: 'c. 950 – 1500 CE', part: CROSS,
+    question: 'How did the Aztecs, the Inca and the peoples of Oceania build complex societies with little or no contact with Afro-Eurasia?' },
+  { n: 21, title: 'Reaching Out: Expanding Horizons of Cross-Cultural Interaction', short: 'Reaching Out', era: 'c. 1200 – 1500 CE', part: CROSS,
+    question: 'How did travelers, merchants, the plague and the Ming treasure fleets connect the world, and set the stage for European voyages?' },
+  { n: 22, title: 'Transoceanic Encounters and Global Connections', short: 'Transoceanic Encounters', era: 'c. 1400 – 1800 CE', part: GLOBAL,
+    question: 'How did European voyages across the oceans tie every inhabited region of the world together for the first time?' },
+  { n: 23, title: 'The Transformation of Europe', short: 'Transforming Europe', era: '1500 – 1800 CE', part: GLOBAL,
+    question: 'How did religious wars, new kinds of states and the Scientific Revolution transform Europe between 1500 and 1800?' },
+  { n: 24, title: 'New Worlds: The Americas and Oceania', short: 'New Worlds', era: '1492 – 1800 CE', part: GLOBAL,
+    question: 'How did European conquest, disease and colonial economies remake the Americas and reach into Oceania?' },
+]

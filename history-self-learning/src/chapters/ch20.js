@@ -1,0 +1,346 @@
+// Chapter 20 · Worlds Apart: The Americas and Oceania (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch20.js.
+export default {
+  hook: 'In 1519 Spanish soldiers marched along a causeway toward Tenochtitlan, a city of perhaps 200,000 people built on an island in a lake, and some of them asked whether they were dreaming. Far to the south, Inca runners were carrying messages along thousands of miles of stone roads through the Andes. And across the Pacific, Polynesian navigators had already found almost every island in the world’s largest ocean, steering by the stars. None of these peoples had any lasting contact with Africa, Asia or Europe. Everything they built, they built on their own.',
+  apNote: 'This chapter is squarely inside the AP World exam period (c. 1200–present). The AP Unit 1 topic “State Building in the Americas” is tested directly: the Aztec Triple Alliance and its tribute system, Inca mit’a labor, roads and quipus, Maya city-states, and North American societies such as Cahokia (Mississippian) and Chaco Canyon (Pueblo). Learn the Aztec–Inca comparison cold. The Oceania sections set up Chapter 24, when Europeans reach the Pacific.',
+  themes: ['Governance', 'Economic systems', 'Social structures', 'Cultural developments', 'Humans and the environment'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['ellUmfocjj8', 'State-Building in the AMERICAS [AP World History Review—Unit 1 Topic 4]', 'Heimler\'s History'],
+  mapSub: 'Press Play all, or step through. Travel from Tula and Tenochtitlan to Cahokia and the Andes, then cross to Australia and sail the Pacific with the Polynesians.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 900, to: 1540 },
+    { label: 'Toltecs & Aztecs', from: 900, to: 1525 },
+    { label: 'North America', from: 800, to: 1500 },
+    { label: 'Andes & Inca', from: 900, to: 1540 },
+    { label: 'Long view', from: -5200, to: 1600 },
+  ],
+  bigIdeas: [
+    'The Mexica built the Aztec empire on tribute: conquered towns kept their own rulers but sent food, cloth and luxury goods to Tenochtitlan.',
+    'The Inca built a centralized empire that ran on labor instead of money: mit’a work, roads, storehouses and quipu records held about 11.5 million people together.',
+    'North of Mexico, farming peoples such as the Pueblo, the Mississippian mound builders and the Iroquois built towns and long trade networks without large states or writing.',
+    'In Oceania, Aboriginal Australians remained foragers, while Polynesian voyagers settled the Pacific islands and built chiefdoms with priests, classes and temples.',
+  ],
+
+  sections: [
+    {
+      id: 'toltecs', title: 'The Toltecs and a time of war', when: 'c. 750 – 1175 CE', theme: 'Governance', map: 0,
+      lead: 'After the great city of Teotihuacan collapsed, central Mexico broke into rival regional states. The strongest were the Toltecs, a warrior people who ruled from their capital at Tula.',
+      body: [
+        'The Americas developed with almost no contact with Afro-Eurasia. Scandinavians (Vikings) briefly settled at Newfoundland in Canada around 1000 CE, and a few Asian seafarers may have touched northern Australia, but neither contact changed these societies.',
+        'Teotihuacan was burned and abandoned by about 650 CE, and many Maya cities in the southern lowlands emptied out around 900 CE. In the 700s Mesoamerica entered a long period of war and conquest, although Teotihuacan’s gods and styles stayed influential.',
+        'The Toltecs migrated from northwestern Mexico and settled at Tula, north of modern Mexico City. At their height, from about 950 to 1150 CE, Tula held about 60,000 people, with another 60,000 in the surrounding area. Toltec armies forced nearby peoples to pay tribute, and Toltec art and architecture appear far away at the Maya city of Chichén Itzá in Yucatán.',
+        'Internal conflict and raids by nomadic peoples from the north destroyed Tula around 1175 CE. Later peoples, including the Mexica, remembered the Toltecs as a golden age and claimed to be their heirs. In Yucatán, Maya city-states such as Chichén Itzá and later Mayapán carried on without a single empire.',
+      ],
+      facts: ['Teotihuacan falls c. 650 CE', 'Tula at its height c. 950–1150 CE', 'About 60,000 in Tula + 60,000 nearby', 'Tula destroyed c. 1175 CE'],
+      chain: ['Teotihuacan collapses', 'Regional states compete; war in the 700s', 'Toltecs settle at Tula', 'Conquest and tribute', 'Civil strife and nomad raids destroy Tula, 1175'],
+      soWhat: 'The Toltecs set the pattern the Aztecs followed: a warrior state at the center of the Valley of Mexico that grew rich on tribute. Later rulers claimed Toltec ancestry to make their power look legitimate.',
+      video: ['fI_bOUh9e0c', 'The Trouble with Toltecs', 'Ancient Americas'],
+    },
+    {
+      id: 'aztec-empire', title: 'The Mexica build the Aztec empire', when: 'c. 1250 – 1519 CE', theme: 'Economic systems', map: 1,
+      lead: 'The Mexica arrived in the Valley of Mexico as unwelcome latecomers. Within two centuries their island city, Tenochtitlan, was the capital of a tribute empire covering most of central Mexico.',
+      body: [
+        'The Mexica were one of several migrant groups that entered the valley in the mid-1200s. Their neighbors disliked them, because they kidnapped women and seized farmland. They finally settled on a marshy island in Lake Texcoco and founded Tenochtitlan, the city that later became Mexico City.',
+        'To feed the city, the Mexica built chinampas: plots made by dredging rich mud from the lake bottom and piling it into raised beds held in place by stakes and trees. Chinampas could produce up to seven crops a year. Causeways linked the island to the shore, and an aqueduct brought fresh water. By 1500 Tenochtitlan had perhaps 200,000 people.',
+        'Under Itzcóatl (r. 1428–1440) and Motecuzoma I (r. 1440–1469), the Mexica allied with Texcoco and Tlacopan in a Triple Alliance (1428) and conquered their neighbors. By the early 1500s they demanded tribute from hundreds of towns, from the Gulf coast to the Pacific.',
+        'The Aztec empire did not have a large bureaucracy or a standing army stationed in the provinces. Conquered peoples kept their own rulers but had to send maize, beans, cotton cloth, cacao, feathers, jade and gold, plus warriors when asked. Tax collectors made sure they paid. Enemies such as Tlaxcala and the Tarascan kingdom were never conquered, and many subjects resented Mexica rule.',
+      ],
+      facts: ['Tenochtitlan founded c. 1325 CE (traditional date)', 'Chinampas: up to seven crops a year', 'Triple Alliance, 1428: Tenochtitlan, Texcoco, Tlacopan', 'Tribute, not a big bureaucracy'],
+      chain: ['Mexica settle on an island in Lake Texcoco', 'Chinampas feed a growing city', 'Triple Alliance, 1428', 'Conquest of neighbors', 'Tribute flows to Tenochtitlan', 'Resentful subjects'],
+      soWhat: 'A tribute empire is cheap to run but loosely held together. When Spanish invaders arrived in 1519, thousands of resentful subjects and Tlaxcalan enemies joined them against Tenochtitlan (Chapter 22).',
+      video: ['_-96fKZGQVs', 'Aztec Empire | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes say the Mexica settled at Tenochtitlan around 1345 CE. Some books use that date, but most references give the traditional founding date of 1325 CE. Either is accepted on the exam; just be consistent.',
+    },
+    {
+      id: 'mexica-society', title: 'Mexica society and religion', when: 'c. 1350 – 1519 CE', theme: 'Social structures', map: 1,
+      lead: 'Mexica society was strictly ranked, with warriors and priests at the top. Its religion built on older Mesoamerican traditions but put far more weight on human sacrifice.',
+      body: [
+        'Soldiers had the highest status. Most came from the aristocracy, and successful warriors received land grants, extra food and the right to wear brilliant cloaks and jewelry that commoners were forbidden to wear (sumptuary privileges). Society was patriarchal: women had no public role, but they were honored as mothers, especially of future warriors.',
+        'Priests mastered the agricultural and ritual calendars, read omens and advised rulers; a few even became rulers. Most people were cultivators organized in calpulli, communal groups that were originally based on kinship. A calpulli managed its own land but also owed work on the estates of aristocrats. At the bottom were slaves, often debtors or children sold by poor families.',
+        'Mexica religion drew on traditions going back to the Olmecs, such as the ritual ball game and two calendars: a 365-day solar year and a 260-day ritual year. The main gods were Tezcatlipoca (“the Smoking Mirror”), god of life and death and patron of warriors; Quetzalcóatl (“the Feathered Serpent”), god of arts, crafts and agriculture; and Huitzilopochtli, the sun and war god who became the Mexica’s patron in the 1300s.',
+        'The Mexica believed the gods needed human blood to keep the sun moving and the world alive. Priests sacrificed captured enemy soldiers and Mexica criminals, often after ritual wounding. Ordinary people offered their own blood by piercing their earlobes and other body parts. Spanish and Mexica sources give enormous numbers of victims that historians treat with caution.',
+      ],
+      facts: ['Warriors: land, food, sumptuary privileges', 'Calpulli: communal kin-based groups', 'Calendars: 365-day solar + 260-day ritual', 'Huitzilopochtli: patron god, blood sacrifice'],
+      chain: ['Wars of expansion', 'Warriors win land and status', 'Captives taken in battle', 'Sacrifice to Huitzilopochtli', 'Religion justifies more war'],
+      soWhat: 'Warfare, religion and tribute reinforced each other: war brought captives for the gods and tribute for the state. AP questions often ask how belief systems supported a ruler’s power.',
+    },
+    {
+      id: 'north-america', title: 'Peoples and societies of the north', when: 'c. 700 – 1500 CE', theme: 'Humans and the environment', map: 2,
+      lead: 'North of Mexico, no large empires formed, but farming peoples built permanent towns, huge earthen mounds and trade networks that stretched across the continent.',
+      body: [
+        'In the American Southwest, the Ancestral Puebloans grew maize, which made up about 80 percent of their diet, plus beans and squash, using careful irrigation. By 700 CE they were building permanent stone and adobe houses; archaeologists have found about 125 such sites. At Chaco Canyon (c. 850–1150) they built great houses such as Pueblo Bonito, with hundreds of rooms, linked by straight roads. A severe drought in the late 1200s drove them to abandon the Four Corners region.',
+        'In the woodlands east of the Mississippi, Iroquois peoples lived in settled villages of longhouses. Women owned the fields, grew maize, beans and squash, and chose the chiefs; men hunted, fished and made war. Five Iroquois nations later formed a confederacy, probably in the 1400s or 1500s.',
+        'Mound-building peoples raised earthen platforms for temples and elite homes and used other mounds as burial grounds. The greatest Mississippian center was Cahokia, near modern East St. Louis, which flourished from about 900 to 1250 CE. Its largest mound, Monks Mound, stands about 30 meters (100 feet) high, and the town may have held 10,000–20,000 people at its peak.',
+        'No written documents survive from these northern societies, so historians rely on archaeology. It shows wide trade: copper from the Great Lakes, shells from the Gulf of Mexico, and macaws and cacao from Mexico reached Chaco Canyon. Rivers such as the Mississippi and Ohio served as highways.',
+      ],
+      facts: ['Maize ≈ 80% of the Pueblo diet', 'Chaco Canyon great houses c. 850–1150', 'Cahokia c. 900–1250; Monks Mound ≈ 30 m', 'Evidence from archaeology, not writing'],
+      chain: ['Maize farming spreads north', 'Permanent villages and towns', 'Surplus supports chiefs and priests', 'River and overland trade', 'Drought and decline (Chaco, Cahokia)'],
+      soWhat: 'AP expects you to know that complex societies arose in North America without states on the Aztec or Inca scale. Cahokia and Chaco also show how climate change could bring down a society.',
+      video: ['iciOvaIm51M', 'Cahokia: Mississippian Metropolis', 'Ancient Americas'],
+      factCheck: 'Your notes list the Navajo with the Pueblo peoples of this era. The Navajo are Athabaskan speakers whose ancestors came from far to the north; most archaeologists think they reached the Southwest around 1400 or later, long after Chaco Canyon’s great houses were built.',
+    },
+    {
+      id: 'andes', title: 'Andean kingdoms and the rise of the Inca', when: 'c. 1000 – 1471 CE', theme: 'Governance', map: 3,
+      lead: 'After the Chavín and Moche societies faded, the Andes split into regional kingdoms. In the 1400s one of them, the Inca of Cuzco, conquered all the others.',
+      body: [
+        'Andean societies had no writing before the Spanish arrived in the 1500s, unlike Mesoamerica, so historians depend on archaeology and on accounts written after the conquest. Archaeology shows complex Andean societies going back to the first millennium BCE and a wave of city building between 1000 and 1500 CE.',
+        'The kingdom of Chucuito ruled the high plains around Lake Titicaca, on the border of modern Peru and Bolivia. Its people grew potatoes and herded llamas and alpacas, trading wool and meat for maize and other crops from lower valleys.',
+        'On the dry Peruvian coast, the kingdom of Chimu (or Chimor) used irrigation canals to farm river valleys. Its capital, Chan Chan, was a huge adobe city of perhaps 50,000 people, with walled royal compounds.',
+        'The Inca were Quechua-speaking people who lived in the valley of Cuzco by the mid-1200s; their legends traced their first rulers to Lake Titicaca. Under Pachacuti (r. 1438–1471) they conquered Chucuito, then Chimu (c. 1470), and went on to build an empire that included modern Peru and parts of Ecuador, Bolivia, Chile and Argentina, with about 11.5 million people.',
+      ],
+      facts: ['No Andean writing before the Spanish', 'Chucuito: potatoes, llamas, alpacas', 'Chimu capital: Chan Chan', 'Pachacuti, r. 1438–1471'],
+      chain: ['Chavín and Moche fade', 'Regional kingdoms: Chucuito, Chimu', 'Inca settle near Cuzco', 'Pachacuti’s conquests', 'Empire of 11.5 million'],
+      soWhat: 'The Inca absorbed older Andean skills: Chimu irrigation and crafts, highland herding and terrace farming. Empires often grow by taking over the achievements of the states they conquer.',
+      video: ['X98ipTuSVJc', 'The Lost City of Chan Chan | Lost Cities with Albert Lin | National Geographic', 'National Geographic'],
+      factCheck: 'Your notes say Mesoamerican writing dates from the fifth century C.E. Mesoamerican writing is much older: Zapotec and early Maya inscriptions date from roughly 500–300 B.C.E. The key point stands: Andean peoples never developed writing.',
+    },
+    {
+      id: 'inca', title: 'Ruling the Inca empire', when: 'c. 1438 – 1532 CE', theme: 'Governance', map: 4,
+      lead: 'The Inca ran one of the largest empires in the world without writing, money or markets. They relied on labor service, roads, knotted-cord records and a king believed to be descended from the sun.',
+      body: [
+        'The Inca held their empire by force and by careful control. Sons of conquered rulers lived in Cuzco as hostages, and loyal Quechua-speaking colonists were moved into newly conquered lands. Cuzco housed the high nobility, priests and hostages, and its temples had gold-covered walls. Instead of writing, officials kept records on quipus: knotted cords that stood for numbers and served as memory aids for tribute, census counts and storehouse contents.',
+        'Two main roads ran north to south, one through the mountains and one along the coast, totaling about 16,000 kilometers (10,000 miles). They were paved, shaded and wide, with rest houses and storehouses along the way. Relay runners (chasquis) carried messages, and armies moved fast. Long-distance trade was limited and controlled by the government.',
+        'The king was considered infallible and claimed descent from Inti, the sun god. Aristocrats wore large ear spools as a sign of rank, and priests lived strict, celibate lives. Peasants lived in ayllu, communities that held land and tools in common. Instead of paying taxes in money, each ayllu owed the mit’a: turns of labor on the lands of aristocrats and the state, and on public works such as roads, terraces and fortresses.',
+        'Religion bound the empire together. Dead rulers were preserved as mummies that kept their palaces, were consulted on important matters, received offerings and were paraded on festive days. Inti and Viracocha, the creator god, were honored at great temples that became pilgrimage sites. Peasants usually sacrificed crops and animals such as llamas; human sacrifice was rare compared with the Mexica. Sin meant disrupting the divine order, and people confessed to priests and did penance.',
+      ],
+      facts: ['Hostages in Cuzco; colonists; quipu records', 'Two main roads ≈ 16,000 km (10,000 mi)', 'Ayllu and mit’a labor service', 'King descended from the sun; royal mummies'],
+      chain: ['Conquest by Pachacuti and his heirs', 'Mit’a labor builds roads and storehouses', 'Quipus record tribute and labor', 'Hostages, colonists and a sacred king ensure loyalty', 'A centralized empire 4,000 km long'],
+      soWhat: 'Compare: the Aztecs collected goods; the Inca collected labor. Both used religion to make their rulers sacred. The Spanish later took over the mit’a to force Andean people to work in silver mines (Chapter 24).',
+      video: ['20B94yLBGrg', 'Inca Empire overview | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'australia', title: 'Australia and New Guinea', when: 'to c. 1500 CE', theme: 'Humans and the environment', map: 6,
+      lead: 'Aboriginal Australians lived as nomadic foragers for tens of thousands of years and never adopted agriculture. Nearby New Guinea, by contrast, was one of the world’s early farming centers.',
+      body: [
+        'People reached Australia at least 50,000 years ago. They gathered plants, hunted and fished, moving through familiar territories with the seasons, and they did not take up agriculture even after neighbors in New Guinea began to farm.',
+        'In New Guinea, people were cultivating root crops such as taro and yams by about 5000 BCE, and they herded pigs. Small-scale trade linked the region: Aboriginal groups traded surplus food and goods such as pearly oyster shells, stone, spears and boomerangs over long distances.',
+        'Aboriginal religion was closely tied to the land. Myths and stories, often called the Dreaming, explained how ancestral beings shaped rivers, rocks and other features such as Uluru. Rituals were performed to make sure animals and plants would keep providing food.',
+        'Contact with the outside world was very limited. Occasional visitors from island Southeast Asia reached the northern coast, but the continent stayed largely separate until British settlers arrived in 1788.',
+      ],
+      facts: ['Foragers, no agriculture', 'New Guinea: root crops c. 5000 BCE, pigs', 'Trade: pearl shell, spears, boomerangs', 'Dreaming myths explain the land'],
+      chain: ['Rich foraging environment', 'Nomadic bands, no farming', 'Long-distance exchange of shells and tools', 'Myths link people to the land', 'Rituals to renew food supplies'],
+      soWhat: 'Not every society followed the path from foraging to farming to states. AP wants you to explain why environment and choices led to different outcomes.',
+      factCheck: 'Your notes call Aboriginal culture “virtually static.” Historians today reject that idea: Aboriginal peoples developed new stone tools, managed the land with controlled burning, and built stone eel traps at Budj Bim thousands of years old. What is true is that they remained foragers and did not adopt agriculture.',
+    },
+    {
+      id: 'pacific', title: 'Pacific island societies', when: 'c. 1500 BCE – 1500 CE', theme: 'Social structures', map: 7,
+      lead: 'Seafaring peoples settled the islands of the Pacific in great canoe voyages. On the islands they built crowded farming societies ruled by chiefs and priests.',
+      body: [
+        'Voyagers whose ancestors came from island Southeast Asia (the Lapita culture) reached Fiji, Tonga and Samoa by about 800 BCE. Later, Polynesians sailed in large double-hulled canoes to Tahiti, Hawaiʻi, Rapa Nui (Easter Island) and Aotearoa (New Zealand), steering by the sun, stars, ocean swells and birds. They carried pigs, dogs, chickens, taro, breadfruit and bananas.',
+        'After settlement, islanders kept trading between nearby island groups, and made long-distance voyages on an occasional basis. Some voyagers reached South America and brought back the sweet potato. Oral traditions preserved the memory of these voyages.',
+        'Population grew with intensive farming and clever fishing. Hawaiians built stone fishponds with gates that let small fish swim in but trapped them once they grew large. On small islands, crowding led to conflict and damage to the environment: on Rapa Nui almost all the trees disappeared. By about 1500 CE fierce fighting was common, and some islanders practiced ritual cannibalism.',
+        'As populations grew, distinct classes formed: high chiefs, lesser chiefs, commoners, artisans and peasants. Some chiefs built small multi-island states, such as Tonga’s, which allocated land, demanded labor and drafted soldiers, though big island kingdoms were rare before the 1800s. Priests served as go-betweens with the gods, especially gods of war and agriculture, at temples called marae (heiau in Hawaiʻi).',
+      ],
+      facts: ['Lapita reach Fiji, Tonga, Samoa by c. 800 BCE', 'Hawaiʻi, Rapa Nui, Aotearoa settled last', 'Fishponds trap large fish', 'Chiefs, priests, marae / heiau temples'],
+      chain: ['Canoe voyages settle the islands', 'Intensive farming and fishponds', 'Population grows on limited land', 'Competition and warfare', 'Chiefs and classes take control'],
+      soWhat: 'Polynesian voyaging is one of the great feats of human exploration. European explorers such as James Cook, who arrived in the late 1700s, were amazed by it (Chapter 24).',
+      video: ['m8bDCaPhOek', 'How did Polynesian wayfinders navigate the Pacific Ocean? - Alan Tamayose and Shantell De Silva', 'TED-Ed'],
+      factCheck: 'Your notes say people lived on almost all the Pacific islands by the early centuries B.C.E. and brought sweet potatoes from South America around 300 C.E. Western Polynesia (Fiji, Tonga, Samoa) was settled by about 800 B.C.E., but newer radiocarbon dating shows that remote eastern Polynesia, including Hawaiʻi, Rapa Nui and Aotearoa, was settled only about 1000–1300 C.E., and the sweet potato reached Polynesia around 1000–1200 C.E.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: -5000, label: 'New Guinea farmers grow root crops', track: 'society', detail: 'Approximate. Taro and yams; pig herding came later.' },
+    { year: -1500, end: -800, label: 'Lapita voyagers reach Fiji and Samoa', track: 'society', detail: 'From the Bismarck Islands east to Fiji, Tonga and Samoa.' },
+    { year: 650, label: 'Teotihuacan burned and abandoned', track: 'politics', detail: 'Approximate (c. 550–650). Its gods and styles stayed influential.' },
+    { year: 800, end: 950, label: 'Classic Maya cities abandoned', track: 'politics', detail: 'Southern lowland cities empty out; northern cities like Chichén Itzá carry on.' },
+    { year: 850, end: 1150, label: 'Chaco Canyon great houses', track: 'society', detail: 'Pueblo Bonito and other great houses, linked by straight roads.' },
+    { year: 900, end: 1250, label: 'Cahokia flourishes', track: 'society', detail: 'Largest Mississippian town; peak around 1050–1200.' },
+    { year: 900, end: 1470, label: 'Kingdom of Chimu', track: 'politics', detail: 'Approximate. Capital Chan Chan on the north coast of Peru.' },
+    { year: 950, end: 1150, label: 'Toltec Tula at its height', track: 'politics', detail: 'About 60,000 people in the city and 60,000 around it.' },
+    { year: 1000, label: 'Norse settle briefly in Newfoundland', track: 'world', detail: 'Approximate. L’Anse aux Meadows, Canada; abandoned within a few years.' },
+    { year: 1000, end: 1300, label: 'Polynesians reach Hawaiʻi and Aotearoa', track: 'society', detail: 'Approximate. Remote eastern Polynesia, including Rapa Nui, is settled last.' },
+    { year: 1175, label: 'Tula destroyed', track: 'war', detail: 'Internal strife and raids by northern nomads.' },
+    { year: 1200, end: 1500, label: 'Tonga’s chiefs rule nearby islands', track: 'politics', detail: 'Approximate. The Tuʻi Tonga’s maritime chiefdom.' },
+    { year: 1250, label: 'Mexica enter the Valley of Mexico', track: 'society', detail: 'Mid-1200s, one of several migrant groups.' },
+    { year: 1276, end: 1300, label: 'Great drought in the Southwest', track: 'society', detail: 'Ancestral Puebloans leave the Four Corners region.' },
+    { year: 1325, label: 'Tenochtitlan founded', track: 'politics', detail: 'Traditional date; your notes give about 1345.' },
+    { year: 1428, label: 'Triple Alliance formed', track: 'politics', detail: 'Tenochtitlan, Texcoco and Tlacopan, under Itzcóatl.' },
+    { year: 1438, end: 1471, label: 'Pachacuti rules the Inca', track: 'politics', detail: 'He turns a small kingdom into an empire.' },
+    { year: 1440, label: 'Temple of the Sun rebuilt in Cuzco', track: 'religion', detail: 'Approximate. Pachacuti rebuilds the Coricancha, covered in gold.' },
+    { year: 1440, end: 1469, label: 'Motecuzoma I expands the empire', track: 'war', detail: 'Conquests toward the Gulf coast and Oaxaca.' },
+    { year: 1450, label: 'Iroquois Confederacy forms', track: 'politics', detail: 'Approximate; dates proposed range from the 1100s to the 1500s.' },
+    { year: 1470, label: 'Inca conquer Chimu', track: 'war', detail: 'Approximate. Led by Topa Inca, Pachacuti’s son.' },
+    { year: 1487, label: 'Great Temple rededicated', track: 'religion', detail: 'Huge sacrifices to Huitzilopochtli at Tenochtitlan.' },
+    { year: 1519, label: 'Cortés reaches Tenochtitlan', track: 'war', detail: 'Tenochtitlan falls in 1521 (Chapter 22).' },
+    { year: 1532, label: 'Pizarro captures Atahualpa', track: 'war', detail: 'The Spanish conquest of the Inca begins.' },
+    { year: 1206, label: 'Chinggis Khan unites the Mongols', track: 'world', detail: 'Chapter 17: the Mongols build the largest land empire.' },
+    { year: 1324, label: 'Mansa Musa’s pilgrimage to Mecca', track: 'world', detail: 'Chapter 18: the wealth of Mali amazes Cairo.' },
+    { year: 1405, end: 1433, label: 'Zheng He’s treasure fleets', track: 'world', detail: 'Chapter 21: Ming China sails the Indian Ocean.' },
+    { year: 1492, label: 'Columbus reaches the Caribbean', track: 'world', detail: 'Chapter 22: the Americas and Afro-Eurasia meet.' },
+  ],
+
+  terms: [
+    ['Toltecs', 'Warrior people who ruled central Mexico from Tula, c. 950–1150.', 'Model of a tribute state; later claimed as ancestors by the Mexica.'],
+    ['Tula', 'Toltec capital north of modern Mexico City.', 'A city of about 60,000, destroyed c. 1175.'],
+    ['Mexica', 'Migrant people who founded Tenochtitlan; the core of the Aztec empire.', 'Built the largest Mesoamerican empire.'],
+    ['Tenochtitlan', 'Mexica capital on an island in Lake Texcoco; today Mexico City.', 'Perhaps 200,000 people by 1500.'],
+    ['Chinampas', 'Raised garden plots built from lake-bottom mud.', 'Up to seven crops a year fed Tenochtitlan.'],
+    ['Triple Alliance', 'Alliance of Tenochtitlan, Texcoco and Tlacopan (1428).', 'Created the Aztec empire.'],
+    ['Tribute', 'Goods that conquered peoples must send to their rulers.', 'The economic base of the Aztec empire.'],
+    ['Itzcóatl and Motecuzoma I', 'Mexica rulers, 1428–1440 and 1440–1469.', 'Led the conquests that built the empire.'],
+    ['Calpulli', 'Mexica communal groups, originally kin-based, that managed land.', 'Owed work on aristocrats’ lands.'],
+    ['Sumptuary privileges', 'Rights to wear clothing or jewelry forbidden to commoners.', 'Rewarded successful warriors.'],
+    ['Tezcatlipoca', '“The Smoking Mirror,” god of life and death, patron of warriors.', 'Shows the importance of war in Mexica belief.'],
+    ['Quetzalcóatl', '“The Feathered Serpent,” god of arts, crafts and agriculture.', 'An old Mesoamerican god, honored since Teotihuacan.'],
+    ['Huitzilopochtli', 'Mexica sun and war god and patron of the Mexica.', 'Demanded blood sacrifice; justified war for captives.'],
+    ['Ancestral Puebloans', 'Maize farmers of the Southwest who built stone and adobe towns.', 'Chaco Canyon; abandoned the Four Corners after a drought.'],
+    ['Iroquois', 'Woodland farming peoples east of the Mississippi.', 'Women controlled farming; later formed a confederacy.'],
+    ['Cahokia', 'Largest Mississippian mound-building town, near East St. Louis, c. 900–1250.', 'Shows complex society without a large state.'],
+    ['Chimu (Chimor)', 'Coastal Peruvian kingdom with its capital at Chan Chan.', 'Conquered by the Inca c. 1470.'],
+    ['Chucuito', 'Andean kingdom around Lake Titicaca.', 'Potatoes, llamas and alpacas; conquered by the Inca.'],
+    ['Pachacuti', 'Inca ruler (r. 1438–1471) who began the empire’s expansion.', 'Turned a small kingdom into an empire.'],
+    ['Quechua', 'Language of the Inca; “Inca” came to mean its speakers.', 'Spread as the empire’s common language.'],
+    ['Quipu', 'Knotted cords used as records and memory aids.', 'How the Inca governed without writing.'],
+    ['Inca roads', 'Two main north–south roads, mountain and coast, with relay runners.', 'Moved armies, officials and messages.'],
+    ['Ayllu', 'Inca peasant community holding land and tools in common.', 'The basic unit of Andean society.'],
+    ['Mit’a', 'Inca labor tax: turns of work for the state and aristocrats.', 'Built roads and terraces; later used by the Spanish.'],
+    ['Inti and Viracocha', 'Inca sun god and creator god.', 'The ruler claimed descent from the sun.'],
+    ['Dreaming', 'Aboriginal Australian myths about how ancestors shaped the land.', 'Ties religion to the environment.'],
+    ['Polynesian voyaging', 'Canoe voyages guided by stars, swells and birds.', 'Settled Hawaiʻi, Rapa Nui and Aotearoa.'],
+    ['Marae / heiau', 'Polynesian temple or ceremonial precinct (heiau in Hawaiʻi).', 'Where priests served the gods for the chiefs.'],
+  ],
+
+  compare: [
+    {
+      title: 'Aztec vs Inca (the classic AP comparison)',
+      head: ['', 'Aztec empire (Mexica)', 'Inca empire'],
+      rows: [
+        ['Capital', 'Tenochtitlan, an island city in a lake', 'Cuzco, in a high Andean valley'],
+        ['Government', 'Triple Alliance; conquered rulers stay in place and pay tribute', 'Centralized; hostages in Cuzco, colonists, Quechua as a common language'],
+        ['What subjects owe', 'Tribute in goods: food, cloth, cacao, feathers', 'Labor: the mit’a on state lands, roads and public works'],
+        ['Economy', 'Huge markets and professional merchants', 'Little trade; state storehouses and a government monopoly'],
+        ['Records', 'Pictorial writing in books (codices)', 'No writing; quipus of knotted cords'],
+        ['Religion', 'Huitzilopochtli; large-scale human sacrifice', 'Inti and royal ancestor mummies; mostly crop and animal sacrifice'],
+      ],
+    },
+    {
+      title: 'Polynesian chiefdoms vs the Inca empire',
+      head: ['', 'Polynesian chiefdoms (e.g., Hawaiʻi, Tonga)', 'Inca empire'],
+      rows: [
+        ['Scale', 'One island or a few islands; thousands to tens of thousands', 'About 4,000 km long; 11.5 million people'],
+        ['Rulers', 'High chiefs with sacred status', 'King descended from the sun'],
+        ['Labor and land', 'Chiefs allocate land and call up labor and soldiers', 'Mit’a labor; ayllu hold land in common'],
+        ['Religion', 'Priests at marae / heiau; gods of war and farming', 'Priests, temples to Inti, ancestor mummies'],
+        ['Connections', 'Canoe voyages between islands', 'Roads, runners and storehouses'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Bernal Díaz del Castillo, a Spanish soldier with Cortés, describing the great market of Tlatelolco (Tenochtitlan’s twin city) in 1519; written decades later, c. 1568', text: 'When we arrived at the great market place, called Tlaltelolco, we were astounded at the number of people and the quantity of merchandise that it contained, and at the good order and control that was maintained, for we had never seen such a thing before. … Each kind of merchandise was kept by itself and had its fixed place marked out. Let us begin with the dealers in gold, silver, and precious stones, feathers, mantles, and embroidered goods. Then there were other wares consisting of Indian slaves both men and women … Next there were other traders who sold great pieces of cloth and cotton, and articles of twisted thread, and there were cacahuateros who sold cacao.', cite: 'Bernal Díaz del Castillo, The True History of the Conquest of New Spain, ch. XCII, trans. A. P. Maudslay, vol. II (1910)' },
+      questions: [
+        { q: 'The market Díaz describes best illustrates which feature of the Aztec economy?', options: ['A labor tax in which the state stored nearly all goods', 'A closely regulated market that drew goods from across Mesoamerica', 'An economy based mainly on silver coins', 'Trade controlled by European merchants'], correct: 1, why: 'Goods from all over the empire, many arriving as tribute or through merchants, were sold in an orderly, supervised market. A labor tax with state storehouses describes the Inca.' },
+        { q: 'Which aspect of Díaz’s account should a historian consider most carefully when using it as evidence?', options: ['He was a Mexica priest describing his own city', 'He wrote it in Nahuatl for Aztec readers', 'He was a conquistador writing decades later, with reasons to stress the greatness of what Spain had conquered', 'He never visited Tenochtitlan'], correct: 2, why: 'Sourcing: Díaz was an outsider and a participant in the conquest, writing from memory about 50 years later, partly to defend the conquistadors’ deeds.' },
+        { q: 'Compared with the economy Díaz describes, the Inca economy', options: ['relied far more on professional merchants', 'used cacao beans as money in a similar way', 'depended on chinampa farming in lakes', 'had little market trade, with labor service and state storehouses instead'], correct: 3, why: 'Inca long-distance trade was limited and controlled by the state; subjects paid with mit’a labor, not goods sold in markets.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Pedro de Cieza de León, a Spanish soldier who traveled through the former Inca lands in the late 1540s, describing the royal roads', text: 'One of the things which I admired most, in contemplating and noting down the affairs of this kingdom, was to think how and in what manner they can have made such grand and admirable roads as we now see … For it seems to me that if the Emperor should desire to give orders for another royal road to be made, like that which goes from Quito to Cuzco, or the other from Cuzco to go to Chile, with all his power I believe that he could not get it done; nor could any force of men achieve such results unless there was also the perfect order by means of which the commands of the Incas were carried into execution. … the Indians received instructions to construct the road from among the inhabitants who were on either side. One province completed the section within its limits, and when it reached the boundary it was presently taken up by the next', cite: 'Pedro de Cieza de León, The Second Part of the Chronicle of Peru, ch. XV, trans. C. R. Markham (1883)' },
+      questions: [
+        { q: 'The way the roads were built, as described in the passage, is an example of', options: ['wage labor paid in silver', 'tribute in goods paid to the Triple Alliance', 'enslaved workers imported from Africa', 'mit’a labor owed to the Inca state'], correct: 3, why: 'Each province supplied workers in turn to build its section: labor service, the mit’a, rather than taxes in goods or money.' },
+        { q: 'Cieza’s remark that “the Emperor” (Charles V of Spain) could not build such a road suggests that he', options: ['thought Inca government was better than Spain’s at organizing large numbers of workers', 'believed the roads were built by Spanish engineers', 'wanted the Inca roads destroyed', 'had never seen the roads himself'], correct: 0, why: 'He credits the “perfect order” of Inca rule, a striking admission from a Spanish soldier.' },
+        { q: 'The roads helped the Inca hold their empire together mainly by', options: ['allowing private merchants to compete freely', 'moving armies, officials and relay messengers and linking storehouses', 'bringing European goods into the Andes', 'carrying wheeled carts pulled by horses'], correct: 1, why: 'The Inca had no wheeled vehicles or horses; roads served the state: soldiers, officials, chasquis and supplies.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Pedro de Cieza de León, a Spanish soldier and chronicler, describing Inca record keeping, Peru, c. 1550', text: 'The system of the Peruvians was by quipus. These were long ropes made of knotted cords, and those who were accountants and understood the arrangement of these knots, could, by their means, give an account of the expenditure, and of other things during a long course of years. … Each ruler of a province was provided with accountants who were called quipucamayos, and by these knots they kept account of what tribute was to be paid in the district, with respect to silver, gold, cloth, flocks, down to fire-wood and other minute details. … I was incredulous respecting this system of counting, and although I heard it described, I held the greater part of the story to be fabulous.', cite: 'Pedro de Cieza de León, The Second Part of the Chronicle of Peru, ch. XII, trans. C. R. Markham (1883)' },
+      questions: [
+        { q: 'Based on the passage, quipus were mainly used to', options: ['record religious hymns in an alphabet', 'keep numerical records such as tribute owed by each district', 'send letters between private merchants', 'map the routes of Polynesian voyagers'], correct: 1, why: 'Quipucamayos recorded tribute in silver, gold, cloth, flocks and firewood with knots that stood for numbers.' },
+        { q: 'The fact that every provincial ruler had trained quipu accountants best supports the claim that the Inca empire', options: ['was a loose alliance of independent cities', 'depended on markets to set prices', 'had a centralized administration that tracked resources and labor', 'was ruled by priests rather than kings'], correct: 2, why: 'Standardized record keeping across provinces is a sign of strong central control.' },
+        { q: 'Cieza’s admission that he was at first “incredulous” most likely reflects', options: ['the European assumption that a society without alphabetic writing could not keep accurate records', 'the Inca practice of hiding quipus from all outsiders', 'his belief that the Aztecs had invented the quipu', 'the fact that quipus were invented by the Spanish'], correct: 0, why: 'Point of view: Europeans equated record keeping with writing, so a knotted-cord system seemed unbelievable until it was demonstrated to him.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Garcilaso de la Vega, son of a Spanish captain and an Inca princess, recalling the origin story his Inca uncle told him as a boy in Cuzco; published in Lisbon, 1609', text: '“Our Father the Sun”, said my uncle the Ynca, “seeing the human race in the condition I have described, had compassion upon them, and sent down from heaven to the earth a son and daughter to instruct them in the knowledge of our Father the Sun, that they might adore Him, and adopt Him as their God; also to give them precepts and laws by which to live as reasonable and civilised men, and to teach them to live in houses and towns, to cultivate maize and other crops, to breed flocks, and to use the fruits of the earth like rational beings, instead of living like beasts. …”', cite: 'Garcilaso de la Vega, Royal Commentaries of the Yncas, Book I, ch. XV, trans. C. R. Markham (1869)' },
+      questions: [
+        { q: 'This origin story most directly served to', options: ['justify Inca rule by presenting the royal family as children of the sun who brought civilization', 'explain why the Inca adopted Christianity', 'describe how the mit’a labor system was organized', 'record the conquests of Pachacuti'], correct: 0, why: 'A divine origin made the ruler’s power sacred and presented Inca conquest as a gift of civilization.' },
+        { q: 'Which aspect of Garcilaso’s background most affects how historians read this passage?', options: ['He was a Spanish priest who never met an Inca', 'He was the son of an Inca princess, writing in Spain decades after the conquest, and wanted to present the Inca as civilized', 'He was a Mexica noble writing about the Aztecs', 'He wrote it during Pachacuti’s reign'], correct: 1, why: 'Sourcing: as a mestizo proud of his Inca family, writing for Spanish readers, he had reasons to show Inca rule in the best light.' },
+        { q: 'The claim in this passage is most similar to which other ruling family’s claim?', options: ['Roman consuls elected by the Senate', 'The Triple Alliance’s alliance of three cities', 'Japanese emperors claiming descent from the sun goddess Amaterasu', 'Mississippian chiefs at Cahokia'], correct: 2, why: 'Both ruling families claimed descent from a sun deity to make their rule sacred (Chapter 14).' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'James Cook, captain of the British ship Endeavour, writing in his journal among the Society Islands (near Tahiti), August 1769', text: 'These people are very ingenious in building their Proes or Canoes, and seem to take as much Care of them, having large Shades or Houses to put them in, built for the purpose … In these Proes, or Pahies as they call them, from all the accounts we can learn, these people sail in those Seas from Island to Island for several hundred Leagues, the Sun serving them for a Compass by day, and the Moon and Stars by night. When this comes to be proved, we shall be no longer at a loss to know how the Islands lying in those Seas came to be peopled', cite: 'Captain Cook’s Journal during His First Voyage Round the World, ch. 4, ed. W. J. L. Wharton (1893)' },
+      questions: [
+        { q: 'The passage provides evidence that Pacific islanders', options: ['used magnetic compasses obtained from Chinese traders', 'rarely traveled beyond sight of their home island', 'learned navigation from European sailors', 'navigated long distances using the sun, moon and stars'], correct: 3, why: 'Cook reports voyages of several hundred leagues guided by the sun by day and the moon and stars by night.' },
+        { q: 'Cook’s idea about how the islands “came to be peopled” is best supported by modern evidence that', options: ['Polynesians’ ancestors came from island Southeast Asia and spread east from island to island', 'the islands were settled from South America', 'the islands were empty until the 1700s', 'Europeans first settled Tahiti'], correct: 0, why: 'Language, archaeology (Lapita pottery) and DNA trace Polynesian ancestors west to island Southeast Asia, as Cook guessed.' },
+        { q: 'A limitation of this source for historians is that Cook', options: ['was a Polynesian priest with religious motives', 'wrote centuries after the voyages he describes ended', 'was a European outsider relying on what islanders such as Tupaia told him', 'had no interest in navigation'], correct: 2, why: 'He writes “from all the accounts we can learn”: secondhand information, filtered through interpreters and a European point of view.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE similarity in how the Aztec and Inca empires controlled conquered peoples.',
+        'Explain ONE difference in how the Aztec and Inca empires took resources from their subjects.',
+        'Explain ONE way religion strengthened the power of rulers in EITHER the Aztec or the Inca empire.',
+      ],
+      guide: [
+        'Accept: both used military conquest; both demanded tribute or labor from subjects; both used religion to justify rule; both held hostages or local elites accountable; both built their capital as a showcase of power.',
+        'Accept with explanation: Aztecs collected tribute in goods (cloth, cacao, feathers) while leaving local rulers in place; the Inca collected labor through the mit’a and stored goods in state storehouses; Aztec markets vs limited, state-controlled Inca trade.',
+        'Accept with explanation: Huitzilopochtli’s need for sacrifice justified wars that brought captives and tribute; the Inca king claimed descent from Inti and was seen as infallible; royal mummies kept power in royal families.',
+      ],
+      model: [
+        'Both empires grew through military conquest and forced the peoples they conquered to support the capital, Tenochtitlan or Cuzco.',
+        'The Aztecs let conquered rulers stay in power as long as they sent tribute goods such as cotton cloth and cacao, while the Inca demanded the mit’a, turns of labor building roads and farming state lands.',
+        'The Inca ruler claimed to be descended from Inti, the sun god, so disobeying him meant defying the gods. This made his commands, such as calls for mit’a labor, seem sacred.',
+      ],
+    },
+    {
+      prompt: 'Use the passage from James Cook’s journal (1769) in the practice questions above.',
+      parts: [
+        'Identify ONE skill or technology that allowed Polynesians to settle the Pacific islands.',
+        'Explain ONE way the island environment shaped Pacific island societies after settlement.',
+        'Explain ONE way Polynesian societies were similar to OR different from Andean societies in this period.',
+      ],
+      guide: [
+        'Accept: large double-hulled canoes; navigation by sun, stars, swells and birds; carrying plants and animals for new islands; knowledge of winds.',
+        'Accept with explanation: limited land → population pressure → warfare and strife; fishponds and intensive farming; deforestation (Rapa Nui); isolation limited trade to occasional voyages.',
+        'Similar: both had sharp social classes, chiefs or kings with sacred status, priests and temples, and labor owed to rulers. Different: Polynesian states were small (one or a few islands), while the Inca ruled millions; Polynesians linked islands by sea, the Inca by roads.',
+      ],
+      model: [
+        'Polynesians built large double-hulled canoes and navigated by the sun, moon and stars, as Cook describes.',
+        'Because islands had limited land, growing populations led to competition, and by about 1500 CE fierce fighting was common on many islands.',
+        'Like the Inca, Polynesian chiefs claimed sacred status and could call on commoners for labor. But Polynesian states covered only a few islands, while the Inca ruled about 11.5 million people.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which the Aztec and Inca empires were similar in the methods they used to govern their territories in the period c. 1400–1530.',
+    theses: [
+      { text: 'The Aztec and Inca empires had similarities and differences in how they governed.', ok: false, why: 'Too vague. It does not say what was similar or different, or how much.' },
+      { text: 'The Aztecs formed the Triple Alliance in 1428 and the Inca were led by Pachacuti.', ok: false, why: 'Two facts, not an argument.' },
+      { text: 'Although both empires relied on conquest and used religion to make their rulers sacred, they differed greatly in how they extracted resources: the Aztecs left local rulers in place and collected tribute in goods, while the Inca built a centralized state that demanded labor through the mit’a.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both similarities and differences.' },
+    ],
+    contextHint: 'What was happening in Mesoamerica and the Andes before 1400 that matters for the question?',
+    contextStart: 'Before the Aztecs and the Inca, both regions…',
+    context: 'Before 1400 both regions had a long history of states: the Toltecs and Teotihuacan in Mesoamerica, Chavín, Moche, Chimu and Chucuito in the Andes. Neither region had contact with Afro-Eurasia, so both empires developed their own methods of rule.',
+    evidence: [
+      { text: 'Both expanded by military conquest under strong rulers (Itzcóatl, Motecuzoma I; Pachacuti).', side: 'similar' },
+      { text: 'Both used religion to justify rule: Huitzilopochtli’s sacrifices; the Inca king as son of the sun.', side: 'similar' },
+      { text: 'Both drew wealth from subjects to support a splendid capital (Tenochtitlan, Cuzco).', side: 'similar' },
+      { text: 'Aztecs left conquered rulers in place and collected tribute goods.', side: 'different' },
+      { text: 'Inca held hostages in Cuzco, moved colonists and spread Quechua.', side: 'different' },
+      { text: 'Inca demanded mit’a labor and built roads and storehouses; Aztecs relied on markets and merchants.', side: 'different' },
+      { text: 'Aztecs used pictorial writing; the Inca kept records on quipus.', side: 'different' },
+    ],
+    complexity: 'Show complexity by explaining why the differences mattered: the loosely held Aztec tribute empire left resentful subjects who joined Cortés in 1519, while the centralized Inca state broke apart in a succession war just before Pizarro arrived.',
+  },
+
+  recall: [
+    { q: 'What were chinampas?', a: 'Raised garden plots built from lake-bottom mud' },
+    { q: 'Which three cities formed the Triple Alliance?', a: 'Tenochtitlan, Texcoco and Tlacopan' },
+    { q: 'What was the Inca mit’a?', a: 'Labor owed to the state in turns' },
+    { q: 'What was the largest Mississippian mound-building town?', a: 'Cahokia' },
+    { q: 'How did Polynesian voyagers navigate?', a: 'By the sun, stars, swells and birds' },
+  ],
+}

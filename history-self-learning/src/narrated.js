@@ -1,7 +1,6 @@
 // Narrated chapter videos (made in ../math-videos, published with `node publish.mjs hist-<n>`).
-import chapter11 from './videos/chapter-11.json'
-
-const MANIFESTS = { 11: chapter11 }
+const MANIFESTS = Object.fromEntries(Object.entries(import.meta.glob('./videos/chapter-*.json', { eager: true, import: 'default' }))
+  .map(([file, m]) => [Number(/chapter-(\d+)/.exec(file)[1]), m]))
 
 // The narrated video for a chapter: { id, seconds, base } or null until it is published.
 export function chapterVideo(n) {

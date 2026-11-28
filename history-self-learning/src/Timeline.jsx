@@ -1,26 +1,22 @@
 import { useMemo, useState } from 'react'
 import { TRACKS, spanText } from './shared.js'
 
-const PRESETS = [
-  { label: 'Whole chapter', from: -820, to: 240 },
-  { label: 'Kings & Republic', from: -820, to: -100 },
-  { label: 'Fall of the Republic', from: -150, to: 20 },
-  { label: 'Empire & Christianity', from: -40, to: 130 },
-  { label: 'Long view', from: -2050, to: 250 },
-]
+
 const W = 1100, LEFT = 150, RIGHT = 20, ROW = 26, AXIS = 34
-const niceStep = span => [10, 20, 25, 50, 100, 200, 250, 500].find(s => span / s <= 12) ?? 1000
+const niceStep = span => [5, 10, 20, 25, 50, 100, 200, 250, 500].find(s => span / s <= 12) ?? 1000
 
 // Interactive timeline: one lane per theme, spans as bars, click any event for details.
-export default function Timeline({ events }) {
+// zooms: [{ label, from, to }], the first being the default view.
+// tracks: which theme lanes to show (all five by default).
+export default function Timeline({ events, zooms, tracks = TRACKS }) {
   const [preset, setPreset] = useState(0)
   const [hidden, setHidden] = useState([])
   const [sel, setSel] = useState(null)
-  const { from, to } = PRESETS[preset]
+  const { from, to } = zooms[Math.min(preset, zooms.length - 1)]
   const x = y => LEFT + (y - from) / (to - from) * (W - LEFT - RIGHT)
 
   const lanes = useMemo(() => {
-    const built = TRACKS.filter(t => !hidden.includes(t.id)).map(t => {
+    const built = tracks.filter(t => !hidden.includes(t.id)).map(t => {
       const evs = events.filter(e => e.track === t.id && (e.end ?? e.year) >= from && e.year <= to).sort((a, b) => a.year - b.year)
       const rowsEnd = []
       const placed = evs.map(e => {
@@ -39,7 +35,7 @@ export default function Timeline({ events }) {
     })
     // stack the lanes top to bottom
     return built.map((lane, i) => ({ ...lane, top: AXIS + 8 + built.slice(0, i).reduce((s, l) => s + l.rows * ROW + 14, 0) }))
-  }, [events, from, to, hidden])
+  }, [events, from, to, hidden, tracks])
   const height = lanes.length ? lanes.at(-1).top + lanes.at(-1).rows * ROW + 10 : AXIS + 20
   const step = niceStep(to - from)
   const ticks = []
@@ -47,8 +43,8 @@ export default function Timeline({ events }) {
 
   return <div className="timeline">
     <div className="tl-controls">
-      <div className="chips" role="group" aria-label="Zoom">{PRESETS.map((p, i) => <button key={p.label} aria-pressed={i === preset} onClick={() => setPreset(i)}>{p.label}</button>)}</div>
-      <div className="chips" role="group" aria-label="Themes">{TRACKS.map(t => <button key={t.id} className="track-chip" aria-pressed={!hidden.includes(t.id)} style={{ '--c': t.color }}
+      <div className="chips" role="group" aria-label="Zoom">{zooms.map((p, i) => <button key={p.label} aria-pressed={i === preset} onClick={() => setPreset(i)}>{p.label}</button>)}</div>
+      <div className="chips" role="group" aria-label="Themes">{tracks.map(t => <button key={t.id} className="track-chip" aria-pressed={!hidden.includes(t.id)} style={{ '--c': t.color }}
         onClick={() => setHidden(hidden.includes(t.id) ? hidden.filter(h => h !== t.id) : [...hidden, t.id])}><span className="dot" />{t.label}</button>)}</div>
     </div>
     <div className="tl-scroll">
@@ -61,7 +57,7 @@ export default function Timeline({ events }) {
           {l.events.map(e => {
             const cy = l.top + e.row * ROW + 10, x0 = Math.max(LEFT, x(e.year)), on = sel === e
             const x1 = e.end != null ? Math.min(x(e.end), W - RIGHT) : null
-            return <g key={e.label} className={`tl-event${on ? ' on' : ''}`} tabIndex={0} role="button" aria-label={`${spanText(e.year, e.end)}: ${e.label}`}
+            return <g key={`${e.ch ?? ''}-${e.year}-${e.label}`} className={`tl-event${on ? ' on' : ''}`} tabIndex={0} role="button" aria-label={`${spanText(e.year, e.end)}: ${e.label}`}
               onClick={() => setSel(e)} onKeyDown={ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); setSel(e) } }}>
               {x1 != null ? <rect x={x0} y={cy - 6} width={Math.max(4, x1 - x0)} height={12} rx={6} style={{ fill: l.color, opacity: on ? 1 : 0.55 }} />
                 : <circle cx={x0} cy={cy} r={on ? 7 : 5.5} style={{ fill: l.color }} />}
@@ -72,7 +68,7 @@ export default function Timeline({ events }) {
       </svg>
     </div>
     <div className="tl-detail" aria-live="polite">
-      {sel ? <><span className="eyebrow" style={{ color: TRACKS.find(t => t.id === sel.track).color }}>{spanText(sel.year, sel.end)} · {TRACKS.find(t => t.id === sel.track).label}</span><h4>{sel.label}</h4><p>{sel.detail}</p></>
+      {sel ? <><span className="eyebrow" style={{ color: TRACKS.find(t => t.id === sel.track).color }}>{spanText(sel.year, sel.end)} · {TRACKS.find(t => t.id === sel.track).label}{sel.ch ? ` · Chapter ${sel.ch}` : ''}</span><h4>{sel.label}</h4><p>{sel.detail}</p></>
         : <p className="muted">Tap any event for details. Use the zoom buttons to spread out crowded years, and the theme buttons to hide lanes.</p>}
     </div>
   </div>

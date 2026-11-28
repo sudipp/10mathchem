@@ -1,8 +1,8 @@
-// Historical layers for the Chapter 11 map (longitude, latitude). Territory outlines are drawn loosely over
+// Chapter 11 map layers (longitude, latitude). Territory outlines are drawn loosely over
 // the sea: the map clips every territory to the coastline, so only land frontiers need care.
 // Sources for frontiers: standard historical atlases (Rhine–Danube limes, Hadrian's Wall line, Trajan's provinces).
 
-export const CITIES = {
+const CITIES = {
   rome: { name: 'Rome', at: [12.5, 41.9], big: true },
   carthage: { name: 'Carthage', at: [10.32, 36.85], big: true },
   alexandria: { name: 'Alexandria', at: [29.9, 31.2], big: true },
@@ -65,8 +65,8 @@ const EMPIRE_117 = [
 ]
 
 // ---------- routes ----------
-export const HANNIBAL = [[-0.98, 37.6], [-0.27, 39.68], [0.6, 40.8], [2.5, 42.4], [4.7, 43.9], [6.8, 45.2], [9.6, 45.0], [12.1, 43.15], [16.13, 41.3]]
-export const SCIPIO = [[12.5, 41.9], [11.0, 39.5], [9.8, 37.4], [9.4, 36.3]]
+const HANNIBAL = [[-0.98, 37.6], [-0.27, 39.68], [0.6, 40.8], [2.5, 42.4], [4.7, 43.9], [6.8, 45.2], [9.6, 45.0], [12.1, 43.15], [16.13, 41.3]]
+const SCIPIO = [[12.5, 41.9], [11.0, 39.5], [9.8, 37.4], [9.4, 36.3]]
 const ROADS = [
   [[12.5, 41.9], [14.25, 41.08], [17.94, 40.64]],
   [[19.45, 41.32], [22.94, 40.64], [28.98, 41.01]],
@@ -90,7 +90,7 @@ const PAUL_ROME = [[34.89, 32.5], [29.98, 36.26], [24.8, 34.93], [14.4, 35.9], [
 // ---------- map steps (the animated map) ----------
 // view: [lonMin, latMin, lonMax, latMax] to zoom in, or null for the whole map.
 const C = { rome: '#B5482A', etr: '#C99A3D', greek: '#4E7FA6', carth: '#6E5A8F', empire: '#B5482A' }
-export const MAP_STEPS = [
+const STEPS = [
   {
     title: 'Italy, c. 600 BCE', caption: 'Rome is one small city in Latium. The Etruscans control the north and Campania; Greek colonies fill the south and eastern Sicily; Carthage holds western Sicily and North Africa.',
     view: [4, 33, 21, 47.5],
@@ -139,3 +139,6 @@ export const MAP_STEPS = [
     cities: ['jerusalem', 'capernaum', 'antioch', 'tarsus', 'ephesus', 'philippi', 'thessalonica', 'athens', 'corinth', 'rome', 'alexandria'],
   },
 ]
+
+// base: the base map in src/geo; aspect: height / width of the map frame.
+export default { base: 'mediterranean', aspect: 0.749, cities: CITIES, steps: STEPS }

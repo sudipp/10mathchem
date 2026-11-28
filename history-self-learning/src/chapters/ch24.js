@@ -1,0 +1,347 @@
+// Chapter 24 · New Worlds: The Americas and Oceania (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch24.js.
+export default {
+  hook: 'In 1519 a few hundred Spaniards marched into Tenochtitlan, a city of perhaps 200,000 people built on a lake. Two years later it was rubble, and smallpox had killed more of its defenders than Spanish swords. Within a century the Native population of the Americas had collapsed, silver from a single Andean mountain was paying for Chinese silk, and enslaved Africans were cutting sugarcane in Brazil. By 1788 the same forces had reached Australia.',
+  apNote: 'This chapter is the heart of AP Unit 4, “Transoceanic Interconnections, 1450–1750,” and it is tested directly and heavily. Topic 4.3 is the Columbian Exchange (smallpox, crops, animals). Topics 4.4–4.6 are the maritime empires: encomienda, hacienda, mita, the casta system, silver from Potosí, plantation economies and resistance. Expect stimulus MCQs, SAQs that compare Spanish and English colonies, and LEQs on labor systems.',
+  themes: ['Governance', 'Economic systems', 'Social structures', 'Humans and the environment', 'Cultural developments'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['HQPA5oNpfM4', 'The Columbian Exchange: Crash Course World History #23', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Follow the Spanish from the Caribbean to Mexico and Peru, watch silver and sugar tie the Americas to Europe, Africa and China, then cross the Pacific with the Manila galleons and Captain Cook.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 1485, to: 1800 },
+    { label: 'Conquest', from: 1488, to: 1550 },
+    { label: 'Silver & sugar', from: 1540, to: 1625 },
+    { label: 'Settlers & rebels', from: 1600, to: 1700 },
+    { label: 'Oceania', from: 1760, to: 1795 },
+    { label: 'Long view', from: 1400, to: 1800 },
+  ],
+  bigIdeas: [
+    'Epidemic disease from Afro-Eurasia, above all smallpox, killed most of the Native population of the Americas and made conquest by small Spanish forces possible.',
+    'Spain and Portugal built empires of conquest: viceroys ruled huge Native populations, coerced labor (encomienda, mita) mined silver, and enslaved Africans grew sugar.',
+    'American silver and cash crops linked the Americas to Europe, Africa and Asia; much of the silver ended up in China through Europe and the Manila galleons.',
+    'English, French and Dutch colonies in North America were settler colonies with more self-government; they pushed Native peoples off the land, and Europeans later reached Oceania with the same diseases and claims.',
+  ],
+
+  sections: [
+    {
+      id: 'caribbean', title: 'The Spanish Caribbean', when: '1492 – 1550', theme: 'Humans and the environment', map: 0,
+      lead: 'Columbus came looking for spices and silk and found the Taíno instead. Within two generations Spanish greed and, above all, smallpox had destroyed Taíno society.',
+      body: [
+        'The Taíno (an Arawak people) had moved into the Caribbean islands from the Orinoco River valley of South America between the late centuries BCE and about 900 CE. They farmed cassava and lived in villages ruled by chiefs called caciques.',
+        'Columbus used Hispaniola (today Haiti and the Dominican Republic) as his base. Disappointed that the Taíno had no spices or silks, the Spaniards forced them to mine gold. Under the encomienda system, the crown granted settlers the right to Native labor and tribute in return for teaching them Christianity. In practice it was forced labor.',
+        'The Taíno sometimes rebelled, but bows and clubs were no match for steel swords, horses and guns. Then smallpox arrived in 1518. Spaniards raided other islands to kidnap new workers and spread the disease further. By the middle of the 1500s Taíno society had disappeared.',
+        'With little gold left, Spaniards turned the islands into sugarcane plantations. Sugar needed far more workers than the islands had, so planters began importing enslaved Africans, a pattern that would spread across the Americas.',
+      ],
+      facts: ['Taíno: Arawak farmers from the Orinoco valley', 'Hispaniola = Columbus’s base, 1493', 'Encomienda = forced labor for settlers', 'Smallpox 1518; Taíno gone by c. 1550'],
+      chain: ['Columbus reaches the Caribbean, 1492', 'Spaniards force Taíno to mine gold', 'Smallpox and overwork kill millions', 'Taíno society disappears', 'Sugar plantations need imported African slaves'],
+      soWhat: 'The Caribbean was the test run for everything that followed: conquest, coerced labor, epidemic disease and plantation slavery. This is the Columbian Exchange (AP Topic 4.3) at its most deadly; Chapter 22 covers the voyages that began it.',
+      video: ['6zo9XQD86uU', 'The COLUMBIAN EXCHANGE, Explained [AP World History Review—Unit 4 Topic 3]', 'Heimler’s History'],
+    },
+    {
+      id: 'conquest', title: 'Conquest of Mexico and Peru', when: '1519 – 1533', theme: 'Governance', map: 1,
+      lead: 'Two small bands of conquistadores toppled the two greatest empires of the Americas, the Aztecs and the Inca. Steel and horses mattered, but Native allies and smallpox mattered more.',
+      body: [
+        'In 1519 Hernán Cortés sailed from Cuba with about 450 soldiers, landed at Veracruz and marched inland. Many peoples hated Aztec rule and tribute, and the Tlaxcalans joined him with thousands of warriors. A Native woman, Malintzin (La Malinche), served as his translator.',
+        'The Spaniards entered Tenochtitlan and took the emperor Motecuzoma II hostage, but in 1520 they were driven out. That same year smallpox swept through the city. Cortés returned with his allies, besieged Tenochtitlan and destroyed it in August 1521.',
+        'In 1532 Francisco Pizarro led a smaller force from Panama into Peru. The Inca empire was already weakened by smallpox and by a civil war between two royal brothers. At Cajamarca Pizarro ambushed and captured the new emperor, Atahualpa, and slaughtered thousands of his attendants.',
+        'Atahualpa paid a huge ransom in gold and silver, but Pizarro executed him in 1533 and took the capital, Cuzco. Spanish rule in the Andes still faced Inca resistance for decades.',
+      ],
+      facts: ['Cortés + about 450 men, 1519–1521', 'Tlaxcalan allies and smallpox decide the siege', 'Pizarro captures Atahualpa at Cajamarca, 1532', 'Cuzco taken, 1533'],
+      chain: ['Aztec subjects resent tribute', 'Tlaxcalans ally with Cortés', 'Smallpox weakens Tenochtitlan, 1520', 'Siege and fall of Tenochtitlan, 1521', 'Smallpox and civil war divide the Inca', 'Pizarro captures Atahualpa, 1532'],
+      soWhat: 'AP essays ask why so few Spaniards won. The best answers combine several causes: disease, Native allies, steel weapons and horses, and divisions inside the Aztec and Inca empires (see Chapter 20 for those empires before contact).',
+      video: ['uyN-jFvI9vo', 'Sea-Based EMPIRES ESTABLISHED [AP World History Review—Unit 4 Topic 4]', 'Heimler’s History'],
+      factCheck: 'Your notes say Pizarro had 600 men and massacred a conference of Inca rulers. Most historians count about 168 Spaniards at Cajamarca. They ambushed Atahualpa’s escort, captured him alive, held him for ransom and executed him in 1533.',
+    },
+    {
+      id: 'rule', title: 'Ruling the Iberian empires', when: '1494 – 1750', theme: 'Governance', map: 2,
+      lead: 'Spain governed its American empire through viceroys, courts and the Church. Portugal, given Brazil by treaty, ignored it at first and then turned it into a sugar colony.',
+      body: [
+        'Spain ruled through two viceroyalties: New Spain, with Mexico City built on the ruins of Tenochtitlan, and New Castile (Peru), with a new capital at Lima (founded 1535). Spanish rule stretched from Florida to Buenos Aires.',
+        'Viceroys were the king’s deputies, but courts called audiencias watched them and reported to Spain, so that no official could build up a private power base. Even so, colonists often disputed orders from the homeland.',
+        'In the Treaty of Tordesillas (1494) Spain and Portugal divided the non-Christian world along a line in the Atlantic. Brazil, reached in 1500, fell on Portugal’s side. Portugal showed little interest until rival powers took notice, then developed it for sugar.',
+        'On the land, Spanish haciendas (large estates) raised European products such as wheat, grapes and meat. They first used encomienda labor, which brought terrible abuses from about 1520 to 1540. The New Laws of 1542 limited encomiendas, and over time landowners switched to debt peonage: peasants borrowed money and repaid it with cheap labor, often for life.',
+      ],
+      facts: ['Viceroyalties: New Spain and Peru', 'Audiencias check the viceroys', 'Tordesillas, 1494: Brazil to Portugal', 'Hacienda: encomienda → debt peonage'],
+      chain: ['Conquest of huge Native populations', 'Crown fears independent conquistadores', 'Viceroys supervised by audiencias', 'Haciendas use encomienda labor', 'Abuses and New Laws, 1542', 'Debt peonage replaces encomienda'],
+      soWhat: 'Spain built a centralized bureaucratic empire, like the land empires of Unit 3. Compare with the English colonies, which governed themselves far more.',
+      video: ['Lqt2JvP6-1Q', 'The ECONOMICS of EMPIRE Building [AP World History Review—Unit 4 Topic 5]', 'Heimler’s History'],
+    },
+    {
+      id: 'silver', title: 'Silver: from Potosí to China', when: '1545 – 1800', theme: 'Economic systems', map: 3,
+      lead: 'The conquistadores melted down Aztec and Inca treasures, but the real wealth lay underground. Silver from Mexico and the Andes became the first truly global money.',
+      body: [
+        'Gold was scarce in Spanish America, but silver was plentiful. Huge deposits were found at Potosí in the Andes (1545) and Zacatecas in Mexico (1546). By about 1600 Potosí was one of the largest cities in the world.',
+        'Spaniards adapted the Inca mita, a rotating draft of labor. Native villages had to send a share of their men to the mines for months at a time. The work was brutal: men carried heavy loads up ladders in darkness, and mercury used to refine silver poisoned workers.',
+        'The crown took a fifth (the quinto) of all silver, its biggest source of income. Treasure fleets carried silver to Seville. From Europe, merchants shipped much of it to Asia to buy spices, silk and porcelain.',
+        'From 1565 the Manila galleons carried silver across the Pacific from Acapulco to Manila, where Chinese merchants traded silk and porcelain for it. China, which collected taxes in silver, was the biggest buyer. Floods of silver also caused inflation in Spain and Europe.',
+      ],
+      facts: ['Potosí 1545 · Zacatecas 1546', 'Mita: rotating forced labor in the mines', 'Quinto: the king’s fifth', 'Manila galleons, 1565–1815'],
+      chain: ['Silver found at Potosí and Zacatecas', 'Mita forces Native men into the mines', 'Treasure fleets and Manila galleons', 'Silver flows to Europe and China', 'Global trade grows; prices rise in Europe'],
+      soWhat: 'Silver is how AP connects the Americas to Ming China (Unit 4.5). It shows that the first global economy ran on American metal mined with coerced Native labor.',
+      video: ['rjhIzemLdos', 'The Spanish Empire, Silver, & Runaway Inflation: Crash Course World History #25', 'CrashCourse'],
+    },
+    {
+      id: 'sugar', title: 'Sugar and slavery in Brazil', when: '1530 – 1750', theme: 'Economic systems', map: 4,
+      lead: 'Brazil became the world’s first great sugar colony. Its mills ran on the labor of enslaved Africans, who died so fast that planters kept buying more.',
+      body: [
+        'A sugar mill, or engenho, meant the whole complex of land, cane fields, mill, boiling house and workers. Cane was crushed and boiled into molasses or refined into sugar for export. Profit margins were small, so planters drove workers hard.',
+        'Unlike the Spanish, who used Native labor, the Portuguese relied on enslaved Africans. Native Brazilians kept escaping into the interior, and disease killed many of those who were captured.',
+        'Large-scale imports of enslaved Africans began in the 1580s. Working conditions were so harsh that 5 to 10 percent of slaves died each year. Historians estimate about one human life was lost for every ton of sugar produced.',
+        'In the 1600s the sugar and slave system spread to English, French and Dutch islands in the Caribbean, such as Barbados and later Jamaica and Saint-Domingue.',
+      ],
+      facts: ['Engenho: sugar mill complex', 'Portuguese use African, not Native, labor', 'Mass slave imports from the 1580s', '5–10% die each year; one life per ton of sugar'],
+      chain: ['European demand for sugar', 'Engenhos on the Brazilian coast', 'Native workers escape or die', 'Planters import enslaved Africans', 'High death rates → more slave imports'],
+      soWhat: 'Plantation slavery tied the Americas to Africa in the Atlantic system. Compare it with Roman latifundia (Chapter 11): both were estates worked by slaves, but Atlantic slavery became hereditary and race-based.',
+      video: ['dnV_MTFEGIY', 'The Atlantic Slave Trade: Crash Course World History #24', 'CrashCourse'],
+    },
+    {
+      id: 'north-america', title: 'Settler colonies in North America', when: '1565 – 1750', theme: 'Social structures', map: 5,
+      lead: 'France, England and the Netherlands came later and found no rich empires to conquer. Their colonies grew from settlers, furs and cash crops, and they pushed Native peoples off the land.',
+      body: [
+        'Spain built forts, towns and missions in Florida (St. Augustine, 1565) and the Southwest. In the 1600s French, English and Dutch mariners took over the rest of the coast. France founded colonies in Nova Scotia (1604) and Quebec (1608); England at Jamestown (1607), Plymouth (1620) and Massachusetts Bay (1630); the Dutch at New Amsterdam, which the English took in 1664 and renamed New York.',
+        'Early years were desperate: in Jamestown’s “starving time” some colonists turned to cannibalism. Private merchants invested in joint-stock companies to fund the colonies, and colonists governed themselves more than in Spanish or Portuguese America. About 150,000 English migrants arrived in the 1600s, hungry for land.',
+        'North American peoples were loosely organized and often moved with the seasons, unlike the Aztec and Inca. Colonists cleared forests for farms, trespassed on hunting grounds and signed treaties that Native peoples understood very differently. Wars were frequent, and epidemics devastated Native communities.',
+        'The French fur trade swapped wool blankets, iron pots, guns and alcohol for beaver pelts, and fighting over hunting grounds led to the Beaver Wars between the Iroquois and the Huron. In the south, colonists grew cash crops for Europe: tobacco, rice, indigo and later cotton. They used indentured servants (4 to 7 years of work for passage), then turned more and more to enslaved Africans, who arrived in Virginia from 1619.',
+      ],
+      facts: ['Jamestown 1607 · Quebec 1608 · Plymouth 1620', 'More self-government than Spanish colonies', 'Fur trade → Beaver Wars', 'Tobacco, rice, indigo: servants, then slaves'],
+      chain: ['No rich empire to conquer', 'Settlers clear land for farms', 'Native peoples displaced; treaties misunderstood', 'Cash crops need workers', 'Indentured servants, then African slaves'],
+      soWhat: 'Spanish vs English colonies is one of AP’s favorite comparisons: conquest and coerced Native labor versus settlement, displacement and, increasingly, African slavery.',
+      video: ['o69TvQqyGdg', 'When is Thanksgiving? Colonizing America: Crash Course US History #2', 'CrashCourse'],
+      factCheck: 'Your notes date New Amsterdam to 1623. The Dutch West India Company’s first settlers reached New Netherland in 1624, and the town of New Amsterdam on Manhattan was laid out in 1625.',
+    },
+    {
+      id: 'society', title: 'Mixed societies, faith and resistance', when: '1520 – 1780', theme: 'Cultural developments',
+      lead: 'Conquest created new, mixed peoples and a social ladder based on birth and race. Native peoples adopted Christianity on their own terms, and some fought back.',
+      body: [
+        'Most European and African migrants were men, and many had children with Native women. In Spanish America this produced mestizos (Spanish and Native parents), mulattoes (Spanish and African) and zambos (African and Native). Mixing was less common in Peru than in Mexico.',
+        'A race-based hierarchy (often called the casta system) put peninsulares, migrants born in Spain or Portugal, at the top. Below them came criollos (creoles), people of European descent born in the Americas, then people of mixed ancestry, and at the bottom slaves and conquered peoples. In North America more European women migrated, relationships across races carried more stigma, and the children of fur traders and Native women were called métis.',
+        'Franciscan, Dominican and Jesuit missionaries taught Christian doctrine and literacy. Some, like Bernardino de Sahagún, studied Native languages and cultures to preach better. Many Native people decided their gods had abandoned them and became Catholic, but kept older beliefs inside Christian worship. The Virgin of Guadalupe, a dark-skinned Mary said to have appeared to a Native man in 1531, became Mexico’s great symbol. French and English missions won fewer converts.',
+        'Resistance took many forms: revolts such as the Pueblo Revolt (1680) and the rebellion of Túpac Amaru II in Peru (1780), slow or half-hearted work, flight to mountains and forests, and appeals to the king. In 1615 Felipe Guaman Poma de Ayala, an Andean noble, sent King Philip III a 1,200-page letter describing Spanish abuses.',
+      ],
+      facts: ['Mestizo, mulatto, zambo; métis in North America', 'Peninsulares > criollos > mixed > slaves', 'Missionaries: Sahagún; Virgin of Guadalupe', 'Pueblo Revolt 1680 · Túpac Amaru II 1780'],
+      chain: ['Mostly male migrants', 'Children with Native and African women', 'Mixed peoples', 'Race-based social hierarchy', 'Resentment and resistance'],
+      soWhat: 'AP Topic 4.7 asks how empires changed social hierarchies. The casta system is a clear example of a new hierarchy built on race and birthplace; criollo resentment of peninsulares later fed the independence movements of Unit 5.',
+      video: ['RQIEAt2_UoE', 'Changing SOCIAL HIERARCHIES, 1450-1750 [AP World History Review—Unit 4 Topic 7]', 'Heimler’s History'],
+    },
+    {
+      id: 'oceania', title: 'Australia and the Pacific Islands', when: '1521 – 1800', theme: 'Humans and the environment', map: 7,
+      lead: 'For two centuries Europeans mostly sailed past Oceania. When they did settle, the results looked like the Americas: disease, lost land and new colonies.',
+      body: [
+        'Magellan’s fleet crossed the Pacific and reached Guam in 1521. The Manila galleons wanted fast routes, not exploration, so they explored little. Guam and the Mariana Islands mattered because they lay on the galleon route. Spain took control in the 1670s and 1680s, and smallpox destroyed much of the Chamorro population.',
+        'Portuguese sailors had long been in the region, but Dutch sailors made the first recorded European sighting of Australia in 1606. The Dutch East India Company (VOC) surveyed the coasts and decided the land was of little value. It had little contact with Aboriginal Australians, who lived as nomadic foragers and fishers.',
+        'British Captain James Cook landed at Botany Bay in 1770 and claimed eastern Australia for Britain. In 1788 the First Fleet arrived at Sydney with convicts. Convicts outnumbered free settlers until about 1830.',
+        'On his third voyage Cook reached Hawaiʻi in 1778 and was welcomed, but his sailors spread venereal disease. When he returned in 1779 the welcome had worn thin, and he was killed in a dispute over small thefts.',
+      ],
+      facts: ['Magellan at Guam, 1521', 'Dutch sight Australia, 1606', 'Cook at Botany Bay, 1770', 'First Fleet to Sydney, 1788'],
+      chain: ['Galleons need a Pacific route', 'Spain takes Guam and the Marianas', 'Smallpox kills the Chamorro', 'Cook claims eastern Australia, 1770', 'Convict colony at Sydney, 1788'],
+      soWhat: 'Oceania shows the same pattern as the Americas, just later: isolated peoples with no immunity to Afro-Eurasian diseases, and Europeans claiming land that was already inhabited.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 1492, label: 'Columbus reaches the Caribbean', track: 'politics', detail: 'Lands in the Bahamas on October 12, then sails to Cuba and Hispaniola.' },
+    { year: 1494, label: 'Treaty of Tordesillas', track: 'politics', detail: 'Spain and Portugal divide the non-Christian world. Cabral reaches Brazil, on Portugal’s side, in 1500.' },
+    { year: 1503, label: 'Encomienda set up on Hispaniola', track: 'society', detail: 'Settlers receive the labor of Native people in return for teaching them Christianity.' },
+    { year: 1508, end: 1511, label: 'Spain takes Puerto Rico, Jamaica, Cuba', track: 'war', detail: 'Puerto Rico 1508, Jamaica 1509, Cuba 1511.' },
+    { year: 1518, label: 'Smallpox strikes the Caribbean', track: 'society', detail: 'The epidemic reaches Mexico in 1520 and the Andes soon after.' },
+    { year: 1519, end: 1521, label: 'Cortés conquers the Aztecs', track: 'war', detail: 'With Tlaxcalan allies; Tenochtitlan falls in August 1521.' },
+    { year: 1521, label: 'Magellan’s fleet reaches Guam', track: 'politics', detail: 'The first European crossing of the Pacific. Magellan is killed in the Philippines weeks later.' },
+    { year: 1531, label: 'Virgin of Guadalupe', track: 'religion', detail: 'By tradition, Mary appears to Juan Diego at Tepeyac near Mexico City.' },
+    { year: 1532, end: 1533, label: 'Pizarro conquers the Inca', track: 'war', detail: 'Atahualpa captured at Cajamarca (1532), executed and Cuzco taken (1533).' },
+    { year: 1535, label: 'New Spain viceroyalty; Lima founded', track: 'politics', detail: 'The Viceroyalty of Peru follows in 1542.' },
+    { year: 1542, label: 'New Laws limit the encomienda', track: 'society', detail: 'After reformers like Las Casas protest. Debt peonage gradually replaces encomienda labor.' },
+    { year: 1545, label: 'Silver found at Potosí', track: 'society', detail: 'Zacatecas in Mexico follows in 1546. Mita labor supplies the mines.' },
+    { year: 1565, label: 'Manila galleons begin', track: 'society', detail: 'Acapulco to Manila (founded 1571). Spain also founds St. Augustine in Florida.' },
+    { year: 1580, end: 1600, label: 'Mass slave imports to Brazil begin', track: 'society', detail: 'Enslaved Africans replace Native workers on the engenhos.' },
+    { year: 1606, label: 'Dutch sight Australia', track: 'politics', detail: 'The first recorded European sighting, by the Duyfken.' },
+    { year: 1607, label: 'Jamestown founded', track: 'politics', detail: 'The first permanent English colony, in Virginia.' },
+    { year: 1608, label: 'Quebec founded', track: 'politics', detail: 'Samuel de Champlain founds the center of New France.' },
+    { year: 1615, label: 'Guaman Poma’s letter to the king', track: 'society', detail: 'An Andean noble’s 1,200-page protest against Spanish abuses.' },
+    { year: 1619, label: 'First Africans in Virginia', track: 'society', detail: 'Slaves gradually replace indentured servants by the early 1700s.' },
+    { year: 1620, label: 'Pilgrims found Plymouth', track: 'religion', detail: 'English Separatists seeking religious freedom; Massachusetts Bay follows in 1630.' },
+    { year: 1664, label: 'English take New Amsterdam', track: 'war', detail: 'The Dutch colony (settled 1624) becomes New York.' },
+    { year: 1680, label: 'Pueblo Revolt', track: 'war', detail: 'Pueblo peoples drive the Spanish out of New Mexico until 1692.' },
+    { year: 1768, end: 1779, label: 'Captain Cook’s Pacific voyages', track: 'politics', detail: 'Botany Bay 1770; Hawaiʻi 1778; killed there in 1779.' },
+    { year: 1780, label: 'Túpac Amaru II rebellion', track: 'war', detail: 'A huge Andean uprising against Spanish rule; Túpac Amaru is captured and executed in 1781.' },
+    { year: 1788, label: 'First Fleet reaches Sydney', track: 'politics', detail: 'British convicts found the colony of New South Wales.' },
+    { year: 1405, end: 1433, label: 'Zheng He’s treasure fleets', track: 'world', detail: 'Ming China sails the Indian Ocean, then stops (Chapter 21).' },
+    { year: 1498, label: 'Vasco da Gama reaches India', track: 'world', detail: 'Portugal opens a sea route around Africa (Chapter 22).' },
+    { year: 1517, label: 'Luther’s Ninety-five Theses', track: 'world', detail: 'The Reformation splits Europe (Chapter 23); Catholic missions in the Americas grow in response.' },
+    { year: 1581, label: 'Ming taxes paid in silver', track: 'world', detail: 'The “single whip” reform makes China hungry for American silver.' },
+    { year: 1687, label: 'Newton’s Principia', track: 'world', detail: 'A peak of the Scientific Revolution in Europe (Chapter 23).' },
+  ],
+
+  terms: [
+    ['Taíno', 'Arawak people of the Caribbean islands, originally from the Orinoco valley.', 'The first Native people to feel the full impact of Spanish conquest.'],
+    ['Hispaniola', 'Caribbean island (Haiti and the Dominican Republic) that was Columbus’s base.', 'Center of the first Spanish colony in the Americas.'],
+    ['Encomienda', 'Grant to a Spanish settler of Native labor and tribute, in return for Christian teaching.', 'In practice forced labor; key AP labor system.'],
+    ['Conquistadores', 'Spanish conquerors of the Americas.', 'Cortés and Pizarro toppled the Aztec and Inca empires.'],
+    ['Hernán Cortés', 'Conquered the Aztec empire, 1519–1521, with Tlaxcalan allies.', 'Shows the role of Native allies and smallpox.'],
+    ['Francisco Pizarro', 'Conquered the Inca empire, 1532–1533.', 'Captured Atahualpa at Cajamarca.'],
+    ['Smallpox', 'Deadly Afro-Eurasian disease to which Native Americans had no immunity.', 'Killed most of the Native population; made conquest possible.'],
+    ['Columbian Exchange', 'Transfer of plants, animals, diseases and people between the hemispheres after 1492.', 'AP Topic 4.3; reshaped diets and populations worldwide.'],
+    ['Viceroy', 'The king’s deputy ruling New Spain or Peru.', 'Head of Spain’s centralized colonial government.'],
+    ['Audiencia', 'Spanish colonial court that supervised viceroys.', 'Kept officials from building private power.'],
+    ['Treaty of Tordesillas', '1494 agreement dividing the non-Christian world between Spain and Portugal.', 'Why Brazil speaks Portuguese.'],
+    ['Hacienda', 'Large Spanish estate producing wheat, grapes and meat.', 'Basis of rural colonial economy and power.'],
+    ['Debt peonage', 'Labor system where peasants repay loans with cheap labor, often for life.', 'Replaced the encomienda on haciendas.'],
+    ['Mita', 'Inca system of rotating labor service, adapted by Spain for the silver mines.', 'Coerced Native labor; continuity from the Inca.'],
+    ['Potosí', 'Andean silver mountain and boomtown, discovered 1545.', 'Source of much of the world’s silver.'],
+    ['Quinto', 'The “royal fifth,” the crown’s share of all silver.', 'Huge income for the Spanish crown.'],
+    ['Manila galleons', 'Spanish ships that carried silver from Acapulco to Manila, 1565–1815.', 'Linked the Americas directly to China.'],
+    ['Engenho', 'Brazilian sugar mill and the whole plantation complex around it.', 'Symbol of plantation slavery.'],
+    ['Mestizo', 'Person of Spanish and Native parentage.', 'Part of the new mixed societies.'],
+    ['Mulatto and zambo', 'Mulatto: Spanish and African parents. Zambo: African and Native parents.', 'Categories in the casta hierarchy.'],
+    ['Peninsulares', 'Colonists born in Spain or Portugal; top of the social hierarchy.', 'Held the highest offices.'],
+    ['Criollos (creoles)', 'People of European descent born in the Americas.', 'Resented peninsulares; later led independence.'],
+    ['Métis', 'Children of French fur traders and Native women in North America.', 'Compare with mestizos in Spanish America.'],
+    ['Indentured servants', 'Europeans who worked 4 to 7 years to repay their passage.', 'Main labor force in early Virginia before slavery.'],
+    ['Beaver Wars', 'Wars between the Iroquois and the Huron over fur-hunting lands.', 'Show how the fur trade changed Native politics.'],
+    ['Pueblo Revolt', '1680 uprising that drove the Spanish out of New Mexico.', 'Most successful Native revolt in North America.'],
+    ['Túpac Amaru II', 'Leader of a huge Andean rebellion against Spain in 1780.', 'Shows resistance to colonial rule.'],
+    ['Virgin of Guadalupe', 'Dark-skinned image of Mary said to have appeared near Mexico City in 1531.', 'Blending of Catholic and Native religion.'],
+  ],
+
+  compare: [
+    {
+      title: 'Spanish vs English colonies in the Americas',
+      head: ['', 'Spanish America', 'English North America'],
+      rows: [
+        ['Main goal', 'Silver, gold, converts, rule over Native peoples', 'Land for settlers, cash crops, religious freedom'],
+        ['Labor', 'Coerced Native labor (encomienda, mita, debt peonage); Africans on plantations', 'Indentured servants first, then enslaved Africans'],
+        ['Government', 'Centralized: viceroys and audiencias answer to the crown', 'More self-government: assemblies, private companies'],
+        ['Native peoples', 'Ruled as subjects and laborers; many converted', 'Pushed off the land; treaties and wars; few converts'],
+        ['Religion', 'Catholic missions by Franciscans, Dominicans, Jesuits', 'Protestant; little effort to convert Natives'],
+        ['Society', 'Much mixing; casta hierarchy of mestizos, mulattoes, zambos', 'More European women; mixing carried stigma'],
+      ],
+    },
+    {
+      title: 'The Columbian Exchange (AP Topic 4.3)',
+      head: ['', 'From Afro-Eurasia to the Americas', 'From the Americas to Afro-Eurasia'],
+      rows: [
+        ['Crops', 'Wheat, sugarcane, rice, grapes, bananas, coffee', 'Maize, potatoes, cassava, tomatoes, chili peppers, cacao, tobacco'],
+        ['Animals', 'Horses, cattle, pigs, sheep, chickens', 'Turkeys, guinea pigs (few animals went east)'],
+        ['Diseases', 'Smallpox, measles, influenza; malaria and yellow fever from Africa', 'Few, possibly syphilis'],
+        ['People', 'European settlers and millions of enslaved Africans', 'Some Native captives taken to Europe'],
+        ['Main effect', 'Native population collapses by perhaps 90 percent; new plantation economies', 'New crops feed population growth in China, Europe and Africa'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Bartolomé de las Casas, a Dominican friar who had lived on Hispaniola and once held an encomienda, writing to the Spanish king in 1542 (printed in Seville in 1552). This English translation was printed in London in 1689 under the title “Popery Truly Display’d in its Bloody Colours.”', text: 'The Spaniards first assaulted the innocent Sheep, so qualified by the Almighty, as is premention’d, like most cruel Tygers, Wolves and Lions hunger-starv’d, studying nothing, for the space of Forty Years, after their first landing, but the Massacre of these Wretches, whom they have so inhumanely and barbarously butcher’d and harass’d with several kinds of Torments, never before known, or heard … that of Three Millions of Persons, which lived in Hispaniola itself, there is at present but the inconsiderable remnant of scarce Three Hundred.', cite: 'Las Casas, Brief Account of the Destruction of the Indies, English translation (London, 1689)' },
+      questions: [
+        { q: 'The population collapse Las Casas describes was most directly caused by', options: ['wars among Caribbean chiefdoms before 1492', 'epidemic diseases such as smallpox, together with forced labor and violence', 'famine caused by the introduction of European wheat', 'mass migration of the Taíno to South America'], correct: 1, why: 'Smallpox (from 1518) and other diseases killed most Taíno; overwork under the encomienda and violence added to the toll.' },
+        { q: 'A historian would most likely question Las Casas’s account because', options: ['he never visited the Americas', 'he wrote to persuade the king to reform colonial rule, and he blamed Spanish cruelty more than disease', 'he supported the encomienda system', 'he wrote centuries after the events'], correct: 1, why: 'Purpose and point of view: Las Casas was a reformer arguing for the New Laws, so he stressed atrocities; his numbers are not exact counts.' },
+        { q: 'The title chosen for the 1689 English translation suggests that English publishers used the book mainly to', options: ['promote Catholic missions in North America', 'encourage Spanish migration to England', 'attack Catholic Spain, England’s rival, at a time of strong anti-Catholic feeling', 'defend the Spanish encomienda'], correct: 2, why: 'Sourcing: “Popery Truly Display’d” shows Protestant English readers used Las Casas against Catholic Spain (the so-called Black Legend). The source reflects European rivalries as well as Native suffering.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Bernal Díaz del Castillo, a soldier in Cortés’s army, describing the first sight of Tenochtitlan in November 1519. He wrote his account decades later, in the 1560s, as an old man in Guatemala.', text: 'The next morning we reached the broad high road of Iztapalapan, whence we for the first time beheld the numbers of towns and villages built in the lake, and the still greater number of large townships on the mainland, with the level causeway which ran in a straight line into Mexico. Our astonishment was indeed raised to the highest pitch, and we could not help remarking to each other, that all these buildings resembled the fairy castles we read of in Amadis de Gaul; so high, majestic, and splendid did the temples, towers, and houses of the town, all built of massive stone and lime, rise up out of the midst of the lake. Indeed, many of our men believed what they saw was a mere dream.', cite: 'Bernal Díaz del Castillo, The Memoirs of the Conquistador, ch. 87, trans. J. I. Lockhart (1844)' },
+      questions: [
+        { q: 'The passage best supports which conclusion about the Aztec empire in 1519?', options: ['It was a collection of small villages with no capital', 'Its capital was a large, wealthy city that impressed even Spanish soldiers', 'It had already been destroyed by smallpox', 'It had copied Spanish architecture'], correct: 1, why: 'Díaz compares Tenochtitlan to the fairy castles of a famous romance: it was one of the largest cities in the world.' },
+        { q: 'Which factor best explains how Cortés’s small force was able to destroy this city by 1521?', options: ['Spanish soldiers outnumbered Aztec warriors', 'Aztec rulers welcomed Spanish rule', 'Native allies such as the Tlaxcalans and a smallpox epidemic', 'The Aztecs had no army'], correct: 2, why: 'Thousands of Tlaxcalan and other Native allies fought with Cortés, and smallpox struck the city in 1520.' },
+        { q: 'Because Díaz wrote decades after the events, historians using this source should be most careful about', options: ['whether Tenochtitlan existed', 'exact details and his wish to defend the role of ordinary soldiers like himself', 'whether he could read Spanish', 'whether the Spanish reached Mexico'], correct: 1, why: 'Sourcing: memory fades, and Díaz wrote partly to correct accounts that gave all the credit to Cortés.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'José de Acosta, a Spanish Jesuit missionary who lived in Peru from 1572 to 1586, describing the silver mines of Potosí in his Natural and Moral History of the Indies (Seville, 1590)', text: '…for as it appeareth by the Registers of the house of contraction of that Province, … they did every saterday enter a hundred and fifty and twoo hundred thousand peeces, whereof the Kings fift amounted to thirty and forty thousand peeces… They labour in these mines in continuall darknes and obscuritie, without knowledge of day or night… A man carries ordinarily the weight of two arrobas of mettall vpon his shoulders… so great is the desire of silver, that for the gaine thereof men indure any paines.', cite: 'José de Acosta, Natural and Moral History of the Indies, Book 4, chs. 7–8, trans. E. Grimston (1604), ed. C. R. Markham (1880)' },
+      questions: [
+        { q: 'The miners Acosta describes were most often supplied through', options: ['the mita, a rotating labor draft of Native men', 'indentured servants from England', 'free wage workers from Spain', 'enslaved Africans brought from Angola'], correct: 0, why: 'Spain adapted the Inca mita to force Native villages to send men to Potosí.' },
+        { q: 'The “Kings fift” mentioned in the passage shows that', options: ['the mines were owned by the Inca nobility', 'the Spanish crown drew a large income directly from American silver', 'silver was taxed only in Europe', 'the Church received most of the silver'], correct: 1, why: 'The quinto, a fifth of all registered silver, was one of the crown’s biggest sources of revenue.' },
+        { q: 'Which was a long-term global effect of silver from mines like Potosí?', options: ['China stopped trading with Europeans', 'Large amounts of silver flowed to China, linking the Americas to Asian trade', 'Spain became the leading industrial power in Europe', 'The Inca empire was restored'], correct: 1, why: 'Silver went to Asia through Europe and on the Manila galleons; China, which taxed in silver, absorbed much of it.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'William Bradford, Puritan governor of Plymouth Colony, describing an epidemic among Native Americans near the English trading post on the Connecticut River in 1634, from his history of the colony (written c. 1630–1650)', text: 'This spring, also, those Indeans that lived aboute their trading house there fell sick of ye small poxe, and dyed most miserably; for a sorer disease cannot befall them; they fear it more then ye plague… The condition of this people was so lamentable, and they fell downe so generally of this diseas, as they were (in ye end) not able to help on another… The cheefe Sachem him selfe now dyed, & allmost all his freinds & kinred. But by ye marvelous goodnes & providens of God not one of ye English was so much as sicke, or in ye least measure tainted with this disease.', cite: 'William Bradford, Of Plymouth Plantation, Book 2, year 1634 (Massachusetts edition, 1898; “ye” = “the”)' },
+      questions: [
+        { q: 'The epidemic Bradford describes is best understood as an example of', options: ['the Columbian Exchange', 'the Beaver Wars', 'the mita labor system', 'the Treaty of Tordesillas'], correct: 0, why: 'Smallpox crossed from Afro-Eurasia to the Americas, where Native peoples had no immunity.' },
+        { q: 'Bradford’s explanation of why the English stayed healthy most clearly reflects', options: ['scientific knowledge of immunity', 'his Puritan belief that God guided and favored the colony', 'Native American religious ideas', 'Spanish Catholic teaching'], correct: 1, why: 'Point of view: he credits God’s “providens.” In fact, many English colonists had survived smallpox as children and were immune.' },
+        { q: 'One effect of epidemics like this one in North America was that', options: ['Native peoples were better able to resist English settlement', 'English settlers found it easier to take Native lands', 'the English abandoned their colonies', 'the fur trade ended'], correct: 1, why: 'Epidemics emptied villages and weakened Native nations, which made it easier for colonists to expand.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Captain James Cook of the British Royal Navy, journal entries from August 1770, after charting the east coast of Australia (“New Holland”)', text: 'I now once More hoisted English Colours, and in the Name of His Majesty King George the Third took possession of the whole Eastern coast from the above Latitude down to this place by the Name of New Wales… From what I have said of the Natives of New Holland they may appear to some to be the most wretched People upon Earth; but in reality they are far more happier than we Europeans, being wholy unacquainted not only with the Superfluous, but with the necessary Conveniences so much sought after in Europe; they are happy in not knowing the use of them. They live in a Tranquility which is not disturbed by the Inequality of Condition.', cite: 'James Cook, Journal of the First Voyage, August 1770, ed. W. J. L. Wharton (1893)' },
+      questions: [
+        { q: 'Cook’s claim of the “whole Eastern coast” for King George III most directly led to', options: ['Dutch control of Australia', 'the arrival of the First Fleet and a British convict colony at Sydney in 1788', 'Aboriginal Australians joining the British Empire as citizens', 'Spanish settlement of New Zealand'], correct: 1, why: 'Britain used Cook’s claim to found New South Wales with convicts in 1788.' },
+        { q: 'Which best describes the limits of Cook’s description of Aboriginal Australians?', options: ['He lived among them for many years', 'He was a brief outside observer who judged them by comparing them with Europeans', 'He wrote to recruit settlers to Australia', 'He had no interest in the people he met'], correct: 1, why: 'Sourcing: Cook spent only weeks on the coast, could not speak Aboriginal languages and used them mainly to comment on European society.' },
+        { q: 'Cook’s act of taking possession is most similar to which earlier event in the Americas?', options: ['Spanish and Portuguese claims to land already inhabited by Native peoples', 'the Pueblo Revolt', 'the Taíno migration from the Orinoco valley', 'the Beaver Wars'], correct: 0, why: 'Like the Iberian claims after 1492, Cook claimed land for a distant king without the consent of the people living there.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE labor system used in Spanish America between 1500 and 1750.',
+        'Explain ONE way the Columbian Exchange affected Native American populations.',
+        'Explain ONE way silver from the Americas connected the Americas to Asia.',
+      ],
+      guide: [
+        'Accept: encomienda, the mita, debt peonage on haciendas, or African slavery on plantations.',
+        'Accept with explanation: smallpox, measles and other diseases killed perhaps 90 percent of Native people because they had no immunity; population collapse made conquest easier and led to labor shortages; new animals such as horses changed some Native ways of life.',
+        'Accept with explanation: Manila galleons carried silver from Acapulco to Manila to buy Chinese silk and porcelain; European merchants shipped American silver to Asia; China’s silver-based taxes created huge demand.',
+      ],
+      model: [
+        'The mita forced Native villages in the Andes to send men to work in silver mines such as Potosí.',
+        'Smallpox arrived with Europeans, and Native Americans had no immunity, so epidemics killed most of the population. In Tenochtitlan in 1520, smallpox weakened the defenders before Cortés’s final siege.',
+        'From 1565 Spanish galleons carried silver from Acapulco across the Pacific to Manila, where Chinese merchants traded silk and porcelain for it, because China collected its taxes in silver.',
+      ],
+    },
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE similarity between Spanish colonies and English colonies in the Americas.',
+        'Explain ONE difference in how Spanish and English colonists treated Native peoples.',
+        'Explain ONE reason English colonies in North America came to rely on enslaved African labor.',
+      ],
+      guide: [
+        'Accept: both took Native land; both spread diseases that killed Native peoples; both used enslaved Africans; both exported products to Europe; both were Christian.',
+        'Accept with explanation: the Spanish ruled large Native populations as laborers and converts (encomienda, missions), while the English mostly pushed Native peoples off the land and made little effort to convert them; more mixing in Spanish America (mestizos) than in English colonies.',
+        'Accept with explanation: cash crops (tobacco, rice, indigo) needed many workers; indentured servants were temporary and fewer came; Native workers died of disease or escaped; slavery became hereditary so planters kept laborers for life.',
+      ],
+      model: [
+        'Both Spanish and English colonists took land from Native peoples and brought diseases like smallpox that killed many of them.',
+        'The Spanish ruled Native peoples directly and used their labor through the encomienda, while English settlers wanted the land itself and pushed Native peoples west, signing treaties they often broke.',
+        'Tobacco in Virginia needed large numbers of workers. Indentured servants worked only 4 to 7 years and then left, so by the early 1700s planters turned to enslaved Africans, who could be held for life.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which European colonization changed systems of labor in the Americas in the period 1450–1750.',
+    theses: [
+      { text: 'Europeans colonized the Americas and used many kinds of labor.', ok: false, why: 'Too general. It makes no claim about the extent of change.' },
+      { text: 'Cortés conquered the Aztecs in 1521 and Pizarro conquered the Inca in 1533.', ok: false, why: 'True facts, but not an argument about labor systems.' },
+      { text: 'European colonization greatly changed labor in the Americas by introducing plantation slavery of Africans and the encomienda, although the Spanish also continued older Native systems such as the Inca mita for their own purposes.', ok: true, why: 'A defensible claim that answers “to what extent” and sets up both change (African slavery, encomienda) and continuity (the mita).' },
+    ],
+    contextHint: 'How did people in the Americas work and pay tribute before 1492, and what changed right after contact?',
+    contextStart: 'Before Europeans arrived, the Aztecs and the Inca…',
+    context: 'Before 1492, the Aztecs collected tribute and labor from conquered peoples, and the Inca used the mit’a, a rotating labor service owed to the state. Smallpox and other diseases arriving after 1492 killed most Native people, creating a severe shortage of workers just as Europeans wanted silver and sugar.',
+    evidence: [
+      { text: 'The encomienda forced Native people to work for Spanish settlers.', side: 'change' },
+      { text: 'Portuguese engenhos in Brazil imported enslaved Africans from the 1580s.', side: 'change' },
+      { text: 'English colonies replaced indentured servants with hereditary African slavery by the early 1700s.', side: 'change' },
+      { text: 'Haciendas shifted to debt peonage after the New Laws of 1542.', side: 'change' },
+      { text: 'Spain adapted the Inca mita to send Native men to the Potosí mines.', side: 'continuity' },
+      { text: 'Native communities still owed tribute and labor to rulers, as under the Aztecs.', side: 'continuity' },
+      { text: 'Native farmers kept growing maize and potatoes on their own lands and on haciendas.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining that the Spanish reused Native institutions (the mita, tribute) but changed their purpose: labor now produced silver for export and profit for a distant crown, and disease made the burden on survivors far heavier.',
+  },
+
+  recall: [
+    { q: 'Which Caribbean people did Columbus meet on Hispaniola?', a: 'The Taíno (Arawaks)' },
+    { q: 'What was the encomienda?', a: 'A grant of Native forced labor to a Spanish settler' },
+    { q: 'Which Andean silver mine was found in 1545?', a: 'Potosí' },
+    { q: 'What were the Manila galleons?', a: 'Spanish ships carrying silver from Acapulco to Manila (from 1565)' },
+    { q: 'Who was at the top of the colonial social hierarchy?', a: 'Peninsulares (migrants born in Spain or Portugal)' },
+  ],
+}

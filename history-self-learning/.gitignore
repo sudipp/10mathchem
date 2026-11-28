@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# map previews from tools/preview-map.mjs
+tools/out

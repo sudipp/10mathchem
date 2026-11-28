@@ -1,0 +1,347 @@
+// Chapter 18 · States and Societies of Sub-Saharan Africa (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch18.js.
+export default {
+  hook: 'In 1324 a West African king rode into Cairo with thousands of servants and so much gold that its price in Egypt fell for years. He was Mansa Musa of Mali, and his wealth came from camel caravans that crossed the Sahara. On the other side of the continent, Swahili merchants in stone port towns traded African gold and ivory for Chinese porcelain carried on the monsoon winds. Meanwhile most Africans still lived in villages run by elders, honoring a creator god and their ancestors.',
+  apNote: 'This chapter sits inside the AP World exam period (1200–present) and is tested directly. Unit 1.5, “State Building in Africa,” covers Mali, Great Zimbabwe, Ethiopia, the Swahili city-states and the Hausa kingdoms. Unit 2 covers the trans-Saharan routes (camels, gold, salt, slaves) and the Indian Ocean trade of the Swahili coast, and asks how merchants spread Islam.',
+  themes: ['Governance', 'Economic systems', 'Cultural developments', 'Social structures'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['jvnU0v6hcUo', 'Mansa Musa and Islam in Africa: Crash Course World History #16', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Follow the Bantu migrations, then the camel caravans and monsoon sea lanes that made Africa’s kingdoms and city-states rich.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 250, to: 1550 },
+    { label: 'Ghana & early trade', from: 250, to: 1100 },
+    { label: 'Mali, Zimbabwe & the coast', from: 1150, to: 1550 },
+    { label: 'Long view', from: -5200, to: 1550 },
+  ],
+  bigIdeas: [
+    'Bantu migrations spread farming, herding and iron across Africa south of the equator; most people lived in kin-based villages run by elders.',
+    'Camel caravans across the Sahara linked West Africa to the Islamic world; Ghana and then Mali grew rich by taxing the trade in gold and salt.',
+    'Monsoon winds tied the Swahili city-states to Arabia, India and China; inland, Great Zimbabwe grew rich on the gold that fed this trade.',
+    'Islam spread through merchants and rulers and blended with local traditions; Christian Ethiopia developed on its own; growing trade expanded the slave trade.',
+  ],
+
+  sections: [
+    {
+      id: 'bantu', title: 'Bantu migrations and village societies', when: 'c. 2000 BCE – 1000 CE', theme: 'Social structures', map: 0,
+      lead: 'Long before the great trading kingdoms, Bantu-speaking farmers spread over most of Africa south of the equator. They carried farming, herding and iron, and they lived in small villages run by elders.',
+      body: [
+        'Bantu is a family of more than 500 related languages. Its speakers started in the region of the Niger and Benue rivers (today’s Nigeria and Cameroon) and moved, over thousands of years, east to the Great Lakes and south toward the tip of the continent. By about 1000 CE they had settled most of Africa south of the equator.',
+        'They spread agriculture, cattle herding and iron metallurgy. Iron axes and hoes cleared forest for fields, and iron spears gave them an edge over rivals. A new crop helped too. Bananas, first domesticated in Southeast Asia, arrived with Malay sailors who settled the island of Madagascar around 300–500 CE, along with yams and chickens. Bananas grew well in the humid tropics with little work, so food supplies and population rose steadily.',
+        'Most Bantu peoples lived in kin-based, or “stateless,” societies. A typical village had about a hundred people and was ruled by its elders, the heads of the leading families. There were no kings, bureaucracies or tax collectors. When villages quarreled, elders from the area met and settled the dispute case by case.',
+        'After about 1000 CE, a growing population meant more competition for land and more disputes. Some leaders became chiefs who overruled the kin groups, and some chiefdoms grew into small kingdoms, such as Ife and Benin in the West African forest. They built on an old art tradition: the Nok culture of central Nigeria had made striking terracotta sculptures centuries earlier.',
+      ],
+      facts: ['Bantu: 500+ related languages', 'Spread farming, herding and iron', 'Bananas via Madagascar, c. 300–500 CE', 'Villages of about 100, ruled by elders'],
+      chain: ['Bantu farmers migrate east and south', 'Iron tools and new crops (bananas)', 'More food, more people', 'Competition for land after 1000 CE', 'Chiefdoms and small kingdoms (Ife, Benin)'],
+      soWhat: 'The Bantu migrations explain why languages from Cameroon to South Africa are related. They are a classic AP example of migration spreading farming and technology; compare the Austronesian voyages across the Pacific.',
+      video: ['aAB75bP7rdk', 'Human migration: sub-Saharan Africa and the Pacific | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'ghana', title: 'Camels, gold and the kingdom of Ghana', when: 'c. 300 – 1076 CE', theme: 'Economic systems', map: 1,
+      lead: 'The Sahara was a barrier until the camel turned it into a highway. The kingdom of Ghana grew rich by taxing the gold that crossed it.',
+      body: [
+        'The Sahara began drying out around 5000 BCE, cutting West Africa off from the Mediterranean. Then, in the early centuries CE, Arabian camels spread across North Africa. A camel carries heavy loads and goes days without water, so caravans could cross the desert in 70 to 90 days.',
+        'After Islam spread across North Africa in the 600s and 700s, Muslim Arab and Berber merchants ran the caravans and set up trading communities in towns south of the desert, such as Gao. Gold went north. Salt (mined in the desert at places like Taghaza), cloth, copper and horses came south. Ivory and enslaved people also went north.',
+        'The kingdom of Ghana (no relation to the modern country, which borrowed the name in 1957) took shape around the 300s–400s CE between the upper Senegal and Niger rivers, partly to protect farmers from camel-riding raiders. Ghana did not mine gold itself. The gold came from fields farther south, and Ghana’s kings taxed every load that passed through.',
+        'Its capital, Koumbi-Saleh, was the main trading center and a military and cultural capital, with perhaps 15,000–20,000 people at its height in the 800s–1100s. Its kings turned to Islam, which smoothed relations with North African traders, but they mixed it with local traditions. Nearby Takrur, on the Senegal River, spread the faith far more aggressively. In the 1070s the Almoravids, militant Muslim reformers from Morocco, attacked Ghana, and the kingdom slowly broke apart.',
+      ],
+      facts: ['Sahara dries from c. 5000 BCE', 'Camels: 70–90 days across the desert', 'Gold north; salt, cloth, horses south', 'Koumbi-Saleh: 15,000–20,000 people'],
+      chain: ['Camels make desert crossings possible', 'Muslim merchants run the caravans', 'Gold-for-salt trade grows', 'Ghana taxes the trade', 'Kings adopt Islam to build trade ties'],
+      soWhat: 'Ghana shows a pattern AP tests again and again: states grow by controlling and taxing trade routes, and religion travels with merchants.',
+      video: ['fUYUx-0ISW4', 'The TRANS-SAHARAN TRADE Network, Explained [AP World History Review—Unit 2 Topic 4]', 'Heimler\'s History'],
+      factCheck: 'Your notes say the kings of Ghana converted in the tenth century. The Muslim geographer al-Bakri, writing in 1068, describes a king who still followed the traditional religion, with Muslim advisers and a separate Muslim town of twelve mosques. Most historians think Ghana’s rulers became Muslim in the late 1000s or later.',
+    },
+    {
+      id: 'mali', title: 'Sundiata, Mansa Musa and Mali', when: 'c. 1235 – 1450', theme: 'Governance', map: 2,
+      lead: 'Mali took Ghana’s place and became even richer. Its most famous ruler, Mansa Musa, made a pilgrimage to Mecca so lavish that people in Cairo talked about it for decades.',
+      body: [
+        'Sundiata (ruled about 1230–1255), the “Lion Prince” of the Mande-speaking Malinke people, built the Mali Empire over the old kingdom of Ghana and its neighbors. Mali controlled the gold fields in the south and the trade towns along the Niger River (Jenne, Timbuktu and Gao), so it took even greater advantage of the trans-Saharan trade than Ghana had.',
+        'Sundiata was Muslim in name, but he did not force anyone to convert. Kings, courts and merchants practiced Islam; most farmers kept their older religions. Islam was useful: it gave rulers literate advisers, Islamic law for contracts, and trust with Muslim traders.',
+        'Mansa Musa (ruled 1312–1337), Sundiata’s grand-nephew, was a devout Muslim. On his hajj to Mecca in 1324–1325 he traveled with thousands of attendants and camels loaded with gold, and gave away so much in Cairo that the value of gold there fell. He came home with Muslim scholars and architects and built mosques, and Timbuktu grew into a center of Islamic learning with schools and libraries.',
+        'Mali weakened after Mansa Musa, and by the late 1400s the Songhay Empire, based at Gao, had taken over much of it. To the east, the Hausa city-states such as Kano grew on the same trans-Saharan trade and also adopted Islam at the top.',
+      ],
+      facts: ['Sundiata founds Mali, c. 1235', 'Did not force conversion', 'Mansa Musa’s hajj, 1324–1325', 'Timbuktu: mosques, scholars, books'],
+      chain: ['Sundiata conquers Ghana’s lands', 'Mali controls gold fields and Niger trade towns', 'Wealth and Muslim ties grow', 'Mansa Musa’s hajj, 1324', 'Scholars and mosques in Timbuktu'],
+      soWhat: 'Mali is AP Unit 1.5’s star example of state building in Africa: wealth from trade, plus Islam as a link to the wider Muslim world. Mansa Musa’s hajj even put him on European maps, such as the Catalan Atlas of 1375.',
+      video: ['O3YJMaL55TM', 'Mansa Musa, one of the wealthiest people who ever lived - Jessica Smith', 'TED-Ed'],
+    },
+    {
+      id: 'swahili', title: 'The Swahili city-states', when: 'c. 900 – 1500', theme: 'Economic systems', map: 4,
+      lead: 'On the east coast, Bantu-speaking townspeople traded with Arab, Persian and Indian merchants across the Indian Ocean. Their port cities never formed one empire; each was an independent city-state.',
+      body: [
+        'Sea trade along the east African coast stayed weak until about the second century CE. Bantu peoples settled the coast and began trading with Arab merchants. They became known as Swahili, from an Arabic word for “coasters.” Their language, Swahili, is a Bantu language with many Arabic words.',
+        'The monsoon winds made the trade work. They blow from the northeast in winter and from the southwest in summer, so ships could sail out and come back once a year. From the 900s trade boomed. The coast exported gold, ivory, slaves and timber and imported Indian cotton cloth and Chinese silk and porcelain.',
+        'By the 1000s–1100s the city-states (Mogadishu, Malindi, Mombasa, Zanzibar, Kilwa, Sofala) were wealthy. Builders moved from wood and mud to coral and stone for mosques and the houses of the rich. Each city had its own king, who taxed the merchants who used its harbor.',
+        'Kilwa began as a fishing village with little trade (800–1000 CE). It turned to farming, traded more in pottery and stoneware, and then gained control of the gold shipped from Sofala. By the 1400s it exported more than a ton of gold a year. Ruling elites accepted Islam but did not force ordinary people to convert, and many kept older practices. Islam worked as social glue, linking Swahili rulers with Muslim merchants and states across the ocean.',
+      ],
+      facts: ['Swahili = “coasters”; a Bantu language with Arabic words', 'Monsoon winds set the sailing calendar', 'Out: gold, ivory, slaves · In: cotton, silk, porcelain', 'Kilwa: over a ton of gold a year by the 1400s'],
+      chain: ['Monsoon winds link Africa, Arabia and India', 'Arab merchants trade with the Bantu coast', 'Swahili language and culture form', 'City-states grow rich on harbor taxes', 'Elites adopt Islam to build trust with traders'],
+      soWhat: 'The Swahili coast is Africa’s key link to the Indian Ocean network (AP Unit 2.3). Zheng He’s Chinese treasure fleets reached Malindi in the 1400s (Chapter 21), and Vasco da Gama found a pilot there in 1498 (Chapter 22).',
+      video: ['r-D9F2TiirY', 'The INDIAN OCEAN TRADE Network, Explained [AP World History Review—Unit 2 Topic 3]', 'Heimler\'s History'],
+    },
+    {
+      id: 'zimbabwe-kongo', title: 'Great Zimbabwe and Kongo', when: 'c. 1100 – 1500', theme: 'Governance', map: 5,
+      lead: 'Away from the trade coasts, two Bantu kingdoms show different paths to power: Great Zimbabwe grew rich on the gold trade, and Kongo built the most centralized government of the early Bantu kingdoms.',
+      body: [
+        'Zimbabwe means “dwelling of the chief” in the Shona language. Its capital, Great Zimbabwe, was a complex of granite walls fitted together without mortar, some about 11 meters (36 feet) high. Major stone building began in the early 1200s.',
+        'Great Zimbabwe managed trade between the interior and the coast. Its rulers controlled gold, ivory and cattle and sent gold to Sofala, where Swahili merchants shipped it north through Kilwa. Chinese porcelain and Persian pottery have been dug up at the site. At its height about 18,000 people lived there.',
+        'In west-central Africa, the kingdom of Kongo formed in the lower Congo River basin in the late 1300s, when several village alliances joined under one king. Kongo was the most centralized of the early Bantu kingdoms: the king appointed governors, collected taxes and used cowrie shells as royal currency.',
+        'Kongo traded actively in cloth, copper and salt with its neighbors. It ruled from the 1300s to the 1600s, until Portuguese slave traders, who first arrived in 1483, undermined it (Chapter 22).',
+      ],
+      facts: ['Zimbabwe = “dwelling of the chief”', 'Stone walls built without mortar', 'Gold: Zimbabwe → Sofala → Kilwa', 'Kongo: cowrie-shell royal currency'],
+      chain: ['Gold and ivory in the interior', 'Great Zimbabwe controls the trade', 'Goods flow to Sofala and Kilwa', 'Rulers grow rich and build in stone', 'Power and people concentrate in the capital'],
+      soWhat: 'Great Zimbabwe proves that large states grew inland, not only on the coasts. Later Europeans claimed outsiders must have built it; archaeology shows it was built by ancestors of the Shona.',
+      video: ['quzjmZ-7s6w', 'Who built Great Zimbabwe? And why? - Breeanna Elliott', 'TED-Ed'],
+      factCheck: 'Your notes place Great Zimbabwe’s peak population of about 18,000 in the late fifteenth century. Archaeologists usually date its height to about 1300–1450; by the later 1400s the city was being abandoned as trade shifted north to the Zambezi valley and the new Mutapa state.',
+    },
+    {
+      id: 'society', title: 'Kinship, gender and age grades', when: 'Society, c. 500 – 1500', theme: 'Social structures',
+      lead: 'Kingdoms and city-states had clear social classes, but across most of sub-Saharan Africa, family and kin groups still shaped daily life.',
+      body: [
+        'In the kingdoms, empires and city-states, society divided into ruling elites, a merchant class and peasants. Elsewhere, traditional kin-based groups continued. Extended families and clans were the basic units. Private property mattered less than in Eurasia: land was usually held by the community, and elders handed out the harvest.',
+        'Work was divided by sex. Men did the heavy labor and specialized crafts such as iron working and tanning leather; men and women both farmed. Men usually ruled, but women had wider roles than in many Afro-Eurasian societies. Some women were merchants, and a few took part in war.',
+        'Islamic norms on women arrived slowly. In the Mali trading town of Walata, the Moroccan traveler Ibn Battuta was startled that Muslim women did not veil and that families traced descent through the mother’s brother.',
+        'Age grades, dating back to early farming communities in Sudan, cut across family lines. People of the same age went through initiation together and stayed a peer group for life, taking on duties at each stage. This built loyalty beyond one’s own kin.',
+      ],
+      facts: ['Classes: elites, merchants, peasants', 'Land held communally; elders share harvests', 'Women traders and some warriors', 'Age grades cut across kinship'],
+      chain: ['Kin groups hold land together', 'Elders control land and harvests', 'Age grades bind people across clans', 'Islam arrives through elites', 'Gender customs change slowly'],
+      soWhat: 'AP asks how belief systems affected gender roles. In Africa, Islam spread at the top first, so older patterns, like women traders and descent through the mother, lasted.',
+    },
+    {
+      id: 'slavery', title: 'Slavery and the slave trade', when: 'c. 800 – 1500', theme: 'Economic systems', map: 7,
+      lead: 'Slavery existed in Africa long before outsiders came, but growing long-distance trade turned enslaved people into a major export.',
+      body: [
+        'Most slaves in Africa were captives of war; others were debtors, criminals or people accused of witchcraft. They worked mainly in agriculture. Because land usually belonged to kin groups, owning slaves was a main form of personal wealth and social status.',
+        'From the 800s, expanding trans-Saharan and Indian Ocean trade created strong demand for slaves in the Islamic world. Africa replaced eastern Europe as the main source. Perhaps 10,000 to 20,000 people a year were taken north across the Sahara or east across the sea.',
+        'This demand created an internal African slave trade: more powerful states raided smaller kin-based groups for captives to sell. Ibn Battuta reported that the people of Kilwa were constantly at war with their non-Muslim neighbors inland.',
+        'In southern Iraq, Abbasid landowners forced East African (Zanj) slaves to work sugarcane plantations and clear salt deposits from the marshes. In 869 Ali ibn Muhammad led some 15,000 of them in revolt. The rebels captured Basra in 871 and held out until the Abbasids crushed them in 883.',
+      ],
+      facts: ['Most slaves were war captives', 'Africa replaces eastern Europe as a source, 800s', 'About 10,000–20,000 a year', 'Zanj revolt, 869–883'],
+      chain: ['Islamic world demands labor', 'Trade routes carry captives', 'Strong states raid weaker ones', 'Slaves sent to Iraq’s plantations', 'Zanj revolt, 869'],
+      soWhat: 'This older slave trade came before the Atlantic slave trade. AP asks how coerced labor changed over time; compare it with the later Atlantic system, which was far larger and based on race.',
+      video: ['OneYxSozCgg', 'The Zanj Rebellion 869-883', 'History Time'],
+      factCheck: 'Your notes call Ali ibn Muhammad a slave. He was a free man of Arab or Persian background who claimed descent from the caliph Ali; he recruited and led the enslaved Zanj workers.',
+    },
+    {
+      id: 'religion', title: 'African religions and Christian Ethiopia', when: 'c. 300 – 1500', theme: 'Cultural developments', map: 6,
+      lead: 'Most Africans followed local religions centered on a creator god, the ancestors and the balance of nature. In the highlands of Ethiopia, a Christian kingdom developed on its own for a thousand years.',
+      body: [
+        'African religions were very diverse, but many shared belief in a single male creator god, with lesser gods linked to rain, rivers and other natural forces. People honored their ancestors, who were thought to protect the living. Diviners, mostly men, read oracles, cast spells and led rituals.',
+        'These faiths put less weight on theology than on right behavior: morality and keeping a balance with nature and the community. That helps explain why many Africans could add Islam without giving up their older practices.',
+        'Christianity was popular in Egypt and North Africa from the first century but weak south of the Sahara. The exception was Aksum, a trading kingdom on the Red Sea, famous for its tall stone obelisks and its port of Adulis. Merchants converted first, then King Ezana in the 300s. The Bible was translated into the Ethiopian language Ge’ez.',
+        'After Islam spread in the 600s, Christian Ethiopia was cut off from other Christians. It revived in the 1100s; King Lalibela (ruled about 1181–1221) had churches carved down into solid rock. Isolated until the 1500s, Ethiopian Christianity developed independently, with strong African influences such as belief in a spirit world and protective amulets.',
+      ],
+      facts: ['Creator god, ancestors, diviners', 'Aksum Christian from the 300s', 'Bible translated into Ge’ez', 'Lalibela’s rock-cut churches, c. 1200'],
+      chain: ['Merchants bring Christianity to Aksum', 'King Ezana converts (300s)', 'Islam spreads around Ethiopia (600s on)', 'Cut off from other Christians', 'Independent church with African traditions'],
+      soWhat: 'Ethiopia is a case of continuity and syncretism: a Christian kingdom surrounded by Muslim states that survived into modern times. Compare how Buddhism blended with local beliefs in East Asia.',
+      video: ['R2JOI6i042w', 'The Empire of Aksum (Axum)', 'History with Cy'],
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: -5000, label: 'Sahara begins drying out', track: 'society', detail: 'The growing desert cuts West Africa off from the Mediterranean until camels arrive.' },
+    { year: -2000, end: 1000, label: 'Bantu migrations', track: 'society', detail: 'Bantu speakers spread east and south from the Niger–Benue region, carrying farming, herding and later iron.' },
+    { year: -500, end: 200, label: 'Nok terracotta sculpture', track: 'society', detail: 'Approximate dates. An early iron-using culture in central Nigeria.' },
+    { year: 300, label: 'Camel caravans cross the Sahara', track: 'society', detail: 'Approximate. Arabian camels make regular crossings possible: 70–90 days each way.' },
+    { year: 300, end: 500, label: 'Malay sailors settle Madagascar', track: 'society', detail: 'Dates from your notes (scholars debate them). They bring bananas, yams and chickens.' },
+    { year: 340, label: 'King Ezana of Aksum turns Christian', track: 'religion', detail: 'Approximate. Merchants converted first; the Bible is translated into Ge’ez.' },
+    { year: 400, label: 'Kingdom of Ghana takes shape', track: 'politics', detail: 'Approximate (300s–400s CE), between the upper Senegal and Niger rivers.' },
+    { year: 632, label: 'Islam spreads beyond Arabia', track: 'world', detail: 'After Muhammad’s death, Arab armies conquer North Africa by about 710 (Chapter 13).' },
+    { year: 750, label: 'Abbasid caliphate founded', track: 'world', detail: 'Its rich landowners in Iraq later buy East African slaves (Chapter 13).' },
+    { year: 800, end: 1100, label: 'Koumbi-Saleh at its height', track: 'politics', detail: 'Ghana’s capital: 15,000–20,000 people and the center of the gold trade.' },
+    { year: 869, end: 883, label: 'Zanj revolt in Iraq', track: 'war', detail: 'Enslaved East Africans rise up, take Basra in 871, and are crushed in 883.' },
+    { year: 900, label: 'Indian Ocean trade booms', track: 'society', detail: 'From the 900s, Swahili ports trade gold, ivory and slaves for cloth and porcelain.' },
+    { year: 1068, label: 'Al-Bakri describes Ghana', track: 'religion', detail: 'A separate Muslim merchant town with twelve mosques sits beside the king’s town.' },
+    { year: 1076, label: 'Almoravids attack Ghana', track: 'war', detail: 'Traditional date for the fall of Koumbi-Saleh; Ghana slowly breaks apart.' },
+    { year: 1181, end: 1221, label: 'Lalibela’s rock-cut churches', track: 'religion', detail: 'Approximate reign of King Lalibela, who had churches carved into solid rock.' },
+    { year: 1200, end: 1450, label: 'Great Zimbabwe flourishes', track: 'politics', detail: 'Stone capital that controls the gold sent to Sofala and Kilwa.' },
+    { year: 1206, label: 'Chinggis Khan unites the Mongols', track: 'world', detail: 'The Mongol empire soon links Eurasia (Chapter 17).' },
+    { year: 1235, label: 'Sundiata founds Mali', track: 'politics', detail: 'Approximate. Traditionally after his victory at the Battle of Kirina.' },
+    { year: 1270, label: 'Solomonic dynasty in Ethiopia', track: 'politics', detail: 'Kings who claim descent from Solomon and the Queen of Sheba take power.' },
+    { year: 1312, end: 1337, label: 'Mansa Musa rules Mali', track: 'politics', detail: 'Grand-nephew of Sundiata; builds mosques and supports scholars.' },
+    { year: 1324, label: 'Mansa Musa’s hajj', track: 'religion', detail: 'His gold lowers its value in Cairo; he returns with scholars and architects.' },
+    { year: 1331, label: 'Ibn Battuta visits Kilwa', track: 'society', detail: 'The Moroccan traveler praises Kilwa’s generous sultan.' },
+    { year: 1352, end: 1353, label: 'Ibn Battuta visits Mali', track: 'society', detail: 'He praises Mali’s safety and justice but criticizes some local customs.' },
+    { year: 1390, label: 'Kingdom of Kongo forms', track: 'politics', detail: 'Approximate. Village alliances in the lower Congo basin unite under one king.' },
+    { year: 1405, end: 1433, label: 'Zheng He’s fleets reach Africa', track: 'world', detail: 'Ming China’s treasure fleets visit Mogadishu and Malindi (Chapter 21).' },
+    { year: 1468, label: 'Songhay takes Timbuktu', track: 'war', detail: 'Under Sunni Ali, Songhay replaces Mali as West Africa’s great power.' },
+    { year: 1483, label: 'Portuguese reach Kongo', track: 'politics', detail: 'The start of contacts that later bring the Atlantic slave trade (Chapter 22).' },
+    { year: 1498, label: 'Vasco da Gama reaches Malindi', track: 'world', detail: 'He hires a pilot there to guide him to India (Chapter 22).' },
+    { year: 1505, label: 'Portuguese sack Kilwa', track: 'war', detail: 'Portuguese attacks begin the decline of the Swahili city-states.' },
+    { year: 1510, label: 'Leo Africanus visits Timbuktu', track: 'society', detail: 'Approximate. He describes its scholars, books and gold under Songhay rule.' },
+  ],
+
+  terms: [
+    ['Bantu', 'A family of related languages whose speakers migrated across Africa south of the equator.', 'Spread farming, herding and iron.'],
+    ['Kin-based (stateless) society', 'Village society run by elders and families, with no kings or bureaucracy.', 'How most Africans lived in this era.'],
+    ['Chiefdom', 'A small state where a chief rules over several kin groups.', 'Appeared as population grew after 1000 CE.'],
+    ['Ife and Benin', 'Small kingdoms in the West African forest (today’s Nigeria).', 'Examples of chiefdoms growing into kingdoms.'],
+    ['Nok', 'Early iron-using culture of central Nigeria known for terracotta sculpture.', 'Shows an old West African art tradition.'],
+    ['Bananas', 'Crop from Southeast Asia brought to Africa via Madagascar.', 'Raised food supplies and population.'],
+    ['Trans-Saharan trade', 'Camel-caravan trade across the Sahara: gold, ivory and slaves north; salt, cloth and horses south.', 'Made Ghana and Mali rich and carried Islam.'],
+    ['Ghana', 'West African kingdom (c. 300s–1076) that taxed the gold trade.', 'First great state of the western Sahel.'],
+    ['Koumbi-Saleh', 'Ghana’s capital and main trading center.', 'Had a separate Muslim merchant town.'],
+    ['Takrur', 'Kingdom on the Senegal River whose rulers spread Islam aggressively.', 'Contrast with Ghana’s gentler approach.'],
+    ['Almoravids', 'Militant Muslim reformers from Morocco who attacked Ghana in the 1070s.', 'Helped bring Ghana down.'],
+    ['Sundiata', 'Founder of the Mali Empire (ruled c. 1230–1255).', 'Built Mali but did not force conversion.'],
+    ['Mali', 'West African empire (c. 1235–1450) built on gold and trans-Saharan trade.', 'AP’s key example of state building in Africa.'],
+    ['Mansa Musa', 'Devout Muslim ruler of Mali (1312–1337).', 'His 1324 hajj made Mali famous.'],
+    ['Hajj', 'The pilgrimage to Mecca required of Muslims who can make it.', 'Linked African rulers to the Islamic world.'],
+    ['Timbuktu', 'Niger River trade city and center of Islamic learning.', 'Books sold for more than any other goods.'],
+    ['Hausa kingdoms', 'City-states such as Kano in today’s northern Nigeria.', 'Grew on trans-Saharan trade and adopted Islam.'],
+    ['Swahili', '“Coasters”: Bantu-speaking traders of the east African coast, and their language.', 'Shows Bantu–Arab cultural blending.'],
+    ['Monsoon winds', 'Seasonal winds that reverse direction twice a year.', 'Made regular Indian Ocean voyages possible.'],
+    ['Kilwa', 'Swahili city-state that controlled the gold of Sofala.', 'Exported over a ton of gold a year by the 1400s.'],
+    ['Great Zimbabwe', 'Stone capital of a Shona kingdom (c. 1200–1450).', 'Controlled the inland gold trade.'],
+    ['Kongo', 'Centralized Bantu kingdom on the lower Congo River (1300s–1600s).', 'Later weakened by Portuguese slave traders.'],
+    ['Cowries', 'Small shells used as money.', 'Kongo’s royal currency.'],
+    ['Age grades', 'Peer groups of people born in the same years, crossing family lines.', 'Built loyalty beyond kinship.'],
+    ['Diviners', 'Religious specialists who read oracles and led rituals.', 'Central to African local religions.'],
+    ['Zanj revolt', 'Revolt of East African slaves in Iraq, 869–883.', 'Shows the scale of the early African slave trade.'],
+    ['Aksum', 'Christian trading kingdom in Ethiopia from the 300s.', 'Rare Christian state south of the Sahara.'],
+    ['Lalibela', 'Ethiopian king (c. 1181–1221) and the site of his rock-cut churches.', 'Symbol of Ethiopia’s independent Christianity.'],
+  ],
+
+  compare: [
+    {
+      title: 'Mali vs the Swahili city-states',
+      head: ['', 'Mali (c. 1235–1450)', 'Swahili city-states (c. 900–1500)'],
+      rows: [
+        ['Political form', 'One large empire under a mansa (king)', 'Many independent cities, each with its own king'],
+        ['Trade network', 'Trans-Saharan camel caravans', 'Indian Ocean ships on the monsoon winds'],
+        ['Source of wealth', 'Taxing gold, salt and slaves on caravan routes', 'Taxing gold, ivory and slaves at the harbor'],
+        ['How Islam arrived', 'Arab and Berber merchants across the desert', 'Arab and Persian merchants across the sea'],
+        ['Who became Muslim', 'Kings, courts and merchants; most farmers kept old religions', 'Ruling elites and merchants; many commoners kept old practices'],
+        ['Showpiece', 'Mansa Musa’s hajj; mosques and scholars of Timbuktu', 'Coral-stone mosques and houses of Kilwa'],
+      ],
+    },
+    {
+      title: 'Trans-Saharan vs Indian Ocean trade',
+      head: ['', 'Trans-Saharan', 'Indian Ocean'],
+      rows: [
+        ['Technology', 'Arabian camels and caravans', 'Dhows, the monsoon winds'],
+        ['African exports', 'Gold, ivory, slaves', 'Gold, ivory, slaves, timber'],
+        ['Imports', 'Salt, cloth, copper, horses, books', 'Indian cotton cloth, Chinese silk and porcelain'],
+        ['Merchants', 'Muslim Arabs and Berbers', 'Muslim Arabs, Persians and Indians'],
+        ['States it built', 'Ghana, Mali, Songhay, Hausa', 'Kilwa and the Swahili cities; Great Zimbabwe inland'],
+        ['Similarity', 'Both spread Islam through merchants and rulers', 'Both carried enslaved Africans to the Islamic world'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Ibn Battuta, a Muslim legal scholar from Morocco, describing Walata (Iwalatan), a trading town of the Mali Empire, 1352', text: 'The garments of its inhabitants, most of whom belong to the Massufa tribe, are of fine Egyptian fabrics. Their women are of surpassing beauty, and are shown more respect than the men. The state of affairs amongst these people is indeed extraordinary. Their men show no signs of jealousy whatever; no one claims descent from his father, but on the contrary from his mother’s brother. A person’s heirs are his sister’s sons, not his own sons. … these people are Muslims, punctilious in observing the hours of prayer, studying books of law, and memorizing the Koran. Yet their women show no bashfulness before men and do not veil themselves, though they are assiduous in attending the prayers.', cite: 'Ibn Battuta, Travels in Asia and Africa 1325–1354, trans. H. A. R. Gibb (1929), pp. 320–321' },
+      questions: [
+        { q: 'Ibn Battuta’s surprise in this passage is best explained by his', options: ['upbringing as a North African Muslim scholar used to different gender customs', 'ignorance of Islamic law and prayer', 'goal of persuading Europeans to trade with Mali', 'work as a salt merchant in the Sahara'], correct: 0, why: 'Point of view: as a Moroccan legal scholar, he judged Walata by the customs of the Islamic heartland, where women were usually veiled and descent passed through fathers.' },
+        { q: 'The passage best illustrates which broader pattern in West Africa?', options: ['Townspeople rejected Islam completely.', 'Rulers forced their subjects to adopt Arab family customs.', 'Islam was adopted but blended with older local customs, such as descent through the mother’s family.', 'Women were barred from public religious life.'], correct: 2, why: 'The people pray, study law and memorize the Quran, yet keep matrilineal inheritance and unveiled women: Islam mixed with local traditions.' },
+        { q: 'The “fine Egyptian fabrics” worn in Walata are evidence of', options: ['Mali’s isolation from the outside world', 'Indian Ocean imports of Chinese silk', 'cloth weaving introduced by the Bantu migrations', 'trans-Saharan trade linking the Sahel with North Africa'], correct: 3, why: 'Cloth was a main import carried south by camel caravans in exchange for gold.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Ibn Battuta, a Moroccan Muslim scholar, describing the people of the Mali Empire after his visit of 1352–1353', text: 'The negroes possess some admirable qualities. They are seldom unjust, and have a greater abhorrence of injustice than any other people. Their sultan shows no mercy to anyone who is guilty of the least act of it. There is complete security in their country. Neither traveller nor inhabitant in it has anything to fear from robbers or men of violence. … They are careful to observe the hours of prayer, and assiduous in attending them in congregations, and in bringing up their children to them. … Among their bad qualities are the following. … Then there is their custom of putting dust and ashes on their heads, as a mark of respect, and the grotesque ceremonies we have described when the poets recite their verses.', cite: 'Ibn Battuta, Travels in Asia and Africa 1325–1354, trans. H. A. R. Gibb (1929), pp. 329–330' },
+      questions: [
+        { q: 'The security Ibn Battuta describes most directly helped Mali by', options: ['ending the need for a royal army', 'encouraging merchants and travelers to use its trade routes', 'allowing Mali to stop exporting gold', 'attracting European settlers'], correct: 1, why: 'Safe roads drew caravans, and taxes on trade were the source of Mali’s wealth.' },
+        { q: 'Which development most directly explains the crowded prayers Ibn Battuta saw?', options: ['The spread of Islam by trans-Saharan merchants and its support by Mali’s rulers', 'The Bantu migrations', 'Portuguese missionaries on the coast', 'Conquest of Mali by the Abbasid caliphs'], correct: 0, why: 'Muslim traders brought Islam across the Sahara, and rulers like Mansa Musa built mosques and supported scholars.' },
+        { q: 'Ibn Battuta’s criticism of the dust-and-ashes custom and the poets’ ceremonies suggests that', options: ['Mali’s rulers had rejected Islam', 'Mali’s court was Christian', 'Mali’s court kept pre-Islamic traditions alongside Islam', 'Ibn Battuta approved of every local tradition'], correct: 2, why: 'These court rituals came from before Islam. Mali’s Islam was real but blended with older customs, which a scholar from North Africa saw as improper.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Leo Africanus, a Muslim diplomat from Granada and Fez, describing Timbuktu after visiting about 1510 (published 1526; original 1600 English spelling)', text: 'Corne, cattle, milke, and butter this region yeeldeth in great abundance: but salt is verie scarce heere; for it is brought hither by land from Tegaza, which is fiue hundred miles distant. When I my selfe was here, I saw one camels loade of salt sold for 80. ducates. The rich king of Tombuto hath many plates and scepters of gold, some whereof weigh 1300. poundes … Here are great store of doctors, iudges, priests, and other learned men, that are bountifully maintained at the kings cost and charges. And hither are brought diuers manuscripts or written bookes out of Barbarie, which are sold for more money than any other merchandize.', cite: 'Leo Africanus, The History and Description of Africa, Book 7, trans. John Pory (1600), ed. R. Brown (1896), vol. 3, pp. 824–825' },
+      questions: [
+        { q: 'The very high price of salt in Timbuktu is best explained by the fact that', options: ['Timbuktu’s rulers banned salt', 'salt had to be carried about 500 miles by camel from desert mines', 'salt came by ship from India', 'the Niger River flooded the salt mines every year'], correct: 1, why: 'Salt was mined in the Sahara at Taghaza (Tegaza) and carried south by caravan, while gold was plentiful in the south.' },
+        { q: 'The description of learned men and costly books best supports which claim?', options: ['Timbuktu was a center of Islamic scholarship supported by its rulers.', 'Timbuktu’s people had little interest in religion.', 'Books in Timbuktu were written mainly in Portuguese.', 'Learning in Timbuktu came from Christian Ethiopia.'], correct: 0, why: 'Judges and scholars (Islamic legal experts) were paid by the king, and books from North Africa (“Barbarie”) were prized.' },
+        { q: 'When Leo visited, about 1510, Timbuktu was ruled by', options: ['the kingdom of Ghana', 'the Portuguese', 'the sultans of Kilwa', 'the Songhay Empire, which had replaced Mali'], correct: 3, why: 'Sourcing and context: Songhay took Timbuktu in 1468, so Leo describes Songhay rule, after Mali’s decline.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Duarte Barbosa, a Portuguese official in the Indian Ocean, describing the Swahili city of Mombasa, c. 1518', text: 'It is a very fair place, with lofty stone and mortar houses, well aligned in streets [after the fashion of Quiloa]. The wood is well-fitted with excellent joiner’s work. It has its own king, himself a Moor. … This is a place of great traffic, and has a good harbour, in which are always moored craft of many kinds and also great ships, both of those which come from Çofala and those which go thither, and others which come from the great kingdom of Cambaya and from Melynde; others which sail to the Isles of Zinzibar, and yet others of which I shall speak anon.', cite: 'The Book of Duarte Barbosa, trans. M. L. Dames (1918), vol. 1, pp. 19–20' },
+      questions: [
+        { q: 'The ships “from the great kingdom of Cambaya” (Gujarat, in India) show that Mombasa was part of', options: ['the trans-Saharan caravan network', 'the Mediterranean grain trade', 'an Indian Ocean network linking East Africa with India', 'the overland Silk Roads'], correct: 2, why: 'Monsoon winds carried ships between the Swahili coast, Arabia and India.' },
+        { q: 'Barbosa’s statement that the king is “a Moor” (a Muslim) best supports which conclusion?', options: ['Swahili ruling elites had adopted Islam.', 'Mombasa was ruled by a Portuguese governor.', 'Most Swahili people were Christian.', 'Mombasa belonged to the Mali Empire.'], correct: 0, why: 'Swahili rulers accepted Islam, which linked them to Muslim merchants across the ocean.' },
+        { q: 'Ships came to Mombasa from Çofala (Sofala) mainly to bring', options: ['salt from the Sahara', 'gold from the interior, including the lands of Great Zimbabwe', 'silk from China', 'horses from Arabia'], correct: 1, why: 'Sofala was the outlet for inland gold, which Swahili merchants shipped north.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Francisco Alvares, a Portuguese priest on an embassy to the Christian king of Ethiopia, describing the churches of Lalibela, c. 1521', text: 'At a day’s journey from this church of Imbra Christo are edifices, the like of which and so many, cannot, as it appears to me, be found in the world, and they are churches entirely excavated in the rock, very well hewn. … It wearied me to write more of these works, because it seems to me that they will not believe me if I write more, and because as to what I have already written they may accuse me of untruth, therefore I swear by God, in whose power I am, that all that is written is the truth …', cite: 'Francisco Alvares, Narrative of the Portuguese Embassy to Abyssinia, chs. 53–54, trans. Lord Stanley of Alderley (1881), pp. 122, 130' },
+      questions: [
+        { q: 'Alvares swears that his account is true most likely because', options: ['he expected European readers to doubt that such works existed in Africa', 'the king of Ethiopia ordered him to', 'he wanted to keep his visit secret', 'he had never actually seen the churches'], correct: 0, why: 'Audience: he wrote for Europeans who knew little about Ethiopia and might not believe him.' },
+        { q: 'The churches Alvares describes are best understood as evidence of', options: ['Portuguese influence on Ethiopian building', 'Ethiopia’s wealth and its long, independent Christian tradition', 'the spread of Islam into the Ethiopian highlands', 'the Bantu migrations'], correct: 1, why: 'King Lalibela had them carved around 1200, long before the Portuguese arrived, during Ethiopia’s Christian revival.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE way trans-Saharan trade affected the states of West Africa.',
+        'Explain ONE reason the rulers of Ghana or Mali adopted Islam.',
+        'Explain ONE way Islam in West Africa blended with local traditions.',
+      ],
+      guide: [
+        'Accept: taxes on gold and salt made Ghana and Mali rich; trade towns grew (Koumbi-Saleh, Timbuktu, Gao); Islam and literacy arrived; demand for slaves grew.',
+        'Accept with explanation: better relations and trust with Muslim merchants; literate advisers and Islamic law for contracts; links to the wider Muslim world (hajj, scholars).',
+        'Accept with explanation: rulers did not force conversion; farmers kept old religions; court rituals from before Islam continued (dust on the head, griots and poets); women unveiled and descent through the mother (Walata).',
+      ],
+      model: [
+        'Trans-Saharan trade made Ghana rich because its kings taxed the gold that passed north and the salt that came south.',
+        'Mali’s rulers adopted Islam because it built trust with the Muslim merchants who ran the caravans and gave them literate advisers. Mansa Musa’s hajj in 1324 tied Mali to Cairo and Mecca and brought scholars to Timbuktu.',
+        'Islam blended with local traditions: Ibn Battuta found that the Muslims of Walata prayed and studied the Quran but traced descent through the mother’s brother, and their women did not veil.',
+      ],
+    },
+    {
+      prompt: 'Use the passage from Duarte Barbosa (Mombasa) in the practice questions above.',
+      parts: [
+        'Identify ONE good that the Swahili city-states exported.',
+        'Explain ONE way the monsoon winds shaped Indian Ocean trade.',
+        'Explain ONE similarity OR difference between the Swahili city-states and the Mali Empire.',
+      ],
+      guide: [
+        'Accept: gold, ivory, slaves, timber.',
+        'Accept with explanation: winds reverse with the seasons, so ships sailed out on one monsoon and home on the next; trade followed a yearly calendar; merchants waited in port, which mixed cultures.',
+        'Similar: both grew rich by taxing trade; both had Muslim rulers who did not force conversion. Different: Mali was one land empire on camel routes; the Swahili coast was many independent city-states linked by sea.',
+      ],
+      model: [
+        'The Swahili city-states exported gold, much of it brought from Sofala.',
+        'The monsoon winds blow from the northeast in winter and the southwest in summer, so ships from Cambay could reach Mombasa on one season’s wind and sail home on the next. This made trade regular and predictable.',
+        'Both Mali and the Swahili city-states had Muslim rulers who grew rich by taxing trade. But Mali was one large empire linked by camel caravans, while the Swahili coast was a string of independent cities linked by ships.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which long-distance trade changed societies in sub-Saharan Africa from c. 800 to c. 1500.',
+    theses: [
+      { text: 'Trade was important in Africa from 800 to 1500.', ok: false, why: 'Too vague. It does not say how much trade changed African societies.' },
+      { text: 'Mansa Musa went on hajj in 1324.', ok: false, why: 'A fact, not an argument.' },
+      { text: 'Long-distance trade greatly changed African elites, creating rich states like Mali and Kilwa and spreading Islam among rulers and merchants, but most Africans continued to live in kin-based villages and to follow local religions.', ok: true, why: 'Makes a defensible claim about extent and sets up both change (states, Islam, slave trade) and continuity (kinship, local religion).' },
+    ],
+    contextHint: 'What was Africa like before 800, and what had already linked it to the wider world?',
+    contextStart: 'Before 800, most Africans south of the Sahara…',
+    context: 'Before 800, most Africans south of the Sahara lived in kin-based villages created by the Bantu migrations. Camels had opened the Sahara, and monsoon winds linked the east coast to Arabia and India; after the 600s, Islam spread across North Africa and Southwest Asia.',
+    evidence: [
+      { text: 'Ghana and Mali grew rich by taxing gold and salt on trans-Saharan routes.', side: 'change' },
+      { text: 'Rulers and merchants adopted Islam; Timbuktu became a center of learning.', side: 'change' },
+      { text: 'Swahili city-states such as Kilwa built in coral and stone and exported tons of gold.', side: 'change' },
+      { text: 'A new Swahili language and culture blended Bantu and Arabic.', side: 'change' },
+      { text: 'Demand for slaves grew: 10,000–20,000 people a year, and the Zanj revolt (869).', side: 'change' },
+      { text: 'Most Africans still lived in kin-based villages where land was held communally.', side: 'continuity' },
+      { text: 'Farmers kept local religions: a creator god, ancestors and diviners.', side: 'continuity' },
+      { text: 'Islam blended with local customs (descent through the mother, unveiled women at Walata).', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining that change and continuity happened at different levels of society: trade transformed rulers, merchants and cities, while village life, kinship and local religion changed slowly. You can also compare West and East Africa.',
+  },
+
+  recall: [
+    { q: 'What three things did the Bantu migrations spread?', a: 'Farming, herding and iron metallurgy' },
+    { q: 'What animal made trans-Saharan trade possible?', a: 'The camel' },
+    { q: 'Which ruler of Mali made a famous hajj in 1324?', a: 'Mansa Musa' },
+    { q: 'What does “Swahili” mean?', a: '“Coasters”' },
+    { q: 'Which Ethiopian king had churches carved from solid rock?', a: 'Lalibela' },
+  ],
+}

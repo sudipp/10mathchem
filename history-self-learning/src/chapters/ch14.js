@@ -1,0 +1,347 @@
+// Chapter 14 · The Resurgence of Empire in East Asia (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch14.js.
+export default {
+  hook: 'In 589 a general named Yang Jian reunited China after more than 350 years of division. Over the next 700 years three dynasties, the Sui, the Tang and the Song, dug a canal 2,000 kilometers long, chose officials by exam, and built cities of a million people. Song farmers grew two rice crops a year, merchants paid with paper money, and printers turned out books by the thousands. Korea, Vietnam and Japan watched closely and borrowed Chinese writing, Buddhism and Confucian government, each in its own way.',
+  apNote: 'The Song dynasty is AP Unit 1.1, “Developments in East Asia” (c. 1200), the very first topic of the exam period. Neo-Confucianism, filial piety, the civil-service exam bureaucracy, Champa rice, the Grand Canal, the commercial revolution, paper money and Chinese influence on Korea, Vietnam and Japan are all directly tested. The Sui and Tang are the background that explains how the Song got there.',
+  themes: ['Governance', 'Economic systems', 'Cultural developments', 'Social structures', 'Technology and innovation'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['HfIWZhXt7fY', 'Developments in EAST ASIA [AP World Review Unit 1 Topic 1]', 'Heimler’s History'],
+  mapSub: 'Press Play all, or step through. Watch China reunite, reach into Central Asia, shrink back under nomad pressure, and grow rich, while Korea, Vietnam and Japan borrow its ideas.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 580, to: 1290 },
+    { label: 'Sui & Tang', from: 580, to: 910 },
+    { label: 'Song China', from: 950, to: 1290 },
+    { label: 'Korea, Vietnam, Japan', from: 600, to: 1200 },
+    { label: 'Long view', from: 200, to: 1400 },
+  ],
+  bigIdeas: [
+    'The Sui reunified China and dug the Grand Canal; the Tang built on it with the equal-field system, a postal network and civil-service exams based on Confucian learning.',
+    'The Song chose scholars over soldiers: a huge exam bureaucracy ran a rich state, but nomads (Khitan, Tanggut, Jurchen and finally Mongols) kept beating its armies.',
+    'Champa rice, canals, iron, printing, paper money and sea trade made Song China the most productive and most urban society on Earth: a true commercial revolution.',
+    'Buddhism adapted to Chinese family values, then faced persecution; Neo-Confucianism (Zhu Xi) blended Confucian ethics with Buddhist ideas. Korea, Vietnam and Japan adopted Chinese models but kept their own identities.',
+  ],
+
+  sections: [
+    {
+      id: 'sui', title: 'The Sui reunify China', when: '589 – 618 CE', theme: 'Governance', map: 0,
+      lead: 'After the Han collapsed in 220 CE, China split into rival kingdoms for more than three centuries. The Sui dynasty put it back together in 589 and then worked its people very hard.',
+      body: [
+        'When the Han fell, nomadic peoples ruled much of the north while Chinese dynasties held the south. A northern general, Yang Jian, seized power in 581 and conquered the south in 589. China was one state again.',
+        'The Sui raised taxes, repaired the Great Wall and built palaces and granaries. To do this they relied on soldiers and on conscripted labor: ordinary farmers forced to work on state projects instead of their own fields.',
+        'The biggest project was the Grand Canal, built mostly under Yang Jian’s son, the emperor Yang Di. China’s great rivers, the Yellow and the Yangzi, flow west to east. The canal linked earlier canals into a north–south waterway about 2,000 kilometers (1,240 miles) long, with roads along both banks.',
+        'The canal let rice from the rich, wet south feed the capital and the armies in the dry north. But the forced labor and three failed invasions of Korea (612–614) made the Sui hated. Rebels rose everywhere, and Yang Di was murdered in 618.',
+      ],
+      facts: ['589: Yang Jian reunites north and south', 'Built with military and conscripted labor', 'Grand Canal ≈ 2,000 km, north–south', 'Korean wars fail; emperor killed 618'],
+      chain: ['Han collapses; China divided', 'Yang Jian reunites China, 589', 'Huge projects with forced labor', 'Grand Canal links north and south', 'Failed wars in Korea → rebellion', 'Sui falls, 618'],
+      soWhat: 'Like the Qin before the Han, the Sui was short-lived but laid the foundations (unity, canal, taxes) that a longer dynasty used. The Grand Canal stayed China’s main artery for more than a thousand years.',
+      video: ['wDBaX6pEIFI', 'Sui Dynasty The Grand Canal', 'Mr. Z (World & US History)'],
+    },
+    {
+      id: 'tang', title: 'The Tang golden age', when: '618 – 755 CE', theme: 'Governance', map: 1,
+      lead: 'The Tang dynasty kept the Sui’s unity but ruled more wisely. Its capital, Chang’an, was the greatest city in the world, and its armies reached deep into Central Asia.',
+      body: [
+        'The second Tang emperor, Taizong, took power in 626 by killing two of his brothers and pushing his father aside. Then he ruled well: he kept law and order, held taxes and prices low, and ran the Sui’s systems more effectively. He built up the capital at Chang’an.',
+        'Roads, canals and a postal and courier service with inns and horses tied the empire together. Under the equal-field system the state owned most farmland: about 20% could be passed down in families, and 80% was handed out again according to family size and how fertile the land was. It worked until the 700s, when corruption and land given to Buddhist monasteries broke it down.',
+        'The Tang ran a bureaucracy of merit. Young men studied the Confucian classics and took imperial civil-service examinations; those who passed won government posts. Many Tang officials still came from great families, but exams built loyalty to the dynasty, and the system lasted until 1905.',
+        'Tang armies pushed into Manchuria, Korea, Vietnam and Central Asia, one of the largest expansions in China’s history. Neighbors sent envoys with gifts and performed the kowtow (kneeling and touching the forehead to the ground) before the emperor of the “Middle Kingdom.” In return they received rich gifts and the right to trade. This was the tributary system. In 751 an Abbasid army stopped the Tang at the Talas River in Central Asia.',
+      ],
+      facts: ['Taizong r. 626–649; capital Chang’an', 'Equal-field: 20% hereditary, 80% redistributed', 'Civil-service exams on Confucian classics', 'Tributary system and the kowtow'],
+      chain: ['Taizong takes power', 'Equal-field system and low taxes', 'Exams recruit Confucian officials', 'Strong, loyal bureaucracy', 'Armies expand; neighbors pay tribute'],
+      soWhat: 'The exam bureaucracy is one of the most important AP ideas for China: it chose officials by learning, not only birth, and spread Confucian values through the whole elite. Compare it with Abbasid or European rule by nobles.',
+      video: ['K5UbnilpzXA', 'Chinese Imperial Dynasties | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes give Taizong’s reign as 627–649. He seized the throne in 626 after killing his brothers at the Xuanwu Gate; his first reign era began in 627, so both dates appear in books.',
+    },
+    {
+      id: 'tang-decline', title: 'Rebellion and the fall of the Tang', when: '755 – 907 CE', theme: 'Governance', map: 2,
+      lead: 'In the 750s the Tang emperor stopped paying attention to government. A frontier general, An Lushan, rebelled, and the dynasty never fully recovered.',
+      body: [
+        'The emperor Xuanzong (r. 712–756) grew obsessed with music and with his favorite consort, Yang Guifei, and let her relatives run the court. Meanwhile, frontier generals commanded huge armies of their own.',
+        'In 755 An Lushan, a general commanding the northeastern armies, rebelled. His troops captured Luoyang and then Chang’an; the emperor fled. The Tang crushed the revolt by 763 only by hiring nomadic Uighur horsemen, who then looted the cities they had come to save.',
+        'Millions died, and the court lost control of the provinces and of tax collection. Generals ruled their regions like kings. The equal-field system collapsed, and huge private and monastic estates took over the land.',
+        'In the 800s the Tang faced more rebellions. The Huang Chao rebellion (875–884) sacked Chang’an. In 907 the last Tang emperor gave up the throne, and China split again for about fifty years.',
+      ],
+      facts: ['Emperor neglects government', 'An Lushan rebels, 755', 'Uighur mercenaries help, then loot', 'Last Tang emperor abdicates, 907'],
+      chain: ['Emperor neglects government', 'Generals control big armies', 'An Lushan rebels, 755', 'Uighur help at a high price', 'Provinces slip away', 'Tang ends, 907'],
+      soWhat: 'A classic dynastic cycle: a strong start, then weak rulers, rebellion and loss of control. Notice how hiring outsiders to fight (Uighurs here) can weaken an empire, as with Rome’s Germanic soldiers.',
+      factCheck: 'Your notes date An Lushan’s rebellion to 775 CE. It began in 755 (the notes are right that it was crushed by 763). Also, the Uighurs mainly plundered Luoyang; Chang’an was sacked in 763 by Tibetan raiders.',
+    },
+    {
+      id: 'song', title: 'The Song: scholars over soldiers', when: '960 – 1279 CE', theme: 'Governance', map: 3,
+      lead: 'The Song dynasty reunited most of China in 960 and put educated officials, not generals, in charge. It became rich and cultured, but it could never stop the nomads to the north.',
+      body: [
+        'Song Taizu (r. 960–976) was a general whose own troops made him emperor. Knowing how dangerous generals could be, he gave power and favor to civil servants instead. Exam degrees became the main road to office, and the number of officials grew far beyond the Tang.',
+        'The Song spent on administration, industry, education and the arts, not the army. Northern peoples took advantage: the Khitan Liao and the Tanggut Xi Xia forced the Song to pay them silver and silk every year to keep the peace.',
+        'The huge bureaucracy drained the treasury, and taxes pushed peasants into two rebellions in the 1100s. Reformers such as Wang Anshi tried to fix the system, but inertia inside the bureaucracy blocked change. Scholar-officials who led the armies had no military training.',
+        'In 1127 the Jurchen, a people from Manchuria who had founded the Jin dynasty, captured the capital Kaifeng and the emperor. The court fled south and set up the Southern Song, with its capital at Hangzhou. It ruled southern China until the Mongols conquered it in 1279.',
+      ],
+      facts: ['Taizu: civil officials over generals', 'Huge exam bureaucracy', 'Pays Liao and Xi Xia to keep peace', '1127: Jurchen take the north → Southern Song'],
+      chain: ['General becomes emperor', 'Distrusts generals; favors scholars', 'Big, expensive bureaucracy', 'Weak army led by civilians', 'Nomads win: Jurchen take the north, 1127', 'Southern Song at Hangzhou'],
+      soWhat: 'AP Unit 1.1 asks how the Song used Confucianism and the exam system to build state power. The tradeoff, a strong state but a weak army, explains why the Mongols could later conquer China.',
+      video: ['Wc1YgOeVEwI', 'State Building in SONG CHINA [AP World History Review—Unit 1, Topic 1]', 'Heimler’s History'],
+    },
+    {
+      id: 'economy', title: 'Rice, iron and paper money', when: '700 – 1279 CE', theme: 'Economic systems', map: 5,
+      lead: 'Under the Tang and especially the Song, China went through an agricultural and commercial revolution. More food meant more people, bigger cities and a booming market economy.',
+      body: [
+        'A fast-ripening rice from Champa (in today’s Vietnam) let farmers in the south grow two crops a year; the Song spread it widely after 1012. Iron plows, draft animals, fertilizer, water wheels, canals and terraced hillsides raised harvests even more.',
+        'More food and a good transport network to move it meant more people: China’s population roughly doubled, passing 100 million by about 1100. Chang’an under the Tang was the largest city in the world, and the Southern Song capital Hangzhou had more than a million people.',
+        'Industry boomed. Workshops made porcelain (“chinaware”) and silk for export. Iron furnaces burned coal and coke, and iron production soared for tools and weapons. Chinese inventors created gunpowder, the magnetic compass for ships, and printing: woodblocks first, and movable type by the mid-1000s. (Woodblocks stayed more common, because Chinese uses thousands of characters.)',
+        'Copper coins were scarce and heavy, so merchants used letters of credit (“flying cash”), promissory notes and checks. Private paper money appeared, but notes were not always honored, and riots followed. In the 1000s the government took a monopoly on printing money. Muslim, Persian and Indian merchants filled Guangzhou and Quanzhou; Chinese silk and porcelain went out, and spices and luxury goods came in.',
+      ],
+      facts: ['Champa rice: two crops a year', 'Population passes 100 million', 'Porcelain, coke-fired iron, gunpowder, compass, printing', 'Flying cash and government paper money'],
+      chain: ['Champa rice and better tools', 'More food', 'Population grows; cities expand', 'More trade and industry', 'Coins run short → paper money', 'China drives the hemispheric economy'],
+      soWhat: 'AP calls this the Song commercial revolution. Chinese goods and demand powered the Silk Roads and Indian Ocean trade (Unit 2), and Chinese inventions such as gunpowder, the compass and printing later changed Europe.',
+      video: ['CBjLSRfqoAg', 'Prosperity in Song China (960-1279) | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes say iron furnaces used “coke, not coal.” Coke is made from coal: the key change was that Song furnaces burned coal and coke instead of charcoal, which saved China’s shrinking forests.',
+    },
+    {
+      id: 'society', title: 'Families, ancestors and women', when: 'Tang and Song society', theme: 'Social structures',
+      lead: 'As China grew richer, families grew more patriarchal. Ancestor worship became more elaborate, and the cruel practice of foot binding spread among elite women.',
+      body: [
+        'Families honored ancestors with elaborate grave rituals and large gatherings of the extended family. These rituals tied people to their family line and to the authority of its senior men.',
+        'Filial piety, a child’s duty to obey and honor parents and ancestors, was the core Confucian virtue. Wealthy families built ancestral halls and kept records of their lineage.',
+        'Foot binding began among elite women around the 900s and spread under the Song. Girls’ feet were tightly wrapped so they stayed tiny. Bound feet were seen as beautiful and a sign of status, but they crippled women and kept them at home under the control of male relatives.',
+        'Yet one woman ruled China. Wu Zhao (Empress Wu) rose from consort to empress and then, from 690 to 705, ruled as emperor in her own name, the only woman ever to do so. She was a strong ruler and a generous patron of Buddhism.',
+      ],
+      facts: ['Ancestor worship grows more elaborate', 'Filial piety: duty to parents and ancestors', 'Foot binding spreads among the elite', 'Wu Zhao rules as emperor, 690–705'],
+      chain: ['Confucian family values', 'Ancestor rituals strengthen male lines', 'Foot binding spreads', 'Women confined to the home', 'Rare exceptions like Wu Zhao'],
+      soWhat: 'AP essays often ask how belief systems shaped gender roles. Neo-Confucianism reinforced patriarchy in China, Korea and Vietnam; compare with women’s roles in the Islamic world (Chapter 13).',
+      factCheck: 'Your notes give Wu Zhao’s life as 626–706. Most historians date her birth to 624 and her death to 705, the year she was forced to step down.',
+    },
+    {
+      id: 'faith', title: 'Buddhism and Neo-Confucianism', when: '600 – 1200 CE', theme: 'Cultural developments', map: 6,
+      lead: 'After the Han fell, many Chinese lost faith in Confucianism and turned to Buddhism. Buddhism changed to fit Chinese families, flourished, was persecuted, and finally helped inspire a new Confucianism.',
+      body: [
+        'Buddhism came from India along the Silk Roads. Mahayana Buddhism was especially strong in western China around Dunhuang (600–1000), where cave temples and libraries grew rich as converts gave land and the monks gave food to the poor. Merchants also brought Christianity, Manichaeism, Zoroastrianism and Islam, mostly for foreign traders.',
+        'Buddhism clashed with Chinese values. Both Buddhism and Confucianism had sacred texts, but Buddhism stressed the nature of existence and an ascetic ideal: monks gave up marriage and lived apart. Confucianism stressed ethics, government and the family: having sons and practicing filial piety.',
+        'So Buddhists adapted. They translated dharma as dao and nirvana as wuwei, Daoist terms Chinese readers knew, and said one son in a monastery brought salvation to ten generations of his family. The Chan school (Zen in Japan) taught meditation and sudden insight; the Pure Land school promised paradise to anyone who called on the Buddha Amitabha.',
+        'In the 840s the Tang, backed by Daoists and Confucians, closed thousands of monasteries and seized their land; Zoroastrians, Christians and Manichaeans were also expelled. The Song did not persecute Buddhists but favored Confucians. Neo-Confucians, led by Zhu Xi (1130–1200), borrowed Buddhist interest in the deep nature of things while teaching Confucian ethics: moral principle is found in family and political relationships.',
+      ],
+      facts: ['Mahayana Buddhism centered at Dunhuang', 'Celibacy vs filial piety', 'Chan (Zen) and Pure Land schools', '845 persecution; Zhu Xi’s Neo-Confucianism'],
+      chain: ['Han falls; Confucianism loses appeal', 'Buddhism spreads on the Silk Roads', 'Adapts to Chinese family values', 'Monasteries grow rich', 'Persecution in the 840s', 'Neo-Confucianism blends both'],
+      soWhat: 'Neo-Confucianism is a key AP term: it became the official philosophy of China and shaped Korea, Vietnam and Japan for centuries. It is a great example of syncretism, ideas blending as they travel.',
+      video: ['Pn9n-k1JIUo', 'Neo-Confucianism and Zhu Xi | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'neighbors', title: 'Korea, Vietnam and Japan', when: '600 – 1333 CE', theme: 'Cultural developments', map: 7,
+      lead: 'China’s neighbors borrowed Chinese writing, Confucian government and Buddhism, but each did it on its own terms. Korea accepted tribute status, Vietnam fought for independence, and Japan copied China without ever being conquered.',
+      body: [
+        'Korea: the Silla kingdom allied with the Tang to conquer its Korean rivals (668), then pushed the Tang armies out. Silla recognized the Tang emperor and sent tribute, so it was technically a vassal state, but it governed itself. Chinese influence was everywhere: Confucian schools, Chinese characters and Buddhism.',
+        'Vietnam: the Vietnamese adopted Chinese writing, farming methods, Confucian ideas and Buddhism, but resented Chinese political rule. When the Tang collapsed, they rebelled and won independence in 939. Vietnamese women also kept more independence than women in China.',
+        'Japan: Chinese armies never invaded Japan, yet Japan borrowed heavily. Prince Shotoku’s Seventeen Article Constitution (604) mixed Confucian and Buddhist ideas, and Japan imitated Tang government. Its first permanent capital, Nara (710–794), was laid out like Chang’an. Japan adopted Confucian and Buddhist teachings but kept its own Shinto religion.',
+        'In the Heian period (794–1185) the emperor moved to Heian (Kyoto), but the Fujiwara clan held the real power: a weak emperor with power behind the throne, a pattern that helped the imperial line survive. Japanese writing grew out of Chinese characters (kanji), and Lady Murasaki wrote The Tale of Genji. After a civil war between the Taira and Minamoto clans, the Minamoto leader ruled from Kamakura as shogun, while the emperor stayed in Kyoto. In the Kamakura (1185–1333) and Muromachi (1336–1573) periods, regional lords and professional warriors, the samurai, held power.',
+      ],
+      facts: ['Silla Korea: tributary, but self-governing', 'Vietnam: independent in 939', 'Nara Japan copies Tang; keeps Shinto', 'Heian, Fujiwara, Genji; shogun at Kamakura'],
+      chain: ['Tang power and prestige', 'Neighbors send envoys and students', 'Adopt writing, Confucianism, Buddhism', 'Adapt to local traditions', 'Korea tributary · Vietnam independent · Japan self-directed'],
+      soWhat: 'AP Unit 1.1 tests Chinese influence on Korea, Vietnam and Japan. The key skill is comparison: all three borrowed, but Korea accepted tribute status, Vietnam resisted rule, and Japan borrowed by choice and developed a warrior-led feudal system.',
+      video: ['-5rBQO0VpWo', 'Classical Japan during the Heian Period | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes say the Minamoto leader was named shogun in 1185. The Minamoto won the war and set up their government at Kamakura in 1185, but the emperor gave Minamoto Yoritomo the title shogun in 1192.',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 220, label: 'Han dynasty collapses', track: 'politics', detail: 'China splits into rival kingdoms for more than 350 years.' },
+    { year: 589, label: 'Sui reunifies China', track: 'politics', detail: 'Yang Jian, who founded the Sui in 581, conquers the south.' },
+    { year: 604, label: 'Shotoku’s Seventeen Articles', track: 'politics', detail: 'Japan’s first “constitution” mixes Confucian and Buddhist ideas.' },
+    { year: 605, end: 611, label: 'Grand Canal built', track: 'society', detail: 'Under Yang Di. Links the Yellow and Yangzi river systems, about 2,000 km.' },
+    { year: 612, end: 614, label: 'Sui invasions of Korea fail', track: 'war', detail: 'Huge losses spark rebellions across China.' },
+    { year: 618, label: 'Tang dynasty founded', track: 'politics', detail: 'After the Sui emperor Yang Di is murdered.' },
+    { year: 626, end: 649, label: 'Taizong rules the Tang', track: 'politics', detail: 'Strong rule from Chang’an: law, low taxes, exams.' },
+    { year: 668, label: 'Silla unifies Korea', track: 'politics', detail: 'With Tang help; Silla then drives Tang armies out (676).' },
+    { year: 690, end: 705, label: 'Wu Zhao rules as emperor', track: 'politics', detail: 'The only woman to rule China in her own name; patron of Buddhism.' },
+    { year: 710, end: 794, label: 'Nara period, Japan', track: 'politics', detail: 'Capital built on the model of Chang’an.' },
+    { year: 751, label: 'Battle of Talas River', track: 'war', detail: 'Abbasid forces stop Tang expansion in Central Asia.' },
+    { year: 755, end: 763, label: 'An Lushan rebellion', track: 'war', detail: 'Captures both capitals; crushed with Uighur help.' },
+    { year: 794, label: 'Japan’s court moves to Heian', track: 'politics', detail: 'Heian (Kyoto) period, 794–1185; Fujiwara clan holds power.' },
+    { year: 845, label: 'Tang closes Buddhist monasteries', track: 'religion', detail: 'Emperor Wuzong seizes monastic land; Christians, Manichaeans, Zoroastrians also expelled.' },
+    { year: 907, label: 'Tang dynasty ends', track: 'politics', detail: 'The last emperor abdicates; about fifty years of division follow.' },
+    { year: 939, label: 'Vietnam wins independence', track: 'war', detail: 'After the Battle of Bach Dang River (938) against a southern Chinese state.' },
+    { year: 960, label: 'Song dynasty founded', track: 'politics', detail: 'Song Taizu, a general, favors civil officials over soldiers.' },
+    { year: 1008, label: 'The Tale of Genji (c. 1008)', track: 'society', detail: 'Lady Murasaki’s novel of the Heian court.' },
+    { year: 1012, label: 'Song spreads Champa rice', track: 'society', detail: 'Fast-ripening rice from Champa: two crops a year.' },
+    { year: 1024, label: 'Government paper money', track: 'society', detail: 'The state takes over note printing in Sichuan.' },
+    { year: 1045, label: 'Movable type invented', track: 'society', detail: 'Approximate: Bi Sheng uses clay type in the 1040s.' },
+    { year: 1127, label: 'Jurchen take Kaifeng', track: 'war', detail: 'The Song court flees south; Southern Song capital at Hangzhou.' },
+    { year: 1130, end: 1200, label: 'Life of Zhu Xi', track: 'religion', detail: 'Leading Neo-Confucian thinker.' },
+    { year: 1185, label: 'Minamoto rule from Kamakura', track: 'war', detail: 'After defeating the Taira; Yoritomo named shogun in 1192.' },
+    { year: 1279, label: 'Mongols conquer Southern Song', track: 'war', detail: 'Kublai Khan’s Yuan dynasty rules all of China (Chapter 18).' },
+    { year: 622, label: 'Muhammad’s hijra to Medina', track: 'world', detail: 'Islam begins its expansion (Chapter 13).' },
+    { year: 750, label: 'Abbasid caliphate begins', track: 'world', detail: 'Its army meets the Tang at Talas a year later (Chapter 13).' },
+    { year: 800, label: 'Charlemagne crowned emperor', track: 'world', detail: 'Western Europe rebuilds (Chapter 16).' },
+    { year: 1096, label: 'First Crusade', track: 'world', detail: 'European Christians march on Jerusalem (Chapter 19).' },
+    { year: 1206, label: 'Chinggis Khan unites the Mongols', track: 'world', detail: 'His heirs will conquer the Jin and the Song (Chapter 18).' },
+  ],
+
+  terms: [
+    ['Sui dynasty', 'Dynasty (589–618) that reunited China under Yang Jian.', 'Ended 350 years of division; built the Grand Canal.'],
+    ['Grand Canal', 'Waterway about 2,000 km long linking north and south China.', 'Moved southern rice to the north; key to trade for centuries.'],
+    ['Conscripted labor', 'Work the state forces people to do.', 'Built Sui projects but made the dynasty hated.'],
+    ['Tang Taizong', 'Second Tang emperor (r. 626–649).', 'Strong ruler who made Sui systems work.'],
+    ['Chang’an', 'Tang capital in the Wei River valley.', 'The world’s largest city in the 700s; model for Nara.'],
+    ['Equal-field system', 'State hands out farmland by family size and soil quality.', 'Kept peasants on the land and taxes flowing until the 700s.'],
+    ['Civil-service exams', 'Tests on the Confucian classics for government jobs.', 'A bureaucracy of merit that lasted until 1905.'],
+    ['Tributary system', 'Neighbors send gifts and kowtow (kneel, forehead to the ground) to the emperor in return for gifts and trade.', 'How China managed relations as the “Middle Kingdom.”'],
+    ['An Lushan rebellion', 'Revolt of a frontier general, 755–763.', 'Began the long decline of the Tang.'],
+    ['Uighurs', 'Turkic nomads hired by the Tang to crush the rebellion.', 'Their help came at a high price: looting.'],
+    ['Song Taizu', 'First Song emperor (r. 960–976), a former general.', 'Put civil officials over soldiers.'],
+    ['Jurchen', 'People from Manchuria who founded the Jin dynasty.', 'Took north China in 1127, creating the Southern Song.'],
+    ['Southern Song', 'Song dynasty in the south after 1127, capital Hangzhou.', 'Rich and urban until the Mongols conquered it in 1279.'],
+    ['Champa rice', 'Fast-ripening rice from Champa (Vietnam).', 'Two harvests a year → population boom.'],
+    ['Commercial revolution', 'Boom in trade, cities, industry and credit under the Song.', 'Made China the center of the hemispheric economy.'],
+    ['Flying cash', 'Letters of credit used instead of heavy copper coins.', 'Early step toward paper money.'],
+    ['Paper money', 'Printed notes; a government monopoly from the 1000s.', 'Made trade easier, but could cause inflation.'],
+    ['Porcelain', 'Hard, fine ceramic (“chinaware”).', 'A top Chinese export across Afro-Eurasia.'],
+    ['Movable type', 'Printing with separate characters that can be reused (1040s).', 'Part of China’s printing revolution.'],
+    ['Foot binding', 'Tightly wrapping girls’ feet to keep them small.', 'Showed status and confined elite women.'],
+    ['Wu Zhao', 'Empress Wu, who ruled as emperor 690–705.', 'Only woman to rule China in her own name.'],
+    ['Filial piety', 'Duty to obey and honor parents and ancestors.', 'Core Confucian value; clashed with monastic celibacy.'],
+    ['Dunhuang', 'Silk Road oasis with Buddhist caves and libraries.', 'Shows how Buddhism entered China.'],
+    ['Chan (Zen) Buddhism', 'School stressing meditation and sudden insight.', 'Spread to Japan as Zen.'],
+    ['Neo-Confucianism', 'Song revival of Confucian ethics, with Buddhist influences; led by Zhu Xi.', 'Official ideology of China, Korea and Vietnam for centuries.'],
+    ['Silla', 'Korean kingdom that unified Korea in 668.', 'Tributary to the Tang but self-governing.'],
+    ['Nara and Heian Japan', 'Japan’s capitals (710–794 and 794–1185), modeled on Chang’an.', 'Show Japan’s borrowing of Tang models.'],
+    ['Shogun and samurai', 'Military ruler at Kamakura (from 1185) and his professional warriors.', 'Real power in Japan shifts from the emperor to warriors.'],
+  ],
+
+  compare: [
+    {
+      title: 'Tang vs Song',
+      head: ['', 'Tang (618–907)', 'Song (960–1279)'],
+      rows: [
+        ['Size and power', 'Huge; armies reach Central Asia and Korea', 'Smaller; pays off and loses to northern nomads'],
+        ['Who governs', 'Exams, but great aristocratic families still powerful', 'Exam-trained scholar-officials dominate'],
+        ['Economy', 'Equal-field farming; Silk Road trade', 'Champa rice, paper money, sea trade: commercial revolution'],
+        ['Belief', 'Buddhism flourishes, then persecuted (840s)', 'Neo-Confucianism (Zhu Xi) favored'],
+        ['Capital', 'Chang’an, world’s largest city', 'Kaifeng, then Hangzhou (over a million people)'],
+        ['How it ended', 'Rebellions; last emperor abdicates, 907', 'Jurchen take the north (1127); Mongols take the rest (1279)'],
+      ],
+    },
+    {
+      title: 'How China’s neighbors adapted Chinese models',
+      head: ['', 'Korea (Silla)', 'Vietnam', 'Japan'],
+      rows: [
+        ['Political tie to China', 'Tributary vassal, but self-governing', 'Ruled by China; independent in 939', 'Never conquered; sent envoys'],
+        ['Borrowed', 'Confucian schools, Chinese writing, Buddhism', 'Writing, farming methods, Confucianism, Buddhism', 'Tang government, Chang’an city plan, Confucianism, Buddhism'],
+        ['Kept or changed', 'Aristocrats kept power over exams', 'Resented Chinese rule; women kept more rights', 'Kept Shinto; kana writing; emperor as figurehead'],
+        ['Later path', 'Stays close to China', 'Fights off later Chinese invasions', 'Shoguns and samurai rule'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Proclamation of the Tang emperor Wuzong against Buddhism, issued in Chang’an, 845 CE', text: 'We have heard that previous to the Three Dynasties the name of Buddha was unknown. It was from the time of the Hans that his images and his doctrines became familiar institutions in the land. The strength of man was lavished over his shrines; the wealth of man diverted to their costly adornment with gold and jewels… But these priests and priestesses of Buddha, they consume food and raiment without contributing to the production of either… shall, then, some paltry creed from the West be allowed to dispute with Us the sovereign power?… Already, more than 4,600 monasteries have been destroyed; and their inmates, to the number of 265,000 persons of both sexes, have been compelled to return to the world. Of temples and shrines, more than 40,000 have likewise been demolished; while many thousand acres of fat soil have been added to the wealth of the people.', cite: 'Wuzong, “Against Buddhism: A Proclamation,” in H. A. Giles, Gems of Chinese Literature (1884), pp. 163–164' },
+      questions: [
+        { q: 'The proclamation most directly reveals which motive for the persecution of Buddhism?', options: ['A desire to spread Buddhism to Korea and Japan', 'Pressure from the Mongols on the northern frontier', 'The state’s wish to recover land and labor held by monasteries', 'Anger at Christian missionaries in Chang’an'], correct: 2, why: 'Wuzong complains that monks “consume food and raiment without contributing” and boasts of land returned to “the wealth of the people.” The motive was largely economic.' },
+        { q: 'The phrase “some paltry creed from the West” most directly reflects the view that Buddhism', options: ['was a foreign faith that clashed with Chinese traditions and imperial authority', 'had been invented by Daoist priests', 'was the official religion of the Han dynasty', 'came to China by sea from Japan'], correct: 0, why: 'Buddhism came from India; critics said its monastic, celibate life undermined Confucian family values and loyalty to the emperor.' },
+        { q: 'Which later development most directly continued the Confucian revival seen in this proclamation?', options: ['The Song dynasty made Buddhism the state religion', 'Neo-Confucianism, led by Zhu Xi, became the dominant philosophy', 'The civil-service exams were abolished', 'Chan Buddhism was banned in Japan'], correct: 1, why: 'The Song favored Confucians, and Neo-Confucianism (which borrowed some Buddhist ideas) became China’s official philosophy.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Du Fu, Tang poet and former court official, poem written c. 759 CE during the An Lushan rebellion', text: 'At sunset in the village of Che-Kao / I sought for shelter; on my heels there trod / A grim recruiting sergeant, of the kind / That seize their prey by night. A poor old man / Saw — scaled the wall, and vanished… “Once I had three sons — / Three in the Emperor’s camp. A letter came / From one, and — there was one; the others fell / In the same battle… In our wretched hut remains / The last of all the men — a little child, / Still at his mother’s breast… My years are nearly done, / My strength is well-nigh spent; yet I will go / Readily to the camping-ground.”', cite: 'Du Fu, “The Recruiting Sergeant,” in L. Cranmer-Byng, A Lute of Jade (1909)' },
+      questions: [
+        { q: 'The poem most directly reflects conditions during which event?', options: ['The Sui reunification of China in 589', 'The Jurchen conquest of north China in 1127', 'The Mongol conquest of the Southern Song', 'The An Lushan rebellion of 755–763'], correct: 3, why: 'Du Fu wrote it around 759, when the Tang drafted men desperately to fight An Lushan’s rebels.' },
+        { q: 'The hardship described in the poem is most similar to the grievances that helped bring down', options: ['the Sui dynasty, whose forced labor and wars in Korea sparked rebellion', 'the Song dynasty, whose scholars refused to fight', 'the Heian court in Japan', 'the Silla kingdom in Korea'], correct: 0, why: 'The Sui collapsed when conscripted labor and failed Korean campaigns drove ordinary people to revolt.' },
+        { q: 'A historian would find this poem most useful as evidence of', options: ['the exact size of the Tang army', 'how war and conscription affected ordinary families', 'the rules of the civil-service exams', 'trade between China and the Abbasids'], correct: 1, why: 'A poem gives a personal, emotional view of suffering, not precise statistics. Du Fu wrote as a witness and critic.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'The Seventeen Article Constitution, attributed to Prince Shotoku, regent of Japan, 604 CE (recorded in the Nihongi, a Japanese court history completed in 720)', text: 'I. Harmony is to be valued, and an avoidance of wanton opposition to be honoured… II. Sincerely reverence the three treasures. The three treasures, viz. Buddha, the Law and the Priesthood, are the final refuge of the four generated beings, and are the supreme objects of faith in all countries… III. When you receive the Imperial commands, fail not scrupulously to obey them. The lord is Heaven, the vassal is Earth… XII. Let not the provincial authorities or the Kuni no Miyakko levy exactions on the people. In a country there are not two lords; the people have not two masters. The sovereign is the master of the people of the whole country.', cite: 'Nihongi 22, trans. W. G. Aston (1896)' },
+      questions: [
+        { q: 'Articles II and III show that Japanese leaders were borrowing', options: ['Shinto rituals from Korea', 'Buddhism and Confucian ideas of hierarchy that had come from China', 'Islamic law from Abbasid merchants', 'Christian ideas from Nestorian missionaries'], correct: 1, why: 'The “three treasures” are Buddhist; obedience of vassal to lord, like Earth to Heaven, is Confucian.' },
+        { q: 'The main purpose of Article XII was most likely to', options: ['strengthen the central ruler over local clan leaders, on the model of the Chinese emperor', 'give provincial officials the right to tax freely', 'recognize the Tang emperor as Japan’s ruler', 'replace the emperor with a shogun'], correct: 0, why: '“There are not two lords”: only the sovereign may tax. This mirrors the centralized Chinese state Japan admired.' },
+        { q: 'Which statement best describes Japan’s relationship with China in this period?', options: ['Japan was conquered by Tang armies and became a province', 'Japan rejected all Chinese influence', 'Japan borrowed Chinese models by choice and kept its own Shinto religion', 'Japan adopted Buddhism and abandoned the emperor'], correct: 2, why: 'Chinese armies never invaded; Japan chose to imitate Tang government while keeping Shinto.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Zhu Xi, leading Neo-Confucian philosopher of the Southern Song, conversations recorded by his students, c. 1170–1200', text: 'What we call Moral Law is not something out of the ordinary which has to be sought… It is no more than the ordinary principles of everyday life, by which we know that this is right and that is wrong… In the present day the Buddhists talk of a Tao which is to be apprehended suddenly… The kindness of the father, the filial obedience of the son, the benevolence of the sovereign, and the loyalty of the minister, are one principle common to all people… the Buddhists and Taoists discard human relationships, and yet they pay reverence to their teacher as to a father… The only thing is that they are all imitations.', cite: 'Zhu Xi, Complete Works, Book 46, trans. J. P. Bruce, The Philosophy of Human Nature (1922), pp. 272–274' },
+      questions: [
+        { q: 'The passage best illustrates which feature of Neo-Confucianism?', options: ['Its rejection of all ethics in favor of meditation', 'Its belief that the emperor should share power with monks', 'Its claim that salvation comes from calling on the Buddha', 'Its focus on moral principles in family and political relationships'], correct: 3, why: 'Zhu Xi finds moral law in the father–son and ruler–minister relationships: filial piety and loyalty.' },
+        { q: 'Zhu Xi’s complaint that Buddhists “discard human relationships” reflects which long-running conflict?', options: ['Buddhist monastic celibacy versus Confucian family duty and filial piety', 'Merchants versus scholar-officials over paper money', 'The Song versus the Jurchen over north China', 'Shinto versus Buddhism in Japan'], correct: 0, why: 'Confucians said monks who left their families and did not marry broke the duty to parents and ancestors.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Marco Polo, Venetian merchant who lived in Mongol-ruled China c. 1275–1292, describing Hangzhou (“Kinsay”), the former Southern Song capital; his book was written down c. 1298', text: '…the city is beyond dispute the finest and the noblest in the world… And there are in it twelve thousand bridges of stone, for the most part so lofty that a great fleet could pass beneath them… there were in this city twelve guilds of the different crafts, and that each guild had 12,000 houses in the occupation of its workmen… And yet all these craftsmen had full occupation, for many other cities of the kingdom are supplied from this city with what they require. The document aforesaid also stated that the number and wealth of the merchants, and the amount of goods that passed through their hands, was so enormous that no man could form a just estimate thereof.', cite: 'Marco Polo, Travels 2.76, trans. H. Yule, rev. H. Cordier (1903)' },
+      questions: [
+        { q: 'The city Polo describes was a product of which development?', options: ['The equal-field system of the early Tang', 'The Song commercial revolution and urbanization', 'Japan’s imitation of Chang’an', 'The persecution of Buddhism in the 840s'], correct: 1, why: 'Craft guilds, rich merchants and goods for “many other cities” show the Song market economy; Hangzhou had over a million people.' },
+        { q: 'Which factor best explains how Hangzhou could feed such a large population?', options: ['Imports of wheat from Europe', 'The tributary gifts of Korea and Japan', 'Champa rice harvests and canal transport from the countryside', 'The end of foot binding'], correct: 2, why: 'Two rice crops a year and the canal network moved huge food surpluses into cities.' },
+        { q: 'A historian using this passage should keep in mind that Polo', options: ['was a Song official writing to the emperor', 'never left Venice', 'wrote in Chinese for a Chinese audience', 'was an amazed foreign visitor writing after the Mongol conquest, partly from a report, so his numbers may be exaggerated'], correct: 3, why: 'Sourcing: Polo says he relied on a “document” and wrote years later for European readers; it is a later, outside view.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE technological or agricultural innovation in Tang or Song China.',
+        'Explain ONE way the growth of agriculture changed Chinese society during the Song dynasty.',
+        'Explain ONE reason the Song government took control of paper money in the eleventh century.',
+      ],
+      guide: [
+        'Accept: Champa rice, iron plows, water wheels, terracing, porcelain, coke- or coal-fired iron furnaces, gunpowder, the magnetic compass, woodblock printing, movable type, flying cash, paper money.',
+        'Accept with explanation: more food → population passed 100 million; growth of huge cities like Hangzhou; more trade and markets; more people free to work in crafts and commerce.',
+        'Accept with explanation: privately issued notes were unstable and sometimes not honored, causing riots; copper coins were scarce; the state wanted a stable, trusted currency (and revenue).',
+      ],
+      model: [
+        'Champa rice, a fast-ripening rice from Vietnam, let farmers in south China grow two crops a year.',
+        'Bigger harvests and canals to move food let China’s population grow past 100 million, so cities like Hangzhou reached more than a million people and many families could work in trade and crafts.',
+        'Private merchants’ notes were not always honored, and when they failed people rioted. To make money trustworthy, the government made printing paper money a state monopoly.',
+      ],
+    },
+    {
+      prompt: 'Use the Seventeen Article Constitution (604 CE) in the practice questions above.',
+      parts: [
+        'Identify ONE idea in the document that came from China.',
+        'Explain ONE reason Japanese leaders borrowed Chinese models in the 600s and 700s.',
+        'Explain ONE way Japan’s development differed from China’s by c. 1200.',
+      ],
+      guide: [
+        'Accept: Buddhism (the three treasures); Confucian hierarchy (lord as Heaven, vassal as Earth); a single sovereign over all the people; officials chosen for merit and good behavior.',
+        'Accept with explanation: Tang China was the most powerful and prestigious state in the region; a centralized model helped the court control powerful clans; Buddhism offered a universal faith and learning.',
+        'Accept with explanation: the emperor became a figurehead under the Fujiwara and later the shogun; power went to regional lords and samurai rather than exam-trained officials; Japan kept Shinto; Japan was never part of the tributary system by force.',
+      ],
+      model: [
+        'Article II tells people to “reverence the three treasures,” the Buddha, the law and the monks, and Buddhism reached Japan from China by way of Korea.',
+        'The Tang was the richest and strongest state Japan knew. By copying its centralized government, the Japanese court hoped to control clan leaders; Article XII says “there are not two lords.”',
+        'In China the Song were ruled by scholar-officials chosen by exam, but in Japan real power passed to warrior clans. By 1192 a shogun ruled from Kamakura with samurai, while the emperor in Kyoto had little power.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which Korea, Vietnam and Japan adopted Chinese political and cultural traditions in the period c. 600–1200.',
+    theses: [
+      { text: 'Korea, Vietnam and Japan were influenced by China.', ok: false, why: 'Too vague. It does not answer “to what extent” or say how.' },
+      { text: 'Japan built a capital at Nara in 710.', ok: false, why: 'A fact, not an argument.' },
+      { text: 'Korea, Vietnam and Japan adopted Chinese writing, Confucianism and Buddhism to a great extent, but each adapted them to local traditions: Korea kept aristocratic rule, Vietnam rejected Chinese political control, and Japan kept Shinto and handed power to warriors.', ok: true, why: 'Makes a defensible claim with a clear “extent” and sets up both sides: adoption and adaptation or resistance.' },
+    ],
+    contextHint: 'What was happening in China around 600 that made its neighbors want to borrow from it?',
+    contextStart: 'After 589 the Sui and Tang…',
+    context: 'After 589 the Sui and Tang rebuilt a powerful, unified China. Tang armies, envoys and the tributary system spread Chinese prestige across East Asia, while Buddhist monks and students carried texts along land and sea routes.',
+    evidence: [
+      { text: 'Silla Korea sent tribute to the Tang, used Chinese characters and set up Confucian schools.', side: 'adopted' },
+      { text: 'Vietnam used Chinese writing, farming methods, Confucianism and Buddhism.', side: 'adopted' },
+      { text: 'Shotoku’s Seventeen Articles (604) mixed Confucian and Buddhist ideas.', side: 'adopted' },
+      { text: 'Nara was laid out on the model of Chang’an; Japan imitated Tang government.', side: 'adopted' },
+      { text: 'Silla’s aristocrats kept their power; Korea governed itself despite vassal status.', side: 'adapted or resisted' },
+      { text: 'Vietnam rebelled and won independence when the Tang fell (939).', side: 'adapted or resisted' },
+      { text: 'Japan kept Shinto and developed kana writing; the Fujiwara ruled behind the emperor.', side: 'adapted or resisted' },
+      { text: 'By 1192 a shogun and samurai held power in Japan, not exam-trained officials.', side: 'adapted or resisted' },
+    ],
+    complexity: 'Show complexity by comparing the three: Korea came closest to the Chinese model, Vietnam took the culture but fought the politics, and Japan borrowed by choice and then went its own way. Or explain why: distance from China (Japan) and direct Chinese rule (Vietnam) shaped each response.',
+  },
+
+  recall: [
+    { q: 'Which dynasty built the Grand Canal?', a: 'The Sui' },
+    { q: 'What were officials tested on in the civil-service exams?', a: 'The Confucian classics' },
+    { q: 'What crop let Song farmers harvest twice a year?', a: 'Champa rice' },
+    { q: 'Who was the leading Neo-Confucian thinker?', a: 'Zhu Xi (1130–1200)' },
+    { q: 'Which clan held real power behind the emperor in Heian Japan?', a: 'The Fujiwara' },
+  ],
+}

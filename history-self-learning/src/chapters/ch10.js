@@ -1,0 +1,345 @@
+// Chapter 10 · Mediterranean Society: The Greek Phase (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch10.js.
+export default {
+  hook: 'Greece was never one country. It was hundreds of small, proud city-states squeezed between mountains and the sea, and they fought each other constantly. Yet these quarrelsome Greeks beat the mighty Persian Empire, invented democracy and philosophy, and planted colonies from Spain to the Black Sea. Then a young Macedonian king, Alexander, carried Greek language and ideas all the way to India in just eleven years.',
+  apNote: 'This chapter is from the classical era, before the current AP World exam period (1200–present). It still matters: AP essays compare classical societies, and the Hellenistic world after Alexander is a model of cultural diffusion. Greek ideas about democracy, philosophy and science come back in the Renaissance and Enlightenment chapters.',
+  themes: ['Governance', 'Social structures', 'Cultural developments', 'Economic systems'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['Q-mkVSasZIM', 'The Persians & Greeks: Crash Course World History #5', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Watch Greek culture spread from a few Aegean islands to colonies around the Mediterranean, and then with Alexander all the way to India.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: -2300, to: -20 },
+    { label: 'Bronze Age', from: -2300, to: -750 },
+    { label: 'Classical Greece', from: -800, to: -380 },
+    { label: 'Alexander & after', from: -370, to: -20 },
+    { label: 'Long view', from: -3000, to: 200 },
+  ],
+  bigIdeas: [
+    'Geography split Greece into independent poleis. Sparta built a military state to control its helots, while Athens moved toward a democracy of free adult men.',
+    'Colonies, trade in olive oil and wine, and shared festivals tied Greeks together across the Mediterranean and the Black Sea.',
+    'The Greeks united to beat Persia (490–479 BCE), then wore themselves out in the Peloponnesian War, opening the way for Macedon.',
+    'Alexander’s conquests created the Hellenistic world, where Greek language, cities and ideas mixed with Egyptian, Persian and Indian traditions.',
+  ],
+
+  sections: [
+    {
+      id: 'minoans', title: 'Minoans and Mycenaeans', when: 'c. 2200 – 800 BCE', theme: 'Economic systems', map: 0,
+      lead: 'The first Aegean civilization grew on the island of Crete. Then warriors from mainland Greece, the Mycenaeans, took over, until their world collapsed after 1100 BCE.',
+      body: [
+        'Minoan society centered on Crete. From about 2200 BCE its great palace at Knossos sat at the heart of sea trade with Egypt, Phoenicia, Anatolia and the Greek mainland. The Minoans wrote in a script called Linear A, which scholars still cannot read.',
+        'After 1700 BCE a series of natural disasters hit Crete: earthquakes, volcanic eruptions and tidal waves. A huge eruption on the nearby island of Thera (around 1600 BCE) buried a whole town in ash. Weakened Crete then fell under foreign rule.',
+        'The newcomers were the Mycenaeans. Indo-European speakers had moved down through the Balkans into Greece (your notes date this to about 2200 BCE). They copied Minoan art and writing, built fortified palaces such as Mycenae, and expanded by war. By about 1450 BCE they controlled Crete. Their script, Linear B, turned out to be an early form of Greek.',
+        'Around 1200 BCE the Mycenaeans may have fought Troy in Anatolia, the war later made famous by Homer’s epic poems, the Iliad and its sequel, the Odyssey. Soon after, invasions and revolts brought chaos. From about 1100 to 800 BCE palaces were abandoned, writing disappeared, and Mycenaean civilization vanished.',
+      ],
+      facts: ['Knossos, Crete: sea-trading center from c. 2200 BCE', 'Linear A: still undeciphered', 'Mycenae: warrior kingdoms; Linear B = Greek', 'Trojan War c. 1200 BCE · chaos 1100–800 BCE'],
+      chain: ['Crete grows rich on sea trade', 'Earthquakes, eruptions and tidal waves after 1700 BCE', 'Mycenaeans take over Crete', 'Wars and invasions after 1200 BCE', 'Mycenaean world collapses'],
+      soWhat: 'Later Greeks remembered this age through Homer. The Iliad and the Odyssey became the shared stories every Greek child learned, a key part of Greek identity.',
+      video: ['eMjNAgR2KLk', 'Who were the ancient Minoans and Mycenaeans | Earliest Greek cultures', 'History Skills'],
+    },
+    {
+      id: 'polis', title: 'The polis: Sparta and Athens', when: '800 – 429 BCE', theme: 'Governance', map: 1,
+      lead: 'After 800 BCE Greeks lived in poleis: independent city-states, each a city plus the farmland around it. Sparta and Athens chose opposite paths.',
+      body: [
+        'A polis (plural poleis) was an urban center that dominated the countryside around it. Each one was fiercely independent. Some had kings, some were run by “tyrants” (strongmen who seized power, but were not always cruel), and some became early democracies.',
+        'Sparta conquered its neighbors in Messenia and turned them into helots: serfs tied to the land who farmed for Spartan masters. By the 500s BCE helots outnumbered Spartans about ten to one. To prevent revolts, Sparta became a military camp. Boys left home at seven to train in barracks, then served in the army. Men could marry, but they lived in barracks, not at home, until about age 30. Life was austere: plain food and no luxury.',
+        'Athens took a different road. From the 600s BCE sea trade made Athens richer, but aristocrats took over more land, and many small farmers fell into debt and even slavery. Class conflict threatened civil war. In 594 BCE the aristocrat Solon worked out a compromise: aristocrats kept their large estates, but debts were canceled, debt slavery was banned, and men from more families could take part in government.',
+        'Later leaders widened the democracy. Cleisthenes (508 BCE) gave power to an assembly of all citizens. Under Pericles, who led Athens from 461 to 429 BCE, democracy reached its high point: Athens paid citizens to serve on juries, built the Parthenon and other public works, and welcomed artists and thinkers. But only free adult men were citizens. Women, slaves and foreigners had no vote.',
+      ],
+      facts: ['Polis = city-state; about 1,000 of them', 'Sparta: helots outnumber Spartans 10:1', 'Spartan boys go to barracks at age 7', 'Athens: Solon 594 BCE · Pericles 461–429 BCE'],
+      chain: ['Mountains and sea divide Greece', 'Independent poleis', 'Sparta enslaves helots → military state', 'Athens: trade, debt, class conflict', 'Solon’s compromise → democracy for free men'],
+      soWhat: 'Athens is the first well-documented democracy, and Sparta the classic military state. Both models echo in later debates about citizenship, from the Roman Republic to the American founders.',
+      video: ['0fivQUlC7-8', 'What did democracy really mean in Athens? - Melissa Schwartzberg', 'TED-Ed'],
+      factCheck: 'Your notes say Spartan discipline relaxed “by the fourth century C.E.”; that should be the fourth century B.C.E. (the 300s BCE). Your notes also credit Solon with a paid civil service. Most historians credit Pericles (in the 450s BCE) with first paying citizens for jury service, so that poor men could afford to take part.',
+    },
+    {
+      id: 'colonies', title: 'Colonies, trade and a Greek identity', when: '800 – 500 BCE', theme: 'Economic systems', map: 2,
+      lead: 'Greece had a growing population and too little good farmland. So Greeks sailed out and founded colonies all around the Mediterranean and the Black Sea.',
+      body: [
+        'Between about 800 and 500 BCE, population growth pushed Greeks to found hundreds of new poleis overseas. They settled southern Italy and Sicily (Neapolis, “new city,” is today’s Naples; Syracuse was the greatest colony in Sicily), southern France (Massalia, today’s Marseille), the coast of Anatolia, Libya, and the shores of the Black Sea in what is now southern Ukraine.',
+        'Greece grew little grain, but its rocky hills were perfect for olives and grapes. Greeks traded olive oil and wine for grain, fish, timber and slaves from the colonies, so commerce, not farming alone, became the base of much of the economy.',
+        'Colonies spread the Greek language and culture and carried ideas back and forth. Contact also changed local peoples: some local elites adopted Greek goods and customs, and some built larger states of their own. The Greeks, for their part, borrowed the Phoenician alphabet and added vowels, creating a flexible script that later shaped the Latin alphabet.',
+        'Even though they were scattered from Spain to Ukraine, Greeks felt connected. Panhellenic (“all-Greek”) festivals brought them together. The Olympic Games, held in honor of Zeus at Olympia, began in 776 BCE. Athletes from every polis competed, and a sacred truce let them travel safely. Language, Homer, the gods and the games gave Greeks a shared identity.',
+      ],
+      facts: ['Colonies: Italy, Sicily, France, Anatolia, Libya, Black Sea', 'Export olive oil and wine; import grain', 'Greek alphabet: Phoenician letters + vowels', 'First Olympic Games, 776 BCE'],
+      chain: ['Population grows; little farmland', 'Greeks found overseas colonies', 'Trade: olive oil and wine for grain', 'Greek language and ideas spread', 'Festivals build a shared Greek identity'],
+      soWhat: 'Greek colonies made the Mediterranean a connected zone of trade and ideas centuries before Rome. Rome itself learned a great deal from the Greeks of southern Italy.',
+      factCheck: 'Your notes list Naples (Neapolis) under Sicily. Neapolis was actually on the Italian mainland, in Campania; Syracuse was the best-known Greek colony on Sicily.',
+    },
+    {
+      id: 'wars', title: 'The Persian Wars and the Peloponnesian War', when: '500 – 404 BCE', theme: 'Governance', map: 3,
+      lead: 'The Greeks united just long enough to stop the Persian Empire. Then Athens built an empire of its own, and Greece tore itself apart in a long war between Athens and Sparta.',
+      body: [
+        'Around 500 BCE the Ionian Greek cities of Anatolia revolted against Persian rule, and Athens sent ships to help. King Darius crushed the revolt by 493 BCE, then sent a force to punish Athens. In 490 BCE the Athenians routed the Persian army at Marathon.',
+        'Ten years later Darius’s son Xerxes invaded with a huge army and fleet. At Thermopylae (480 BCE) a small Greek force led by 300 Spartans held a narrow pass for days before it was wiped out. Xerxes burned Athens, but the Athenian-led fleet smashed his navy at Salamis (480 BCE), and a Greek army led by Sparta beat the Persians at Plataea (479 BCE).',
+        'To guard against Persia, many poleis joined the Delian League (478 BCE), led by Athens. Members paid Athens huge sums, which helped pay for a powerful navy and Pericles’ building projects, such as the Parthenon. Other poleis resented this, and when some tried to leave, Athens forced them back. The league had become an Athenian empire.',
+        'Fear of Athenian power drove Sparta and its Peloponnesian League to war. The Peloponnesian War (431–404 BCE) lasted 27 years. A plague killed perhaps a quarter of the people of Athens, including Pericles in 429 BCE. Athens was forced to surrender in 404 BCE, but fighting between Sparta, Thebes and other poleis went on, leaving Greece weak.',
+      ],
+      facts: ['Ionian revolt c. 500 BCE; Athens helps', 'Marathon 490 · Thermopylae & Salamis 480 · Plataea 479', 'Delian League 478 BCE: tribute to Athens', 'Peloponnesian War 431–404 BCE: Athens surrenders'],
+      chain: ['Ionian revolt; Athens helps', 'Persia invades: Marathon, Salamis, Plataea', 'Delian League led by Athens', 'Tribute builds Athenian power; allies resent it', 'Peloponnesian War: Athens loses', 'Greece left divided and weak'],
+      soWhat: 'Victory over Persia gave Athens the confidence and the money for its golden age. The Peloponnesian War shows how a defensive alliance can turn into an empire, and how rivalry can ruin both sides.',
+      video: ['pwwNxWXf1eU', 'Beginning of the Greco Persian Wars | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'alexander', title: 'Macedon and Alexander', when: '359 – 323 BCE', theme: 'Governance', map: 5,
+      lead: 'While the poleis fought each other, the kingdom of Macedon to the north built the strongest army in Greece. Philip II conquered Greece; his son Alexander conquered the Persian Empire.',
+      body: [
+        'Macedon was a frontier kingdom north of the Greek poleis, ruled by kings. Philip II (r. 359–336 BCE) built a large professional army of pikemen and heavy cavalry. From about 350 BCE he pushed south, and after his victory at Chaeronea in 338 BCE he controlled the Greek poleis.',
+        'Philip was murdered in 336 BCE, and his 20-year-old son Alexander took over. In 334 BCE Alexander crossed into Anatolia with about 37,000 soldiers. He beat the Persians at the Granicus River, at Issus (333 BCE) and at Gaugamela (331 BCE). He took Egypt, where he founded Alexandria, and burned the Persian palace at Persepolis. The Achaemenid Empire was his.',
+        'He kept going: through Bactria and Sogdiana in Central Asia, and over the Hindu Kush into India, where he defeated King Porus at the Hydaspes River (326 BCE). At the Hyphasis River his exhausted troops mutinied and refused to go farther. Alexander turned back and marched home through the Gedrosian desert, where many soldiers died.',
+        'Alexander married a Bactrian noblewoman, Roxane, adopted some Persian court customs, and founded cities named Alexandria across his empire, settled by Greek veterans. He died in Babylon in 323 BCE, only 32 years old, without a clear heir.',
+      ],
+      facts: ['Philip II controls Greece by 338 BCE', 'Alexander invades Persia, 334 BCE', 'Issus 333 · Gaugamela 331 · Hydaspes 326', 'Troops mutiny in India; he dies in Babylon, 323 BCE'],
+      chain: ['Poleis exhausted by war', 'Philip II’s new army conquers Greece', 'Alexander invades Persia', 'Persian Empire falls', 'Troops mutiny in India', 'Alexander dies; no clear heir'],
+      soWhat: 'In just eleven years Alexander joined Greece, Egypt, Persia and the edge of India under one ruler. The cities and settlers he left behind turned Greek culture into an Afro-Eurasian culture.',
+      video: ['0LsrkWDCvxg', 'Alexander the Great: Crash Course World History #8', 'CrashCourse'],
+    },
+    {
+      id: 'hellenistic', title: 'The Hellenistic kingdoms', when: '323 – 31 BCE', theme: 'Cultural developments', map: 6,
+      lead: 'Alexander’s generals fought over his empire and split it into three great kingdoms. For three centuries Greek rulers, cities and ideas mixed with the older cultures of Egypt, Persia and India. Historians call this the Hellenistic age (from Hellas, Greece).',
+      body: [
+        'The Antigonids, heirs of the general Antigonus, ruled Macedon and Greece. Theirs was the smallest kingdom. Greek poleis resented their rule, and quarrels over land led many Greeks to leave and settle in the new colonies to the east.',
+        'The Ptolemies, heirs of Ptolemy, ruled Egypt, the richest kingdom. They ran state monopolies on textiles, salt and beer, and ruled as pharaohs over Egyptian farmers. Their capital, Alexandria, was the busiest port in the Mediterranean, with a giant lighthouse, a Museum (a research institute) and a library of hundreds of thousands of scrolls.',
+        'The Seleucids, heirs of Seleucus, took most of the old Persian Achaemenid Empire. They settled Greek colonists in dozens of cities such as Antioch and Seleucia, and Greek culture reached as far as Bactria (Afghanistan), where Greek kings later ruled on their own. A Seleucid envoy, Megasthenes, wrote a famous description of India, and the Indian emperor Ashoka put up an edict at Kandahar in both Greek and Aramaic.',
+        'Across this world, trade and ideas moved more freely than ever. A common form of Greek, koine, was spoken from Egypt to Afghanistan, and scholars borrowed ideas across cultures. Rome slowly conquered the Hellenistic kingdoms. When Octavian defeated Cleopatra, the last Ptolemaic ruler, at Actium in 31 BCE, the Hellenistic age was over.',
+      ],
+      facts: ['Antigonids: Macedon & Greece (smallest)', 'Ptolemies: Egypt (richest), capital Alexandria', 'Seleucids: old Persian Empire, east to Bactria', 'Koine Greek links Egypt to Afghanistan'],
+      chain: ['Alexander dies without an heir', 'Generals split the empire', 'Greek settlers fill new cities', 'Greek mixes with Egyptian, Persian and Indian culture', 'Trade and ideas cross Afro-Eurasia', 'Rome absorbs the kingdoms'],
+      soWhat: 'The Hellenistic world is AP’s classic example of cultural diffusion and blending. Its trade links and common Greek language later helped Christianity spread, and in Gandhara Greek styles shaped early images of the Buddha.',
+      video: ['AgYVtucDPt8', 'Diadochi and the Hellenistic Period | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'society', title: 'Women, slaves and the gods', when: 'Greek society', theme: 'Social structures',
+      lead: 'Greek society was patriarchal and depended on slaves. Its religion honored many gods, and its religious festivals gave birth to drama.',
+      body: [
+        'Men ran public life. Greek culture pictured women as goddesses, wives or prostitutes, and respectable women, especially in Athens, rarely appeared in public. Sparta was a partial exception: Spartan women exercised, owned property and ran estates while men served in the army. The poet Sappho of Lesbos (c. 600 BCE) is a rare female voice from the time. Families sometimes left unwanted newborns to die, a practice called infanticide.',
+        'Slavery was everywhere. Many slaves were foreigners, such as Scythians from the steppes north of the Black Sea (today’s Ukraine) and Nubians from Africa. They were chattel: owned as property. Some worked in mines and homes; others ran businesses for their owners, and some could save money and buy their freedom.',
+        'Greeks were polytheists. Zeus ruled the gods on Mount Olympus, and each polis had patron gods, such as Athena for Athens. Mystery cults promised a closer bond with a god: the Eleusinian mysteries honored Demeter, goddess of grain, and wild rites for Dionysus, god of wine, appear in Euripides’ play The Bacchae. Over time these rituals were tamed into regular civic festivals.',
+        'Drama grew out of those festivals. In the 400s BCE Athens staged tragedies by Aeschylus, Sophocles and Euripides, about heroes and gods facing hard moral choices, and comedies by Aristophanes that mocked powerful politicians.',
+      ],
+      facts: ['Patriarchy; Spartan women freer', 'Sappho of Lesbos, poet, c. 600 BCE', 'Chattel slaves: Scythians, Nubians; some bought freedom', 'Tragedy: Aeschylus, Sophocles, Euripides · comedy: Aristophanes'],
+      chain: ['Men control public life', 'Women kept mostly at home', 'Slaves do much of the labor', 'Free men have time for politics and festivals', 'Festivals for Dionysus → tragedy and comedy'],
+      soWhat: 'Athenian democracy depended on the work of women and slaves who had no vote. AP essays reward you for noticing who was left out when a society called itself free.',
+    },
+    {
+      id: 'ideas', title: 'Greek science and philosophy', when: '600 – 200 BCE', theme: 'Cultural developments',
+      lead: 'Greek thinkers tried to explain the world through observation and reason instead of myths. Their questions still shape science and philosophy.',
+      body: [
+        'Early scientists looked for natural causes. Thales of Miletus is said to have predicted a solar eclipse on 28 May 585 BCE. Democritus argued that everything is made of tiny atoms. Pythagoras made mathematics systematic (a² + b² = c² for right triangles), and Hippocrates studied anatomy and taught that diseases have natural causes.',
+        'Socrates (470–399 BCE) taught by asking questions, the Socratic method, to test what people really knew. He called himself a gadfly that stung Athens awake. In 399 BCE a jury convicted him of corrupting the young and not honoring the city’s gods, and he was made to drink hemlock poison.',
+        'His student Plato (c. 428–347 BCE) wrote down and organized Socratic thought. In the Republic he argued that philosopher-kings should rule, and that the things we see are imperfect copies of perfect, unchanging Forms (or Ideas). Plato’s student Aristotle (384–322 BCE) rejected the Forms. He trusted evidence and reason, studied everything from biology to politics, and shaped Western and Islamic thought for 2,000 years.',
+        'In the Hellenistic age, philosophers asked how to live calmly in a big, uncertain world. Epicureans sought pleasure, meaning freedom from pain and fear, not wild indulgence. Skeptics doubted that anything could be known for certain. Stoics taught duty, virtue and inner peace, ideas that Romans like Cicero later embraced.',
+      ],
+      facts: ['Thales predicts an eclipse, 585 BCE', 'Socrates: questions; executed 399 BCE', 'Plato: Republic, philosopher-kings, Forms', 'Aristotle: evidence and logic · Stoics, Epicureans, Skeptics'],
+      chain: ['Trade and leisure for free men', 'Reason replaces myth', 'Socrates questions everything', 'Plato: perfect Forms', 'Aristotle: observation and logic', 'Ideas spread through the Hellenistic world'],
+      soWhat: 'Muslim scholars translated and studied Aristotle, and his works returned to Europe in the Middle Ages. Greek ideas then fueled the Renaissance, the Scientific Revolution and the Enlightenment.',
+      video: ['pJQr77Vzwyk', 'Socrates Plato Aristotle | World History | Khan Academy', 'Khan Academy'],
+      factCheck: 'Your notes give Aristotle’s birth as 389 BCE; the standard date is 384 BCE. Plato is usually dated c. 428–347 BCE (your notes: 430). And the Pythagorean theorem in your notes reads “a2 = b2 = c2”; it should be a² + b² = c².',
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: -2200, end: -1450, label: 'Minoan civilization on Crete', track: 'society', detail: 'Knossos is the center of Aegean sea trade. Minoans write in Linear A, still undeciphered.' },
+    { year: -1700, label: 'Disasters strike Crete', track: 'society', detail: 'Earthquakes, eruptions and tidal waves. The great eruption on Thera comes around 1600 BCE.' },
+    { year: -1600, end: -1100, label: 'Mycenaean kingdoms', track: 'politics', detail: 'Fortified palaces such as Mycenae and Pylos; Linear B, an early form of Greek.' },
+    { year: -1450, label: 'Mycenaeans take over Crete', track: 'war', detail: 'Approximate. Crete falls under mainland Greek rule.' },
+    { year: -1200, label: 'Trojan War (traditional date)', track: 'war', detail: 'The war behind Homer’s Iliad. How much of the story is real is still debated.' },
+    { year: -1100, end: -800, label: 'Greek “dark age”', track: 'society', detail: 'Palaces abandoned, trade shrinks, writing disappears.' },
+    { year: -800, end: -500, label: 'Age of colonization', track: 'society', detail: 'Greek colonies from Spain and France to Libya and the Black Sea.' },
+    { year: -776, label: 'First Olympic Games', track: 'religion', detail: 'Panhellenic festival for Zeus at Olympia; a truce lets athletes travel.' },
+    { year: -750, label: 'Homer’s epics take shape', track: 'religion', detail: 'The Iliad and the Odyssey are written down around 750–700 BCE.' },
+    { year: -594, label: 'Solon’s reforms in Athens', track: 'politics', detail: 'Debts canceled, debt slavery banned; aristocrats keep their estates.' },
+    { year: -585, label: 'Thales predicts an eclipse', track: 'religion', detail: 'Said to have predicted the eclipse of 28 May 585 BCE: nature explained by reason.' },
+    { year: -508, label: 'Cleisthenes widens democracy', track: 'politics', detail: 'Power goes to an assembly of all male citizens.' },
+    { year: -499, end: -493, label: 'Ionian revolt against Persia', track: 'war', detail: 'Usually dated 499 BCE (your notes: 500). Athens sends ships; Darius crushes the revolt.' },
+    { year: -490, label: 'Battle of Marathon', track: 'war', detail: 'Athenians rout Darius’s invading army.' },
+    { year: -480, label: 'Thermopylae and Salamis', track: 'war', detail: 'Xerxes wins at Thermopylae and burns Athens, but loses at sea at Salamis. Plataea (479 BCE) drives the Persians out.' },
+    { year: -478, label: 'Delian League founded', track: 'politics', detail: 'Alliance against Persia led by Athens; tribute flows to Athens.' },
+    { year: -461, end: -429, label: 'Pericles leads Athens', track: 'politics', detail: 'Democracy’s high point; the Parthenon is built (447–432 BCE).' },
+    { year: -431, end: -404, label: 'Peloponnesian War', track: 'war', detail: 'Athens and the Delian League against Sparta and the Peloponnesian League. Athens surrenders.' },
+    { year: -399, label: 'Socrates executed', track: 'religion', detail: 'Convicted of corrupting the young and impiety; drinks hemlock.' },
+    { year: -338, label: 'Philip II wins at Chaeronea', track: 'war', detail: 'Macedon now controls the Greek poleis.' },
+    { year: -334, end: -323, label: 'Alexander’s campaigns', track: 'war', detail: 'Issus (333), Gaugamela (331), Alexandria founded (331), Hydaspes (326), mutiny at the Hyphasis.' },
+    { year: -323, label: 'Alexander dies in Babylon', track: 'politics', detail: 'His generals begin fighting over the empire.' },
+    { year: -285, label: 'Library of Alexandria grows', track: 'religion', detail: 'Approximate. Ptolemaic kings build the Museum and Library.' },
+    { year: -146, label: 'Rome conquers Greece', track: 'war', detail: 'Rome destroys Corinth; Macedon and Greece become Roman.' },
+    { year: -31, label: 'Battle of Actium', track: 'politics', detail: 'Octavian defeats Cleopatra; Rome takes Ptolemaic Egypt in 30 BCE, ending the Hellenistic age.' },
+    { year: -550, label: 'Cyrus founds the Persian Empire', track: 'world', detail: 'The Achaemenid Empire soon stretches from Egypt to India.' },
+    { year: -509, label: 'Rome becomes a republic', track: 'world', detail: 'See Chapter 11. Rome will later conquer the Hellenistic kingdoms.' },
+    { year: -321, label: 'Mauryan Empire founded in India', track: 'world', detail: 'Chandragupta Maurya; the Seleucid envoy Megasthenes describes his court.' },
+    { year: -268, end: -232, label: 'Ashoka rules India', track: 'world', detail: 'Spreads Buddhism; one of his edicts is in Greek and Aramaic.' },
+    { year: -221, label: 'Qin unifies China', track: 'world', detail: 'The first Chinese empire, at the far end of the later Silk Roads (Chapter 12).' },
+  ],
+
+  terms: [
+    ['Minoans', 'Bronze Age society on Crete centered on the palace at Knossos (c. 2200–1450 BCE).', 'The first great Aegean trading civilization.'],
+    ['Linear A', 'Minoan script that scholars still cannot read.', 'We know the Minoans mostly from archaeology, not their own words.'],
+    ['Mycenaeans', 'Warlike Greek-speaking kingdoms on the mainland (c. 1600–1100 BCE).', 'Took over Crete; their world inspired Homer.'],
+    ['Homer', 'Poet credited with the Iliad and the Odyssey.', 'Gave all Greeks shared heroes, gods and values.'],
+    ['Polis', 'Greek city-state: a city plus the farmland it controlled.', 'The basic political unit of Greece.'],
+    ['Tyrant', 'A ruler who seized power outside the normal rules.', 'Not always cruel; some tyrants helped the poor against aristocrats.'],
+    ['Helots', 'Conquered people forced to farm for Sparta as serfs.', 'Fear of helot revolts made Sparta a military state.'],
+    ['Sparta', 'Polis in the Peloponnese built around its army.', 'The classic militarized society.'],
+    ['Solon', 'Athenian aristocrat who canceled debts and banned debt slavery (594 BCE).', 'His compromise opened the way to democracy.'],
+    ['Athenian democracy', 'Rule by an assembly of citizens, who were free adult men only.', 'The first well-documented democracy, but it excluded women, slaves and foreigners.'],
+    ['Pericles', 'Leader of Athens from 461 to 429 BCE.', 'Democracy’s high point; built the Parthenon.'],
+    ['Greek colonization', 'Founding of new Greek poleis overseas, c. 800–500 BCE.', 'Spread Greek trade and culture across the Mediterranean and Black Sea.'],
+    ['Panhellenic festivals', '“All-Greek” religious festivals and games, like the Olympics (from 776 BCE).', 'Built a shared Greek identity.'],
+    ['Persian Wars', 'Wars between Greek poleis and the Persian Empire, 500–479 BCE.', 'Greek victory protected the poleis and boosted Athens.'],
+    ['Delian League', 'Alliance against Persia led by Athens, founded 478 BCE.', 'Its tribute turned it into an Athenian empire.'],
+    ['Peloponnesian War', 'War between Athens and Sparta and their allies, 431–404 BCE.', 'Wrecked Athens and weakened all of Greece.'],
+    ['Philip II', 'King of Macedon (r. 359–336 BCE) who conquered Greece.', 'Built the army Alexander used.'],
+    ['Alexander the Great', 'King of Macedon (r. 336–323 BCE) who conquered Persia and reached India.', 'Spread Greek settlers and culture across Southwest and Central Asia.'],
+    ['Hellenistic', 'The Greek-influenced world after Alexander, 323–31 BCE.', 'A model of cultural diffusion and blending.'],
+    ['Antigonid kingdom', 'Kingdom of Antigonus’s heirs: Macedon and Greece.', 'The smallest Hellenistic kingdom.'],
+    ['Ptolemaic Egypt', 'Kingdom of Ptolemy’s heirs, with its capital at Alexandria.', 'The richest Hellenistic kingdom; famous Museum and Library.'],
+    ['Seleucid Empire', 'Kingdom of Seleucus’s heirs, from Syria to Bactria.', 'Carried Greek settlers and culture east to India’s border.'],
+    ['Socratic method', 'Teaching by asking probing questions.', 'Still used in law schools and classrooms.'],
+    ['Plato’s Forms', 'Idea that perfect, unchanging Forms lie behind the things we see.', 'Shaped later philosophy and Christian thought.'],
+    ['Aristotle', 'Plato’s student (384–322 BCE) who stressed evidence and logic.', 'Huge influence on Islamic and European thought.'],
+    ['Stoicism', 'Hellenistic philosophy of duty, virtue and inner peace.', 'Adopted by Roman thinkers like Cicero.'],
+    ['Eleusinian mysteries', 'Secret rites honoring Demeter, goddess of grain.', 'Mystery cults offered a personal bond with the gods.'],
+    ['Greek tragedy', 'Plays by Aeschylus, Sophocles and Euripides that grew out of religious festivals.', 'The root of Western drama.'],
+  ],
+
+  compare: [
+    {
+      title: 'Athens vs Sparta',
+      head: ['', 'Athens', 'Sparta'],
+      rows: [
+        ['Government', 'Democracy: assembly of free adult men (after Solon and Cleisthenes)', 'Two kings, a council of elders and an assembly; a military elite rules'],
+        ['Economy', 'Sea trade, crafts, silver mines, olive oil', 'Farming by helot serfs; little trade'],
+        ['Upbringing', 'Boys taught privately: reading, music, sport', 'Boys taken at 7 for military training in barracks'],
+        ['Women', 'Kept mostly at home, no public role', 'Exercised, owned property, ran estates'],
+        ['Labor', 'Chattel slaves', 'Helots outnumber citizens about 10:1'],
+        ['Strength', 'Navy; leads the Delian League', 'Army; leads the Peloponnesian League'],
+      ],
+    },
+    {
+      title: 'Greek poleis vs the Persian Empire',
+      head: ['', 'Greek poleis', 'Achaemenid Persian Empire'],
+      rows: [
+        ['Size', 'About a thousand small, independent city-states', 'One huge empire from Egypt to the Indus'],
+        ['Government', 'Varied: kings, tyrants, oligarchies, democracies', 'One “king of kings” ruling through satraps (governors)'],
+        ['People’s role', 'Citizens (free men) vote and fight for their polis', 'Subjects obey the king and pay tribute'],
+        ['What held it together', 'Shared language, gods, Homer, Olympics; little political unity', 'Royal roads, officials, tolerance of local customs'],
+        ['Legacy', 'Democracy, philosophy, theater', 'A model of tolerant imperial rule that Alexander copied'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'Pericles, leader of Athens, speaking at a public funeral for soldiers killed in the first year of the Peloponnesian War, 431 BCE, as recorded by the Athenian historian Thucydides (the last sentence is addressed to war widows)', text: '“Our constitution does not copy the laws of neighbouring states; we are rather a pattern to others than imitators ourselves. Its administration favours the many instead of the few; this is why it is called a democracy. If we look to the laws, they afford equal justice to all in their private differences… nor again does poverty bar the way, if a man is able to serve the state, he is not hindered by the obscurity of his condition… Great will be your glory in not falling short of your natural character; and greatest will be hers who is least talked of among the men, whether for good or for bad.”', cite: 'Thucydides 2.37 and 2.45, trans. R. Crawley (1874)' },
+      questions: [
+        { q: 'Pericles’s claim that poverty does not “bar the way” to serving the state is best supported by which Athenian practice?', options: ['Paying citizens to serve on juries', 'Choosing all officials from the oldest aristocratic families', 'Requiring citizens to own land before they could vote', 'Allowing only soldiers to attend the assembly'], correct: 0, why: 'Pay for jury service (introduced under Pericles) let poor citizens take time off work to take part.' },
+        { q: 'The final sentence of the passage best reflects which feature of Athenian society?', options: ['Women had the same political rights as men', 'Respectable women were expected to stay out of public life', 'Women led many religious and political offices', 'Spartan customs shaped Athenian family life'], correct: 1, why: 'The highest praise for a woman is to be “least talked of”: Athenian women were expected to stay private.' },
+        { q: 'Which best describes the purpose of the speech?', options: ['To persuade Athenians to make peace with Sparta', 'To argue that Athens should adopt Sparta’s laws', 'To announce the founding of the Delian League', 'To build pride in Athens and support for the war'], correct: 3, why: 'At a war funeral, Pericles praises Athens so citizens will keep fighting. Note too that Thucydides wrote the speech down later and may have shaped its words.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Herodotus, a Greek historian from Halicarnassus writing c. 430 BCE, reports what Demaratus, an exiled Spartan king traveling with the Persian army, told King Xerxes in 480 BCE', text: '“So likewise the Lacedaemonians, when they fight singly, are as good men as any in the world, and when they fight in a body, are the bravest of all. For though they be free-men, they are not in all respects free; Law is the master whom they own; and this master they fear more than thy subjects fear thee. Whatever he commands they do; and his commandment is always the same: it forbids them to flee in battle, whatever the number of their foes, and requires them to stand firm, and either to conquer or die.”', cite: 'Herodotus, Histories 7.104, trans. G. Rawlinson (1858–60)' },
+      questions: [
+        { q: 'The Spartan behavior Demaratus describes is best explained by which feature of Spartan society?', options: ['A trading economy that rewarded individual profit', 'Military training from childhood, needed to control a large helot population', 'A democracy in which all residents voted on war', 'Reliance on soldiers hired from Persia'], correct: 1, why: 'Sparta trained every citizen as a soldier from age seven, largely to keep the helots from revolting.' },
+        { q: 'Which contrast between Greeks and Persians does Demaratus draw?', options: ['Greeks obey a law they share, while Persians obey out of fear of their king', 'Persians had written laws, but Greeks had none', 'Greeks fought for pay, while Persians fought for honor', 'Both peoples were ruled by all-powerful kings'], correct: 0, why: 'Spartans are “free-men” whose master is Law; Xerxes’ subjects fear the king himself.' },
+        { q: 'Which event of 480 BCE best fits the claim that Spartans will “either… conquer or die”?', options: ['The Battle of Marathon', 'The founding of the Delian League', 'The stand at Thermopylae', 'The surrender of Athens'], correct: 2, why: 'At Thermopylae, 300 Spartans and their allies held the pass and died rather than retreat. Marathon was ten years earlier and mostly Athenian.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Plutarch, a Greek writer and priest at Delphi living under the Roman Empire, describing laws said to come from Sparta’s legendary lawgiver Lycurgus, written c. 100 CE', text: '“But Lycurgus would not put the sons of Spartans in charge of purchased or hired tutors, nor was it lawful for every father to rear or train his son as he pleased, but as soon as they were seven years old, Lycurgus ordered them all to be taken by the state and enrolled in companies, where they were put under the same discipline and nurture, and so became accustomed to share one another’s sports and studies… Of reading and writing, they learned only enough to serve their turn; all the rest of their training was calculated to make them obey commands well, endure hardships, and conquer in battle.”', cite: 'Plutarch, Life of Lycurgus 16, trans. B. Perrin (1914)' },
+      questions: [
+        { q: 'The education described in the passage was mainly designed to', options: ['prepare boys to become merchants and sailors', 'train philosophers to rule as kings', 'produce obedient soldiers for a state that had to control a large helot population', 'prepare boys to speak in a democratic assembly'], correct: 2, why: 'Obedience, endurance and victory in battle were the goals; Sparta needed a permanent army to keep the helots down.' },
+        { q: 'A historian using this passage as evidence about Sparta should consider that Plutarch', options: ['was a Spartan general describing his own childhood', 'wrote centuries later, relying on older traditions that may idealize Sparta', 'was a Persian official hostile to all Greeks', 'wrote before Sparta had any laws'], correct: 1, why: 'Sourcing: Plutarch wrote about 700 years after the laws were supposedly made, and Lycurgus himself may be legendary.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Plato, Socrates’s student, recording the speech Socrates gave in his own defense at his trial in Athens, 399 BCE (written some years later)', text: '“What do they say? Something of this sort: – That Socrates is a doer of evil, and corrupter of the youth, and he does not believe in the gods of the state, and has other new divinities of his own… I am that gadfly which God has given the state and all day long and in all places am always fastening upon you, arousing and persuading and reproaching you… the greatest good of man is daily to converse about virtue, and all that concerning which you hear me examining myself and others, and that the life which is unexamined is not worth living.”', cite: 'Plato, Apology 24b, 30e and 38a, trans. B. Jowett (1871)' },
+      questions: [
+        { q: 'The charges against Socrates suggest that Athenian democracy', options: ['protected all speech as an individual right', 'could punish citizens whose ideas seemed to threaten traditional religion and values', 'was controlled by Persian officials', 'allowed only priests to serve on juries'], correct: 1, why: 'A citizen jury condemned Socrates for “corrupting the youth” and not honoring the city’s gods. Athenian freedom had limits.' },
+        { q: 'The activity Socrates describes as “examining myself and others” is best described as', options: ['asking probing questions to test beliefs', 'memorizing Homer’s poems', 'watching the sky to predict eclipses', 'training in barracks for war'], correct: 0, why: 'This is the Socratic method: questioning people until they see what they really know.' },
+        { q: 'What is the most important limitation of this source for understanding Socrates?', options: ['It was written by a Spartan enemy of Athens', 'It is the official court record kept by the jury', 'It was written by his admiring student, who shaped the speech', 'It was carved on a Persian monument'], correct: 2, why: 'Socrates wrote nothing himself. Plato admired him and wrote the speech years later, so it is Plato’s portrait of his teacher.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Arrian, a Greek historian and Roman official writing in the 100s CE from earlier accounts by Alexander’s officers, reports a speech by Coenus, one of Alexander’s generals, at the Hyphasis River in India, 326 BCE', text: '“The more numerous and the greater the exploits have been, which were achieved by thee as our commander, and by those who started from home with thee, the more advantageous does it seem to me that some end should be put to our labours and dangers. For thou thyself seest how many Macedonians and Greeks started with thee, and how few of us have been left… Of the other Greeks, some have been settled as colonists in the cities which thou hast founded; where they remain not indeed all of them of their own free will… Do not lead us now against our will…”', cite: 'Arrian, Anabasis of Alexander 5.27, trans. E. J. Chinnock (1884)' },
+      questions: [
+        { q: 'The speech best explains which turning point?', options: ['Philip II’s conquest of the Greek poleis', 'The founding of the Delian League', 'The division of the empire among Alexander’s generals', 'Alexander’s decision to turn back from India'], correct: 3, why: 'His exhausted army refused to cross the Hyphasis, and Alexander turned back.' },
+        { q: 'The reference to Greeks “settled as colonists in the cities which thou hast founded” best illustrates', options: ['how Greek settlers carried Greek culture into Southwest and Central Asia', 'the Spartan practice of training boys in barracks', 'the use of Delian League tribute to build the Parthenon', 'Persian efforts to spread Zoroastrianism into Greece'], correct: 0, why: 'Greek settlers in new cities like the many Alexandrias spread Greek language and culture: the start of the Hellenistic world.' },
+        { q: 'Arrian’s account is useful to historians mainly because it', options: ['was written by an eyewitness at the Hyphasis', 'drew on earlier accounts by men who served with Alexander', 'was approved by Alexander himself', 'was the official record of the Persian court'], correct: 1, why: 'Arrian wrote about 450 years later, but he used lost memoirs by Alexander’s officers, such as Ptolemy.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE way Athenian democracy limited who could take part in government.',
+        'Explain ONE reason Sparta developed a highly militarized society.',
+        'Explain ONE way the Persian Wars affected Athens.',
+      ],
+      guide: [
+        'Accept: only free adult men were citizens; women, slaves and foreigners were excluded.',
+        'Accept with explanation: helots outnumbered Spartans about 10:1, so Spartans needed a permanent army to stop revolts; boys trained from age seven; austerity kept citizens focused on war.',
+        'Accept with explanation: victory boosted Athenian confidence; Athens led the Delian League and collected tribute; the money paid for the navy and the Parthenon; allies’ resentment led toward the Peloponnesian War.',
+      ],
+      model: [
+        'Only free adult men could vote in the Athenian assembly; women and slaves had no political rights.',
+        'Sparta conquered Messenia and forced its people to work as helots, who came to outnumber Spartans about ten to one. To prevent revolts, Sparta trained every citizen boy as a soldier from age seven.',
+        'After the Persians were defeated, Athens led the Delian League and collected tribute from its allies. Pericles used this money to build the navy and the Parthenon, beginning Athens’ golden age.',
+      ],
+    },
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE Hellenistic kingdom that formed after Alexander’s death.',
+        'Explain ONE way Alexander’s conquests spread Greek culture.',
+        'Explain ONE way Hellenistic rulers adapted to OR blended with local traditions.',
+      ],
+      guide: [
+        'Accept: the Antigonid kingdom (Macedon and Greece), Ptolemaic Egypt, or the Seleucid Empire.',
+        'Accept with explanation: new cities such as Alexandria filled with Greek settlers; koine Greek became a common language of rule and trade; libraries, theaters and gymnasiums; Greek kings in Bactria.',
+        'Accept with explanation: the Ptolemies ruled as pharaohs and honored Egyptian gods; the Seleucids kept Persian provinces and roads; Alexander adopted Persian court customs and married Roxane; Ashoka’s edict in Greek and Aramaic.',
+      ],
+      model: [
+        'Ptolemaic Egypt, ruled from Alexandria by the heirs of Alexander’s general Ptolemy.',
+        'Alexander founded new cities such as Alexandria and filled them with Greek settlers. These cities used the Greek language and built Greek theaters and schools, so Greek culture spread from Egypt to Afghanistan.',
+        'The Ptolemies presented themselves to Egyptians as pharaohs and supported Egyptian temples. Blending in this way helped a small Greek ruling class govern millions of Egyptian farmers.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which Alexander’s conquests and the Hellenistic kingdoms changed the societies of Southwest Asia, Egypt and Central Asia in the period c. 334–31 BCE.',
+    theses: [
+      { text: 'Alexander conquered many lands and spread Greek culture.', ok: false, why: 'Too general. It does not weigh change against continuity or answer “to what extent.”' },
+      { text: 'Alexander was born in Macedon and died in Babylon in 323 BCE.', ok: false, why: 'A fact, not an argument.' },
+      { text: 'Although Greek cities, language and learning spread widely in the Hellenistic era, most people’s lives changed less than it seemed, because Greek rulers kept the older systems of government, religion and farming that most subjects lived under.', ok: true, why: 'Makes a defensible claim about the extent of change and sets up both change (Greek cities, language) and continuity (old systems kept).' },
+    ],
+    contextHint: 'What was the region like before Alexander invaded in 334 BCE, and how had Greek culture already spread?',
+    contextStart: 'Before Alexander, the Persian Empire…',
+    context: 'Before Alexander, the Persian Achaemenid Empire ruled from Egypt to the Indus through satraps, royal roads and tolerance of local customs. Greek poleis had already spread Greek culture around the Mediterranean through trade and colonization.',
+    evidence: [
+      { text: 'Alexander and his successors founded Greek cities such as Alexandria, Antioch and Ai-Khanoum.', side: 'change' },
+      { text: 'Koine Greek became a common language of rule and trade from Egypt to Afghanistan.', side: 'change' },
+      { text: 'The Museum and Library of Alexandria drew scholars and texts from many cultures.', side: 'change' },
+      { text: 'Ashoka put up an edict at Kandahar in Greek and Aramaic.', side: 'change' },
+      { text: 'The Ptolemies ruled as pharaohs and kept Egyptian temples and gods.', side: 'continuity' },
+      { text: 'The Seleucids kept Persian provinces, roads and tax systems.', side: 'continuity' },
+      { text: 'Most farmers kept their own languages, gods and ways of life; Greek culture was strongest in the cities.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining that the answer depends on whom you look at: city elites were deeply Hellenized, while most rural people lived much as before, and Greek culture itself was changed by Egyptian, Persian and Indian ideas.',
+  },
+
+  recall: [
+    { q: 'What was the main palace city of Minoan Crete?', a: 'Knossos' },
+    { q: 'What were helots?', a: 'Conquered serfs forced to farm for Sparta' },
+    { q: 'Who canceled debts and banned debt slavery in Athens in 594 BCE?', a: 'Solon' },
+    { q: 'Which war (431–404 BCE) did Athens lose to Sparta?', a: 'The Peloponnesian War' },
+    { q: 'Which three kingdoms split Alexander’s empire?', a: 'Antigonid, Ptolemaic and Seleucid' },
+  ],
+}

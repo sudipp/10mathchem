@@ -184,6 +184,9 @@ def main():
     ff.stdin.close()
     ff.wait()
     print(f"Wrote {out} ({out.stat().st_size / 1e6:.1f} MB)")
+    # History videos ship as MP4 only (H.264/AAC plays in every browser) to keep the site small.
+    if vid.startswith("hist-"):
+        return
     # VP9/Opus copy for players without AAC support (such as the VS Code preview)
     webm = out.with_suffix(".webm")
     subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-i", str(out), "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "34", "-row-mt", "1",

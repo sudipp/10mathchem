@@ -16,7 +16,7 @@ Now available: Unit 0, Linear, Absolute Value & Piecewise Functions; Unit 1, Qua
 
 ## World history, one chapter a day
 
-Now available: Chapter 11, Mediterranean Society: The Roman Phase. Each chapter is an hour-long plan: the big question, an interactive timeline, an animated map, a short lesson with cause and effect, flashcards, a narrated video, and AP-style practice with sources, short answers and an essay outline.
+Now available: Chapters 10–24, from the Greek city-states and Rome through the Silk Roads, Islam, East Asia, India and the Indian Ocean, Christendom, the Mongols, Africa, medieval Europe and the Americas, to the transoceanic voyages and early modern Europe (to 1800). Each chapter is an hour-long plan: the big question, an interactive timeline, an animated map, a short lesson with cause and effect, flashcards, a narrated video, and AP-style practice with sources, short answers and an essay outline.
 
 [Open world history](https://perspireai.com/history/)
 

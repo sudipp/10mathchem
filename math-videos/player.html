@@ -823,19 +823,19 @@ function chemModels(s, v) {
 // ---------- history views ----------
 // histmap: one step of the history site's map. Territories fade in at landsAt, routes draw at routesAt[i], cities at citiesAt.
 function histMap(s, v) {
-  const L = D.layouts[v.layout], st = L.steps[v.step]
-  const [vx, vy, vw, vh] = v.vb ?? st.vb, k = vw / L.w
+  const L = D.layouts[v.layout], st = L.steps[v.step], B = L.bases[st.base]
+  const [vx, vy, vw, vh] = v.vb ?? st.vb, k = vw / 1000
   const W = v.side?.length || s.countdown ? 800 : 980, H = Math.round(W * vh / vw)
   const svg = svgEl('svg', { viewBox: `${vx} ${vy} ${vw} ${vh}`, width: W, height: H })
   const defs = svgEl('defs', {}, svg), clip = svgEl('clipPath', { id: 'hland' }, defs)
-  svgEl('path', { d: L.land }, clip)
-  svgEl('rect', { x: -50, y: -50, width: L.w + 100, height: L.h + 100, fill: '#CFE0E6' }, svg)
-  svgEl('path', { d: L.land, fill: '#F3ECDD' }, svg)
-  svgEl('path', { d: L.lakes, fill: '#CFE0E6' }, svg)
-  for (const r of L.rivers) svgEl('path', { d: r, fill: 'none', stroke: '#8FB2C6', 'stroke-width': 1.4 * k }, svg)
+  svgEl('path', { d: B.land }, clip)
+  svgEl('rect', { x: -B.w, y: -B.h, width: B.w * 3, height: B.h * 3, fill: '#CFE0E6' }, svg)
+  svgEl('path', { d: B.land, fill: '#F3ECDD' }, svg)
+  svgEl('path', { d: B.lakes, fill: '#CFE0E6' }, svg)
+  for (const r of B.rivers) svgEl('path', { d: r, fill: 'none', stroke: '#8FB2C6', 'stroke-width': 1.4 * k }, svg)
   const g = svgEl('g', { 'clip-path': 'url(#hland)' }, svg)
   st.lands.forEach(l => { const lg = svgEl('g', {}, g); svgEl('path', { d: l.d, fill: l.color, opacity: l.faint ? 0.18 : 0.5 }, lg); reveal(lg, mark(s, v.landsAt ?? 0), { noMove: true }) })
-  svgEl('path', { d: L.land, fill: 'none', stroke: '#9DB2B9', 'stroke-width': 0.8 * k }, svg)
+  svgEl('path', { d: B.land, fill: 'none', stroke: '#9DB2B9', 'stroke-width': 0.8 * k }, svg)
   st.routes.forEach((r, i) => {
     const at = mark(s, (v.routesAt ?? [])[i] ?? v.routesAt?.[0] ?? 0)
     if (r.arrow) { const m = svgEl('marker', { id: `hah${i}`, viewBox: '0 0 10 10', refX: 7, refY: 5, markerWidth: 5, markerHeight: 5, orient: 'auto' }, defs); svgEl('path', { d: 'M0,0 L10,5 L0,10 z', fill: r.color }, m) }

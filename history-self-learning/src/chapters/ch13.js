@@ -1,0 +1,346 @@
+// Chapter 13 · The Expansive Realm of Islam (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch13.js.
+export default {
+  hook: 'Around 610 CE a merchant named Muhammad began reporting messages from God near Mecca, a desert trading town in Arabia. Twenty-two years later most of Arabia followed him. A century after that, his successors ruled from Spain to the Indus River, an empire larger than Rome’s at its height. Under the Abbasid caliphs in Baghdad this “house of Islam” became the crossroads of the world, passing paper, numerals, crops and ideas from China and India all the way to Europe.',
+  apNote: 'Most of this chapter comes before the AP World exam period (1200–present), but it is the direct background for Unit 1.2, “Developments in Dar al-Islam”: the decline of the Abbasids, the rise of Turkic sultanates such as the Seljuks, Islamic scholarship like the House of Wisdom, and the spread of Islam through trade. It also sets up the Unit 2 trade networks, and the Mongol sack of Baghdad in 1258 leads straight into Chapter 17.',
+  themes: ['Cultural developments', 'Governance', 'Economic systems', 'Social structures'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['TpcbfxtdoI8', 'Islam, the Quran, and the Five Pillars: Crash Course World History #13', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Watch Islam spread from two Arabian towns to a realm stretching from Spain to India, then break into rival states.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 560, to: 1270 },
+    { label: 'Muhammad & the first caliphs', from: 565, to: 690 },
+    { label: 'Umayyads & early Abbasids', from: 655, to: 850 },
+    { label: 'Decline & the Turks', from: 800, to: 1270 },
+    { label: 'Long view', from: 300, to: 1450 },
+  ],
+  bigIdeas: [
+    'Muhammad’s message of one God, the Quran and the Five Pillars united the feuding tribes of Arabia into one community, the umma, by 632.',
+    'The caliphs conquered Byzantine and Sasanian lands with astonishing speed, but a dispute over who should lead split Muslims into Sunni and Shia.',
+    'The Arab-centered Umayyads gave way to the cosmopolitan Abbasids, whose Baghdad court relied on Persian administration and Islamic scholars, until real power slipped to regional rulers and Turkish sultans.',
+    'Dar al-Islam became a hemispheric trading zone and a meeting place of Persian, Indian and Greek learning, carried by merchants, scholars and Sufi missionaries.',
+  ],
+
+  sections: [
+    {
+      id: 'muhammad', title: 'Muhammad and his message', when: '570 – 622 CE', theme: 'Cultural developments', map: 0,
+      lead: 'Islam began in Mecca, a trading town in western Arabia. There, around 610 CE, a merchant named Muhammad began preaching that there is only one God.',
+      body: [
+        'Arabia was mostly desert, home to Bedouin herders and to towns along the caravan routes. Mecca grew rich from trade and from the Ka’ba, a shrine full of idols that drew pilgrims from all over Arabia. To the north, the Byzantine and Sasanian Persian empires had worn each other out in long wars.',
+        'Muhammad was born in Mecca around 570 CE into a merchant family and was orphaned as a child. Around 595 he married Khadija, a wealthy widow, and worked as a merchant. On caravan trips he came to know Judaism and Christianity as well as the polytheism of Arabia.',
+        'Around 610 he began having visions in which, he said, the archangel Gabriel brought him the words of Allah, the one God. These revelations make up the Quran, which was written down in one standard version around 650, after his death in 632. Reports of his own words and deeds, the hadith, became the second great guide for Muslims.',
+        'Most Meccans rejected him. His one-God message threatened the idols that brought pilgrims, and money, to the city. His attacks on greed insulted the wealthy families who ran Mecca. As threats grew, his small band of followers was in real danger.',
+      ],
+      facts: ['Born c. 570 in Mecca; orphaned young', 'Marries Khadija c. 595; works as a merchant', 'Visions from c. 610: Gabriel, Allah', 'Quran written down c. 650; hadith = his sayings'],
+      chain: ['Mecca: rich from trade and idol pilgrims', 'Muhammad preaches one God, c. 610', 'Threat to the pilgrim business', 'Attacks on greed anger the elite', 'Persecution in Mecca'],
+      soWhat: 'Islam was born in a merchant society and kept a strong respect for honest trade. That helps explain why it later spread so well along trade routes.',
+      video: ['4NT_btkLlho', 'Life of Muhammad and beginnings of Islam part 1  | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'hijra', title: 'The hijra, the umma and the Five Pillars', when: '622 – 632 CE', theme: 'Cultural developments', map: 1,
+      lead: 'In 622 Muhammad and his followers fled to Yathrib, later called Medina. There he built a community of believers that within ten years controlled Mecca and most of Arabia.',
+      body: [
+        'The flight to Medina, the hijra, was so important that the Muslim calendar counts its years from it. In Medina Muhammad organized his followers into the umma, a community bound by faith rather than by tribe. He gave it a legal and moral code, and it supported itself through trade and raids on Meccan caravans.',
+        'Muhammad was the “seal of the prophets,” the last in a line that included Abraham, Moses and Jesus. He honored the Hebrew scriptures and the New Testament, but taught that Allah had given him a more complete revelation that showed God’s plan for the world.',
+        'In 630 the Muslims took Mecca. They destroyed the idols and pagan shrines but kept the Ka’ba itself, now dedicated to Allah, as the center of pilgrimage. By Muhammad’s death in 632, most of Arabia had accepted Islam.',
+        'Islam rests on the Five Pillars: the shahadah (“There is no god but Allah, and Muhammad is his prophet”), daily prayer (salat), fasting during Ramadan (sawm), charity of about 2.5 percent of one’s wealth (zakat), and the hajj, a pilgrimage to Mecca. Jihad means “struggle”: against one’s own vices and ignorance of Islam, and also holy war against those who threaten Islam. Later scholars built the sharia, Islamic law based on the Quran, the hadith and reasoning, which covers every part of life, not just worship.',
+      ],
+      facts: ['Hijra 622 = year 1 of the Muslim calendar', 'Umma: community of faith, not tribe', 'Mecca taken 630; Ka’ba kept for pilgrimage', 'Five Pillars: shahadah, salat, sawm, zakat, hajj'],
+      chain: ['Persecution in Mecca', 'Hijra to Medina, 622', 'Umma: faith replaces tribe', 'Muslims take Mecca, 630', 'Most of Arabia united by 632'],
+      soWhat: 'The umma gave Arabs a loyalty bigger than the tribe. That unity turned the tribes’ energy outward and made the conquests of the next century possible.',
+      factCheck: 'Your notes call 622 “Year 0” of the Muslim calendar. The calendar actually begins with year 1 AH (“in the year of the hijra”); like the Christian calendar, it has no year 0.',
+    },
+    {
+      id: 'caliphs', title: 'Caliphs, conquests and the Sunni–Shia split', when: '632 – 680 CE', theme: 'Governance', map: 2,
+      lead: 'Muhammad named no clear successor. His followers chose leaders called caliphs, who led Arab armies out of Arabia and conquered two empires, but the question of who should rule split Islam for good.',
+      body: [
+        'The community chose Abu Bakr, Muhammad’s close friend and father-in-law, as the first caliph (“successor”). Many tribes felt their loyalty had ended with Muhammad’s death and abandoned Islam; Abu Bakr fought them in the Ridda wars and reunited Arabia.',
+        'Then Arab armies burst out of the peninsula. The Byzantine and Sasanian empires were exhausted by decades of war with each other. Muslims beat the Byzantines at the Yarmuk River (636) and took Syria, Jerusalem and Egypt. They beat the Persians at Qadisiyya and Nahavand, and by 651 the Sasanian Empire was gone.',
+        'Governing so much land so quickly was hard, and leaders quarreled. Some Muslims believed the caliph should have been Ali, Muhammad’s cousin and son-in-law, who had been passed over for Abu Bakr. Ali finally became caliph in 656, but he faced a civil war and was assassinated in 661.',
+        'His supporters became the Shia (from shi’at Ali, “the party of Ali”), who believe only Ali’s descendants should lead. In 680 Ali’s son Husayn and his small band were killed at Karbala, a martyrdom Shia Muslims still mourn every year. The majority, who accepted the caliphs as they came to power, became the Sunni, followers of the sunna, the tradition of the Prophet.',
+      ],
+      facts: ['Abu Bakr: first caliph, 632–634', 'Yarmuk 636; Sasanian Empire gone by 651', 'Ali caliph 656–661, then assassinated', 'Karbala 680: Husayn killed; Shia vs Sunni'],
+      chain: ['No clear successor to Muhammad', 'Caliphs chosen by the community', 'Ali passed over, then killed in 661', 'Husayn killed at Karbala, 680', 'Lasting Sunni–Shia split'],
+      soWhat: 'The Sunni–Shia split began as a dispute over leadership, not over the Five Pillars. Today about 85–90 percent of Muslims are Sunni; Iran and Iraq have Shia majorities.',
+      factCheck: 'Your notes say Ali was assassinated “along with most of his followers.” Ali was killed alone in 661 by a member of a rebel group, the Kharijites. The massacre of his family and followers came later, in 680, when his son Husayn and about 70 companions died at Karbala.',
+      video: ['iMbAu2Oh7PA', 'Sunni and Shia Islam part 1 | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'umayyads', title: 'The Umayyad caliphate', when: '661 – 750 CE', theme: 'Governance', map: 3,
+      lead: 'The Umayyads, a clan from the Meccan merchant class, turned the caliphate into a hereditary dynasty ruled from Damascus. They built the largest empire the world had yet seen, but their favoritism toward Arabs made enemies.',
+      body: [
+        'The Umayyads brought stability after the civil wars. From their capital at Damascus in Syria they ruled through an Arab military aristocracy, and they made Arabic the language of government.',
+        'Conquest continued. In 711 Muslim armies, many of them Berbers from North Africa, crossed into Spain and took most of it; this Muslim Spain was called al-Andalus. A Frankish army stopped a raid into France near Tours in 732. In the east, armies reached Central Asia and the Indus valley (Sindh, 711).',
+        'Non-Muslims were not forced to convert. Jews, Christians and Zoroastrians were treated as “People of the Book” (ahl al-kitab), protected subjects called dhimmis who kept their faith but paid a head tax, the jizya. The tax gave the state income, and a reason not to push conversion.',
+        'Non-Arabs who did convert, the mawali, found they were still second-class: they had little social mobility, got lower pay and rarely reached high office. Stories of the court’s luxurious living also weakened the dynasty’s moral authority, and discontent spread among mawali, Shia and pious critics.',
+      ],
+      facts: ['Capital: Damascus; Arab military elite', 'Spain from 711; stopped near Tours, 732', 'Dhimmis (People of the Book) pay the jizya', 'Mawali (non-Arab converts) kept second-class'],
+      chain: ['Umayyads favor an Arab elite', 'Mawali and Shia resent them', 'Luxury weakens moral authority', 'Revolt in Persia (Khurasan)', 'Umayyads overthrown, 750'],
+      soWhat: 'Tolerating People of the Book in return for taxes was a practical way to rule huge non-Muslim majorities. Compare it with how the Mongols and Ottomans later ruled diverse subjects.',
+    },
+    {
+      id: 'abbasids', title: 'The Abbasid caliphate and Baghdad', when: '750 – 945 CE', theme: 'Governance', map: 4,
+      lead: 'In 750 a new dynasty, the Abbasids, overthrew the Umayyads with the help of Shia and non-Arab Muslims. They moved the center of the Islamic world east, to a new capital at Baghdad.',
+      body: [
+        'Abu al-Abbas, a descendant of Muhammad’s uncle al-Abbas, built his movement in Persia and Mesopotamia. In 750 his army crushed the Umayyads. He then invited the surviving Umayyad princes to a banquet and had them massacred. One prince escaped to Spain, where his family kept ruling al-Andalus and refused to recognize the Abbasids.',
+        'The Abbasids ran a mixed empire, not an Arab one. Persians and other non-Arab Muslims held high posts, and the court copied Persian traditions of kingship and bureaucracy, headed by a chief minister, the vizier. They were militarily strong but not bent on new conquest; they mostly administered the empire they had inherited. Dar al-Islam, “the house of Islam,” still grew, through the campaigns of autonomous Muslim forces, merchants and missionaries.',
+        'Their capital, Baghdad, was founded in 762 on the Tigris. Islamic scholars, the ulama, and judges called qadis worked to base policy and law on the Quran and the sharia.',
+        'Under Harun al-Rashid (786–809) Baghdad became one of the world’s largest cities, a center of commerce and culture. His son al-Mamun (813–833) supported the scholars of the House of Wisdom, who translated Greek, Persian and Indian works into Arabic. After an Abbasid army beat a Tang Chinese army at the Talas River in 751, papermaking spread west to Samarkand and, by about 800, to Baghdad.',
+      ],
+      facts: ['750: Umayyads overthrown; banquet massacre', 'Baghdad founded 762; Persian-style vizier', 'Ulama and qadis apply the sharia', 'Harun al-Rashid 786–809: the high point'],
+      chain: ['Shia and non-Arab Muslims back the Abbasids', 'Umayyads defeated, 750', 'Capital moves east to Baghdad', 'Persian administration, mixed elite', 'Golden age under Harun and al-Mamun'],
+      soWhat: 'Moving the capital from Damascus to Baghdad shifted Islam’s center from the Mediterranean toward Persia and the Silk Roads, and turned an Arab empire into a multiethnic Islamic civilization.',
+      video: ['K5XKjk0-hCo', 'Golden age of Islam | World History | Khan Academy', 'Khan Academy'],
+    },
+    {
+      id: 'decline', title: 'Abbasid decline and the Turks', when: '809 – 1258 CE', theme: 'Governance', map: 6,
+      lead: 'After Harun al-Rashid the Abbasid empire slowly came apart. Caliphs kept their title, but real power passed to provincial governors, Persian nobles and finally Turkish sultans, until the Mongols ended the dynasty in 1258.',
+      body: [
+        'When Harun died in 809 his sons fought a civil war (811–813). Afterward, provincial governors increasingly ruled on their own, keeping taxes and passing power to their sons. Dissenting sects and heretical movements challenged Baghdad as well.',
+        'Rival caliphs appeared. In Egypt the Fatimids, a Shia dynasty, claimed to be the true caliphs and built Cairo in 969. In Spain the Umayyad ruler of Córdoba declared himself caliph in 929. Christian and Muslim Spain lived with tension but also close contact; Spanish still has many words starting with the Arabic article al-, such as algodón (cotton) and alcalde (mayor).',
+        'In Baghdad itself the Buyids, a Persian noble family, took control in 945, and the caliph became their puppet. In 1055 the Seljuk Turks, recent converts from Central Asia, took Baghdad. Their leader ruled as sultan (“one with power”), the real power behind the caliph’s throne.',
+        'In 1258 the Mongols under Hulagu, a grandson of Chinggis Khan, captured and sacked Baghdad and killed the last Abbasid caliph. Islam itself survived and kept spreading, but the age of a single caliphate ruling Dar al-Islam was over.',
+      ],
+      facts: ['Civil war of Harun’s sons, 811–813', 'Rival caliphs: Fatimid Cairo, Umayyad Córdoba', 'Buyids 945, Seljuk sultans 1055', '1258: Mongols sack Baghdad'],
+      chain: ['Civil war after Harun', 'Governors rule on their own', 'Rival caliphs in Cairo and Córdoba', 'Persian Buyids, then Seljuk sultans', 'Caliph becomes a figurehead', 'Mongols end the caliphate, 1258'],
+      soWhat: 'This is AP Unit 1.2: as Abbasid power faded, Turkic peoples such as the Seljuks (and later the Mamluks, the Delhi Sultanate and the Ottomans) built new Muslim states. Chapter 17 picks up the Mongol story.',
+      video: ['O9P1TaBnhg8', 'Developments in DAR-AL-ISLAM [AP World Review—Unit 1 Topic 2]', 'Heimler\'s History'],
+    },
+    {
+      id: 'trade', title: 'A hemispheric trading zone', when: '700 – 1200 CE', theme: 'Economic systems', map: 5,
+      lead: 'Dar al-Islam stretched across the old trade routes of Afro-Eurasia. Crops, goods, money and ideas moved from India to Spain and beyond.',
+      body: [
+        'Arabs had been traders long before Islam, and the caliphate now covered the western Silk Roads and the sea lanes of the Indian Ocean. Camel caravans crossed the deserts, while ships riding the monsoon winds sailed from Basra and Siraf to India, Southeast Asia and China, and down the coast of East Africa.',
+        'Food and industrial crops spread west from India and Southeast Asia along these routes: sugarcane, rice, citrus fruits, eggplant, spinach and cotton. The new crops grew in different seasons from the old ones, so farmers could harvest more often, and agricultural science grew. Cotton and paper industries and large cities such as Baghdad, Cairo and Córdoba flourished. Trade reached into surprising goods: in the tenth century ice was shipped from Syria to Egypt in summer.',
+        'Trade on this scale needed banks. A merchant could deposit money in one city and cash a letter of credit, a sakk (the root of the English word “check”), in another. Joint ventures let investors share both the risks and the profits of long voyages.',
+        'One law helped too. The sharia applied across Dar al-Islam, so a merchant from Spain could expect similar rules for contracts in Cairo or Baghdad. Respect for honest trade, rooted in the Quran and in Muhammad’s own life as a merchant, gave commerce a good name.',
+      ],
+      facts: ['Camel caravans + monsoon ships', 'New crops: sugar, rice, citrus, cotton', 'Sakk → “check”; joint ventures', 'One sharia across Dar al-Islam eases trade'],
+      chain: ['Caliphate covers Silk Roads and sea lanes', 'Crops and techniques travel west', 'Bigger harvests, bigger cities', 'Banks and letters of credit', 'A hemispheric trading zone'],
+      soWhat: 'This is the network AP Unit 2 builds on: the Silk Roads, the Indian Ocean and trans-Saharan trade were knit together by Muslim merchants, who also carried Islam to new lands.',
+    },
+    {
+      id: 'culture', title: 'Women, faith and learning', when: 'Islamic society and culture', theme: 'Cultural developments',
+      lead: 'Islam changed family life and built a shared culture from Spain to India. It also absorbed and extended ideas from Persia, India and Greece.',
+      body: [
+        'The Quran improved women’s status in some ways. It outlawed female infanticide (killing baby girls) and gave the dowry to the bride rather than to her husband or family. Yet male dominance continued: descent was traced through men, men could have up to four wives while women could have only one husband, and veiling, an old custom from ancient Mesopotamia, became common for women.',
+        'Shared practices tied Muslims together: one sharia, madrasas (schools of higher learning that trained the ulama), and the hajj, which brought pilgrims from every region to Mecca and sent ideas home with them. Sufis, mystics who sought God through asceticism and devotion, sometimes clashed with orthodox theologians, but they became hugely popular and won many converts by adapting to local customs.',
+        'Al-Ghazali (1058–1111), a Persian scholar, taught that human reason could never fully grasp Allah; only devotion and mystical experience could bring a person close to God. He helped make Sufism respectable.',
+        'Persia gave Islam its models of government and administration and a great literature. India gave mathematics, science and medicine, including the “Hindi” numerals with a zero that Europeans later called Arabic numerals. Greece gave philosophy, especially Aristotle. In Córdoba, Ibn Rushd (Averroes, 1126–1198) wrote commentaries on Aristotle that later shaped Christian scholars in Europe.',
+      ],
+      facts: ['Quran bans female infanticide; bride gets dowry', 'Patrilineal; polygamy allowed, polyandry not; veil', 'Madrasas, hajj, Sufi missionaries', 'Persia: government · India: numerals · Greece: Aristotle'],
+      chain: ['Conquest joins Persian, Indian and Greek worlds', 'Works translated into Arabic', 'Madrasas and scholars share ideas', 'Sufis spread Islam through devotion', 'Knowledge later reaches Europe via Spain'],
+      soWhat: 'Islamic scholars did not just preserve Greek learning; they added to it (algebra, medicine, astronomy) and passed it on. That transfer helped spark Europe’s later scholarship (Chapter 19).',
+      video: ['bkVsus8Ehxs', 'The Medieval Islamicate World: Crash Course History of Science #7', 'CrashCourse'],
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 570, label: 'Muhammad born in Mecca', track: 'society', detail: 'Approximate date. Orphaned young, he later married Khadija (c. 595) and worked as a merchant.' },
+    { year: 610, label: 'Muhammad’s first revelations', track: 'religion', detail: 'Approximate date. He reports visions of the archangel Gabriel bringing the words of Allah.' },
+    { year: 622, label: 'Hijra to Medina', track: 'religion', detail: 'Muhammad flees Mecca for Yathrib (Medina). Year 1 of the Muslim calendar.' },
+    { year: 630, label: 'Muslims take Mecca', track: 'war', detail: 'Idols destroyed; the Ka’ba kept as the center of pilgrimage.' },
+    { year: 632, label: 'Muhammad dies; Abu Bakr caliph', track: 'politics', detail: 'Abu Bakr fights the Ridda wars to reunite Arabia (632–634).' },
+    { year: 636, label: 'Battle of Yarmuk', track: 'war', detail: 'Arabs defeat the Byzantines and take Syria; Egypt follows by 642.' },
+    { year: 650, label: 'Quran written down', track: 'religion', detail: 'Approximate date. A standard text is compiled under the third caliph, Uthman.' },
+    { year: 651, label: 'Sasanian Empire falls', track: 'war', detail: 'The last Sasanian shah is killed; Persia is now part of the caliphate.' },
+    { year: 656, end: 661, label: 'Ali is caliph', track: 'politics', detail: 'Civil war; Ali is assassinated in 661. His supporters become the Shia.' },
+    { year: 661, end: 750, label: 'Umayyad dynasty (Damascus)', track: 'politics', detail: 'Hereditary caliphs ruling through an Arab military elite.' },
+    { year: 680, label: 'Husayn killed at Karbala', track: 'religion', detail: 'The martyrdom of Ali’s son deepens the Sunni–Shia split.' },
+    { year: 711, label: 'Muslim armies enter Spain', track: 'war', detail: 'Also in 711 Arab forces conquer Sindh in the Indus valley.' },
+    { year: 732, label: 'Battle of Tours', track: 'war', detail: 'A Frankish army under Charles Martel stops a Muslim raid into France.' },
+    { year: 750, label: 'Abbasids overthrow Umayyads', track: 'politics', detail: 'Umayyad princes are massacred at a banquet; one escapes to Spain.' },
+    { year: 751, label: 'Battle of Talas', track: 'war', detail: 'Abbasids defeat a Tang Chinese army in Central Asia; papermaking soon spreads west.' },
+    { year: 756, label: 'Umayyad emirate in Córdoba', track: 'politics', detail: 'Al-Andalus refuses to recognize the Abbasids; its ruler takes the title caliph in 929.' },
+    { year: 762, label: 'Baghdad founded', track: 'society', detail: 'The new Abbasid capital on the Tigris soon becomes one of the world’s largest cities.' },
+    { year: 786, end: 809, label: 'Harun al-Rashid rules', track: 'politics', detail: 'The high point of Abbasid wealth and culture.' },
+    { year: 813, end: 833, label: 'Al-Mamun and the House of Wisdom', track: 'society', detail: 'Scholars in Baghdad translate Greek, Persian and Indian works into Arabic.' },
+    { year: 909, label: 'Fatimid caliphate founded', track: 'politics', detail: 'A Shia dynasty in North Africa; it conquers Egypt and builds Cairo in 969.' },
+    { year: 945, label: 'Buyids take Baghdad', track: 'politics', detail: 'A Persian noble family makes the Abbasid caliph its puppet.' },
+    { year: 1055, label: 'Seljuk Turks take Baghdad', track: 'politics', detail: 'The Seljuk sultan becomes the real power behind the caliph.' },
+    { year: 1058, end: 1111, label: 'Life of al-Ghazali', track: 'religion', detail: 'Persian scholar who made Sufi mysticism respectable.' },
+    { year: 1126, end: 1198, label: 'Life of Ibn Rushd (Averroes)', track: 'society', detail: 'Córdoba philosopher whose commentaries on Aristotle reach Christian Europe.' },
+    { year: 1258, label: 'Mongols sack Baghdad', track: 'war', detail: 'Hulagu kills the last Abbasid caliph. See Chapter 17.' },
+    { year: 618, label: 'Tang dynasty founded', track: 'world', detail: 'Chapter 14. The Tang army Abbasid forces meet at Talas in 751.' },
+    { year: 800, label: 'Charlemagne crowned emperor', track: 'world', detail: 'Chapter 16. He exchanged embassies with Harun al-Rashid.' },
+    { year: 960, label: 'Song dynasty founded', track: 'world', detail: 'Chapter 14. Song China trades with Muslim merchants by sea.' },
+    { year: 1095, label: 'First Crusade called', track: 'world', detail: 'Chapter 19. Crusaders take Jerusalem from Muslim rulers in 1099.' },
+    { year: 1206, label: 'Temujin becomes Chinggis Khan', track: 'world', detail: 'Chapter 17. His grandson Hulagu sacks Baghdad in 1258.' },
+  ],
+
+  terms: [
+    ['Ka’ba', 'Cube-shaped shrine in Mecca, once full of idols.', 'Kept as Islam’s central shrine; goal of the hajj.'],
+    ['Muhammad', 'Merchant of Mecca (c. 570–632) who preached one God, Allah.', 'Founder of Islam; for Muslims, the final prophet.'],
+    ['Quran', 'Revelations Muhammad received, written down c. 650.', 'Islam’s holy book and first source of law.'],
+    ['Hadith', 'Reports of Muhammad’s sayings and deeds.', 'Second source of Islamic law after the Quran.'],
+    ['Hijra', 'Muhammad’s flight from Mecca to Medina in 622.', 'Year 1 of the Muslim calendar.'],
+    ['Umma', 'The community of all Muslims.', 'Loyalty to faith replaced loyalty to tribe.'],
+    ['Seal of the Prophets', 'Title for Muhammad as the last prophet.', 'Links Islam to Abraham, Moses and Jesus.'],
+    ['Five Pillars', 'Shahadah, salat (prayer), sawm (fasting), zakat (charity), hajj (pilgrimage).', 'Shared duties that unite Muslims everywhere.'],
+    ['Jihad', '“Struggle”: against vice and ignorance, or holy war against those who threaten Islam.', 'Has both a personal and a military meaning.'],
+    ['Sharia', 'Islamic law based on the Quran, hadith and reasoning.', 'Covers all of life; one law across Dar al-Islam.'],
+    ['Caliph', '“Successor” to Muhammad as leader of the umma.', 'Who should be caliph caused the Sunni–Shia split.'],
+    ['Abu Bakr', 'First caliph (632–634).', 'Reunited Arabia and began the conquests.'],
+    ['Shia', 'Muslims who believe Ali and his descendants should lead.', 'The minority branch; Karbala is central to its memory.'],
+    ['Sunni', 'The majority of Muslims, who accepted the caliphs as chosen.', '“Followers of the sunna,” the Prophet’s tradition.'],
+    ['Umayyad dynasty', 'Caliphs who ruled from Damascus, 661–750.', 'Huge expansion, but favored an Arab elite.'],
+    ['Dhimmis and the jizya', 'Protected non-Muslims (People of the Book) who paid a head tax, the jizya.', 'Let Muslim rulers govern non-Muslim majorities without forced conversion.'],
+    ['Mawali', 'Non-Arab converts to Islam.', 'Their resentment helped topple the Umayyads.'],
+    ['Abbasid dynasty', 'Caliphs who ruled from Baghdad, 750–1258.', 'Cosmopolitan, Persian-style government; a golden age.'],
+    ['Ulama and qadis', 'Islamic scholars and judges.', 'Made the Quran and sharia the basis of law and policy.'],
+    ['Harun al-Rashid', 'Abbasid caliph (786–809).', 'The high point of Abbasid wealth and culture.'],
+    ['Dar al-Islam', '“House of Islam”: all lands under Muslim rule.', 'One religious and legal zone that eased trade.'],
+    ['Seljuk Turks', 'Central Asian Turks who took Baghdad in 1055.', 'Their sultans held the real power over the caliph.'],
+    ['Sakk', 'A letter of credit; the root of the word “check.”', 'Shows advanced banking in the Islamic world.'],
+    ['Al-Andalus', 'Muslim Spain, ruled by Umayyads from Córdoba (caliphate from 929).', 'A bridge for Islamic learning into Europe.'],
+    ['Madrasa', 'School of higher learning in religion and law.', 'Trained the ulama and spread a shared culture.'],
+    ['Sufis', 'Mystics who sought God through devotion and asceticism.', 'Popular missionaries who spread Islam.'],
+    ['Al-Ghazali', 'Persian Sufi thinker (1058–1111).', 'Taught that God is reached by devotion, not reason alone.'],
+    ['Ibn Rushd (Averroes)', 'Philosopher of Córdoba (1126–1198) who wrote on Aristotle.', 'Shows Greek influence and its path to Europe.'],
+  ],
+
+  compare: [
+    {
+      title: 'Umayyads vs Abbasids',
+      head: ['', 'Umayyads (661–750)', 'Abbasids (750–1258)'],
+      rows: [
+        ['Capital', 'Damascus, Syria', 'Baghdad, Iraq (founded 762)'],
+        ['Ruling elite', 'Arab military aristocracy', 'Mixed: Arabs, Persians, later Turks'],
+        ['Style of rule', 'Conquest and expansion', 'Administration; Persian-style vizier and bureaucracy'],
+        ['Non-Arab Muslims', 'Second-class mawali', 'Full participants in government and culture'],
+        ['Culture', 'Arabic made the language of government', 'House of Wisdom; Greek, Persian and Indian learning'],
+        ['How it ended', 'Overthrown by the Abbasid revolt, 750', 'Lost power to Buyids and Seljuks; Mongols sack Baghdad, 1258'],
+      ],
+    },
+    {
+      title: 'How universal religions spread (a favorite AP comparison)',
+      head: ['', 'Islam', 'Christianity', 'Buddhism'],
+      rows: [
+        ['Origin', 'Muhammad, Arabia, c. 610 CE', 'Jesus, Judea, c. 30 CE', 'Siddhartha Gautama, India, c. 500 BCE'],
+        ['Early spread by', 'Conquests of the caliphs, then merchants and Sufis', 'Missionaries like Paul on Roman roads', 'Monks and merchants; the emperor Ashoka'],
+        ['Main routes', 'Caravans, Indian Ocean sea lanes, trans-Saharan routes', 'Mediterranean roads and sea lanes', 'Silk Roads to Central and East Asia'],
+        ['Appeal', 'Equality of believers; clear duties (Five Pillars)', 'Salvation for all, including the poor, women and slaves', 'Escape from suffering; open to all castes'],
+        ['Conversion', 'Mostly gradual; dhimmis could keep their faith by paying the jizya', 'Persecuted, then Rome’s official religion by 380 CE', 'Adapted to local beliefs (Mahayana)'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'The Quran: revelations Muhammad reported receiving in Medina, 622–632 CE, written down c. 650 CE', text: 'Say ye: “We believe in God, and that which hath been sent down to us, and that which hath been sent down to Abraham and Ismael and Isaac and Jacob and the tribes: and that which hath been given to Moses and to Jesus, and that which was given to the prophets from their Lord. No difference do we make between any of them: and to God are we resigned (Muslims).” … Muhammad is not the father of any man among you, but he is the Apostle of God, and the seal of the prophets: and God knoweth all things.', cite: 'Quran 2:136 and 33:40, trans. J. M. Rodwell (1861)' },
+      questions: [
+        { q: 'The passage best supports which conclusion about early Islam?', options: ['Muslims saw Islam as completing the revelations given to Jewish and Christian prophets.', 'Muslims rejected the Hebrew scriptures and the New Testament as false.', 'Islam taught that every Arab tribe had its own god.', 'Muhammad claimed to be the son of God.'], correct: 0, why: 'It honors Abraham, Moses and Jesus and calls Muhammad the “seal,” or last, of the prophets: Islam saw itself as the final revelation of the same God.' },
+        { q: 'The beliefs in the passage most directly help explain which policy of the caliphs?', options: ['Forcing all conquered peoples to convert immediately', 'Treating Jews and Christians as protected “People of the Book” who paid the jizya', 'Banning trade with Christian merchants', 'Destroying all churches and synagogues in conquered lands'], correct: 1, why: 'Because Jews and Christians had received earlier revelations, they became protected dhimmis who kept their faith and paid a head tax.' },
+        { q: 'The description of Muhammad as “the seal of the prophets” most directly contributed to which later development?', options: ['The Sunni–Shia split over whether Ali should be caliph', 'Muslim belief that no new prophet would follow him, so the caliphs were leaders but not prophets', 'The Abbasid decision to move the capital to Baghdad', 'The adoption of Persian-style bureaucracy'], correct: 1, why: 'Since Muhammad was the final prophet, his successors (caliphs) could lead the umma but could not add new revelation; disputes became about leadership.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'The Quran: revelations Muhammad reported receiving in Medina, 622–632 CE', text: 'There is no piety in turning your faces toward the east or the west, but he is pious who believeth in God, and the last day, … and the Scriptures, and the prophets; who for the love of God disburseth his wealth to his kindred, and to the orphans, and the needy, and the wayfarer, and those who ask, and for ransoming; who observeth prayer, and payeth the legal alms … O believers! a Fast is prescribed to you as it was prescribed to those before you, that ye may fear God.', cite: 'Quran 2:177 and 2:183, trans. J. M. Rodwell (1861)' },
+      questions: [
+        { q: 'Which of the Five Pillars are most clearly reflected in the passage?', options: ['The hajj and the shahadah only', 'Prayer (salat), charity (zakat) and fasting (sawm)', 'Jihad and the sharia', 'Pilgrimage to Jerusalem and the Ka’ba'], correct: 1, why: '“Observeth prayer,” “payeth the legal alms” and “a Fast is prescribed” match salat, zakat and sawm.' },
+        { q: 'The emphasis on giving wealth to orphans and the needy most likely reflects which feature of Muhammad’s early preaching in Mecca?', options: ['His support for the city’s idol shrines', 'His denunciation of greed, which angered Mecca’s wealthy elite', 'His alliance with the Byzantine emperor', 'His plan to abolish all private property'], correct: 1, why: 'Muhammad criticized the greed of Mecca’s rich families; the Quran’s call for charity reflects that concern for social justice.' },
+        { q: 'The phrase “as it was prescribed to those before you” best illustrates', options: ['the Abbasid use of Persian court traditions', 'Islam’s view of itself as continuous with earlier monotheistic faiths', 'the influence of Greek philosophy on Islam', 'the Sufi rejection of fasting'], correct: 1, why: 'Jews and Christians also fasted; the Quran presents Muslim duties as part of the same tradition of serving the one God.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Muhammad ibn Musa al-Khwarizmi, a mathematician at the Abbasid court in Baghdad, preface to his book on algebra, c. 820 CE', text: 'That fondness for science, by which God has distinguished the Imam al Mamun, the Commander of the Faithful …, that affability and condescension which he shows to the learned, that promptitude with which he protects and supports them in the elucidation of obscurities and in the removal of difficulties,—has encouraged me to compose a short work on Calculating by (the rules of) Completion and Reduction, confining it to what is easiest and most useful in arithmetic, such as men constantly require in cases of inheritance, legacies, partition, law-suits, and trade, and in all their dealings with one another, or where the measuring of lands, the digging of canals, geometrical computation, and other objects of various sorts and kinds are concerned.', cite: 'Al-Khwarizmi, The Algebra (al-jabr), preface, trans. F. Rosen (1831)' },
+      questions: [
+        { q: 'The passage best illustrates which feature of the Abbasid caliphate?', options: ['Caliphs’ patronage of scholars and learning in Baghdad', 'The military conquest of Spain', 'The Umayyad preference for an Arab military elite', 'The rejection of foreign knowledge by Muslim rulers'], correct: 0, why: 'Al-Khwarizmi credits Caliph al-Mamun, sponsor of the House of Wisdom, with protecting and supporting the learned.' },
+        { q: 'The practical uses al-Khwarizmi lists, such as inheritance and trade, suggest that mathematics in Dar al-Islam', options: ['was studied only by Sufi mystics', 'served the needs of Islamic law and a commercial economy', 'was banned by the ulama', 'was used mainly to plan military campaigns'], correct: 1, why: 'Inheritance shares under the sharia and long-distance trade both required careful calculation.' },
+        { q: 'Which development most directly helped scholars like al-Khwarizmi in Baghdad?', options: ['The Mongol sack of Baghdad', 'The translation of Greek, Persian and Indian works into Arabic', 'The Battle of Tours', 'The hijra to Medina'], correct: 1, why: 'The House of Wisdom gathered and translated foreign learning, including Indian numerals and Greek geometry.' },
+        { q: 'Which is the best evidence of the long-term influence of works like this one?', options: ['The words “algebra” and “algorithm” entered European languages', 'Baghdad became the capital of the Umayyads', 'The Seljuks took Baghdad in 1055', 'The jizya was abolished'], correct: 0, why: '“Algebra” comes from al-jabr in his title, and “algorithm” from his name; Latin translations in Spain carried his ideas to Europe.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Benjamin of Tudela, a Jewish traveler from Spain, describing Baghdad during his journey through the Middle East, c. 1170 CE', text: '…Bagdad, the great city and the royal residence of the Caliph Emir al Muminin al Abbasi of the family of Mohammed. He is at the head of the Mohammedan religion, and all the kings of Islam obey him; he occupies a similar position to that held by the Pope over the Christians. … He built … a hospital consisting of blocks of houses and hospices for the sick poor who come to be healed. Here there are about sixty physicians’ stores which are provided from the Caliph’s house with drugs and whatever else may be required. … In Bagdad there are about 40,000 Jews, and they dwell in security, prosperity and honour under the great Caliph.', cite: 'Benjamin of Tudela, The Itinerary, trans. M. N. Adler (1907)' },
+      questions: [
+        { q: 'A historian would most likely question Benjamin’s claim that “all the kings of Islam obey” the caliph because by 1170', options: ['the caliph had converted to Christianity', 'regional rulers and Turkish sultans held most real political power', 'the Umayyads had retaken Baghdad', 'the Mongols had already destroyed the city'], correct: 1, why: 'After 945 the Buyids and then the Seljuk sultans controlled the caliph, and rival dynasties ruled Egypt and Spain; the caliph’s authority was mostly religious.' },
+        { q: 'Benjamin’s comparison of the caliph to the Pope best supports which conclusion?', options: ['The caliph’s role had become mainly that of a religious figurehead', 'The caliph commanded the largest army in the world', 'Christians and Muslims shared one church', 'The caliph was elected by bishops'], correct: 0, why: 'Like the Pope, the late Abbasid caliph was honored as a religious leader while others held much of the political power.' },
+        { q: 'The status of Baghdad’s Jews described in the passage reflects', options: ['the forced conversion of all non-Muslims', 'the protected dhimmi status of People of the Book', 'the Abbasid ban on foreign merchants', 'the Sunni–Shia split'], correct: 1, why: 'Jews and Christians were dhimmis: they kept their faith and communities in return for the jizya.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Al-Ghazali, a Persian scholar who had taught Islamic law and theology in Baghdad, describing his turn to Sufism in his autobiography, c. 1100 CE', text: 'The aim which the Sufis set before them is as follows: To free the soul from the tyrannical yoke of the passions, to deliver it from its wrong inclinations and evil instincts, in order that in the purified heart there should only remain room for God and for the invocation of His holy name. … It became clear to me that the last stage could not be reached by mere instruction, but only by transport, ecstasy, and the transformation of the moral being. … I saw that Sufism consists in experiences rather than in definitions.', cite: 'Al-Ghazali, Deliverance from Error, in The Confessions of Al Ghazzali, trans. C. Field (1909)' },
+      questions: [
+        { q: 'Al-Ghazali’s view of how to know God differs most from that of', options: ['Sufi missionaries in Central Asia', 'philosophers like Ibn Rushd who used Aristotle’s logic and reason', 'pilgrims performing the hajj', 'Muslims who fast during Ramadan'], correct: 1, why: 'He says the goal is reached by ecstasy and experience, “not by mere instruction,” while philosophers like Ibn Rushd stressed reason.' },
+        { q: 'The Sufi approach described in the passage most helps explain why Sufis', options: ['were the main tax collectors of the Abbasids', 'were effective missionaries who spread Islam to new regions', 'led the Abbasid revolt of 750', 'opposed all forms of prayer'], correct: 1, why: 'Sufis stressed personal devotion over legal detail and adapted to local customs, which attracted converts in Central Asia, India, Southeast Asia and Africa.' },
+        { q: 'Some orthodox theologians distrusted Sufis mainly because Sufis', options: ['refused to recognize Muhammad as a prophet', 'emphasized personal mystical experience, which seemed to bypass the ulama and the sharia', 'were all Christians', 'supported the Mongol invasion'], correct: 1, why: 'Claims of direct experience of God could seem to make scholars and law less important; al-Ghazali helped reconcile Sufism with orthodoxy.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE reason Arab Muslim armies were able to conquer so much territory between 632 and 750.',
+        'Explain ONE way Umayyad policies created discontent within the empire.',
+        'Explain ONE way the Abbasid dynasty governed differently from the Umayyads.',
+      ],
+      guide: [
+        'Accept: the Byzantine and Sasanian empires were exhausted by wars with each other; the umma united the Arab tribes; religious motivation; mobile desert armies; conquered peoples were taxed rather than forced to convert, so many did not resist hard.',
+        'Accept with explanation: favoritism to the Arab military elite; mawali (non-Arab converts) got lower pay, little mobility and few high posts; the jizya on non-Muslims; luxurious living weakened moral authority; Shia resented Umayyad rule after Karbala.',
+        'Accept with explanation: capital moved to Baghdad; non-Arabs, especially Persians, in high office; Persian-style vizier and bureaucracy; ulama and qadis applied the sharia; focus on administering rather than conquering.',
+      ],
+      model: [
+        'The Byzantine and Sasanian empires had exhausted each other in decades of war, so when Arab armies attacked in the 630s neither empire could defend its provinces.',
+        'The Umayyads favored Arabs, so non-Arab converts (mawali) received less pay and could rarely reach high office. This resentment led many mawali in Persia to support the Abbasid revolt in 750.',
+        'Unlike the Arab-centered Umayyads, the Abbasids gave Persians high posts and ruled through a Persian-style bureaucracy headed by a vizier in their new capital, Baghdad.',
+      ],
+    },
+    {
+      prompt: 'Use the passage from al-Khwarizmi in the practice questions above.',
+      parts: [
+        'Identify ONE way Abbasid caliphs supported learning.',
+        'Explain ONE way trade in Dar al-Islam spread crops, goods OR technologies.',
+        'Explain ONE way Islamic scholars drew on Persian, Indian OR Greek traditions.',
+      ],
+      guide: [
+        'Accept: al-Mamun’s House of Wisdom; protecting and paying scholars; translating Greek, Persian and Indian books into Arabic; libraries and madrasas.',
+        'Accept with explanation: sugar, rice, citrus and cotton spread west from India; papermaking spread from China after Talas (751); caravans and monsoon ships carried goods; banking (sakk) and one sharia law made long-distance trade easier.',
+        'Accept with explanation: Persian models of kingship and bureaucracy and Persian literature; Indian numerals with zero, mathematics and medicine; Greek philosophy, especially Aristotle, interpreted by Ibn Rushd.',
+      ],
+      model: [
+        'Caliph al-Mamun protected and supported scholars; al-Khwarizmi says the caliph’s “fondness for science” encouraged him to write his book on algebra.',
+        'Muslim merchants carried sugarcane and cotton from India to Persia, Egypt and Spain. These crops grew in seasons when older crops did not, so farmers could harvest more and new cotton industries grew.',
+        'Islamic mathematicians adopted the Indian numerals with a zero, which made calculation much easier; Europeans later learned them from Arabic books and called them “Arabic numerals.”',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which the rise of the Abbasid dynasty in 750 changed how the Islamic empire was governed in the period c. 661–945.',
+    theses: [
+      { text: 'The Abbasids replaced the Umayyads in 750 and ruled from Baghdad.', ok: false, why: 'A fact, not an argument. It does not say how much government changed.' },
+      { text: 'The Abbasids were completely different from the Umayyads in every way.', ok: false, why: 'Too absolute, gives no reasons, and ignores clear continuities such as the caliphate, the sharia and the jizya.' },
+      { text: 'Although the Abbasids kept the caliphate, Islamic law and the jizya on non-Muslims, they changed government significantly by opening power to Persians and other non-Arab Muslims, adopting a Persian-style bureaucracy in Baghdad, and shifting from conquest to administration.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both continuity and change with specific categories.' },
+    ],
+    contextHint: 'What was happening before 750 that matters for the question?',
+    contextStart: 'After Muhammad’s death in 632, the caliphs…',
+    context: 'After Muhammad’s death in 632 the caliphs conquered the Byzantine and Sasanian lands. The Umayyads (661–750) ruled this huge empire from Damascus through an Arab military elite, which angered non-Arab converts (mawali) and the Shia.',
+    evidence: [
+      { text: 'The capital moved from Damascus to Baghdad (762), closer to Persia.', side: 'change' },
+      { text: 'Persians and other non-Arab Muslims held high office; a vizier ran the bureaucracy.', side: 'change' },
+      { text: 'The Abbasids mostly administered rather than conquered new lands.', side: 'change' },
+      { text: 'Ulama and qadis gained influence over law and policy.', side: 'change' },
+      { text: 'The caliph remained the head of the umma, as under the Umayyads.', side: 'continuity' },
+      { text: 'Non-Muslims were still dhimmis paying the jizya.', side: 'continuity' },
+      { text: 'Arabic and the sharia remained the basis of law and government.', side: 'continuity' },
+      { text: 'Like the Umayyads, the Abbasids faced revolts and breakaway provinces such as al-Andalus.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by noting that the Abbasid revolution promised Shia supporters a new order but kept Sunni caliphs in power, and that the biggest change in who really governed came after 945, when Buyids and then Seljuk sultans took control of the caliph.',
+  },
+
+  recall: [
+    { q: 'What was the hijra, and when did it happen?', a: 'Muhammad’s flight from Mecca to Medina, 622 CE' },
+    { q: 'Name the Five Pillars of Islam.', a: 'Shahadah, salat (prayer), sawm (fasting), zakat (charity), hajj (pilgrimage)' },
+    { q: 'What question split Sunni and Shia Muslims?', a: 'Who should succeed Muhammad (Shia: Ali and his descendants)' },
+    { q: 'What tax did dhimmis (People of the Book) pay?', a: 'The jizya' },
+    { q: 'Who sacked Baghdad and ended the Abbasid caliphate in 1258?', a: 'The Mongols, under Hulagu' },
+  ],
+}

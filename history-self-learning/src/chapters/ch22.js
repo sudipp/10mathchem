@@ -1,0 +1,347 @@
+// Chapter 22 · Transoceanic Encounters and Global Connections (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
+// Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
+
+// Title, era and big question live in ./index.js; the map is in ../maps/ch22.js.
+export default {
+  hook: 'In May 1498 a small Portuguese fleet dropped anchor off Calicut, India, after sailing all the way around Africa. Six years earlier Christopher Columbus, looking for Asia, had landed instead on an island in the Caribbean. By 1522 the eighteen survivors of Magellan’s fleet had sailed around the whole world. For the first time every inhabited region of the earth was linked by sea, and crops, animals, germs, silver and people began to move between them, changing life everywhere.',
+  apNote: 'This chapter is the core of AP Unit 4, “Transoceanic Interconnections, 1450–1750”: 4.1 technological innovations, 4.2 exploration (causes and events), 4.3 the Columbian Exchange, and 4.4 maritime empires established, including trading-post empires and joint-stock companies. It is directly tested in multiple-choice questions and often in SAQs and LEQs on the causes of exploration and the effects of the Columbian Exchange.',
+  themes: ['Technology and innovation', 'Economic systems', 'Governance', 'Humans and the environment'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['NjEGncridoQ', 'Columbus, Vasco da Gama, and Zheng He - 15th Century Mariners: Crash Course World History #21', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Follow the voyages from the old spice routes, around Africa, across the Atlantic and the Pacific, to a world joined by trade and war.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: 1400, to: 1800 },
+    { label: 'Iberian voyages', from: 1400, to: 1530 },
+    { label: 'Empires & companies', from: 1530, to: 1660 },
+    { label: 'Global rivalry', from: 1640, to: 1790 },
+    { label: 'Long view', from: 1250, to: 1850 },
+  ],
+  bigIdeas: [
+    'Europeans sailed for trade (spices, silk, gold), for God (missionaries and the crusading spirit) and for land, using technology borrowed from China and the Islamic world plus new knowledge of winds and currents.',
+    'Portugal went south and east around Africa to India (1498); Spain went west and found the Americas (1492); Magellan’s crew sailed around the globe (1519–1522).',
+    'In Asia, Europeans built trading-post empires: first Portugal, then the Dutch and English joint-stock companies. Russia built a land empire across Siberia.',
+    'The Columbian Exchange moved crops, animals, people and diseases between hemispheres. Epidemics killed most Native Americans, American crops fed a growing world, and silver tied together the first global economy.',
+  ],
+
+  sections: [
+    {
+      id: 'motives', title: 'Why Europeans went to sea', when: 'The 1400s', theme: 'Technology and innovation', map: 0,
+      lead: 'Europeans wanted the spices, silks and gold of Asia and Africa without paying a long chain of middlemen. They also wanted land to farm and people to convert, and they borrowed the technology to get there.',
+      body: [
+        'Portuguese sailors first went to sea to fish, but Portugal was a small country hungry for land. In the 1400s its captains found the uninhabited Madeira Islands and the Azores and turned them into plantations of sugarcane, a crop worth a fortune in Europe.',
+        'The real prize was Asia. Wealthy Europeans had come to see Indian pepper and Chinese ginger as essential, and they craved silk and porcelain. But since the bubonic plague of the 1300s the Silk Roads had become more dangerous, and spices reached Europe only after Indian, Arab, Egyptian and Venetian merchants had each added duties and profit. A sea route straight to Asia would cut them out. West Africa offered gold, ivory and slaves.',
+        'Religion mattered too. Franciscan and Dominican missionaries had already traveled to India, Central Asia and China. The crusades and the reconquista of Spain had taught Iberians to mix trade, war and conversion, a mix often summed up as “God, gold and glory.”',
+        'New technology made long voyages possible. Europeans adopted the sternpost rudder (from China, by the 1100s), triangular lateen sails that work well in cross winds, the magnetic compass and the astrolabe. Just as important, they learned the patterns of the ocean winds and currents. The volta do mar (“return through the sea”) taught them to sail far out into the Atlantic to catch winds that carried them home.',
+      ],
+      facts: ['Land hunger: sugar on Madeira and the Azores', 'Spices, silk, porcelain without middlemen', 'Missionaries and the crusading spirit', 'Rudder, lateen sail, compass, volta do mar'],
+      chain: ['Plague makes the Silk Roads riskier', 'Middlemen push spice prices up', 'Europeans seek a sea route to Asia', 'Borrowed technology + knowledge of winds', 'Long ocean voyages become possible'],
+      soWhat: 'AP Topics 4.1 and 4.2: know the economic, religious and political causes, and that much of the technology came from China and the Islamic world. Compare with Zheng He’s much larger Chinese fleets of 1405–1433 (Chapter 21), which sailed for prestige and tribute, not profit, and then stopped.',
+      video: ['TPaLulRrKuM', 'TECHNOLOGY in Sea-Based Empires [AP World History Review—Unit 4 Topic 1]', 'Heimler\'s History'],
+    },
+    {
+      id: 'portugal', title: 'Portugal finds the sea route to India', when: '1415 – 1500', theme: 'Economic systems', map: 1,
+      lead: 'Portugal led the way. Step by step its ships worked down the coast of Africa, around the Cape of Good Hope and across the Indian Ocean to India.',
+      body: [
+        'Prince Henry of Portugal (1394–1460), later called “the Navigator,” paid for voyage after voyage down the west African coast. His captains built fortified trading posts, traded for gold and slaves, and settled the Atlantic islands, reaching the Cape Verde Islands by about 1460.',
+        'In 1488 Bartolomeu Dias rounded the Cape of Good Hope at the southern tip of Africa and entered the Indian Ocean basin. Storms and a restless crew forced him to turn back, but the way east was open.',
+        'In July 1497 Vasco da Gama left Lisbon with four ships. He swung far out into the South Atlantic to catch westerly winds, rounded the Cape, and at Malindi in East Africa took on an experienced pilot who guided him across the Arabian Sea on the monsoon winds. He reached Calicut in May 1498.',
+        'Calicut was a rich, cosmopolitan port, and its rulers were not impressed by da Gama’s cheap trade goods. Still, the pepper and cinnamon he brought home sold for a huge profit. By 1500 the Portuguese had a trading post at Calicut, and later fleets came armed with cannon.',
+      ],
+      facts: ['Prince Henry (1394–1460) backs African voyages', '1488: Dias rounds the Cape of Good Hope', '1497–1499: da Gama sails to Calicut and back', 'Monsoon winds and local pilots show the way'],
+      chain: ['Henry funds voyages down Africa', 'Forts, gold, slaves, sugar islands', 'Dias rounds the Cape, 1488', 'Da Gama reaches Calicut, 1498', 'Portugal buys spices directly'],
+      soWhat: 'Portugal did not create Indian Ocean trade. It joined a network of Arab, Indian, Malay and Chinese merchants that had run for centuries (Chapter 15). The Europeans’ main advantage was ships armed with cannon.',
+      video: ['h3m5yT8DaZ8', 'CAUSES of EUROPEAN EXPLORATION [AP World History Review—Unit 4 Topic 2]', 'Heimler\'s History'],
+      factCheck: 'Your notes say da Gama reached India in 1497. He sailed from Lisbon in July 1497 but arrived at Calicut in May 1498, and returned to Portugal in 1499.',
+    },
+    {
+      id: 'columbus', title: 'Columbus and the Atlantic', when: '1492 – 1611', theme: 'Governance', map: 2,
+      lead: 'Christopher Columbus planned to reach Asia by sailing west. Instead he reached two continents that Europeans had not known existed.',
+      body: [
+        'Columbus (1451–1506), a mariner from Genoa, believed the earth was much smaller than it is. He estimated that Japan lay about 2,500 miles west of the Canary Islands; the real distance is about 10,000 miles. The king of Portugal’s experts rejected his plan.',
+        'King Fernando and Queen Isabel of Spain, with help from Italian bankers, paid for the voyage. In 1492 Columbus sailed west with three ships and reached an island in the Bahamas, which he named San Salvador, then Cuba and Hispaniola. Sure he was near Asia, he called the people he met “Indians.”',
+        'Columbus crossed the Atlantic three more times but never reached Asia. To avoid war over the new lands, Spain and Portugal signed the Treaty of Tordesillas (1494): lands west of a line 370 leagues west of the Cape Verde Islands went to Spain, lands east of it to Portugal. That is why Brazil, reached by Pedro Álvares Cabral in 1500, speaks Portuguese.',
+        'By the early 1500s the English, French and Dutch followed. Hunting for a Northwest Passage to Asia, John Cabot (for England, 1497), Jacques Cartier (for France, 1534) and Henry Hudson (for the Dutch and English, 1609–1611) explored North America’s coasts and rivers. Slowly Europeans realized the Americas were valuable in their own right.',
+      ],
+      facts: ['Thought Japan was ~2,500 miles west (really ~10,000)', 'Paid for by Fernando, Isabel and Italian bankers', '1492: Bahamas, Cuba, Hispaniola', '1494: Treaty of Tordesillas splits the world'],
+      chain: ['Columbus underestimates the earth', 'Portugal refuses; Spain pays', 'Landfall in the Bahamas, 1492', 'Spain and Portugal sign Tordesillas, 1494', 'Rivals search for passages and colonies'],
+      soWhat: 'Columbus’s voyages began lasting contact between the Eastern and Western Hemispheres. They led to the Spanish conquest of the Aztec and Inca empires (Chapter 24) and to the Columbian Exchange.',
+      video: ['OL7k4t9vDho', 'EUROPEAN Exploration [AP World History Review] Unit 4 Topic 2', 'Heimler\'s History'],
+    },
+    {
+      id: 'pacific', title: 'Around the world and across the Pacific', when: '1513 – 1779', theme: 'Technology and innovation', map: 3,
+      lead: 'The Pacific was the last ocean Europeans crossed, and the hardest. Its size shocked everyone.',
+      body: [
+        'In 1513 Vasco Núñez de Balboa, searching for gold in Panama, crossed the isthmus and became the first European to see the Pacific Ocean. No one knew how far away Asia was.',
+        'Ferdinand Magellan (1480–1521), a Portuguese captain whom Portugal would not support, sailed for Spain in 1519 with five ships and roughly 250 men. He found the passage at the southern tip of South America now called the Strait of Magellan, then spent more than three months crossing the open Pacific. Scurvy and hunger killed many sailors. In 1521 Magellan was killed on Mactan, in the Philippines, after taking sides in a local political dispute.',
+        'Juan Sebastián Elcano took command and brought one ship, the Victoria, home across the Indian Ocean and around Africa. In 1522 only 18 of the men who had set out returned to Spain, but they had sailed around the world.',
+        'Spain went on to conquer the Philippines, named for King Philip II, and from 1565 ran a galleon route between Manila and Mexico. Others kept exploring. English and Russian sailors searched for a Northwest Passage, but Arctic ice blocked it (Roald Amundsen got through only in 1903–1906). Francis Drake explored the west coast of North America (1579), Vitus Bering sailed through the strait between Asia and America (1728), and James Cook charted the South Pacific and Hawaii (1768–1779).',
+      ],
+      facts: ['1513: Balboa sees the Pacific', '1519–1522: Magellan–Elcano circumnavigation', 'Magellan killed 1521; 18 sailors return', 'Drake, Bering, Cook explore the Pacific'],
+      chain: ['Balboa sees the Pacific, 1513', 'Magellan sails for Spain, 1519', 'Strait, scurvy, hunger', 'Magellan killed in the Philippines', 'Elcano completes the circle, 1522'],
+      soWhat: 'The circumnavigation proved that all the oceans connect and showed how huge the Pacific is. It also gave Spain its claim to the Philippines, the Asian end of the Manila galleon trade.',
+    },
+    {
+      id: 'trading-posts', title: 'Trading-post empires', when: '1500 – 1700', theme: 'Economic systems', map: 5,
+      lead: 'In Asia, Europeans could not conquer the great land empires. Instead they built fortified trading posts on the coasts and used armed ships to control the sea lanes.',
+      body: [
+        'Portugal built the first trading-post empire: about fifty forts and posts by the mid-1500s, from Mozambique and Hormuz to Goa, Malacca and Macau. The goal was not to monopolize all trade but to charge duties on it. The naval commander Afonso de Albuquerque, architect of this policy, seized Goa (1510), Malacca (1511) and Hormuz (1515), and ships that broke the rules could have their crews’ hands cut off.',
+        'Yet Arab, Indian and Malay merchants kept trading, and by the end of the 1500s Portuguese control was fading. The English and Dutch built rival, parallel networks. The English concentrated on India (Surat, Madras, Bombay, Calcutta). The Dutch took Cape Town (1652), Colombo in Ceylon (1656) and the spice islands of Indonesia.',
+        'Their advantage was a new kind of business, the joint-stock company. The English East India Company (1600) and the Dutch United East India Company, or VOC (1602), sold shares to private investors and used privately owned ships, but they had government support and the right to trade, build forts and even make war. They were exceptionally profitable.',
+        'Southeast Asia shows two styles. Spain conquered the Philippines and made Manila a major port. Chinese traders poured in and were resented by both Spaniards and Filipinos, and repeated massacres of Manila’s Chinese followed from 1603 into the 1800s; Spanish missionaries converted most lowland Filipinos. The Dutch founded Batavia on Java (1619), focused on controlling the spice trade, and did little missionary work.',
+      ],
+      facts: ['Portugal: ~50 posts, duties not monopoly', 'Albuquerque takes Goa, Malacca, Hormuz', 'EIC 1600 · VOC 1602: joint-stock companies', 'Manila (Spain) vs Batavia (Dutch, 1619)'],
+      chain: ['Armed ships, but no armies for Asia’s empires', 'Forts and posts on the coasts', 'Duties on Asian shipping', 'Dutch and English companies outcompete Portugal', 'Dutch control the spice islands'],
+      soWhat: 'AP Topic 4.4: joint-stock companies are a key new state-backed business. Notice that in Asia Europeans mostly joined existing trade and stayed on the coasts, while in the Americas they conquered whole empires.',
+      video: ['uyN-jFvI9vo', 'Sea-Based EMPIRES ESTABLISHED [AP World History Review—Unit 4 Topic 4]', 'Heimler\'s History'],
+    },
+    {
+      id: 'russia', title: 'Russia expands across Siberia', when: '1552 – 1763', theme: 'Governance', map: 6,
+      lead: 'While western Europeans crossed oceans, Russia expanded overland across northern Asia, all the way to the Pacific.',
+      body: [
+        'In the 1500s Tsar Ivan IV (“the Terrible”) conquered two of the khanates left over from the Mongol empire: Kazan (1552) and Astrakhan (1556). Astrakhan, at the mouth of the Volga River, became a major trading city linking Russia with Persia and Central Asia.',
+        'In 1582 Cossack adventurers led by Yermak crossed the Ural Mountains and attacked the khanate of Sibir. Fur trappers, soldiers and traders followed the rivers east, building forts such as Tobolsk (1587) and Yakutsk (1632), and reached the Pacific by 1639. The Treaty of Nerchinsk (1689) fixed the border with Qing China.',
+        'The prize was fur: sable, fox and ermine pelts sold for high prices. Russians traded with Siberian peoples and forced many to pay tribute (yasak) in furs. Missionaries had little success, and some local peoples rebelled. In the 1700s Russia also pushed into the Caucasus.',
+        'The state exiled criminals and prisoners of war to Siberia, and unhappy peasants fled east for land. Trading posts grew into towns. By 1763 about 420,000 Russians lived in Siberia, outnumbering the native peoples two to one.',
+      ],
+      facts: ['Kazan 1552 · Astrakhan 1556', 'Yermak crosses the Urals, 1582', 'Furs and fur tribute (yasak)', '1763: 420,000 Russians, 2 : 1 over natives'],
+      chain: ['Mongol khanates weaken', 'Ivan IV takes Kazan and Astrakhan', 'Cossacks and fur traders cross Siberia', 'Forts, tribute, exiles, settlers', 'Russians outnumber native peoples'],
+      soWhat: 'Russia is the land-based counterpart to the sea-based empires. Like Spain in the Americas, it made conquered peoples pay tribute and settled its own people on their land.',
+      video: ['EkTXXeqjT8U', 'Why did Russia conquer Siberia? (Short Animated Documentary)', 'History Matters'],
+      factCheck: 'Your notes say the Caucasus was absorbed in the 1700s. Russia did push into the North Caucasus in the 1700s, but most of the region was conquered in the 1800s: Georgia from 1801, Azerbaijan and Armenia by 1828, and the mountain peoples by 1864.',
+    },
+    {
+      id: 'columbian-exchange', title: 'The Columbian Exchange', when: '1492 onward', theme: 'Humans and the environment',
+      lead: 'After 1492, plants, animals, people and germs crossed between hemispheres that had been separate for thousands of years. Historians call this the Columbian Exchange.',
+      body: [
+        'The name honors Columbus; the historian Alfred Crosby coined it in 1972. For the first time the biological zones of Afro-Eurasia, the Americas and Oceania were linked, and the result permanently changed human geography and the natural environment.',
+        'The deadliest part was disease. Smallpox, measles, diphtheria, whooping cough and influenza had never existed in the Americas or Oceania, so native peoples had no inherited or acquired immunity. Smallpox struck the Aztec empire in 1520, and central Mexico’s population fell by about 90 percent within a century, from about 17 million to 1.3 million.',
+        'Food moved too, and the world’s food supply grew. Europeans brought horses, cattle, pigs, sheep and chickens, plus wheat and sugarcane, to the Americas. American maize, potatoes, beans, manioc and tomatoes spread to Europe, Africa and Asia. World population rose from about 425 million in 1500 to about 900 million in 1800.',
+        'People were part of the exchange. Millions of enslaved Africans were shipped to South America, the Caribbean and North America to work plantations and mines, and European settlers followed. The Americas became a new mix of Native American, African and European peoples.',
+      ],
+      facts: ['Smallpox, measles, flu: no immunity', 'Central Mexico: ~17 million → 1.3 million', 'Horses, cattle, pigs to the Americas', 'Maize, potatoes, beans to Afro-Eurasia'],
+      chain: ['Contact after 1492', 'Old World germs reach the Americas', 'Epidemics kill up to 90%', 'Labor shortage', 'Enslaved Africans shipped in'],
+      soWhat: 'AP Topic 4.3. Expect questions on its effects: population collapse in the Americas, population growth in Afro-Eurasia thanks to American crops, and environmental change from new animals and plantations.',
+      video: ['HQPA5oNpfM4', 'The Columbian Exchange: Crash Course World History #23', 'CrashCourse'],
+      factCheck: 'Your notes date smallpox in the Aztec empire to 1519, the year Cortés landed. The epidemic actually broke out in 1520, carried by a later Spanish expedition, and swept Tenochtitlan that autumn.',
+    },
+    {
+      id: 'global-trade', title: 'Global trade and a global war', when: '1565 – 1763', theme: 'Economic systems', map: 7,
+      lead: 'By the late 1500s a true world economy existed. American silver was its fuel, and rivalry over its profits finally set off a war fought on several continents.',
+      body: [
+        'In the Atlantic basin, Europe shipped manufactured goods to Africa and the Americas, and the Americas sent back raw materials: silver, sugar, tobacco, furs and hides.',
+        'In the Pacific, the Manila galleons (1565–1815) carried American silver, much of it mined at Potosí in the Andes, from Acapulco to Manila. There it bought Chinese silk and porcelain, which sailed back to Mexico and on to Europe. China, whose taxes were increasingly paid in silver, absorbed enormous amounts.',
+        'The new trade hurt the environment. Hunters drove beavers, sea otters and other fur-bearing animals to extinction or near extinction in many regions, and whales, cod and other animals with industrial uses were exploited relentlessly.',
+        'Commercial rivalry turned violent. The Seven Years’ War (1756–1763) was fought in Europe, India, the Caribbean and North America, where it merged with the French and Indian War (1754–1763). Britain won: it took Canada from France and, after Robert Clive’s victory at Plassey (1757), became the leading European power in India.',
+      ],
+      facts: ['Atlantic: manufactures out, raw materials back', 'Manila galleons 1565–1815: silver for silk', 'Furs, whales, cod overhunted', 'Seven Years’ War 1756–1763: Britain wins'],
+      chain: ['American silver mined', 'Silver flows to Spain and China', 'A global trade network forms', 'Empires compete for its profits', 'Seven Years’ War: Britain gains Canada and India'],
+      soWhat: 'The Seven Years’ War left Britain deep in debt, so it taxed its American colonies, a step toward the American Revolution. Silver also links Europe’s economy to Ming and Qing China.',
+      video: ['rjhIzemLdos', 'The Spanish Empire, Silver, & Runaway Inflation: Crash Course World History #25', 'CrashCourse'],
+    },
+  ],
+
+  // Timeline: year < 0 means BCE. end makes a span. track: politics | war | society | religion | world
+  timeline: [
+    { year: 1405, end: 1433, label: 'Zheng He’s voyages', track: 'world', detail: 'Ming China sends huge treasure fleets as far as East Africa, then stops (Chapter 21).' },
+    { year: 1415, label: 'Portugal captures Ceuta', track: 'war', detail: 'A Moroccan port; the start of Portuguese expansion overseas.' },
+    { year: 1420, label: 'Portuguese settle Madeira', track: 'society', detail: 'Reached about 1419 and soon planted with sugarcane. The Azores follow from the 1430s.' },
+    { year: 1453, label: 'Ottomans take Constantinople', track: 'world', detail: 'The Ottoman Empire now sits on key routes between Europe and Asia.' },
+    { year: 1488, label: 'Dias rounds the Cape of Good Hope', track: 'politics', detail: 'He enters the Indian Ocean, but his crew forces him home.' },
+    { year: 1492, label: 'Columbus reaches the Bahamas', track: 'politics', detail: 'October 12, 1492; then Cuba and Hispaniola.' },
+    { year: 1493, label: 'Pope divides the new lands', track: 'religion', detail: 'Pope Alexander VI gives Spain lands to the west; Tordesillas moves the line a year later.' },
+    { year: 1494, label: 'Treaty of Tordesillas', track: 'politics', detail: 'Spain and Portugal divide new lands along a line 370 leagues west of the Cape Verde Islands.' },
+    { year: 1497, end: 1499, label: 'Da Gama’s voyage to India', track: 'politics', detail: 'Lisbon → Cape of Good Hope → Malindi → Calicut (May 1498) and back.' },
+    { year: 1500, label: 'Cabral reaches Brazil', track: 'politics', detail: 'On his way to India; Brazil lies on Portugal’s side of the Tordesillas line.' },
+    { year: 1510, end: 1515, label: 'Albuquerque takes Goa, Malacca, Hormuz', track: 'war', detail: 'Goa 1510, Malacca 1511, Hormuz 1515: the key points of Portugal’s trading-post empire.' },
+    { year: 1513, label: 'Balboa sees the Pacific', track: 'politics', detail: 'From the isthmus of Panama, while searching for gold.' },
+    { year: 1517, label: 'Luther’s Ninety-five Theses', track: 'world', detail: 'The Protestant Reformation begins (Chapter 23).' },
+    { year: 1519, end: 1522, label: 'Magellan–Elcano circumnavigation', track: 'politics', detail: 'Magellan is killed in 1521; one ship and 18 men complete the voyage.' },
+    { year: 1519, end: 1521, label: 'Spain conquers the Aztec empire', track: 'world', detail: 'Cortés, Native allies and smallpox bring down Tenochtitlan (Chapter 24).' },
+    { year: 1520, label: 'Smallpox strikes the Aztecs', track: 'society', detail: 'The first of many epidemics; central Mexico loses about 90% of its people within a century.' },
+    { year: 1542, label: 'Francis Xavier reaches Goa', track: 'religion', detail: 'The Jesuit missionary goes on to Malacca, the Moluccas and Japan.' },
+    { year: 1545, label: 'Silver found at Potosí', track: 'society', detail: 'The richest silver mine in the Americas, high in the Andes (today’s Bolivia).' },
+    { year: 1552, end: 1556, label: 'Russia takes Kazan and Astrakhan', track: 'war', detail: 'Ivan IV conquers two khanates left from the Mongol empire.' },
+    { year: 1565, end: 1815, label: 'Manila galleons', track: 'society', detail: 'American silver west to Manila (founded 1571); Chinese silk and porcelain east to Mexico.' },
+    { year: 1582, label: 'Yermak crosses the Urals', track: 'war', detail: 'Cossacks attack the khanate of Sibir; Russians reach the Pacific by 1639.' },
+    { year: 1600, label: 'English East India Company', track: 'society', detail: 'A joint-stock company with a royal charter for trade in Asia.' },
+    { year: 1602, label: 'Dutch VOC founded', track: 'society', detail: 'The United East India Company: shares, ships, forts and the right to make war.' },
+    { year: 1603, label: 'Massacre of Manila’s Chinese', track: 'society', detail: 'The first of several massacres of Chinese merchants in Spanish Manila.' },
+    { year: 1619, label: 'Dutch found Batavia', track: 'politics', detail: 'On Java; the VOC’s Asian headquarters.' },
+    { year: 1644, label: 'Qing dynasty takes Beijing', track: 'world', detail: 'Manchu rulers replace the Ming and later fix the border with Russia at Nerchinsk (1689).' },
+    { year: 1652, label: 'Dutch found Cape Town', track: 'politics', detail: 'A supply station for VOC ships sailing to Asia.' },
+    { year: 1728, label: 'Bering sails through the strait', track: 'politics', detail: 'A Dane in Russian service; he reaches Alaska in 1741.' },
+    { year: 1756, end: 1763, label: 'Seven Years’ War', track: 'war', detail: 'Fought in Europe, North America, the Caribbean and India; Britain wins Canada and primacy in India.' },
+    { year: 1768, end: 1779, label: 'Cook’s Pacific voyages', track: 'politics', detail: 'Tahiti, New Zealand, Australia and Hawaii, where Cook is killed in 1779.' },
+  ],
+
+  terms: [
+    ['Prince Henry the Navigator', 'Portuguese prince (1394–1460) who sponsored voyages down Africa.', 'Started Portugal’s maritime expansion.'],
+    ['Sternpost rudder', 'Rudder fixed to the back of a ship; came from China.', 'Made ships easier to steer on rough seas.'],
+    ['Lateen sail', 'Triangular sail that works well in cross winds.', 'Let ships sail against the wind; borrowed from the Indian Ocean.'],
+    ['Astrolabe and compass', 'Tools to find latitude and direction.', 'Made navigation far from land possible.'],
+    ['Volta do mar', '“Return through the sea”: sailing far out to catch winds home.', 'Knowledge of winds unlocked the Atlantic.'],
+    ['Bartolomeu Dias', 'Portuguese captain who rounded the Cape of Good Hope in 1488.', 'Proved Africa could be sailed around.'],
+    ['Vasco da Gama', 'Portuguese captain who reached Calicut, India, in 1498.', 'Opened the direct sea route to Asia.'],
+    ['Calicut', 'Rich spice port on India’s southwest coast.', 'Da Gama’s goal; Portugal’s first post in India.'],
+    ['Christopher Columbus', 'Genoese navigator who reached the Caribbean for Spain in 1492.', 'Began lasting contact between the hemispheres.'],
+    ['Treaty of Tordesillas', '1494 treaty dividing new lands between Spain and Portugal.', 'Explains why Brazil is Portuguese.'],
+    ['Northwest Passage', 'Hoped-for sea route to Asia north of America.', 'Drove Cabot, Cartier and Hudson; ice blocked it.'],
+    ['Vasco Núñez de Balboa', 'Spaniard who first saw the Pacific from Panama, 1513.', 'Showed another ocean lay beyond the Americas.'],
+    ['Ferdinand Magellan', 'Portuguese captain whose Spanish fleet circled the globe, 1519–1522.', 'Proved the oceans connect; he died in the Philippines.'],
+    ['Scurvy', 'Disease caused by a lack of vitamin C.', 'Killed huge numbers of sailors on long voyages.'],
+    ['Trading-post empire', 'Network of fortified coastal posts, not large territories.', 'How Europeans first operated in Asia.'],
+    ['Afonso de Albuquerque', 'Portuguese commander who took Goa, Malacca and Hormuz.', 'Built Portugal’s system of duties and forts.'],
+    ['Joint-stock company', 'Business owned by many investors who buy shares.', 'Spread risk and funded huge voyages (AP Topic 4.4).'],
+    ['English East India Company', 'English joint-stock company chartered in 1600.', 'Focused on India; later ruled much of it.'],
+    ['VOC', 'Dutch United East India Company, founded 1602.', 'Dominated the spice trade from Batavia.'],
+    ['Batavia', 'Dutch port on Java, founded 1619 (today’s Jakarta).', 'Headquarters of the VOC in Asia.'],
+    ['Manila galleons', 'Spanish ships between Acapulco and Manila, 1565–1815.', 'Carried American silver to China.'],
+    ['Cossacks', 'Frontier warriors and adventurers of the steppe.', 'Led Russia’s push across Siberia.'],
+    ['Yasak', 'Tribute in furs that Russia demanded from Siberian peoples.', 'Shows how the land empire made money.'],
+    ['Columbian Exchange', 'Transfer of plants, animals, people and germs between hemispheres after 1492.', 'Reshaped populations and environments (AP Topic 4.3).'],
+    ['Smallpox', 'Deadly virus brought by Europeans to the Americas.', 'Killed up to 90% of some Native populations.'],
+    ['Potosí', 'Silver mining city in the Andes, found 1545.', 'Its silver fueled global trade.'],
+    ['Seven Years’ War', 'Global war, 1756–1763, between Britain, France and their allies.', 'Made Britain the leading power in India and Canada.'],
+  ],
+
+  compare: [
+    {
+      title: 'Portuguese vs Dutch trading-post empires',
+      head: ['', 'Portugal (1500s)', 'Dutch VOC (1600s–1700s)'],
+      rows: [
+        ['Run by', 'The crown: royal fleets and officials', 'A joint-stock company of private investors with state powers'],
+        ['Main bases', 'Goa, Hormuz, Malacca, Macau, Mozambique', 'Batavia, Cape Town, Colombo, Malacca (from 1641), the spice islands'],
+        ['Method', 'Forts at chokepoints; passes and duties on Asian shipping', 'Direct control of spice production and prices'],
+        ['Religion', 'Active missionaries (Francis Xavier, Jesuits)', 'Little missionary work: profit first'],
+        ['Outcome', 'Control fades by about 1600', 'Overtakes Portugal and dominates Indonesia'],
+      ],
+    },
+    {
+      title: 'Spain vs Portugal: motives and methods',
+      head: ['', 'Spain', 'Portugal'],
+      rows: [
+        ['Direction', 'West across the Atlantic', 'South and east around Africa'],
+        ['Breakthrough', 'Columbus, 1492; Magellan–Elcano, 1519–1522', 'Dias, 1488; da Gama, 1498'],
+        ['What they found', 'Two unknown continents with large empires', 'An old, rich Indian Ocean trade network'],
+        ['Method', 'Conquest and settlement (Aztecs, Incas, Philippines)', 'Coastal forts, naval power, duties on trade'],
+        ['Main wealth', 'American silver and gold', 'Spices, African gold, later Brazilian sugar'],
+        ['Same', 'Crown-sponsored, missionary, armed with guns and ships', 'Divided the world at Tordesillas (1494)'],
+      ],
+    },
+  ],
+
+  // ---------- practice ----------
+  mcq: [
+    {
+      source: { kind: 'text', title: 'An unnamed member of Vasco da Gama’s crew, journal of the first Portuguese voyage to India, written 1498 on arrival at Calicut', text: 'They asked what he sought so far away from home, and he told them that we came in search of Christians and of spices. … From this country of Calecut, or Alta India, come the spices which are consumed in the East and the West, in Portugal, as in all other countries of the world… The Mecca vessels carry these spices from there to a city in Mecca called Judeâ [Jidda]… At Judeâ they discharge their cargoes, paying customs duties to the Grand Sultan. … At Quayro duties are paid again.', cite: 'A Journal of the First Voyage of Vasco da Gama, 1497–1499, trans. E. G. Ravenstein (1898)' },
+      questions: [
+        { q: 'The phrase “in search of Christians and of spices” best illustrates which motive for Portuguese exploration?', options: ['A desire to escape religious persecution at home', 'A combination of religious and commercial goals', 'A plan to build settler colonies in India', 'Scientific curiosity about the shape of the earth'], correct: 1, why: 'The Portuguese sought both allies and converts (Christians) and profits (spices): “God and gold.”' },
+        { q: 'The description of customs duties at Jidda and Cairo best explains why the Portuguese wanted', options: ['to conquer the Mamluk Sultanate of Egypt', 'to replace pepper with American crops', 'an overland route through Central Asia', 'a direct sea route to India that avoided Muslim and Venetian middlemen'], correct: 3, why: 'Every stop on the old route added duties and profits. Sailing around Africa cut out those middlemen.' },
+        { q: 'The passage best supports which claim about the Indian Ocean before the Portuguese arrived?', options: ['It was already a long-established network linking Asia, the Middle East and Europe.', 'It was a small local network that Europeans built up.', 'Its trade had stopped after the fall of the Mongol empires.', 'It was controlled entirely by Chinese fleets.'], correct: 0, why: 'Spices from Calicut already reached “all other countries of the world” through Arab and Egyptian merchants.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Christopher Columbus, Genoese navigator sailing for the Spanish crown, journal entry after landing in the Bahamas, October 1492 (as abridged by Bartolomé de las Casas)', text: '“I,” he says, “that we might form great friendship, for I knew that they were a people who could be more easily freed and converted to our holy faith by love than by force, gave to some of them red caps, and glass beads to put round their necks, and many other things of little value… They neither carry nor know anything of arms, for I showed them swords, and they took them by the blade and cut themselves through ignorance. They have no iron… They should be good servants and intelligent, for I observed that they quickly took in what was said to them, and I believe that they would easily be made Christians, as it appeared to me that they had no religion.”', cite: 'Journal of the First Voyage of Columbus, 12 October 1492, trans. C. R. Markham (1893), ed. E. G. Bourne (1906)' },
+      questions: [
+        { q: 'Columbus’s description most directly reflects which European goal?', options: ['Learning Native languages to study their religion', 'Converting Native peoples to Christianity and using them as laborers', 'Trading for iron weapons', 'Establishing equal diplomatic relations with Native rulers'], correct: 1, why: 'He says they “would easily be made Christians” and “should be good servants.”' },
+        { q: 'Columbus’s view that the Taíno “should be good servants” foreshadowed', options: ['forced Native labor in Spanish colonies, such as the encomienda system', 'the end of slavery in the Spanish empire', 'the Treaty of Tordesillas', 'the founding of joint-stock companies'], correct: 0, why: 'Spanish settlers soon forced the Taíno to work mines and fields, and many died.' },
+        { q: 'A historian using this source should keep in mind that it', options: ['was written by a Taíno observer', 'was published only after Columbus reached India', 'survives in a summary by Las Casas and was written for the monarchs who paid for the voyage', 'was meant to warn Spain not to send more ships'], correct: 2, why: 'Sourcing: Columbus wanted to impress his royal sponsors, and the original journal is lost; we have Las Casas’s abridgment.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Treaty of Tordesillas, agreed by representatives of Fernando and Isabel of Castile-Aragon and João II of Portugal, June 7, 1494', text: '…a boundary or straight line be determined and drawn north and south, from pole to pole, on the said ocean sea, from the Arctic to the Antarctic pole. This boundary or line shall be drawn straight, as aforesaid, at a distance of three hundred and seventy leagues west of the Cape Verde Islands… And all lands, both islands and mainlands, found and discovered already, or to be found and discovered hereafter, by the said King of Portugal and by his vessels on this side of the said line… toward the east… shall belong to, and remain in the possession of, and pertain forever to, the said King of Portugal and his successors.', cite: 'Treaty of Tordesillas, art. 1, trans. F. G. Davenport (1917)' },
+      questions: [
+        { q: 'The treaty most directly explains why', options: ['England founded colonies in North America', 'Portugal lost its trading posts in Asia', 'Brazil became a Portuguese colony while most of South America became Spanish', 'Spain controlled the Indian Ocean spice trade'], correct: 2, why: 'The eastern bulge of South America lay east of the line, on Portugal’s side.' },
+        { q: 'The treaty reflects the assumption that', options: ['European rulers could divide distant lands without the consent of the people living there', 'Native American states were equal partners in diplomacy', 'trade with Asia was no longer profitable', 'all European states would share the new lands equally'], correct: 0, why: 'Point of view: two Iberian crowns split the world between themselves; no one who lived there was asked.' },
+        { q: 'Other European powers such as England, France and the Netherlands responded to the treaty mainly by', options: ['paying Spain for the right to trade', 'signing it in 1495', 'giving up overseas exploration', 'ignoring it and claiming lands and trade routes of their own'], correct: 3, why: 'They explored North America, built trading posts in Asia and attacked Iberian shipping.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'José de Acosta, Spanish Jesuit missionary who lived in Peru and Mexico, Natural and Moral History of the Indies, 1590 (“kine” means cattle)', text: 'I finde there are three kindes of beasts at the Indies, whereof some have been carried from Spaine… Of the first kinde are sheepe, kine, goates, swine, horses, asses, dogs, cattes, and other such beasts, for there are of all these kindes at the Indies. The smaller cattell have greatly multiplied… These wilde kine have so multiplied in Santo Domingo and thereabouts, that they troope together in the fields and woods by thousands, having no master to whom they appertaine. They hunt these beasts onely for their hides… In the fleet, the yere 1587, there came from Santo Domingo 35444 hides, and from New Spaine 64350…', cite: 'José de Acosta, Natural and Moral History of the Indies 4.33, trans. E. Grimston (1604; Hakluyt Society ed. 1880)' },
+      questions: [
+        { q: 'The passage best illustrates which process?', options: ['The Columbian Exchange', 'The spread of Buddhism along the Silk Roads', 'The rise of joint-stock companies', 'The Russian conquest of Siberia'], correct: 0, why: 'European animals carried to the Americas are a classic example of the Columbian Exchange.' },
+        { q: 'The huge herds Acosta describes most likely had which effect in the Americas?', options: ['They caused the smallpox epidemics', 'They ended the need for American silver', 'They changed landscapes and Native land use as herds spread over the land', 'They reduced European demand for American goods'], correct: 2, why: 'Grazing animals transformed grasslands and often trampled Native fields: an environmental effect of the exchange.' },
+        { q: 'The shipment of nearly 100,000 hides to Spain in one fleet best supports which claim?', options: ['Europe exported raw materials to the Americas.', 'The Americas supplied raw materials to Europe in a new Atlantic economy.', 'Spain banned trade with its colonies.', 'Hides were Asia’s main export.'], correct: 1, why: 'Raw goods flowed from the Americas to Europe, while Europe sent manufactured goods.' },
+      ],
+    },
+    {
+      source: { kind: 'text', title: 'Adam Smith, Scottish economist, looking back on the age of exploration in The Wealth of Nations, 1776', text: 'The discovery of America, and that of a passage to the East Indies by the Cape of Good Hope, are the two greatest and most important events recorded in the history of mankind. … By uniting in some measure the most distant parts of the world, by enabling them to relieve one another’s wants, to increase one another’s enjoyments, and to encourage one another’s industry, their general tendency would seem to be beneficial. To the natives, however, both of the East and West Indies, all the commercial benefits which can have resulted from those events have been sunk and lost in the dreadful misfortunes which they have occasioned. … At the particular time when these discoveries were made, the superiority of force happened to be so great on the side of the Europeans, that they were enabled to commit with impunity every sort of injustice in those remote countries.', cite: 'Adam Smith, The Wealth of Nations, Book IV, ch. 7, part 3 (1776)' },
+      questions: [
+        { q: 'Smith’s main argument about the voyages of Columbus and da Gama is that they', options: ['harmed Europe more than any other region', 'had little effect on world trade', 'were planned to help the peoples of the Americas and Asia', 'linked the world in ways that could benefit everyone but brought disaster to native peoples'], correct: 3, why: 'He calls their “general tendency” beneficial but says native peoples lost everything in “dreadful misfortunes.”' },
+        { q: 'Smith explains the “dreadful misfortunes” of native peoples mainly as a result of', options: ['natural disasters in the Americas', 'Europeans’ superiority of force at the time of contact', 'wars among Asian empires', 'the teachings of missionaries'], correct: 1, why: 'He says Europeans’ “superiority of force” let them commit injustice “with impunity.”' },
+        { q: 'Which factor would a historian most likely add to Smith’s explanation of the population collapse in the Americas?', options: ['The invention of the lateen sail', 'The founding of Cape Town', 'Epidemic diseases such as smallpox, to which native peoples had no immunity', 'The Treaty of Nerchinsk'], correct: 2, why: 'Disease, not force alone, killed most Native Americans; Smith’s focus on force leaves it out.' },
+      ],
+    },
+  ],
+
+  saq: [
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE technological innovation that made European transoceanic voyages possible in the period 1450–1750.',
+        'Explain ONE economic reason Portugal explored the coast of Africa and the route to India.',
+        'Explain ONE way the Columbian Exchange affected populations in the Americas OR in Afro-Eurasia.',
+      ],
+      guide: [
+        'Accept: sternpost rudder, lateen sail, magnetic compass, astrolabe, caravel, knowledge of winds and currents (volta do mar), cannon on ships.',
+        'Accept with explanation: avoid Muslim and Venetian middlemen and their duties on spices; land for sugar plantations on Atlantic islands; African gold, ivory and slaves.',
+        'Accept with explanation: smallpox and other diseases killed up to 90% of some Native populations (no immunity); American crops such as maize and potatoes increased food supplies and population in Afro-Eurasia; forced migration of enslaved Africans to the Americas.',
+      ],
+      model: [
+        'The lateen sail, a triangular sail borrowed from the Indian Ocean, let ships sail in cross winds.',
+        'Spices reached Europe only after Indian, Arab, Egyptian and Venetian merchants had each charged duties and taken a profit. A sea route around Africa let Portugal buy pepper directly in Calicut and keep those profits.',
+        'Native Americans had no immunity to smallpox. When it struck the Aztec empire in 1520, it helped cut central Mexico’s population by about 90 percent within a century.',
+      ],
+    },
+    {
+      prompt: 'Answer all parts.',
+      parts: [
+        'Identify ONE way the Dutch and English East India Companies differed from the Portuguese trading-post empire.',
+        'Explain ONE reason Europeans built trading posts in Asia instead of conquering large territories, as they did in the Americas.',
+        'Explain ONE way commercial rivalry among European states contributed to the Seven Years’ War (1756–1763).',
+      ],
+      guide: [
+        'Accept: they were joint-stock companies owned by private investors (Portugal’s empire was run by the crown); they had more ships and capital; the VOC controlled spice production directly; they did less missionary work.',
+        'Accept with explanation: Asian states such as the Mughals and Ming/Qing were powerful and populous; Europeans had naval but not land superiority; diseases did not weaken Asian populations as in the Americas; trade, not land, was the goal.',
+        'Accept with explanation: Britain and France competed for the fur trade and land in North America, sugar islands in the Caribbean, and trade in India; these rivalries became theaters of one global war.',
+      ],
+      model: [
+        'The VOC was a joint-stock company owned by private shareholders, while Portugal’s trading posts were run by the crown.',
+        'Asian empires such as Mughal India and Ming China had large armies and were far stronger on land than any European force, so Europeans could only hold coastal forts and use their navies to tax or control trade.',
+        'Britain and France were rivals for trade in North America, the Caribbean and India. Their fight over the Ohio Valley fur trade (the French and Indian War) merged with a European war, and fighting spread to India, where Britain won at Plassey in 1757.',
+      ],
+    },
+  ],
+
+  leq: {
+    prompt: 'Evaluate the extent to which European maritime expansion changed trade in the Indian Ocean basin between 1450 and 1750.',
+    theses: [
+      { text: 'European maritime expansion changed trade in the Indian Ocean.', ok: false, why: 'Restates the prompt. It makes no claim about the extent of change.' },
+      { text: 'Vasco da Gama reached Calicut in 1498.', ok: false, why: 'A fact, not an argument.' },
+      { text: 'Although Europeans added armed trading posts, duties and powerful joint-stock companies to Indian Ocean trade, the basin changed only partly, because Arab, Indian and Chinese merchants, Asian goods and the old monsoon routes continued to carry most of its trade until the mid-1700s.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up both change (posts, companies) and continuity (Asian merchants and routes).' },
+    ],
+    contextHint: 'What was Indian Ocean trade like before the Portuguese arrived in 1498?',
+    contextStart: 'Before da Gama reached Calicut, the Indian Ocean…',
+    context: 'Before 1498 the Indian Ocean was the world’s busiest trade zone. Arab, Persian, Indian, Malay and Chinese merchants used the monsoon winds to move spices, cotton textiles, silk and porcelain, and Zheng He’s Chinese fleets had sailed it in the early 1400s.',
+    evidence: [
+      { text: 'Da Gama’s route around the Cape (1498) let Europeans buy spices directly in India.', side: 'change' },
+      { text: 'Portugal built about fifty forts and forced Asian ships to buy passes and pay duties.', side: 'change' },
+      { text: 'Albuquerque seized Goa, Malacca and Hormuz (1510–1515).', side: 'change' },
+      { text: 'The VOC (1602) took over the spice islands and founded Batavia (1619).', side: 'change' },
+      { text: 'American silver arriving through Manila and Europe paid for Asian goods.', side: 'change' },
+      { text: 'Arab, Indian and Malay merchants kept trading, and Portuguese control faded by 1600.', side: 'continuity' },
+      { text: 'Mughal India and Ming/Qing China stayed powerful; Europeans held only coastal posts.', side: 'continuity' },
+      { text: 'The same goods (spices, textiles, silk) moved on the same monsoon routes.', side: 'continuity' },
+    ],
+    complexity: 'Show complexity by explaining that change came in stages: Portugal’s control was weak and short-lived, but the Dutch and English companies changed the spice and textile trades far more after 1600, and by 1763 Britain was starting to rule territory in India.',
+  },
+
+  recall: [
+    { q: 'Who rounded the Cape of Good Hope in 1488?', a: 'Bartolomeu Dias' },
+    { q: 'Which 1494 treaty divided new lands between Spain and Portugal?', a: 'The Treaty of Tordesillas' },
+    { q: 'Which Dutch joint-stock company was founded in 1602?', a: 'The VOC (United East India Company)' },
+    { q: 'What disease devastated the Aztec empire in 1520?', a: 'Smallpox' },
+    { q: 'Which war (1756–1763) was fought on several continents?', a: 'The Seven Years’ War' },
+  ],
+}

@@ -171,15 +171,17 @@ pause-and-try questions modeled on the class review sheets.
 ## History videos
 
 Scripts live in `videos/hist-<chapter>/` (e.g. `hist-11/01-rome.mjs`). The
-`histmap` layout (`{ type: 'histmap' }`) loads the history site's map
-(`../history-self-learning/src/geo`) so the video shows the same territories,
-routes and cities as the site. History views in `player.html`:
+`histmap` layout (`{ type: 'histmap', chapter: 11 }`) loads that chapter's map
+from the history site (`../history-self-learning/src/maps/ch<n>.js` and the
+base maps in `src/geo`) so the video shows the same territories, routes and
+cities as the site; each step can use its own base map. History views in
+`player.html`:
 
 - `histmap`: one map step (`step`), with `landsAt`, `routesAt` (one marker
   per route), `tagsAt` and `citiesAt` reveal markers.
 - `chain`: cause → effect boxes, each on its marker.
 - `timeline`: one axis (`range`, `ticks`) with events on their markers.
 
-`node publish.mjs hist-11` copies the videos to
-`../history-self-learning/public/videos/chapter-11/` and writes
-`../history-self-learning/src/videos/chapter-11.json`.
+History videos are rendered as MP4 only (no `.webm`). `node publish.mjs
+hist-11` copies them to `../history-self-learning/public/videos/chapter-11/`
+and writes `../history-self-learning/src/videos/chapter-11.json`.

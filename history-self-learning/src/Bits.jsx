@@ -97,6 +97,7 @@ export function LeqBuilder({ leq }) {
   const [sorted, setSorted] = useState({})
   const [checkedEv, setCheckedEv] = useState(false)
   const evRight = leq.evidence.filter((e, i) => sorted[i] === e.side).length
+  const sides = [...new Set(leq.evidence.map(e => e.side))] // e.g. change / continuity, cause / effect
   return <div className="leq">
     <span className="eyebrow">LONG ESSAY PRACTICE · BUILD AN OUTLINE</span>
     <p className="leq-prompt">{leq.prompt}</p>
@@ -105,15 +106,15 @@ export function LeqBuilder({ leq }) {
       {thesis != null && <p className="why"><strong>{leq.theses[thesis].ok ? 'Yes.' : 'Not quite.'}</strong> {leq.theses[thesis].why}</p>}
     </div>
     <div className="leq-step"><h4>2. Write 2–3 sentences of context</h4>
-      <p className="muted">What was happening before 133 BCE that matters for the question?</p>
-      <textarea rows={3} value={context} onChange={e => setContext(e.target.value)} placeholder="Before the Gracchi, Rome…" />
+      <p className="muted">{leq.contextHint ?? 'What was happening before this period that matters for the question?'}</p>
+      <textarea rows={3} value={context} onChange={e => setContext(e.target.value)} placeholder={leq.contextStart ?? 'Before this period…'} />
       <button className="btn ghost" onClick={() => setShowContext(!showContext)}>{showContext ? 'Hide' : 'Compare with a model'}</button>
       {showContext && <p className="why">{leq.context}</p>}
     </div>
-    <div className="leq-step"><h4>3. Sort the evidence: change or continuity?</h4>
+    <div className="leq-step"><h4>3. Sort the evidence: {sides.join(' or ')}?</h4>
       <div className="ev-list">{leq.evidence.map((e, i) => <div key={e.text} className={`ev${checkedEv ? (sorted[i] === e.side ? ' right' : ' wrong') : ''}`}>
         <span>{e.text}</span>
-        <div className="ev-btns">{['change', 'continuity'].map(side => <button key={side} aria-pressed={sorted[i] === side} onClick={() => { setCheckedEv(false); setSorted({ ...sorted, [i]: side }) }}>{side}</button>)}</div>
+        <div className="ev-btns">{sides.map(side => <button key={side} aria-pressed={sorted[i] === side} onClick={() => { setCheckedEv(false); setSorted({ ...sorted, [i]: side }) }}>{side}</button>)}</div>
       </div>)}</div>
       <div className="mcq-ctl">{checkedEv ? <span className="score">{evRight} / {leq.evidence.length} sorted correctly</span> : <button className="btn accent" disabled={Object.keys(sorted).length < leq.evidence.length} onClick={() => setCheckedEv(true)}>Check sorting</button>}</div>
     </div>

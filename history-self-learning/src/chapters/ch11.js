@@ -1,16 +1,22 @@
 // Chapter 11 · Mediterranean Society: The Roman Phase (Bentley & Ziegler, Traditions & Encounters, 5th ed.).
 // Built from the class chapter notes. Explanations are original; quoted sources are public-domain translations.
 
-export const CH11 = {
-  n: 11,
-  title: 'Mediterranean Society: The Roman Phase',
-  short: 'The Roman Phase',
-  era: 'c. 2000 BCE – 117 CE',
-  part: 'Part 3 · The Age of Empires',
-  question: 'How did a small town on the Tiber River come to rule the whole Mediterranean, and why did it trade its republic for an emperor?',
+// Title, era and big question live in ./index.js; the map is in ../maps/ch11.js.
+export default {
   hook: 'Rome began as a village of farmers. Within 700 years it ruled about 50 million people from Britain to Egypt. Along the way the Romans built a republic, wrecked it in civil wars, and replaced it with emperors who kept the old forms but held all the power. They also built the roads and the peace that carried a small Jewish movement, Christianity, across the empire.',
   apNote: 'This chapter is from the classical era, before the current AP World exam period (1200–present). It still matters: AP essays ask you to compare later empires with Rome and Han China, and Christianity, Roman law and Mediterranean trade are the background for later units.',
   themes: ['Governance', 'Economic systems', 'Social structures', 'Cultural developments'],
+  // Outside video for step 1: [YouTube id, title, creator]
+  video: ['oPf27gAup9U', 'The Roman Empire. Or Republic. Or… Which Was It?', 'CrashCourse'],
+  mapSub: 'Press Play all, or step through. Watch how Rome grows from one city to an empire around the whole Mediterranean.',
+  // Timeline zoom buttons; the first is the default view.
+  zooms: [
+    { label: 'Whole chapter', from: -820, to: 240 },
+    { label: 'Kings & Republic', from: -820, to: -100 },
+    { label: 'Fall of the Republic', from: -150, to: 20 },
+    { label: 'Empire & Christianity', from: -40, to: 130 },
+    { label: 'Long view', from: -2050, to: 250 },
+  ],
   bigIdeas: [
     'The Republic shared power among consuls, the Senate and assemblies of the people, but conquest made it unequal and unstable.',
     'Generals with private armies (Marius, Sulla, Caesar) ended the Republic; Augustus built a monarchy that looked like a republic.',
@@ -311,6 +317,8 @@ export const CH11 = {
       { text: 'Augustus became emperor in 27 BCE after Caesar was killed.', ok: false, why: 'A fact, not an argument.' },
       { text: 'Although Augustus kept the Senate and republican offices, Roman government changed greatly because real power moved from elected officials to one ruler who controlled the army and provinces.', ok: true, why: 'Makes a defensible claim, answers “to what extent,” and sets up continuity (offices kept) and change (power to one man).' },
     ],
+    contextHint: 'What was happening before 133 BCE that matters for the question?',
+    contextStart: 'Before the Gracchi, Rome…',
     context: 'Before 133 BCE, the Republic shared power among consuls, the Senate and assemblies. Conquest in the Punic Wars brought wealth, slaves and huge estates, which widened the gap between rich and poor.',
     evidence: [
       { text: 'The Gracchi tried land reform and were killed (133, 121 BCE).', side: 'change' },
